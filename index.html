@@ -25,7 +25,7 @@
 </head>
 
 <body class="main-content">
-    <header class="container active" id="home">
+    <header class="container" id="home">
         <div class="header-content">
             <div class="left-header">
                 <!-- <div class="h-shape"></div> -->
@@ -44,7 +44,7 @@
         </div>
     </header>
     <main>
-        <section class="container about" id="about">
+        <section class="container about active" id="about">
             <div class="main-title">
                 <h2>My <span>stats</span></h2>
             </div>
@@ -71,45 +71,50 @@
             <div class="about-stats">
                 <h4 class="stat-title">My Skills</h4>
                 <div class="skill-container">
-                    <div class="skill-item">
-                        <i class="fa-brands fa-html5"></i>
-                        <span class="skill-description">HTML5</span>
+                    <div class="skill-line">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-html5"></i>
+                            <span class="skill-description">HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-css3-alt"></i>
+                            <span class="skill-description">CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-js-square"></i>
+                            <span class="skill-description">JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-react"></i>
+                            <span class="skill-description">React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-sass"></i>
+                            <span class="skill-description">SASS</span>
+                        </div>
                     </div>
-                    <div class="skill-item">
-                        <i class="fa-brands fa-css3-alt"></i>
-                        <span class="skill-description">CSS3</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-brands fa-js-square"></i>
-                        <span class="skill-description">JavaScript</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-brands fa-react"></i>
-                        <span class="skill-description">React</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-brands fa-sass"></i>
-                        <span class="skill-description">SASS</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-solid fa-code"></i>
-                        <span class="skill-description">VS Code</span>
-                    </div><br>
-                    <div class="skill-item">
-                        <i class="fa-brands fa-git-alt"></i>
-                        <span class="skill-description">Git</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-brands fa-github"></i>
-                        <span class="skill-description">Github</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-solid fa-terminal"></i>
-                        <span class="skill-description">Command Line</span>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fa-solid fa-display"></i>
-                        <span class="skill-description">Responsive Websites</span>
+  
+                    <div class="skill-line">
+                        <div class="skill-item">
+                            <i class="fa-solid fa-code"></i>
+                            <span class="skill-description">VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-git-alt"></i>
+                            <span class="skill-description">Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-github"></i>
+                            <span class="skill-description">Github</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-terminal"></i>
+                            <span class="skill-description">Command Line</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-display"></i>
+                            <span class="skill-description">Responsive Websites</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -137,12 +142,12 @@
                 </div>
             </div>
         </section>
-        <section class="container" id="portfolio">
+        <section class="container " id="portfolio">
             <div class="main-title">
                 <h2>My <span>Portfolio</span></h2>
             </div>
             <p class="port-text">
-                Here is some of my work that I've done in various programming languages.
+                Here is some of my work that I've done during the study of front-end development.
             </p>
             <div class="blogs">
                 <a href="https://bogdan-muntean.github.io/Project_Hangman/" target="_blank">

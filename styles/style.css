@@ -55,7 +55,7 @@
 body {
   background-color: var(--color-primary);
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--color-white);
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
@@ -237,20 +237,6 @@ section {
   position: relative;
 }
 
-.header-content .left-header .h-shape {
-  -webkit-transition: all 4s ease-in-out;
-  transition: all 4s ease-in-out;
-  width: 80%;
-  height: 80%;
-  background-color: var(--color-secondary);
-  position: absolute;
-  left: -25px;
-  top: 70px;
-  z-index: -1;
-  -webkit-clip-path: circle(40%);
-          clip-path: circle(40%);
-}
-
 .header-content .left-header .image {
   height: 60%;
   width: 60%;
@@ -335,12 +321,19 @@ section {
 }
 
 .about-stats .skill-container {
+  display: block;
+}
+
+.about-stats .skill-container .skill-line {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .about-stats .skill-container .skill-item {
@@ -352,10 +345,19 @@ section {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 1rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .about-stats .skill-container .skill-item i {
   font-size: 4rem;
+  text-align: center;
+}
+
+.about-stats .skill-container .skill-item span {
+  padding-top: 0.8rem;
+  text-align: center;
 }
 
 .stat-title {
@@ -643,10 +645,17 @@ section {
   display: -ms-flexbox;
   display: flex;
   text-align: center;
-  padding-top: 3.5rem;
+  padding-top: 1.5rem;
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .contact-content-con p {
@@ -756,6 +765,10 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
 }
 
 .main-btn {
