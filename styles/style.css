@@ -1102,10 +1102,6 @@ section {
   .container {
     padding: 7rem 3rem;
   }
-  .about-stats .progress-bars {
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
-  }
   .about-container .right-about {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
@@ -1118,6 +1114,18 @@ section {
   }
   .main-title h2 .bg-text {
     font-size: 4rem;
+  }
+  .about-stats .skill-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .about-stats .skill-container .skill-line {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=style.css.map */
