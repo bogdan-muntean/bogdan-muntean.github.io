@@ -48,13 +48,26 @@
   color: var(--color-primary);
 }
 
+.light-mode .main-btn:hover .btn-text {
+  color: var(--color-primary);
+}
+
+.light-mode .timeline-item i {
+  color: var(--color-primary);
+}
+
 .light-mode .btn-icon {
   color: var(--color-grey0);
 }
 
+.light-mode .blogs .blog {
+  -webkit-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
+          box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
+}
+
 body {
   background-color: var(--color-primary);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Oxygen', sans-serif;
   font-size: 1.4rem;
   color: var(--color-white);
   -webkit-transition: all .4s ease-in-out;
