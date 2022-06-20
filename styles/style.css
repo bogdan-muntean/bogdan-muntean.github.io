@@ -65,6 +65,10 @@
           box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
 }
 
+.light-mode .timeline .timeline-item .tl-duration {
+  color: var(--color-black);
+}
+
 body {
   background-color: var(--color-primary);
   font-family: 'Oxygen', sans-serif;
@@ -322,6 +326,12 @@ section {
   padding: 1rem;
   padding-bottom: 3rem;
   color: var(--color-grey-1);
+}
+
+.about-container .text-about p span {
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--color-secondary);
 }
 
 .about-container .text-about h4 {
@@ -702,6 +712,11 @@ section {
 .contact-info .contact-item p {
   margin: .3rem 0 !important;
   padding: 0 !important;
+}
+
+.contact-info .contact-item p span {
+  position: relative;
+  left: 0.5rem;
 }
 
 .contact-info .contact-item .icon {

@@ -6,7 +6,7 @@
 }
 
 :root {
-    //FONT SIZE = 17px  => 1rem = 17px
+    //FONT SIZE = 17px   1rem = 17px
     --color-primary: #191d2b;
     --color-secondary: #273dae;
     --color-white: #FFFFFF;
@@ -32,7 +32,7 @@
     --color-grey-1: #6c7983;
     --color-grey-2: #6c7983;
     --color-grey-3: #6c7983;
-    --color-grey-4: #dde2e7; //culoarea pentru butoane
+    --color-grey-4: #dde2e7; //culoarea pentru butoanele secundare
     --color-grey-5: #f8f8f8;
     --color-grey-6: #12181b;
 
@@ -69,6 +69,14 @@
         }
     }
 
+    .timeline {
+        .timeline-item {
+            .tl-duration {
+                // background-color: var(--color-grey-3);
+                color: var(--color-black);
+            }
+        }
+    }
 }
 
 body {
@@ -268,6 +276,12 @@ section {
             padding: 1rem;
             padding-bottom: 3rem;
             color: var(--color-grey-1);
+            span{
+                font-weight: bold;
+                // text-transform: uppercase;
+                font-size: 2rem;
+                color: var(--color-secondary)
+            }
         }
 
         h4 {
@@ -559,8 +573,11 @@ section {
         p {
             margin: .3rem 0 !important;
             padding: 0 !important;
+            span{
+                position: relative;
+                left: 0.5rem;
+            }
         }
-
         .icon {
             display: grid;
             grid-template-columns: 40px 1fr;
