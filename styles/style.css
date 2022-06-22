@@ -476,6 +476,10 @@ section {
   color: var(--color-grey-2);
 }
 
+.timeline .timeline-item .item-text {
+  font-size: 1rem;
+}
+
 .port-text {
   padding: 2rem 0;
   text-align: center;
