@@ -161,9 +161,6 @@
     
 }
 
-
-
-
 @media screen and (max-width:1250px){
     .blogs{
         grid-template-columns: repeat(2, 1fr);
@@ -177,6 +174,7 @@
     }
 
 }
+
 @media screen and (max-width:660px){
     .blogs{
         grid-template-columns: repeat(1, 1fr);
@@ -240,12 +238,10 @@
         }
     }
 }
+
 @media screen and (max-width:700px){
     .container{
         padding: 7rem 3rem;
-    }
-    .about-stats .progress-bars{
-        grid-template-columns: repeat(1, 1fr);
     }
     .about-container .right-about{
         grid-template-columns: repeat(1, 1fr);
@@ -258,6 +254,15 @@
             }
             .bg-text{
                 font-size: 4rem;
+            }
+        }
+    }
+    .about-stats{
+        .skill-container{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            .skill-line{
+                flex-direction: column;
             }
         }
     }
