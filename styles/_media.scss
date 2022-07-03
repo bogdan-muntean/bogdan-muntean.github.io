@@ -72,16 +72,16 @@
         padding: 2rem 2.5rem !important;
     }
 
-    .portfolios{
+    .portfolio-list{
         grid-template-columns: repeat(1, 1fr);
         padding-bottom: 6rem;
         margin-top: 1rem;
     }
 
-    .blogs{
-        grid-template-columns: repeat(1, 1fr);
-        padding-bottom: 6rem;
-    }
+    // .portfolio-list{
+    //     grid-template-columns: repeat(1, 1fr);
+    //     padding-bottom: 6rem;
+    // }
 
     .contact-content-con{
         flex-direction: column;
@@ -120,10 +120,7 @@
 }
 
 @media screen and (max-width:660px){
-    .portofolio-list{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .portfolios{
+    .portfolio-list{
         grid-template-columns: repeat(1, 1fr);
     }
 }
@@ -209,12 +206,9 @@
 }
 
 @media screen and (max-width:1250px){
-    .blogs{
+    .portfolio-list{
         grid-template-columns: repeat(2, 1fr);
         margin-top: 6rem;
-    }
-    .portfolios{
-        grid-template-columns: repeat(2, 1fr);
     }
     .header-content .right-header{
         padding-right: 9rem;
