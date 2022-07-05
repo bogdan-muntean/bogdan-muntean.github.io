@@ -7,7 +7,7 @@
 // const sectBtns = document.querySelectorAll('.controls');
 // const allSections = document.querySelector('.main-content')
 
-const sectBtn = document.querySelectorAll('.control');
+let sectBtn = document.querySelectorAll('.control');
 
 function PageTransitions(){
     sectBtn.forEach(button => {
