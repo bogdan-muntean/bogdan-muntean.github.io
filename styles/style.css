@@ -883,9 +883,6 @@ section {
         grid-template-columns: repeat(1, 1fr);
     padding-bottom: 6rem;
   }
-  .left-header .h-shape {
-    display: none;
-  }
   .left-header .image {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -904,7 +901,7 @@ section {
     padding-top: 3rem;
   }
   .header-content .left-header .image {
-    margin: 0 auto;
+    margin: 15px auto;
     width: 70%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -940,6 +937,7 @@ section {
   }
   .container {
     padding: 2rem 2.5rem !important;
+    height: 90%;
   }
   .portfolio-list {
     -ms-grid-columns: (1fr)[1];
@@ -1083,6 +1081,12 @@ section {
 @media screen and (max-width: 1432px) {
   .container {
     padding: 7rem 11rem;
+  }
+  #about {
+    padding: 7rem 5rem;
+  }
+  #portfolio {
+    padding: 7rem 7rem;
   }
   .contact-content-con {
     -webkit-box-orient: vertical;
