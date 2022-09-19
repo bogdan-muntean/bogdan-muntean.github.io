@@ -210,13 +210,13 @@ section {
     }
 }
 
-/*Header-content*/
-.header-content {
+/*Home-content*/
+.container-home {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     min-height: 100vh;
 
-    .left-header {
+    .container-home-left{
         display: flex;
         align-items: center;
         position: relative;
@@ -249,7 +249,7 @@ section {
         // }
     }
 
-    .right-header {
+    .container-home-right {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -776,11 +776,11 @@ section {
 // }
 
 // Header content V1
-// .header-content{
+// .container-home{
 //     display: grid;
 //     grid-template-columns: repeat(2, 1fr);
 //     height: 100%;
-//     .left-header{
+//     .container-home-left{
 //         display: flex;
 //         align-items: center;
 //         position: relative;
@@ -814,7 +814,7 @@ section {
 //             }
 //         }
 //     }
-//     .right-header{
+//     .container-home-right{
 //         display: flex;
 //         flex-direction: column;
 //         justify-content: center;
