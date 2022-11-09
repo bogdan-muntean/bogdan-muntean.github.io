@@ -96,7 +96,6 @@ section {
   min-height: 100vh;
   width: 100%;
   position: absolute;
-  left: 0;
   top: 0;
   padding: 3rem 18rem;
 }
@@ -120,8 +119,8 @@ section {
 
 @-webkit-keyframes appear {
   0% {
-    -webkit-transform: translateY(-100%) scaleY(0.1);
-            transform: translateY(-100%) scaleY(0.1);
+    -webkit-transform: translateY(-100%) scaleY(0);
+            transform: translateY(-100%) scaleY(0);
   }
   100% {
     -webkit-transform: translateY(0) scaleY(1);
@@ -131,8 +130,8 @@ section {
 
 @keyframes appear {
   0% {
-    -webkit-transform: translateY(-100%) scaleY(0.1);
-            transform: translateY(-100%) scaleY(0.1);
+    -webkit-transform: translateY(-100%) scaleY(0);
+            transform: translateY(-100%) scaleY(0);
   }
   100% {
     -webkit-transform: translateY(0) scaleY(1);
@@ -140,7 +139,7 @@ section {
   }
 }
 
-/* Controls */
+/* Controls - butoanele pentru navigare */
 .controls {
   position: fixed;
   z-index: 10;
@@ -300,36 +299,6 @@ section {
 }
 
 /*About*/
-.about-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 3.5rem;
-  padding-bottom: 5rem;
-}
-
-.about-container .text-about {
-  padding-right: 5rem;
-}
-
-.about-container .text-about p {
-  line-height: 2rem;
-  padding: 1rem;
-  padding-bottom: 3rem;
-  color: var(--color-grey-1);
-}
-
-.about-container .text-about p span {
-  font-weight: bold;
-  font-size: 2rem;
-  color: var(--color-secondary);
-}
-
-.about-container .text-about h4 {
-  font-size: 2rem;
-  text-transform: uppercase;
-}
-
 .about-stats {
   padding-bottom: 4rem;
 }
@@ -388,14 +357,42 @@ section {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 40%;
+  width: 70%;
   height: 1px;
   background-color: var(--color-grey-5);
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
 }
 
-/*Timeline*/
+.about-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+
+.about-container .text-about {
+  padding-right: 5rem;
+}
+
+.about-container .text-about p {
+  line-height: 2rem;
+  padding: 1rem;
+  padding-bottom: 3rem;
+  color: var(--color-grey-1);
+}
+
+.about-container .text-about p span {
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--color-secondary);
+}
+
+.about-container .text-about h4 {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+/*About - Timeline*/
 .timeline {
   padding-bottom: 3rem;
   display: -webkit-box;
@@ -487,108 +484,6 @@ section {
 
 .portfolio-list .portfolio-item {
   position: relative;
-  border-radius: 15px;
-}
-
-.portfolio-list .portfolio-item img {
-  width: 100%;
-  height: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 15px;
-}
-
-.portfolio-list .portfolio-item .hover-items {
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-secondary);
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  opacity: 0;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-.portfolio-list .portfolio-item .hover-items h3 {
-  font-size: 1.5rem;
-  color: var(--color-white);
-  margin-bottom: 1.5rem;
-}
-
-.portfolio-list .portfolio-item .hover-items .icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.portfolio-list .portfolio-item .hover-items .icons .icon {
-  background-color: var(--color-primary);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0 1rem;
-  cursor: pointer;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-.portfolio-list .portfolio-item .hover-items .icons .icon i {
-  font-size: 1.5rem;
-  color: var(--color-white);
-  margin: 0 1rem;
-}
-
-.portfolio-list .portfolio-item .hover-items .icons .icon:hover {
-  background-color: var(--color-white);
-}
-
-.portfolio-list .portfolio-item .hover-items .icons .icon:hover i {
-  color: var(--color-primary);
-}
-
-.portfolio-list {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
-  margin-top: 3rem;
-}
-
-.portfolio-list .portfolio-item {
-  position: relative;
   background-color: var(--color-grey-5);
   border-radius: 5px;
   -webkit-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
@@ -646,10 +541,15 @@ section {
   color: var(--color-secondary);
 }
 
-.portfolio-list .portfolio-item .portfolio-text p {
+.portfolio-list .portfolio-item .portfolio-text .portfolio-links div {
   color: var(--color-grey-2);
   line-height: 2rem;
   padding-bottom: 1rem;
+}
+
+.portfolio-list .portfolio-item .portfolio-text .portfolio-links div:hover div {
+  color: var(--color-white);
+  cursor: pointer;
 }
 
 .contact-content-con {
