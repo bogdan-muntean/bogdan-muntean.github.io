@@ -94,7 +94,7 @@
             color: var(--color-grey-2);
         }
         span{
-            font-size: 15px;
+            font-size: 26px;
         }
         .icon{
             grid-template-columns: 25px 1fr;
@@ -147,6 +147,13 @@
                 flex-direction: column;
             }
         }
+    }
+}
+
+@media screen and (max-width: 714px){
+    .portfolio-list {
+        display:flex;
+        flex-direction: column;
     }
 }
 

@@ -25,12 +25,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
         integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/media.css">
     <title>Bogdan Muntean - My Presentation Website</title>
 </head>
 
 <body class="main-content">
-    <header class="container" id="home">
+    <header class="container active" id="home">
         <div class="header-content">
             <div class="left-header">
                 <div class="image">
@@ -40,7 +42,7 @@
             <div class="right-header">
                 <h1 class="name">Bogdan <span>Muntean</span></h1>
                 <p>
-                    I'm a Junior Web Developer and I aspiring front-end development with React. I'm passionate about technology, programming, science, marketing and
+                    I'm a Junior Web Developer and I aspire to become a front-end developer. I'm passionate about technology, programming, science, marketing and
                     economics.<br>
                     I like to create websites that are enjoyable, interesting, creative and useful.
                 </p>
@@ -115,9 +117,6 @@
                         I learned from the front end development course advanced notions of HTML, CSS, JavaScript and
                         about frameworks like React and Tailwind. As well as about Git, Github, SPA and Responsive
                         Websites. <br><br>
-                        During the course I invested a lot of time with interest and conscientiousness. <br>
-                        I did all the required and optional homework and projects and this thing had an important impact
-                        on the development skills of front-end side.
                     </p>
                 </div>
                 <div class="timeline-item">
@@ -178,7 +177,7 @@
                 </div>
             </div>
         </section>
-        <section class="container active" id="portfolio">
+        <section class="container" id="portfolio">
             <div class="main-title">
                 <h2>My <span>Portfolio</span></h2>
             </div>
@@ -187,43 +186,27 @@
             </p>
             <div class="portfolio-list">
                 <div class="portfolio-item">
-                    <img src="images/hangman-game.PNG" alt="">
+                    <a href="https://bogdan-muntean.github.io/Project_Hangman/" target="_blank">
+                        <!-- <img src="images/image-hangman.png" alt=""> -->
+                        <img src="images/hangman-game.PNG" alt="">
+                    </a>
                     <div class="portfolio-text">
                         <h4>
-                            Hangman Game
+                            <a href="https://bogdan-muntean.github.io/Project_Hangman/" target="_blank">
+                                Hangman Game
+                            </a>
                         </h4>
                         <div class="portfolio-links">
                             <div>
-                                Source 
-                                <i class="fa-solid fa-display"></i>
+                                <a href="https://github.com/bogdan-muntean/Project_Hangman" target="_blank">
+                                    Source 
+                                    <i class="fa-solid fa-display"></i>
+                                </a>
                             </div>
                         
                             <div>
-                                Live 
                                 <a href="https://bogdan-muntean.github.io/Project_Hangman/" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/linkin-bio.PNG" alt="">
-                    <div class="portfolio-text">
-                        <h4>
-                            Link In Bio
-                        </h4>
-                        <div class="portfolio-links">
-                            <div>
-                                Source 
-                                <i class="fa-solid fa-display"></i>
-                            </div>
-                        
-                            <div>
-                                Live 
-                                <a href="https://bogdan-muntean.github.io/LinkInBio/" target="_blank"></a>
+                                    Live 
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
@@ -231,20 +214,52 @@
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="images/r-p-s-game.PNG" alt="">
+                    <a href="https://bogdan-muntean.github.io/LinkInBio/" target="_blank">
+                        <img src="images/linkin-bio.PNG" alt="">
+                    </a>
                     <div class="portfolio-text">
                         <h4>
-                            Rock-Paper-Scissors Game
+                            <a href="https://bogdan-muntean.github.io/LinkInBio/" target="_blank">
+                                Link In Bio
+                            </a>
                         </h4>
                         <div class="portfolio-links">
                             <div>
-                                Source 
-                                <i class="fa-solid fa-display"></i>
+                                <a href="https://github.com/bogdan-muntean/LinkInBio" target="_blank">
+                                    Source 
+                                    <i class="fa-solid fa-display"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://bogdan-muntean.github.io/LinkInBio/" target="_blank">
+                                    Live 
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <a href="https://bogdan-muntean.github.io/Rock-Paper-Scissors_Game/" target="_blank">
+                        <img src="images/r-p-s-game.PNG" alt="">
+                    </a>
+                    <div class="portfolio-text">
+                        <h4>
+                            <a href="https://bogdan-muntean.github.io/Rock-Paper-Scissors_Game/" target="_blank">
+                                Rock-Paper-Scissors Game
+                            </a>
+                        </h4>
+                        <div class="portfolio-links">
+                            <div>
+                                <a href="https://github.com/bogdan-muntean/Rock-Paper-Scissors_Game" target="_blank">
+                                    Source 
+                                    <i class="fa-solid fa-display"></i>
+                                </a>
                             </div>
                         
                             <div>
-                                Live 
                                 <a href="https://bogdan-muntean.github.io/Rock-Paper-Scissors_Game/" target="_blank">
+                                    Live 
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
@@ -252,20 +267,26 @@
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="images/bmi.PNG" alt="">
+                    <a href="https://bogdan-muntean.github.io/BMI-Calculator-Project/" target="_blank">
+                        <img src="images/bmi.PNG" alt="">
+                    </a>
                     <div class="portfolio-text">
                         <h4>
-                            BMI Calculator
+                            <a href="https://bogdan-muntean.github.io/BMI-Calculator-Project/" target="_blank">
+                                BMI Calculator
+                            </a>
                         </h4>
                         <div class="portfolio-links">
                             <div>
-                                Source 
-                                <i class="fa-solid fa-display"></i>
+                                <a href="https://github.com/bogdan-muntean/BMI-Calculator-Project" target="_blank">
+                                    Source 
+                                    <i class="fa-solid fa-display"></i>
+                                </a>
                             </div>
                         
                             <div>
-                                Live 
                                 <a href="https://bogdan-muntean.github.io/BMI-Calculator-Project/" target="_blank">
+                                    Live 
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
