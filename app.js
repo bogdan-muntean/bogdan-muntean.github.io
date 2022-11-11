@@ -1,11 +1,4 @@
-// *In momentul in care scroll-ul se afla 100% pe o anumita sectiune, iar 
-// cand scroll ul ajunge 100% pe .before sau .next, ei devin .active si
-// se reverifica care sectiune este .before sau .next
-
-//V2.1
-// const sections = document.querySelectorAll('.section');
-// const sectBtns = document.querySelectorAll('.controls');
-// const allSections = document.querySelector('.main-content')
+// Schimba clasa 'active' cand este apasat  
 
 let sectBtn = document.querySelectorAll('.control');
 
