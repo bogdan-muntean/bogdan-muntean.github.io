@@ -14,7 +14,7 @@
   }
   @media screen and (max-width: 600px) {
     padding: 2rem 2.5rem !important;
-    height: 90%;
+    height: 100%;
   }
   @media screen and (max-width: 700px) {
     padding: 7rem 3rem;
@@ -48,7 +48,7 @@
     }
   }
   @media screen and (max-width: 1432px) {
-    padding: 7rem 11rem;
+    padding: 3rem 11rem;
   }
   @media screen and (max-width: 1432px) {
     .main-title {
@@ -69,7 +69,9 @@
         .btn-download {
           font-size: 1rem;
           width: 30vh;
-          left: -25px;
+          justify-content: center;
+          margin: 5px auto;
+          left: 0px;
           .btn-text {
             padding: 1rem 1rem;
           }
@@ -157,7 +159,7 @@
       h2 {
         font-size: 2rem;
         span {
-          font-size: 2.3rem;
+          font-size: 2rem;
         }
         .bg-text {
           font-size: 2.3rem;
@@ -165,7 +167,7 @@
       }
     }
     .timeline {
-      padding-bottom: 6rem;
+      margin-bottom: 3rem;
     }
     .about-container {
       .text-about {
@@ -202,7 +204,7 @@
     }
   }
   @media screen and (max-width: 1432px) {
-    padding: 7rem 5rem;
+    padding: 3rem 5rem;
   }
 }
 
@@ -252,12 +254,12 @@
   //       grid-template-columns: repeat(1, 1fr);
   //     }
   //   }
-  //   @media screen and (max-width: 714px) {
-  //     .portfolio-list {
-  //       display: flex;
-  //       flex-direction: column;
-  //     }
-  //   }
+    @media screen and (max-width: 714px) {
+      .portfolio-list {
+        display: flex;
+        flex-direction: column;
+      }
+    }
   @media screen and (max-width: 540px) {
     .portfolio-item {
       height: 140px !important;
@@ -295,16 +297,21 @@
   @media screen and (max-width: 1250px) {
     .portfolio-list {
       grid-template-columns: repeat(2, 1fr);
-      margin-top: 6rem;
+      margin-top: 2rem;
     }
   }
   @media screen and (max-width: 1432px) {
-    padding: 7rem 7rem;
+    padding: 3rem 7rem;
   }
 }
 
 //Contact container
 .contact {
+  @media screen and (max-width: 427px) {
+    .contact-content-con {
+      margin-top: 0.5rem !important;
+    }
+  }
   @media screen and (max-width: 600px) {
     .contact-content-con {
       flex-direction: column;
@@ -324,6 +331,9 @@
       .icon {
         grid-template-columns: 25px 1fr;
       }
+    }
+    .contact-icons {
+      margin-bottom: 110px;
     }
   }
   @media screen and (max-width: 1432px) {

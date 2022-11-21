@@ -98,6 +98,9 @@ section {
   position: absolute;
   top: 0;
   padding: 3rem 18rem;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .container {
@@ -445,7 +448,7 @@ section {
   display: -ms-flexbox;
   display: flex;
   padding-top: 3.5rem;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 
 #about .about-container .text-about p {
@@ -491,6 +494,7 @@ section {
       grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
   margin-top: 3rem;
+  height: 100%;
 }
 
 #portfolio .portfolio-list .portfolio-item {
@@ -803,7 +807,7 @@ section {
 @media screen and (max-width: 440px) {
   .container .main-title h2,
   .container .main-title span {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 }
 
@@ -849,7 +853,7 @@ section {
 
 @media screen and (max-width: 1432px) {
   .container {
-    padding: 7rem 11rem;
+    padding: 3rem 11rem;
   }
 }
 
@@ -947,7 +951,7 @@ section {
     font-size: 2rem;
   }
   .about .main-title h2 span {
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
   .about .main-title h2 .bg-text {
     font-size: 2.3rem;
@@ -1000,69 +1004,7 @@ section {
 
 @media screen and (max-width: 1432px) {
   .about {
-    padding: 7rem 5rem;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  #portfolio .portfolio-list {
-    margin-top: 3rem !important;
-  }
-  #portfolio .portfolio-list .portfolio-item {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    height: 250px;
-  }
-  #portfolio .portfolio-list .portfolio-item .portfolio-image {
-    width: 60%;
-  }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text {
-    border-top: 0px;
-    width: 40%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 {
-    margin-bottom: 0px;
-  }
-  #portfolio .portfolio-list .portfolio-item .portfolio-links {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  #portfolio .portfolio-list .portfolio-item .portfolio-links div {
-    padding-bottom: 0.1rem !important;
-  }
-  #portfolio .portfolio-list .portfolio-item img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #portfolio .portfolio-list {
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
-    padding-bottom: 6rem;
-    margin-top: 1rem;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  #portfolio .portfolio-list {
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
+    padding: 3rem 5rem;
   }
 }
 
@@ -1078,6 +1020,54 @@ section {
   }
 }
 
+@media screen and (max-width: 540px) {
+  #portfolio .portfolio-item {
+    height: 140px !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #portfolio .portfolio-item .portfolio-image {
+    width: 0%;
+  }
+  #portfolio .portfolio-item .portfolio-text {
+    width: 100% !important;
+  }
+  #portfolio .portfolio-item .portfolio-text h4 {
+    text-align: center;
+  }
+  #portfolio .portfolio-item .portfolio-text .portfolio-links {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    bottom: 3px !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  #portfolio .portfolio-image {
+    display: none;
+  }
+  #portfolio .portfolio-text {
+    border-top: 0px !important;
+  }
+  #portfolio .portfolio-text h4 {
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 1250px) {
   #portfolio .portfolio-list {
     -ms-grid-columns: (1fr)[2];
@@ -1088,7 +1078,7 @@ section {
 
 @media screen and (max-width: 1432px) {
   #portfolio {
-    padding: 7rem 7rem;
+    padding: 3rem 7rem;
   }
 }
 

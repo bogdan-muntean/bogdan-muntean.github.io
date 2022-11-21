@@ -114,6 +114,7 @@ section {
     position: absolute;
     top: 0;
     padding: 3rem 18rem;
+    height: min-content;
 }
 
 .container {
@@ -367,7 +368,7 @@ section {
     .about-container {
         display: flex;
         padding-top: 3.5rem;
-        padding-bottom: 5rem;
+        padding-bottom: 2rem;
         .text-about {
             p {
                 line-height: 2rem;
@@ -411,6 +412,7 @@ section {
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 2rem;
         margin-top: 3rem;
+        height: 100%;
     
         .portfolio-item {
             position: relative;
