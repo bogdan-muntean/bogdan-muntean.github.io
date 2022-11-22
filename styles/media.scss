@@ -254,12 +254,7 @@
   //       grid-template-columns: repeat(1, 1fr);
   //     }
   //   }
-    @media screen and (max-width: 714px) {
-      .portfolio-list {
-        display: flex;
-        flex-direction: column;
-      }
-    }
+
   @media screen and (max-width: 540px) {
     .portfolio-item {
       height: 140px !important;
@@ -281,6 +276,19 @@
           bottom: 3px !important;
         }
       }
+    }
+  }
+  @media screen and (max-width: 600px){
+    .portfolio-list {
+      .portfolio-item:last-child{
+        margin-bottom: 50px;
+      }
+    }
+  }
+  @media screen and (max-width: 714px) {
+    .portfolio-list {
+      display: flex;
+      flex-direction: column;
     }
   }
   @media screen and (max-width: 990px) {
