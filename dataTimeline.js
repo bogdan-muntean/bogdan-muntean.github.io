@@ -70,12 +70,9 @@ let academicDataList = [
 
 let academicContainer = document.querySelector(".academic");
 
-// for( let i = 0; i < academicDataList.length; i++){
-//     console.log('s a executat')
-//     addItemsToTimeline(academicContainer, academicDataList[i])
-// }
+
 academicDataList.forEach( (element) => {
-    console.log('s a executat');
+    console.log('timeline-item created');
     addItemsToTimeline(academicContainer, element);
 } )
 
