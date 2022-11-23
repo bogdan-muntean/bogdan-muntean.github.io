@@ -279,6 +279,30 @@ section {
 
 /*About*/
 #about {
+    .about-container {
+        display: flex;
+        padding-top: 3.5rem;
+        padding-bottom: 2rem;
+        .text-about {
+            p {
+                line-height: 2rem;
+                padding: 1rem;
+                padding-bottom: 3rem;
+                padding-left: 0;
+                color: var(--color-grey-1);
+                span {
+                    font-weight: bold;
+                    font-size: 2rem;
+                    color: var(--color-secondary)
+                }
+            }
+    
+            h4 {
+                font-size: 2rem;
+                text-transform: uppercase;
+            }
+        }
+    }
     .about-stats {
         padding-bottom: 4rem;
         .skill-container {
@@ -305,11 +329,10 @@ section {
         }
     }
     .timeline {
-        padding-bottom: 3rem;
-        display: flex;
+        margin-bottom: 3rem;
+        // display: flex;
         flex-direction: column;
         align-items: center;
-    
         .timeline-item {
             position: relative;
             padding-left: 3rem;
@@ -348,7 +371,7 @@ section {
                 text-transform: uppercase;
                 font-size: 1.3rem;
                 font-weight: 600;
-    
+                text-align: center;
                 span {
                     color: var(--color-grey-2);
                     font-weight: 500;
@@ -365,31 +388,11 @@ section {
                 font-size: 1rem;
             }
         }
-    }
-    .about-container {
-        display: flex;
-        padding-top: 3.5rem;
-        padding-bottom: 2rem;
-        .text-about {
-            p {
-                line-height: 2rem;
-                padding: 1rem;
-                padding-bottom: 3rem;
-                padding-left: 0;
-                color: var(--color-grey-1);
-                span {
-                    font-weight: bold;
-                    font-size: 2rem;
-                    color: var(--color-secondary)
-                }
-            }
-    
-            h4 {
-                font-size: 2rem;
-                text-transform: uppercase;
-            }
+        #item-experience {
+            text-align: center;
         }
     }
+
 }
 
 //Portfolios

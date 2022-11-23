@@ -17,7 +17,9 @@ function addItemsToTimeline(container, dataArray){
     //add content
     iconItem.innerHTML = dataArray.icon;
     timeData.textContent = dataArray.timeData;
-    titleHtml.innerHTML = dataArray.title;
+    titleHtml.innerHTML = `
+    ${dataArray.title} <br>
+    <span>${dataArray.span}</span>`;
     textHtml.textContent = dataArray.text;
 
     //add all content to child item
@@ -31,37 +33,43 @@ function addItemsToTimeline(container, dataArray){
 
 let academicDataList = [
     {
-        title: `Responsive Web Design Certification <span> - freeCodeCamp</span>`,
+        title: `Responsive Web Design Certification`,
+        span: "freeCodeCamp",
         timeData: "2021",
         text: "",
         icon: `<i class="fa-solid fa-display"></i>`,
     },
     {
-        title: `FRONT-END WEB DEVELOPMENT <span> - Informal School of IT, Cluj-Napoca</span>`,
+        title: `FRONT-END WEB DEVELOPMENT`,
+        span: "Informal School of IT, Cluj-Napoca",
         timeData: "01/2022 – 05/2022",
         text: "I learned from the front end development course advanced notions of HTML, CSS, JavaScript and about frameworks like React and Tailwind. As well as about Git, Github, SPA and Responsive Websites.",
         icon: `<i class="fa-solid fa-display"></i>`,
     },
     {
-        title: `Psychopedagogical Training Courses <span> - "Babeș-Bolyai" University, Cluj-Napoca</span>`,
+        title: `Psychopedagogical Training Courses`,
+        span: `"Babeș-Bolyai" University, Cluj-Napoca`,
         timeData: "2020-2021",
         text: "",
         icon: `<i class="fa-solid fa-display"></i>`,
     },
     {
-        title: `Faculty of Medicine - BalneoPhysiokinetotherapy and Medical Recovery Specialist <span> - "Iuliu Haţieganu" University of Medicine and Pharmacy, Cluj-Napoca</span>`,
+        title: `Faculty of Medicine - Balneo-Physio-Kinetotherapy and Medical Recovery Specialist`,
+        span: `"Iuliu Haţieganu" University of Medicine and Pharmacy, Cluj-Napoca`,
         timeData: "2017-2020",
         text: "",
         icon: `<i class="fa-solid fa-display"></i>`,
     },
     {
-        title: `CERTIFIED IN COMPUTER SCIENCE <span> - "Lucian Blaga" High School, Cluj-Napoca</span>`,
+        title: `CERTIFIED IN COMPUTER SCIENCE`,
+        span: `"Lucian Blaga" High School, Cluj-Napoca`,
         timeData: "2017",
         text: "",
         icon: `<i class="fa-solid fa-display"></i>`,
     },
     {
-        title: `High School - Section of Mathematics-Informatics Intensive Informatics <span> - "Lucian Blaga" High School, Cluj-Napoca</span>`,
+        title: `High School - Section of Mathematics-Informatics Intensive Informatics`,
+        span: `"Lucian Blaga" High School, Cluj-Napoca`,
         timeData: "2013-2017",
         text: "Experienced with C++, C, developed algorithms and problem-solving skills. Certificate of digital skills and professional skills in computer science.",
         icon: `<i class="fa-solid fa-display"></i>`,

@@ -57,8 +57,10 @@
 }
 
 @media screen and (max-width: 440px) {
-  .container .main-title h2,
-  .container .main-title span {
+  .container .main-title h2 {
+    font-size: 2rem;
+  }
+  .container .main-title h2 span {
     font-size: 2rem;
   }
 }
@@ -144,39 +146,39 @@
 }
 
 @media screen and (max-width: 1432px) {
-  .about {
+  #about {
     padding: 3rem 5rem;
   }
 }
 
 @media screen and (max-width: 1070px) {
-  .about .about-container {
+  #about .about-container {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
   }
-  .about .about-container .right-about {
+  #about .about-container .right-about {
     padding-top: 2.5rem;
   }
 }
 
 @media screen and (max-width: 970px) {
-  .about .about-container {
+  #about .about-container {
     padding-right: 0rem;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .about {
+  #about {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
   }
-  .about .about-stats .skill-container {
+  #about .about-stats .skill-container {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
-  .about .about-stats .skill-container .skill-line {
+  #about .about-stats .skill-container .skill-line {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -185,28 +187,37 @@
 }
 
 @media screen and (max-width: 600px) {
-  .about .main-title h2 {
+  #about {
+    padding: 3rem 2rem;
+  }
+  #about .main-title h2 {
     font-size: 2rem;
   }
-  .about .main-title h2 span {
+  #about .main-title h2 span {
     font-size: 2rem;
   }
-  .about .main-title h2 .bg-text {
+  #about .main-title h2 .bg-text {
     font-size: 2.3rem;
   }
-  .about .timeline {
-    margin-bottom: 3rem;
-  }
-  .about .about-container .text-about {
+  #about .about-container .text-about {
     padding-right: 0;
   }
-  .about .about-container .text-about p {
+  #about .about-container .text-about p {
     padding-left: 0;
   }
 }
 
+@media screen and (max-width: 450px) {
+  #about .timeline .timeline-item {
+    padding-left: 1rem;
+  }
+  #about .timeline .timeline-item .tl-duration {
+    margin-left: 1rem;
+  }
+}
+
 @media screen and (max-width: 330px) {
-  .about .about-stats .skill-container {
+  #about .about-stats .skill-container {
     position: relative;
     left: -38px;
   }

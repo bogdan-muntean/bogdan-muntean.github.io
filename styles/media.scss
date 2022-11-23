@@ -53,9 +53,11 @@
   }
   @media screen and (max-width: 440px) {
     .main-title {
-      h2,
-      span {
+      h2 {
         font-size: 2rem ;
+        span {
+          font-size: 2rem ;
+        }
       }
     }
   }
@@ -145,7 +147,7 @@
 }
 
 //About me container
-.about {
+#about {
   @media screen and (max-width: 1432px) {
     padding: 3rem 5rem;
   }
@@ -175,6 +177,7 @@
     }
   }
   @media screen and (max-width: 600px) {
+    padding: 3rem 2rem;
     .main-title {
       h2 {
         font-size: 2rem;
@@ -186,14 +189,21 @@
         }
       }
     }
-    .timeline {
-      margin-bottom: 3rem;
-    }
     .about-container {
       .text-about {
         padding-right: 0;
         p {
           padding-left: 0;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .timeline {
+      .timeline-item {
+        padding-left: 1rem;
+        .tl-duration {
+          margin-left: 1rem;
         }
       }
     }
