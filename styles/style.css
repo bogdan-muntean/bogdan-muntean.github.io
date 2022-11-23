@@ -442,7 +442,7 @@ section {
   border-radius: 15px;
   display: inline-block;
   font-size: .8rem;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 500;
 }
 
@@ -1003,9 +1003,6 @@ section {
   }
   #about .main-title h2 .bg-text {
     font-size: 2.3rem;
-  }
-  #about .timeline {
-    margin-bottom: 3rem;
   }
   #about .about-container .text-about {
     padding-right: 0;
