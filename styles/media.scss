@@ -211,8 +211,18 @@
   @media screen and (max-width: 330px) {
     .about-stats {
       .skill-container {
-        position: relative;
-        left: -38px;
+        position:static;
+        justify-content: center;
+        .skill-line {
+          .skill-item {
+            i {
+              font-size: 2rem;
+            }
+            span {
+              font-size: 1rem;
+            }
+          }
+        }
       }
     }
   }
