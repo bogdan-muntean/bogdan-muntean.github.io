@@ -500,7 +500,7 @@
 
 @media screen and (max-width: 418px) {
   .contact .contact-info .contact-item p a #email {
-    font-size: 18px;
+    font-size: calc(12px + 1.5vw);
   }
 }
 

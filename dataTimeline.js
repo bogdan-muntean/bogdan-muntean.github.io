@@ -100,7 +100,7 @@ let academicDataList = [
         icon: `<i class="fa-solid fa-graduation-cap"></i>`,
     },
     {
-        title: `High School - Section of Mathematics-Informatics Intensive Informatics`,
+        title: `High School - Major in Mathematics and Informatics - Intensive Informatics`,
         span: `"Lucian Blaga" High School, Cluj-Napoca`,
         timeData: "2013-2017",
         text: "Experienced with C++, C, developed algorithms and problem-solving skills. Certificate of digital skills and professional skills in computer science.",
