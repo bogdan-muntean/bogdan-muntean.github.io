@@ -31,6 +31,7 @@ function addPortfolioItems(container, arrayList){
     //create item's components
     let portfolioItemHtml = document.createElement('div')
 
+    let imageContainer = document.createElement('div')
     let imageAnchor = document.createElement('a')
     let imageHtml = document.createElement('img')
 
@@ -41,7 +42,7 @@ function addPortfolioItems(container, arrayList){
     //principal item
     portfolioItemHtml.classList.add('portfolio-item')
     //image
-    imageAnchor.classList.add('portfolio-image')
+    imageContainer.classList.add('portfolio-image')
     imageAnchor.setAttribute('href', arrayList.liveLink)
     imageHtml.setAttribute('src', arrayList.imageLink)
     //text container
@@ -72,10 +73,11 @@ function addPortfolioItems(container, arrayList){
     `;
 
     //append childs to parents containers
+    imageContainer.appendChild(imageAnchor)
     imageAnchor.appendChild(imageHtml)
     portfolioTextContainer.appendChild(portfolioLinks)
 
-    portfolioItemHtml.appendChild(imageAnchor)
+    portfolioItemHtml.appendChild(imageContainer)
     portfolioItemHtml.appendChild(portfolioTextContainer)
     container.appendChild(portfolioItemHtml)
 }
