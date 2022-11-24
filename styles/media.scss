@@ -28,7 +28,7 @@
         }
       }
     }
-  }  
+  }
   @media screen and (max-width: 970px) {
     padding: 7rem 6rem;
   }
@@ -54,9 +54,9 @@
   @media screen and (max-width: 440px) {
     .main-title {
       h2 {
-        font-size: 2rem ;
+        font-size: 2rem;
         span {
-          font-size: 2rem ;
+          font-size: 2rem;
         }
       }
     }
@@ -65,11 +65,6 @@
 
 //     Header / First page container
 #home {
-  @media screen and (max-width: 1250px) {
-    .header-content {
-      //   padding-right: 9rem;
-    }
-  }
   @media screen and (max-width: 970px) {
     .header-content {
       padding-bottom: 6rem;
@@ -211,16 +206,57 @@
   @media screen and (max-width: 330px) {
     .about-stats {
       .skill-container {
-        position: relative;
-        left: -38px;
+        position: static;
+        justify-content: center;
+        .skill-line {
+          .skill-item {
+            i {
+              font-size: 2rem;
+            }
+            span {
+              font-size: 1rem;
+            }
+          }
+        }
       }
     }
   }
-
 }
 
 // Portfolios container
 #portfolio {
+  //media min-width
+  @media screen and (min-width: 600px) {
+    .portfolio-item {
+      &:hover {
+        box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-5px);
+        transition: all 0.4s ease-in-out;
+        .portfolio-image {
+          img {
+            filter: grayscale(0);
+            transform: scale(1.1);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+          }
+        }
+      }
+      .portfolio-image {
+        width: 100%;
+        display: contents;
+        img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          filter: grayscale(100%);
+          transition: all 0.4s ease-in-out;
+        }
+      }
+    }
+  }
+
+  //media max-width
   @media screen and (max-width: 1432px) {
     padding: 3rem 7rem;
   }
@@ -231,13 +267,12 @@
     }
   }
   @media screen and (max-width: 990px) {
-    .portfolio-image {
-      display: none;
-    }
-    .portfolio-text {
-      border-top: 0px !important;
-      h4 {
-        text-align: center;
+    .portfolio-item {
+      .portfolio-text {
+        border-top: 0px;
+        h4 {
+          text-align: center;
+        }
       }
     }
   }
@@ -247,27 +282,42 @@
       flex-direction: column;
     }
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
+    padding: 3rem 2rem;
     .portfolio-list {
       margin-bottom: 2vh;
+      .portfolio-item {
+        flex-direction: row;
+        align-items: center;
+        .portfolio-image {
+          width: 150px;
+          height: 100%;
+          img {
+            width: 150px;
+            height: 140px;
+            object-fit: cover;
+          }
+        }
+        .portfolio-text {
+          width: 100%;
+          border-top: 0px;
+          margin-top: 0px;
+        }
+      }
     }
   }
-  @media screen and (max-width: 600px) and (max-height: 800px){
+  @media screen and (max-width: 600px) and (max-height: 800px) {
     .portfolio-list {
       margin-bottom: 100px;
     }
   }
   @media screen and (max-width: 540px) {
     .portfolio-item {
-      height: 140px !important;
-      display: flex !important;
+      height: 140px;
+      display: flex;
       justify-content: center;
       align-items: center;
-      .portfolio-image {
-        width: 0%;
-      }
       .portfolio-text {
-        width: 100% !important;
         h4 {
           text-align: center;
         }
@@ -275,7 +325,92 @@
           flex-direction: row;
           align-content: center;
           justify-content: center;
-          bottom: 3px !important;
+          bottom: 3px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 460px) {
+    padding: 3rem 0rem;
+    padding-bottom: 5rem;
+    .portfolio-description {
+      padding: 2rem 0.5rem;
+    }
+  }
+  @media screen and (max-width: 372px) {
+    .portfolio-list {
+      .portfolio-item {
+        .portfolio-text {
+          h4 {
+            margin-bottom: 0px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            a {
+              // display: block;
+              font-size: 1.2rem;
+              line-height: 2rem;
+              // white-space: nowrap;
+            }
+          }
+          div {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 340px) {
+    .portfolio-list {
+      .portfolio-item {
+        .portfolio-text {
+          h4 {
+            a {
+              font-size: 17px;
+              line-height: 19px;
+            }
+          }
+          .portfolio-links {
+            div {
+              font-size: 15px;
+              line-height: 17px;
+              flex-direction: column;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 310px) {
+    .portfolio-list {
+      .portfolio-item {
+        .portfolio-image {
+          display: flex;
+          align-items: center;
+          img {
+            width: 110px;
+            height: 110px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 246px) {
+    .portfolio-list {
+      .portfolio-item {
+        .portfolio-text {
+          display: flex;
+          flex-direction: column;
+          .portfolio-links {
+            flex-direction: column;
+            div {
+              line-height: 1rem;
+              padding-bottom: 0.5rem;
+              a {
+                display: block ruby;
+                text-align: center;
+              }
+            }
+          }
         }
       }
     }
@@ -301,13 +436,20 @@
       p {
         font-size: 15px;
         color: var(--color-grey-2);
+        a {
+          #email {
+
+          }
+        }
       }
       span {
         font-size: 26px;
+      
       }
       .icon {
         grid-template-columns: 25px 1fr;
       }
+
     }
     .contact-icons {
       margin-bottom: 110px;
@@ -316,6 +458,19 @@
   @media screen and (max-width: 427px) {
     .contact-content-con {
       margin-top: 0.5rem !important;
+    }
+  }
+  @media screen and (max-width: 418px) {
+    .contact-info {
+      .contact-item {
+        p {
+          a {
+            #email {
+              font-size: 18px;
+            }
+          }
+        }
+      }
     }
   }
 }
