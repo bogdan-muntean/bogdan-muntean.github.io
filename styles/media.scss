@@ -242,10 +242,11 @@
   }
   @media screen and (max-width: 990px) {
     .portfolio-image {
-      display: none;
+      // display: none;
+      display: block;
     }
     .portfolio-text {
-      border-top: 0px !important;
+      border-top: 0px;
       h4 {
         text-align: center;
       }
@@ -258,6 +259,7 @@
     }
   }
   @media screen and (max-width: 600px){
+    padding: 3rem 2rem;
     .portfolio-list {
       margin-bottom: 2vh;
     }
@@ -269,15 +271,15 @@
   }
   @media screen and (max-width: 540px) {
     .portfolio-item {
-      height: 140px !important;
-      display: flex !important;
+      height: 140px;
+      display: flex;
       justify-content: center;
       align-items: center;
       .portfolio-image {
-        width: 0%;
+        // width: 0%;
       }
       .portfolio-text {
-        width: 100% !important;
+        // width: 100%;
         h4 {
           text-align: center;
         }
@@ -285,7 +287,7 @@
           flex-direction: row;
           align-content: center;
           justify-content: center;
-          bottom: 3px !important;
+          bottom: 3px;
         }
       }
     }
