@@ -466,7 +466,9 @@
         p {
           a {
             #email {
-              font-size: 18px;
+              // display: flex;
+              font-size: calc(12px + 1.5vw);
+              // flex-basis: 18px;
             }
           }
         }
