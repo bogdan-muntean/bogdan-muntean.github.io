@@ -1,0 +1,23 @@
+{
+  "name": "my_presentation_website",
+  "version": "1.0.0",
+  "description": "📧💻 On this site I will post more details about my resume, contact details, projects, bibliography and more informations.",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogdan-muntean/bogdanmuntean.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bogdan-muntean/bogdanmuntean.github.io/issues"
+  },
+  "homepage": "https://github.com/bogdan-muntean/bogdanmuntean.github.io#readme"
+}
