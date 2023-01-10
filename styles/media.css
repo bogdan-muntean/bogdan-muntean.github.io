@@ -159,6 +159,9 @@
   #about .about-container .right-about {
     padding-top: 2.5rem;
   }
+  #about .timeline .timeline-item .item-text {
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 970px) {

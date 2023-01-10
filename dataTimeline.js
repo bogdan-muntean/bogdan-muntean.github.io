@@ -1,12 +1,12 @@
 // const { createElement } = require("react");
-//de adaugat la fiecare study cu diploma, icon cu pal de fin fact. background col yellow
 function addItemsToTimeline(container, dataArray){
+    let timelineItem, iconItem, timeData, titleHtml, textHtml;
     //create html
-    let timelineItem = document.createElement('div');
-    let iconItem = document.createElement('div');
-    let timeData = document.createElement('p');
-    let titleHtml = document.createElement('h5');
-    let textHtml = document.createElement('p');
+    timelineItem = document.createElement('div');
+    iconItem = document.createElement('div');
+    timeData = document.createElement('p');
+    titleHtml = document.createElement('h5');
+    textHtml = document.createElement('div');
 
     //add class
     timelineItem.classList.add('timeline-item');

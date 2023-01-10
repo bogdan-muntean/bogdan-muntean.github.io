@@ -467,6 +467,8 @@ section {
 
 #about .timeline .timeline-item .item-text {
   font-size: 1rem;
+  text-align: center;
+  margin-right: 30px;
 }
 
 #about .timeline #item-experience {
@@ -947,6 +949,9 @@ section {
   #about .about-container .right-about {
     padding-top: 2.5rem;
   }
+  #about .timeline-academic .timeline-item .item-text {
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 970px) {
@@ -1019,49 +1024,14 @@ section {
   }
 }
 
-@media screen and (max-width: 1432px) {
-  #portfolio {
-    padding: 3rem 7rem;
-  }
-}
-
-@media screen and (max-width: 1250px) {
-  #portfolio .portfolio-list {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    margin-top: 2rem;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  #portfolio .portfolio-text {
-    border-top: 0px;
-  }
-  #portfolio .portfolio-text h4 {
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 714px) {
-  #portfolio .portfolio-list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
 @media screen and (min-width: 600px) {
   #portfolio .portfolio-item:hover {
     -webkit-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
             box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
     -webkit-transform: translateY(-5px);
             transform: translateY(-5px);
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
   }
   #portfolio .portfolio-item:hover .portfolio-image img {
     -webkit-filter: grayscale(0);
@@ -1084,8 +1054,43 @@ section {
     border-top-right-radius: 5px;
     -webkit-filter: grayscale(100%);
             filter: grayscale(100%);
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+}
+
+@media screen and (max-width: 1432px) {
+  #portfolio {
+    padding: 3rem 7rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  #portfolio .portfolio-list {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  #portfolio .portfolio-item .portfolio-text {
+    border-top: 0px;
+  }
+  #portfolio .portfolio-item .portfolio-text h4 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 714px) {
+  #portfolio .portfolio-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 
@@ -1101,19 +1106,24 @@ section {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   #portfolio .portfolio-list .portfolio-item .portfolio-image {
     width: 150px;
-    height: 200px;
+    height: 100%;
   }
   #portfolio .portfolio-list .portfolio-item .portfolio-image img {
     width: 150px;
-    height: 200px;
+    height: 140px;
     -o-object-fit: cover;
        object-fit: cover;
   }
   #portfolio .portfolio-list .portfolio-item .portfolio-text {
     width: 100%;
+    border-top: 0px;
+    margin-top: 0px;
   }
 }
 
@@ -1150,6 +1160,87 @@ section {
         -ms-flex-pack: center;
             justify-content: center;
     bottom: 3px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #portfolio {
+    padding: 3rem 0rem;
+    padding-bottom: 5rem;
+  }
+  #portfolio .portfolio-description {
+    padding: 2rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 372px) {
+  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 {
+    margin-bottom: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 a {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-text div {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 a {
+    font-size: 17px;
+    line-height: 19px;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links div {
+    font-size: 15px;
+    line-height: 17px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  #portfolio .portfolio-list .portfolio-item .portfolio-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-image img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media screen and (max-width: 246px) {
+  #portfolio .portfolio-list .portfolio-item .portfolio-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links div {
+    line-height: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links div a {
+    display: block ruby;
+    text-align: center;
   }
 }
 
@@ -1197,6 +1288,12 @@ section {
 @media screen and (max-width: 427px) {
   .contact .contact-content-con {
     margin-top: 0.5rem !important;
+  }
+}
+
+@media screen and (max-width: 418px) {
+  .contact .contact-info .contact-item p a #email {
+    font-size: calc(12px + 1.5vw);
   }
 }
 
