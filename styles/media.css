@@ -260,8 +260,7 @@
     height: 300px;
     -o-object-fit: cover;
        object-fit: cover;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 5px;
     -webkit-filter: grayscale(100%);
             filter: grayscale(100%);
     -webkit-transition: all 0.4s ease-in-out;
@@ -284,10 +283,10 @@
 }
 
 @media screen and (max-width: 990px) {
-  #portfolio .portfolio-item .portfolio-text {
+  #portfolio .portfolio-item .portfolio-title {
     border-top: 0px;
   }
-  #portfolio .portfolio-item .portfolio-text h4 {
+  #portfolio .portfolio-item .portfolio-title h4 {
     text-align: center;
   }
 }
@@ -330,7 +329,7 @@
     -o-object-fit: cover;
        object-fit: cover;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title {
     width: 100%;
     border-top: 0px;
     margin-top: 0px;
@@ -356,10 +355,10 @@
         -ms-flex-align: center;
             align-items: center;
   }
-  #portfolio .portfolio-item .portfolio-text h4 {
+  #portfolio .portfolio-item .portfolio-title h4 {
     text-align: center;
   }
-  #portfolio .portfolio-item .portfolio-text .portfolio-links {
+  #portfolio .portfolio-item .portfolio-title .portfolio-links {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -378,32 +377,32 @@
     padding: 3rem 0rem;
     padding-bottom: 5rem;
   }
-  #portfolio .portfolio-description {
+  #portfolio .portfolio-about {
     padding: 2rem 0.5rem;
   }
 }
 
 @media screen and (max-width: 372px) {
-  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title h4 {
     margin-bottom: 0px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 a {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title h4 a {
     font-size: 1.2rem;
     line-height: 2rem;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text div {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title div {
     font-size: 1rem;
   }
 }
 
 @media screen and (max-width: 340px) {
-  #portfolio .portfolio-list .portfolio-item .portfolio-text h4 a {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title h4 a {
     font-size: 17px;
     line-height: 19px;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links div {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title .portfolio-links div {
     font-size: 15px;
     line-height: 17px;
     -webkit-box-orient: vertical;
@@ -429,7 +428,7 @@
 }
 
 @media screen and (max-width: 246px) {
-  #portfolio .portfolio-list .portfolio-item .portfolio-text {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -438,17 +437,17 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title .portfolio-links {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links div {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title .portfolio-links div {
     line-height: 1rem;
     padding-bottom: 0.5rem;
   }
-  #portfolio .portfolio-list .portfolio-item .portfolio-text .portfolio-links div a {
+  #portfolio .portfolio-list .portfolio-item .portfolio-title .portfolio-links div a {
     display: block ruby;
     text-align: center;
   }

@@ -254,8 +254,7 @@
           width: 100%;
           height: 300px;
           object-fit: cover;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+          border-radius: 5px;
           filter: grayscale(100%);
           transition: all 0.4s ease-in-out;
         }
@@ -275,7 +274,7 @@
   }
   @media screen and (max-width: 990px) {
     .portfolio-item {
-      .portfolio-text {
+      .portfolio-title {
         border-top: 0px;
         h4 {
           text-align: center;
@@ -305,7 +304,7 @@
             object-fit: cover;
           }
         }
-        .portfolio-text {
+        .portfolio-title {
           width: 100%;
           border-top: 0px;
           margin-top: 0px;
@@ -324,7 +323,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      .portfolio-text {
+      .portfolio-title {
         h4 {
           text-align: center;
         }
@@ -340,23 +339,21 @@
   @media screen and (max-width: 460px) {
     padding: 3rem 0rem;
     padding-bottom: 5rem;
-    .portfolio-description {
+    .portfolio-about {
       padding: 2rem 0.5rem;
     }
   }
   @media screen and (max-width: 372px) {
     .portfolio-list {
       .portfolio-item {
-        .portfolio-text {
+        .portfolio-title {
           h4 {
             margin-bottom: 0px;
             overflow: hidden;
             text-overflow: ellipsis;
             a {
-              // display: block;
               font-size: 1.2rem;
               line-height: 2rem;
-              // white-space: nowrap;
             }
           }
           div {
@@ -369,7 +366,7 @@
   @media screen and (max-width: 340px) {
     .portfolio-list {
       .portfolio-item {
-        .portfolio-text {
+        .portfolio-title {
           h4 {
             a {
               font-size: 17px;
@@ -404,7 +401,7 @@
   @media screen and (max-width: 246px) {
     .portfolio-list {
       .portfolio-item {
-        .portfolio-text {
+        .portfolio-title {
           display: flex;
           flex-direction: column;
           .portfolio-links {
