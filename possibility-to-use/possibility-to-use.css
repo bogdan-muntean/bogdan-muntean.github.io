@@ -2,71 +2,47 @@
   position: relative;
   background-color: var(--color-grey-5);
   border-radius: 5px;
-  -webkit-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-          box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  flex-direction: column;
+  transition: all 0.4s ease-in-out;
 }
-
 .portfolio-item:hover {
-  -webkit-box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  transition: all 0.4s ease-in-out;
 }
-
 .portfolio-item .portfolio-image a {
   display: block;
 }
-
 .portfolio-item .portfolio-title {
   margin-top: -7px;
   padding: 1.1rem;
   border-top: 8px solid var(--color-secondary);
 }
-
 .portfolio-item .portfolio-title h4 {
   font-size: 1.5rem;
-  margin-bottom: .7rem;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  margin-bottom: 0.7rem;
+  transition: all 0.4s ease-in-out;
   height: 66px;
   cursor: pointer;
   text-align: center;
 }
-
 .portfolio-item .portfolio-title h4:hover {
   color: var(--color-secondary);
 }
-
 .portfolio-item .portfolio-title .portfolio-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
   position: relative;
   bottom: 3px;
 }
-
 .portfolio-item .portfolio-title .portfolio-links div {
   color: var(--color-grey-2);
   line-height: 2rem;
   padding-bottom: 1rem;
 }
-
 .portfolio-item .portfolio-title .portfolio-links div:hover a {
   color: var(--color-white);
   cursor: pointer;
-}
-/*# sourceMappingURL=possibility-to-use.css.map */
+}/*# sourceMappingURL=possibility-to-use.css.map */

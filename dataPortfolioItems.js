@@ -1,32 +1,115 @@
 let dataPortfolioItems = [
   {
+    title: "YourSpecialist",
+    description: "Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base.",
+    imageLink: "images/your-specialist-img.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
+  },
+  {
+    title: "Task Tracker",
+    description: "Task tracker project made with React, JavaScript, React Router, React State HTML, SCSS",
+    imageLink: "images/task-tracker-img.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/task-tracker-react",
+  },
+  {
     title: "Link In Bio",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor illo doloribus.",
+    description: "An link-in-bio page created with HTML, SCSS, media queries.",
     imageLink: "images/linkin-bio.PNG",
     liveLink: "https://bogdan-muntean.github.io/LinkInBio/",
     repoLink: "https://github.com/bogdan-muntean/LinkInBio",
   },
   {
+    title: "Todo List",
+    description: "Todo List project created with react, api, local data base server.",
+    imageLink: "images/todo-list.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week15_homework-todo-react/todo-app",
+  },
+  {
+    title: "Game Monsters Project",
+    description: "Game created with JS objects, classes, JavaScript, HTML, CSS.",
+    imageLink: "images/game-monsters-project.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/Week13_homework/week13-project-vite",
+  },
+  {
     title: "BMI Calculator",
-    description: "Some description",
+    description: "Game Project made with JavaScript, HTML, CSS.",
     imageLink: "images/bmi.PNG",
     liveLink: "https://bogdan-muntean.github.io/BMI-Calculator-Project/",
     repoLink: "https://github.com/bogdan-muntean/BMI-Calculator-Project",
   },
   {
     title: "Rock-Paper-Scissors Game",
-    description: "Some description",
+    description: "Game Project made with JavaScript, HTML, CSS.",
     imageLink: "images/r-p-s-game.PNG",
     liveLink: "https://bogdan-muntean.github.io/Rock-Paper-Scissors_Game/",
     repoLink: "https://github.com/bogdan-muntean/Rock-Paper-Scissors_Game",
   },
   {
     title: "Hangman Game",
-    description: "Some description",
+    description: "Game Project made with JavaScript, HTML, CSS.",
     imageLink: "images/hangman-game.PNG",
     liveLink: "https://bogdan-muntean.github.io/Project_Hangman/",
     repoLink: "https://github.com/bogdan-muntean/Project_Hangman",
+  },
+  {
+    title: "Clock Project",
+    description: "Project made with JavaScript, HTML, CSS, asynchronous function.",
+    imageLink: "images/clock-project.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week07_homework",
+  },
+  {
+    title: "Form project with fetch API",
+    description: "Project with a form that fetch images. HTML, CSS, JavaScript.",
+    imageLink: "images/fetch-api.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week08_optional-homework-more-API",
+  },
+  {
+    title: "Spaceship Project",
+    description: "For this project I used JavaScript Objects, Classes and Vite",
+    imageLink: "images/spaceship-project.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week13_optional-homework/week10-vite",
+  },
+  {
+    title: "Shop Site",
+    description: "Shop Site created with HTML and CSS.",
+    imageLink: "images/shop-site-siit-img.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week3_optional-homework-shop",
+  },
+  {
+    title: "Working with BOM,Cookies Project",
+    description: "Small Project where I worked on cookies.",
+    imageLink: "images/cookies-project.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week12_BOM-homework-cookies",
+  },
+  {
+    title: "Working with BOM",
+    description: "Small Project where I worked on Browser Object Model.",
+    imageLink: "images/bom-project.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week12_BOM-homework",
+  },
+  {
+    title: "Blog Project",
+    description: "An blog created with HTML and CSS.",
+    imageLink: "images/blog-siit-img.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week3_optional-layouting-homework",
+  },
+  {
+    title: "Workshop site - SIIT",
+    description: "Workshop created within the IT informal school courses. I used HTML and CSS.",
+    imageLink: "images/workshop-siit-img.PNG",
+    liveLink: "",
+    repoLink: "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week02_homework",
   },
 ];
 
@@ -53,9 +136,9 @@ function addPortfolioItems(container, arrayList) {
             <div class="portfolio-description">
                 <p>
                     ${arrayList.description} 
-                    <button class="readmore-btn">Read more</button>
-                    <button class="readless-btn">Read less</button>
                 </p>
+                <button class="readmore-btn">Read more</button>
+                <button class="readless-btn">Read less</button>
             </div>
             <div class="portfolio-links">
                 <div>

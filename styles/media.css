@@ -1,1 +1,23 @@
-/* No CSS *//*# sourceMappingURL=media.css.map */
+@media (min-width: 700px) {
+  header {
+    height: 100vh;
+  }
+  header .header-content {
+    height: 100vh;
+    grid-template-columns: repeat(2, 1fr);
+    text-overflow: hidden;
+  }
+}
+
+@media (min-width: 730px) {
+  #portfolio .portfolio-list {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    row-gap: 10px;
+  }
+  #portfolio .portfolio-list .portfolio-item {
+    height: 100%;
+  }
+}/*# sourceMappingURL=media.css.map */

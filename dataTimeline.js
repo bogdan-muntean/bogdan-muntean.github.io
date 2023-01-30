@@ -1,40 +1,3 @@
-// const { createElement } = require("react");
-function addItemsToTimeline(container, dataArray){
-    let timelineItem, iconItem, timeData, titleHtml, textHtml;
-    //create html
-    timelineItem = document.createElement('div');
-    iconItem = document.createElement('div');
-    timeData = document.createElement('p');
-    titleHtml = document.createElement('h5');
-    textHtml = document.createElement('div');
-
-    //add class
-    timelineItem.classList.add('timeline-item');
-    iconItem.classList.add('tl-icon');
-    timeData.classList.add('tl-duration');
-    textHtml.classList.add('item-text');
-
-    //add content
-    iconItem.innerHTML = dataArray.icon;
-    if(dataArray.icon === `<i class="fa-solid fa-graduation-cap"></i>`){
-        iconItem.style.backgroundColor = "#c6c614";
-    }
-
-    timeData.textContent = dataArray.timeData;
-    titleHtml.innerHTML = `
-    ${dataArray.title} <br>
-    <span>${dataArray.span}</span>`;
-    textHtml.textContent = dataArray.text;
-
-    //add all content to child item
-    timelineItem.appendChild(iconItem)
-    timelineItem.appendChild(timeData)
-    timelineItem.appendChild(titleHtml)
-    timelineItem.appendChild(textHtml)
-    //add child item to container
-    container.appendChild(timelineItem);
-}
-
 let academicDataList = [
     {
         title: `JavaScript Algorithms and Data Structures Masterclass `,
@@ -108,8 +71,30 @@ let academicDataList = [
     },
 ];
 
-let academicContainer = document.querySelector(".academic");
+function addItemsToTimeline(container, dataArray){
+    let timelineItemHtml = document.createElement('div')
+    timelineItemHtml.innerHTML = `
+    <div class="timeline-item">
+        <div class="tl-icon" ${changeColor(dataArray.icon)}>
+            ${dataArray.icon}
+        </div>
+        <p class="tl-duration">${dataArray.timeData}</p>
+        <h5>${dataArray.title}<span>${dataArray.span}</span></h5>
+        <p class="item-text">
+            ${dataArray.text}<br><br>
+        </p>
+    </div>
+    `;
+    container.appendChild(timelineItemHtml);
+}
 
+function changeColor(element){
+    if(element === `<i class="fa-solid fa-graduation-cap"></i>`){
+        return `style="background-color: #c6c614;"`
+    }
+}
+
+let academicContainer = document.querySelector(".academic");
 
 academicDataList.forEach( (element) => {
     console.log('timeline-item created');
