@@ -1,10 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
-
 :root {
   --font-size-default: 17px;
   --font-size-default-hover: 18px;
@@ -13,6 +6,7 @@
   --font-size-subtitle: 18px;
   --font-size-title: 23px;
   --font-size-big-title: 30px;
+  --principal-photo: 70vw;
   --line-height-default: 1.3rem;
   --color-primary: #191d2b;
   --color-secondary: #273dae;
@@ -67,7 +61,15 @@
   color: var(--color-black);
 }
 
-body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html, body {
+  height: 100vh;
   background-color: var(--color-primary);
   font-family: "Oxygen", sans-serif;
   font-size: var(--font-size-default);
@@ -95,6 +97,7 @@ section {
 
 .container {
   display: none;
+  height: 100%;
   transform: translateY(-100%) scale(0);
   transition: var(--transition-1);
   background-color: var(--color-primary);
@@ -205,26 +208,26 @@ section {
 
 /*Header-content*/
 header .header-content {
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
+  height: 100%;
   display: grid;
+  align-items: center;
+  justify-items: center;
   padding: 0;
-  margin-bottom: 5rem;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 50%;
   color: var(--color-white);
 }
 header .header-content .left-header {
-  height: 100%;
   display: block;
-  margin-top: 1.2rem;
 }
 header .header-content .left-header .image {
   display: block;
+  width: 100%;
+  height: 100%;
+  margin: auto;
 }
 header .header-content .left-header .image img {
-  width: 45%;
   display: block;
+  width: var(--principal-photo);
   margin: auto;
   -o-object-fit: cover;
      object-fit: cover;
@@ -237,7 +240,8 @@ header .header-content .left-header .image img:hover {
 }
 header .header-content .right-header {
   height: 100%;
-  margin: 1.2rem 1.2rem;
+  padding: 15px 30px;
+  margin-bottom: 50px;
   text-align: center;
 }
 header .header-content .right-header .name {
@@ -389,9 +393,6 @@ header .header-content .right-header p {
 #portfolio .portfolio-list .portfolio-item {
   height: 20%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
   flex-direction: row;
   margin-top: 0.5rem;
   padding: 0.5rem;
@@ -408,24 +409,23 @@ header .header-content .right-header p {
 #portfolio .portfolio-list .portfolio-item .portfolio-image {
   width: 30%;
   height: 100%;
-  display: inline-block;
+  display: inline;
   align-items: center;
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-image a {
   display: block;
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-image img {
-  display: inline-block;
+  display: block;
   width: 100px;
   height: 100px;
-  vertical-align: middle;
   -o-object-fit: cover;
      object-fit: cover;
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-text-container {
   width: 70%;
   height: 100%;
-  display: block;
+  display: inline;
   margin: auto;
   padding: 0.4rem;
 }

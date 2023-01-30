@@ -1,83 +1,45 @@
+@import 'variables';
+@import 'style';
+
 @mixin vertical-center {
   top: 50%;
   transform: translateY(-50%);
 }
+:root {
+  @media (min-width: 500px) {
+    --principal-photo: 60vw;
+  }
+}
+
+//All containers
+// .container {
+// }
 
 header {
-  @media (min-width: 700px) {
-    height: 100vh;
+  @media (max-width: 400px) {
     .header-content {
-      height: 100vh;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 35% 65%;
+    }
+  }
+
+
+  @media (min-width: 700px) {
+    .header-content {
+      height: 100%;
       text-overflow: hidden;
       .left-header{
+        .image {
+          // height: 100%;
+        }
       }
       .right-header{
       }
     }
   }
+ 
 }
 
-// //All containers
-// .container {
-//   // @media screen and (max-width: 1432px) {
-//   //   .main-title {
-//   //     h2 {
-//   //       .bg-text {
-//   //         font-size: 5.5rem;
-//   //       }
-//   //     }
-//   //   }
-//   // }
-//   // @media screen and (max-width: 1432px) {
-//   //   padding: 3rem 11rem;
-//   // }
-//   // @media screen and (max-width: 1070px) {
-//   //   .main-title {
-//   //     h2 {
-//   //       font-size: 4rem;
-//   //       span {
-//   //         font-size: 4rem;
-//   //       }
-//   //       .bg-text {
-//   //         font-size: 4.5rem;
-//   //       }
-//   //     }
-//   //   }
-//   // }
-//   // @media screen and (max-width: 970px) {
-//   //   padding: 7rem 6rem;
-//   // }
-//   // @media screen and (max-width: 700px) {
-//   //   padding: 7rem 3rem;
 
-//   //   .main-title {
-//   //     h2 {
-//   //       font-size: 3rem;
-//   //       span {
-//   //         font-size: 3rem;
-//   //       }
-//   //       .bg-text {
-//   //         font-size: 4rem;
-//   //       }
-//   //     }
-//   //   }
-//   // }
-//   // @media screen and (max-width: 600px) {
-//   //   padding: 2rem 2.5rem;
-//   //   height: min-content;
-//   // }
-//   // @media screen and (max-width: 440px) {
-//   //   .main-title {
-//   //     h2 {
-//   //       font-size: 2rem;
-//   //       span {
-//   //         font-size: 2rem;
-//   //       }
-//   //     }
-//   //   }
-//   // }
-// }
 
 // //     Header / First page container
 // #home {
@@ -96,7 +58,7 @@ header {
 //   //       width: 90%;
 //   //       margin: 0 auto;
 //   //       .name {
-//   //         font-size: 2rem !important;
+//   //         font-size: 2rem;
 //   //         text-align: center;
 //   //         padding-top: 3rem;
 //   //       }
