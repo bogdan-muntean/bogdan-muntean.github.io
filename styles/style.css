@@ -298,9 +298,11 @@ header .header-content .right-header p {
 }
 #about .about-stats .skill-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 30%);
+  grid-template-rows: 30%;
   grid-auto-rows: minmax(70px, auto);
   gap: 10px;
+  padding: 0 20px;
 }
 #about .about-stats .skill-container .skill-item {
   display: block;

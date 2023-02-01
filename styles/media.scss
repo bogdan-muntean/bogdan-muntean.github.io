@@ -90,6 +90,16 @@ header {
 
 // //About me container
 #about {
+  @media (min-width: 500px) {
+    .about-stats {
+      .skill-container {
+        grid-template-columns: repeat(3, 1fr);
+        .skill-item {
+          padding: 5px;
+        }
+      }
+    }
+  }
   @media (min-width: 800px) {
     .timeline {
       .timeline-item {
@@ -103,6 +113,16 @@ header {
               top: 12px;
             }
           }
+        }
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .about-stats {
+      .skill-container {
+        grid-template-columns: repeat(4, 1fr);
+        .skill-item {
+          padding: 5px;
         }
       }
     }
