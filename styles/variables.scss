@@ -22,7 +22,10 @@
   
   //var icon size
   --font-size-icon: 20px;
+  --font-size-icon-timeline: 24px;
   --font-size-icon-skills: 45px;
+  --size-icons-div-controls: 55px;
+  --size-icon-controls: 20px;
 
   //var title size
   --font-size-subtitle: 18px;
@@ -30,7 +33,7 @@
   --font-size-big-title: 30px;
 
   //var photo size
-  --principal-photo: 70vw;
+  --principal-photo: minmax(200px,400px);
 
   //var line height size
   --line-height-default: 1.3rem;

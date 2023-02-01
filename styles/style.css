@@ -2,11 +2,14 @@
   --font-size-default: 17px;
   --font-size-default-hover: 18px;
   --font-size-icon: 20px;
+  --font-size-icon-timeline: 24px;
   --font-size-icon-skills: 45px;
+  --size-icons-div-controls: 55px;
+  --size-icon-controls: 20px;
   --font-size-subtitle: 18px;
   --font-size-title: 23px;
   --font-size-big-title: 30px;
-  --principal-photo: 70vw;
+  --principal-photo: minmax(200px,400px);
   --line-height-default: 1.3rem;
   --color-primary: #191d2b;
   --color-secondary: #273dae;
@@ -68,7 +71,8 @@
   list-style: none;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   background-color: var(--color-primary);
   font-family: "Oxygen", sans-serif;
@@ -146,11 +150,13 @@ section {
 
 /* Controls - butoanele pentru navigare */
 .controls {
+  display: flex;
   width: 100%;
+  height: 80px;
   position: fixed;
+  flex-direction: row;
   top: auto;
   bottom: 0;
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
@@ -158,11 +164,11 @@ section {
 }
 .controls .control {
   margin: 0.5rem 0.3rem;
-  padding: 1rem;
+  padding: 17px;
   cursor: pointer;
   background-color: var(--color-grey-4);
-  width: 1rem;
-  height: 1rem;
+  width: var(--size-icons-div-controls);
+  height: var(--size-icons-div-controls);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -170,7 +176,7 @@ section {
   box-shadow: var(--box-shadow);
 }
 .controls .control i {
-  font-size: var(--font-size-icon);
+  font-size: var(--size-icon-controls);
   color: var(--color-grey-2);
   pointer-events: none;
 }
@@ -183,17 +189,17 @@ section {
 }
 
 .theme-btn {
-  top: 3px;
-  width: 2rem;
-  height: 2rem;
-  right: 3%;
-  border-radius: 50%;
-  background-color: var(--color-grey-4);
-  cursor: pointer;
-  position: fixed;
   display: flex;
+  position: fixed;
+  width: var(--size-icons-div-controls);
+  height: var(--size-icons-div-controls);
   justify-content: center;
   align-items: center;
+  top: 10px;
+  right: 3%;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--color-grey-4);
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
   transition: var(--transition-1);
 }
@@ -207,28 +213,41 @@ section {
 }
 
 /*Header-content*/
-header .header-content {
+header {
+  display: block;
   height: 100%;
-  display: grid;
-  align-items: center;
-  justify-items: center;
+  width: 100%;
+}
+header .header-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-content: center;
   padding: 0;
-  grid-template-rows: 50%;
   color: var(--color-white);
 }
 header .header-content .left-header {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 50%;
+  width: 100%;
+  margin-bottom: 80px;
 }
 header .header-content .left-header .image {
-  display: block;
-  width: 100%;
   height: 100%;
-  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 20px;
 }
 header .header-content .left-header .image img {
   display: block;
   width: var(--principal-photo);
-  margin: auto;
+  height: var(--principal-photo);
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: var(--br-circle);
@@ -239,9 +258,13 @@ header .header-content .left-header .image img:hover {
   filter: grayscale(0);
 }
 header .header-content .right-header {
-  height: 100%;
-  padding: 15px 30px;
-  margin-bottom: 50px;
+  display: flex;
+  height: 50%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  padding: 30px 20px;
   text-align: center;
 }
 header .header-content .right-header .name {
@@ -258,8 +281,8 @@ header .header-content .right-header p {
 /*About*/
 #about .about-container .text-about p {
   line-height: var(--line-height-default);
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: 17px 40px;
+  margin-bottom: 17px;
   color: var(--color-grey-1);
 }
 #about .about-container .text-about p span {
@@ -276,8 +299,8 @@ header .header-content .right-header p {
 #about .about-stats .skill-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
   grid-auto-rows: minmax(70px, auto);
+  gap: 10px;
 }
 #about .about-stats .skill-container .skill-item {
   display: block;
@@ -301,14 +324,14 @@ header .header-content .right-header p {
 }
 #about .timeline .timeline-item {
   position: relative;
-  margin-top: 1rem;
-  margin-left: 1.2rem;
+  margin-top: 17px;
+  margin-left: 37px;
   border-left: 1px solid var(--color-grey-5);
 }
 #about .timeline .timeline-item .tl-icon {
+  display: block;
   width: 40px;
   height: 40px;
-  display: block;
   position: absolute;
   margin: auto;
   left: -20px;
@@ -318,13 +341,16 @@ header .header-content .right-header p {
   text-align: center;
 }
 #about .timeline .timeline-item .tl-icon i {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  font-size: var(--font-size-icon-timeline);
+}
+#about .timeline .timeline-item .tl-icon i:before {
+  display: block;
   position: relative;
-  top: 50%;
-  transform: translateY(-38%);
-  font-size: var(--font-size-icon);
+  top: 7px;
 }
 #about .timeline .timeline-item .tl-duration {
   display: inline-block;
@@ -389,10 +415,13 @@ header .header-content .right-header p {
 #portfolio .portfolio-list {
   margin-top: 1rem;
   height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  row-gap: 10px;
 }
 #portfolio .portfolio-list .portfolio-item {
-  height: 20%;
   display: flex;
+  height: 100%;
   flex-direction: row;
   margin-top: 0.5rem;
   padding: 0.5rem;
@@ -407,26 +436,29 @@ header .header-content .right-header p {
   transition: var(--transition-1);
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-image {
-  width: 30%;
-  height: 100%;
-  display: inline;
   align-items: center;
+  display: inline;
+  width: 40%;
+  height: 100%;
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-image a {
   display: block;
+  width: 100%;
+  height: 100%;
 }
-#portfolio .portfolio-list .portfolio-item .portfolio-image img {
+#portfolio .portfolio-list .portfolio-item .portfolio-image a img {
   display: block;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-text-container {
-  width: 70%;
+  width: 60%;
   height: 100%;
-  display: inline;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   padding: 0.4rem;
 }
 #portfolio .portfolio-list .portfolio-item .portfolio-text-container .portfolio-title h4 {
@@ -550,7 +582,7 @@ header .header-content .right-header p {
 }
 
 .main-btn {
-  border-radius: 30px;
+  border-radius: 50px;
   color: inherit;
   font-weight: 600;
   position: relative;
@@ -570,6 +602,9 @@ header .header-content .right-header p {
   justify-content: center;
   border-radius: 50%;
   padding: 1rem;
+}
+.main-btn .btn-icon i {
+  font-size: var(--font-size-icon);
 }
 .main-btn::before {
   content: "";
