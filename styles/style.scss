@@ -50,7 +50,7 @@ section {
   padding: 2rem;
   position: relative;
   &::before {
-    @include orizontal-line-center;
+    @include orizontal-line-above;
   }
 }
 
@@ -368,71 +368,56 @@ header {
   padding: 0.5rem 1.6rem;
   padding-bottom: 5rem;
   .portfolio-about {
-    position: relative;
-    top: 20%;
     padding: 0.5rem;
     margin: 0.5rem 0.5rem;
     font-size: var(--font-size-default);
     text-align: center;
     &::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 70%;
-      height: 1px;
-      // background-color: var(--color-grey-5);
-      background-color: white;
-      transform: translateX(-50%);
+      @include orizontal-line-above;
     }
   }
   .portfolio-list {
-    margin-top: 1rem;
-    height: 100%;
-    display: grid;
-    // grid-template-rows: 100%;
-    grid-template-columns: 100%;
-    row-gap: 10px;
+    margin-top: 17px;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
     .portfolio-item {
       display: flex;
-      height: 100%;
-      flex-direction: row;
-      margin-top: 0.5rem;
-      padding: 0.5rem;
+      width: 90%;
+      height: 350px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 7px;
       border-radius: 5px;
       background-color: var(--color-grey-5);
       box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
       transition: var(--transition-1);
-      &:hover {
-        box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-        transform: translateY(-5px);
-        transition: var(--transition-1);
-      }
-      .portfolio-image {
-        align-items: center;
-        display: inline;
-        width: 40%;
-        height: 100%;
-        a {
-          display: block;
-          width: 100%;
-          height: 100%;
-          img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
+      & > .portfolio-image {
+        flex-basis: 60%;
+        width: 90%;
+        display: block;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 10px;
       }
       .portfolio-text-container {
-        width: 60%;
-        height: 100%;
+        flex-basis: 40%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        padding: 0.4rem;
+        align-items: stretch;
+        padding: 5px;
+        transition: var(--transition-1);
         .portfolio-title {
+          display: block;
           h4 {
             font-size: var(--font-size-subtitle);
             transition: var(--transition-1);
@@ -443,29 +428,31 @@ header {
             }
           }
         }
-
         .portfolio-description {
-          width: 100%;
-          padding: 0.6rem 0rem;
+          display: block;
+          padding: 0px 10px;
           text-align: center;
           p {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
           }
-          .readmore-btn {
-            display: none;
+          label.more {
+            cursor: pointer;
+            user-select: none;
           }
-          .readless-btn {
-            display: none;
+          input:checked + span {
+            content: "Read Less";
           }
         }
 
         .portfolio-links {
           display: flex;
-          position: relative;
-          align-content: center;
+          flex-basis: 20%;
+          width: 100%;
+          flex-direction: row;
           justify-content: space-evenly;
+          align-content: center;
           bottom: 3px;
           // padding-bottom: 0.2rem;
           div {
@@ -484,125 +471,69 @@ header {
       }
     }
   }
+}
 
-  //detalii pentru rezolutie laptop
-  // padding: 3rem 2rem;
-  // padding-bottom: 5rem;
-  // .portfolio-about {
-  //   &::before {
-  //     content: "";
-  //     position: absolute;
-  //     left: 50%;
-  //     top: 0;
-  //     width: 70%;
-  //     height: 1px;
-  //     background-color: var(--color-grey-5);
-  //     transform: translateX(-50%);
-  //   }
-  //   padding: 2rem 0;
-  //   text-align: center;
-  // }
-  // .portfolio-list {
-  //   display: grid;
-  //   grid-template-columns: repeat(3, 1fr);
-  //   grid-gap: 2rem;
-  //   margin-top: 3rem;
-  //   height: 100%;
-  //   margin-bottom: 100px;
+// .portfolio-item:has(.portfolio-text-container > .portfolio-description > label > input:checked) {
+//   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+//   transform: translateY(-5px);
+//   transition: var(--transition-1);
+//   & > .portfolio-image {
+//     flex-basis: 30%;
+//     filter: grayscale(50%);
+//     transition: var(--transition-1);
+//   }
+//   & > .portfolio-text-container {
+//     flex-basis: 70%;
+//     .portfolio-description {
+//       p {
+//         height: min-content;
+//         overflow:visible;
+//         white-space:normal;
+//       }
+//     }
+//   }
+// }
 
-  //   .portfolio-item {
-  //     height: 12rem;
-  //     display: flex;
-  //     align-items: center;
-  //     position: relative;
-  //     flex-direction: row;
-  //     border-radius: 5px;
-  //     background-color: var(--color-grey-5);
-  //     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-  //     transition: all 0.4s ease-in-out;
-
-  //     &:hover {
-  //       box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-  //       transform: translateY(-5px);
-  //       transition: all 0.4s ease-in-out;
-  //     }
-  //     .portfolio-image {
-  //       width: 12rem;
-  //       height: 12rem;
-  //       display: flex;
-  //       align-items: center;
-  //       a {
-  //         display: block;
-  //       }
-  //       img {
-  //         width: 11rem;
-  //         height: 11rem;
-  //         object-fit: cover;
-  //       }
-  //     }
-  //     .portfolio-text-container {
-  //       width: 100%;
-  //       height: 100%;
-  //       padding: 1.1rem;
-  //       display: flex;
-  //       flex-direction: column;
-  //       justify-content: space-between;
-  //       .portfolio-title {
-  //         display: flex;
-  //         flex-direction: column;
-  //         h4 {
-  //           font-size: 1.4rem;
-  //           transition: all 0.4s ease-in-out;
-  //           cursor: pointer;
-  //           text-align: center;
-
-  //           &:hover {
-  //             color: var(--color-secondary);
-  //           }
-  //         }
-  //       }
-
-  //       .portfolio-description {
-  //         text-align: center;
-  //         padding: 1rem 1.5rem;
-  //         font-size: 1.2rem;
-  //       }
-
-  //       .portfolio-links {
-  //         // flex-direction: column;
-  //         align-content: center;
-  //         justify-content: space-evenly;
-  //         bottom: 3px;
-  //         display: flex;
-  //         position: relative;
-  //         padding-bottom: 0.2rem;
-  //         div {
-  //           font-size: 1.2rem;
-  //           line-height: 1.5rem;
-  //           color: var(--color-grey-2);
-  //           &:hover {
-  //             a {
-  //               font-size: 1.3rem;
-  //               cursor: pointer;
-  //               color: var(--color-white);
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+.portfolio-item.more-active {
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  transition: var(--transition-1);
+  & > .portfolio-image {
+    flex-basis: 30%;
+    filter: grayscale(50%);
+    transition: var(--transition-1);
+  }
+  & > .portfolio-text-container {
+    flex-basis: 70%;
+    .portfolio-description {
+      p {
+        height: min-content;
+        overflow:visible;
+        white-space:normal;
+      }
+    }
+  }
 }
 
 //Contact section
 #contact {
+  height: min-content;
   .contact-container {
     // .main-title {
     // }
     .contact-content-con {
-      display: block;
-      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 23px;
+      flex-shrink: 2;
+      flex-grow: 2;
+      margin: 17px;
       p {
+        margin: 17px 0;
+        line-height: 2rem;
         text-align: center;
         line-height: var(--line-height-default);
       }
@@ -826,4 +757,4 @@ header {
   }
 }
 
-// @import "./media.css";
+

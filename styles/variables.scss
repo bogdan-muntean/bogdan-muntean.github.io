@@ -1,13 +1,15 @@
 //Mixins
-@mixin orizontal-line-center {
+@mixin orizontal-line-above {
   content: "";
-  position: absolute;
-  width: 70%;
-  height: 1px;
-  top: 0;
-  left: 50%;
-  background-color: var(--color-grey-5);
-  transform: translateX(-50%);
+      display: block;
+      width: 70%;
+      height: 1px;
+      position: relative;
+      left: 50%;
+      bottom: 20px;
+      background-color: var(--color-grey-5);
+      // background-color: white;
+      transform: translateX(-50%);
 }
 @mixin vertical-center {
   position: absolute;

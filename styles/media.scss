@@ -1,5 +1,4 @@
 @import "variables";
-@import "style";
 
 @mixin vertical-center {
   top: 50%;
@@ -129,14 +128,73 @@ header {
   }
 }
 
-// // Portfolios container
-#portfolio {
-  @media (min-width: 730px) {
-    .portfolio-list {
-      display: grid;
-      grid-template-columns: repeat(2, 50%);
-      column-gap: 10px;
-      margin-right: 50px;
-    }
+//  Portfolios container
+@media only screen and (min-width: 500px){
+  .portfolio-list {
+    gap: 20px;
+  }
+  .portfolio-item {
+    width: 40%;
+    height: 500px;
   }
 }
+@media (min-width: 730px) {
+  .portfolio-list {
+    margin-right: 50px;
+  }
+}
+
+
+
+
+
+
+
+
+//Nu a functionat - voiam sa adaptez hover PC la click mobile 
+//     /* styles for hover state (PC only) */
+// @media (hover: hover) {
+//   .portfolio-item:hover {
+//     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-5px);
+//     transition: var(--transition-1);
+//     & > .portfolio-image {
+//       flex-basis: 30%;
+//       filter: grayscale(50%);
+//       transition: var(--transition-1);
+//     }
+//     & > .portfolio-text-container {
+//       flex-basis: 70%;
+//       .portfolio-description {
+//         p {
+//           height: min-content;
+//           overflow:visible;
+//           white-space:normal;
+//         }
+//       }
+//     }
+//   }
+// }
+//     /* styles for click state (mobile only) */
+// @media (pointer: fine) {
+//   .portfolio-item:active {
+//     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-5px);
+//     transition: var(--transition-1);
+//     & > .portfolio-image {
+//       flex-basis: 30%;
+//       filter: grayscale(50%);
+//       transition: var(--transition-1);
+//     }
+//     & > .portfolio-text-container {
+//       flex-basis: 70%;
+//       .portfolio-description {
+//         p {
+//           height: min-content;
+//           overflow:visible;
+//           white-space:normal;
+//         }
+//       }
+//     }
+//   }
+// }

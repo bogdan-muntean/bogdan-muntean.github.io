@@ -115,45 +115,41 @@ let dataPortfolioItems = [
 
 let portfolioListHtml = document.querySelector(".portfolio-list");
 
-function addPortfolioItems(container, arrayList) {
+function addPortfolioItems(container, arrayList, idArrayItem) {
   let portfolioItemHtml = document.createElement("div");
+  portfolioItemHtml.setAttribute('class', `portfolio-item item-${idArrayItem}`)
 
   portfolioItemHtml.innerHTML = `
-    <div class="portfolio-item">
-        <div class="portfolio-image">
-            <a href=${arrayList.liveLink} target="_blank">
-                <img src=${arrayList.imageLink} alt="">
-            </a>
+    <div class="portfolio-image" style="background-image: url(${arrayList.imageLink})"></div>
+    <div class="portfolio-text-container">
+        <div class="portfolio-title">
+            <h4>
+                <a href="${arrayList.liveLink}">
+                    ${arrayList.title}
+                </a>
+            </h4>
         </div>
-        <div class="portfolio-text-container">
-            <div class="portfolio-title">
-                <h4>
-                    <a href="${arrayList.liveLink}">
-                        ${arrayList.title}
-                    </a>
-                </h4>
+        <div class="portfolio-description">
+            <p>
+                ${arrayList.description} 
+            </p>
+            <label class="more">
+              <input type='checkbox' onclick="onClickMore(this)" data-more="${idArrayItem}" hidden/>
+              <span>Read More</span>
+            </label>
+        </div>
+        <div class="portfolio-links">
+            <div>
+                <a href="${arrayList.repoLink}" target="_blank">
+                    Source 
+                    <i class="fa-solid fa-display"></i>
+                </a>
             </div>
-            <div class="portfolio-description">
-                <p>
-                    ${arrayList.description} 
-                </p>
-                <button class="readmore-btn">Read more</button>
-                <button class="readless-btn">Read less</button>
-            </div>
-            <div class="portfolio-links">
-                <div>
-                    <a href="${arrayList.repoLink}" target="_blank">
-                        Source 
-                        <i class="fa-solid fa-display"></i>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="${arrayList.liveLink}" target="_blank">
-                        Live 
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
+            <div>
+                <a href="${arrayList.liveLink}" target="_blank">
+                    Live 
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -162,58 +158,79 @@ function addPortfolioItems(container, arrayList) {
   container.appendChild(portfolioItemHtml);
 }
 
-dataPortfolioItems.forEach((element) => {
-    addPortfolioItems(portfolioListHtml, element);
+
+
+dataPortfolioItems.forEach((element, index) => {
+    addPortfolioItems(portfolioListHtml, element, index);
     console.log("portfolio item created");
 });
 
-function isOverflown(element) {
-  return (
-    element.scrollHeight > element.clientHeight ||
-    element.scrollWidth > element.clientWidth
-  );
-}
 
-//ES6 version
-// const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
-//     return scrollHeight > clientHeight || scrollWidth > clientWidth;
+
+
+
+//Read more / less 
+
+// const allMoreButton = document.querySelectorAll('.more');
+// allMoreButton.forEach((moreBtn) => {
+//   moreBtn.addEventListener('click', () => {
+//     console.log(this.querySelector('input').checked);
+//     // if(this.checked)
+//     // this.dataset.more-btn-id
+//   })
+// })
+
+// -------
+// 1.Sa selectez .more
+// 2.if(daca nu este checked - apare read more, altfel read less)
+// 3.addEventListener (daca este modificat .more, sa schimb)
+
+// function ifMoreIsChecked (elementCheck){
+//   if(elementCheck === true){
+//     return "Read Less";
+//   } else {
+//     return "Read More";
+//   }
 // }
 
-const portfolios = document.getElementsByClassName("portfolioDescriptionContainer");
+function onClickMore(element) {
+  console.log(element);
+  const datasetValueId = element.dataset.more; 
+  console.log(datasetValueId)
+  const parentPortfolioItem = document.querySelector(`.item-${datasetValueId}`);
+  console.log(parentPortfolioItem);
+  parentPortfolioItem.classList.toggle("more-active", element.checked)
 
-for (let i = 0; i < portfolios.length; i++) {   
-    const el = portfolios[i];
-    if (isOverflown(el)) {
-    }
+  const elementSiblingSpan = element.nextElementSibling;
+  console.log(elementSiblingSpan);
+  if(element.checked){
+    elementSiblingSpan.innerHTML = "Read Less";
+  } else {
+    elementSiblingSpan.innerHTML = "Read More";
+  }
 }
 
-// let portfolioLinkValue = `
-//     <div>
-//         <a href="${arrayList.repoLink}" target="_blank">
-//             Source
-//             <i class="fa-solid fa-display"></i>
-//         </a>
-//     </div>
-//     <div>
-//         <a href="${arrayList.liveLink}" target="_blank">
-//             Live
-//             <i class="fab fa-github"></i>
-//         </a>
-//     </div>
-//     `;
-//     portfolioLinks.innerHtml = portfolioLinkValue;
-// portfolioLinks.innerHtml = `
-// <div>
-//     <a href="${arrayList.repoLink}" target="_blank">
-//         Source
-//         <i class="fa-solid fa-display"></i>
-//     </a>
-// </div>
 
-// <div>
-//     <a href="${arrayList.liveLink}" target="_blank">
-//         Live
-//         <i class="fab fa-github"></i>
-//     </a>
-// </div>
-// `;
+
+
+// ---------------------
+// const portfolios = document.getElementsByClassName("portfolioDescriptionContainer");
+
+// for (let i = 0; i < portfolios.length; i++) {   
+  //     const el = portfolios[i];
+  //     if (isOverflown(el)) {
+    //     }
+  // }
+    
+
+  // function isOverflown(element) {
+  //   return (
+  //     element.scrollHeight > element.clientHeight ||
+  //     element.scrollWidth > element.clientWidth
+  //   );
+  // }
+
+    //ES6 version
+    // const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
+    //     return scrollHeight > clientHeight || scrollWidth > clientWidth;
+    // }
