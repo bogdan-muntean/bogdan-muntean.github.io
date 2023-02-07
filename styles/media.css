@@ -1,15 +1,15 @@
 :root {
   --font-size-default: 17px;
-  --font-size-default-hover: 18px;
+  --font-size-default-hover: calc(var(--font-size-default) + 2px);
   --font-size-icon: 20px;
   --font-size-icon-timeline: 24px;
   --font-size-icon-skills: 45px;
   --size-icons-div-controls: 55px;
   --size-icon-controls: 20px;
   --font-size-subtitle: 18px;
-  --font-size-title: 23px;
-  --font-size-big-title: 30px;
-  --principal-photo: minmax(200px,400px);
+  --font-size-title: calc(var(--font-size-subtitle) + 5px);
+  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
+  --principal-photo: 160px;
   --line-height-default: 1.3rem;
   --color-primary: #191d2b;
   --color-secondary: #273dae;
@@ -64,12 +64,12 @@
   color: var(--color-black);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 320px) {
   :root {
     --principal-photo: 60vw;
   }
 }
-@media (min-width: 660px) {
+@media (min-width: 650px) {
   :root {
     --principal-photo: 40vw;
   }
@@ -79,20 +79,12 @@
     --font-size-default: 25px;
     --font-size-default-hover: 27px;
     --font-size-subtitle: 26px;
-    --font-size-title: 30px;
-    --font-size-big-title: 35px;
+    --font-size-title: 35px;
+    --font-size-big-title: 40px;
     --font-size-icon: 30px;
     --font-size-icon-skills: 55px;
     --font-size-icon-timeline: 28px;
     --principal-photo: 35vw;
-  }
-}
-
-@media (min-width: 800px) {
-  .container {
-    height: 100%;
-    padding: 50px 65px;
-    padding-left: 30px;
   }
 }
 
@@ -111,46 +103,37 @@
     width: 50%;
     margin: 0;
     padding: 0;
-    padding-right: 170px;
+    margin-right: 20px;
   }
   header .header-content .right-header p {
-    padding: 0;
+    padding: 10px;
   }
   header .header-content .right-header .btn-download .main-btn {
     border-radius: 50px;
   }
 }
 
-@media (min-width: 800px) {
-  .controls {
-    width: 50px;
-    top: 50%;
-    right: 1.5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform: translateY(-50%);
-    background-color: transparent;
+@media (max-width: 260px) and (max-height: 690px) {
+  #home {
+    height: 115%;
   }
-  .controls .control {
-    width: var(--size-icons-div-controls);
-    height: var(--size-icons-div-controls);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.7rem 0;
+  #home .header-content {
+    padding: 0;
+    margin: 0;
+  }
+  #home .left-header {
+    margin: 0;
+  }
+  #home .right-header {
+    padding: 0;
+  }
+}
+@media screen and (min-width: 500px) {
+  .skill-item {
+    width: 31%;
   }
 }
 
-@media (min-width: 500px) {
-  #about .about-stats .skill-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  #about .about-stats .skill-container .skill-item {
-    padding: 5px;
-  }
-}
 @media (min-width: 800px) {
   #about .timeline .timeline-item {
     margin-left: 20px;
@@ -173,17 +156,56 @@
   }
 }
 
-@media only screen and (min-width: 500px) {
-  .portfolio-list {
-    gap: 20px;
+@media (min-width: 500px) {
+  #portfolio .portfolio-list {
+    gap: 5px;
   }
-  .portfolio-item {
+  #portfolio .portfolio-item {
     width: 40%;
     height: 500px;
   }
 }
+
 @media (min-width: 730px) {
   .portfolio-list {
     margin-right: 50px;
+  }
+}
+/*Independed components*/
+@media (min-width: 800px) {
+  .container {
+    height: 100%;
+    padding: 50px 65px;
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 270px) {
+  .btn-download .main-btn {
+    height: 54px;
+  }
+  .btn-download .btn-icon {
+    display: none;
+  }
+}
+@media (min-width: 800px) {
+  .controls {
+    width: 50px;
+    top: 50%;
+    right: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-50%);
+    background-color: transparent;
+  }
+  .controls .control {
+    width: var(--size-icons-div-controls);
+    height: var(--size-icons-div-controls);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.7rem 0;
   }
 }/*# sourceMappingURL=media.css.map */

@@ -1,27 +1,8 @@
-//Mixins
-@mixin orizontal-line-above {
-  content: "";
-      display: block;
-      width: 70%;
-      height: 1px;
-      position: relative;
-      left: 50%;
-      bottom: 20px;
-      background-color: var(--color-grey-5);
-      // background-color: white;
-      transform: translateX(-50%);
-}
-@mixin vertical-center {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 :root {
   //var font size text
   --font-size-default: 17px;
-  --font-size-default-hover: 18px;
-  
+  --font-size-default-hover: calc(var(--font-size-default) + 2px);
+
   //var icon size
   --font-size-icon: 20px;
   --font-size-icon-timeline: 24px;
@@ -31,11 +12,11 @@
 
   //var title size
   --font-size-subtitle: 18px;
-  --font-size-title: 23px;
-  --font-size-big-title: 30px;
+  --font-size-title: calc(var(--font-size-subtitle) + 5px);
+  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
 
   //var photo size
-  --principal-photo: minmax(200px,400px);
+  --principal-photo: 160px;
 
   //var line height size
   --line-height-default: 1.3rem;
@@ -120,4 +101,22 @@
       }
     }
   }
+}
+
+//Mixins
+@mixin orizontal-line-above {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1px;
+  position: relative;
+  left: 50%;
+  bottom: 20px;
+  background-color: var(--color-grey-5);
+  transform: translateX(-50%);
+}
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

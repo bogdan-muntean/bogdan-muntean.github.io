@@ -1,15 +1,15 @@
 :root {
   --font-size-default: 17px;
-  --font-size-default-hover: 18px;
+  --font-size-default-hover: calc(var(--font-size-default) + 2px);
   --font-size-icon: 20px;
   --font-size-icon-timeline: 24px;
   --font-size-icon-skills: 45px;
   --size-icons-div-controls: 55px;
   --size-icon-controls: 20px;
   --font-size-subtitle: 18px;
-  --font-size-title: 23px;
-  --font-size-big-title: 30px;
-  --principal-photo: minmax(200px,400px);
+  --font-size-title: calc(var(--font-size-subtitle) + 5px);
+  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
+  --principal-photo: 160px;
   --line-height-default: 1.3rem;
   --color-primary: #191d2b;
   --color-secondary: #273dae;

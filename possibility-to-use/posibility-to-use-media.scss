@@ -891,3 +891,154 @@
 //     }
 //   }
 // }
+
+
+//Nu a functionat - voiam sa adaptez hover PC la click mobile 
+//     /* styles for hover state (PC only) */
+// @media (hover: hover) {
+//   .portfolio-item:hover {
+//     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-5px);
+//     transition: var(--transition-1);
+//     & > .portfolio-image {
+//       flex-basis: 30%;
+//       filter: grayscale(50%);
+//       transition: var(--transition-1);
+//     }
+//     & > .portfolio-text-container {
+//       flex-basis: 70%;
+//       .portfolio-description {
+//         p {
+//           height: min-content;
+//           overflow:visible;
+//           white-space:normal;
+//         }
+//       }
+//     }
+//   }
+// }
+//     /* styles for click state (mobile only) */
+// @media (pointer: fine) {
+//   .portfolio-item:active {
+//     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-5px);
+//     transition: var(--transition-1);
+//     & > .portfolio-image {
+//       flex-basis: 30%;
+//       filter: grayscale(50%);
+//       transition: var(--transition-1);
+//     }
+//     & > .portfolio-text-container {
+//       flex-basis: 70%;
+//       .portfolio-description {
+//         p {
+//           height: min-content;
+//           overflow:visible;
+//           white-space:normal;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+//  ------------------
+ // controls buttons pt ecran laptop
+  // top: 50%;
+  // right: 3%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // transform: translateY(-50%);
+
+  // .control {
+  //   padding: 1rem;
+  //   cursor: pointer;
+  //   background-color: var(--color-grey-4);
+  //   width: 55px;
+  //   height: 55px;
+  //   border-radius: 50%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   margin: 0.7rem 0;
+  //   box-shadow: var(--box-shadow);
+
+  //   i {
+  //     font-size: 1.2rem;
+  //     color: var(--color-grey-2);
+  //     pointer-events: none;
+  //   }
+  // }
+
+  // .active-btn {
+  //   background-color: var(--color-secondary);
+  //   transition: all 0.4s ease-in-out;
+
+  //   i {
+  //     color: var(--color-white);
+  //   }
+  // }
+
+
+// ----------------------
+// .portfolio-item:has(.portfolio-text-container > .portfolio-description > label > input:checked) {
+//   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+//   transform: translateY(-5px);
+//   transition: var(--transition-1);
+//   & > .portfolio-image {
+//     flex-basis: 30%;
+//     filter: grayscale(50%);
+//     transition: var(--transition-1);
+//   }
+//   & > .portfolio-text-container {
+//     flex-basis: 70%;
+//     .portfolio-description {
+//       p {
+//         height: min-content;
+//         overflow:visible;
+//         white-space:normal;
+//       }
+//     }
+//   }
+// }
+
+// -----------------
+//Contact section
+#contact {
+  height: min-content;
+  .contact-container {
+    // .main-title {
+    // }
+    .contact-content-con {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 23px;
+      flex-shrink: 2;
+      flex-grow: 2;
+      margin: 17px;
+      p {
+        margin: 17px 0;
+        line-height: 2rem;
+        text-align: center;
+        line-height: var(--line-height-default);
+      }
+
+      //display-laptop
+      // display: flex;
+      // text-align: center;
+      // padding-top: 1.5rem;
+      // flex: 2;
+      // flex-direction: column;
+      // align-items: center;
+
+      // p {
+      //   margin: 1rem 0;
+      //   line-height: 2rem;
+      // }
+    }
+  }
+}

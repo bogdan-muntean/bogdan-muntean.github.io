@@ -1,1 +1,22 @@
-/*# sourceMappingURL=posibility-to-use-media.css.map */
+#contact {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+#contact .contact-container .contact-content-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 23px;
+  flex-shrink: 2;
+  flex-grow: 2;
+  margin: 17px;
+}
+#contact .contact-container .contact-content-con p {
+  margin: 17px 0;
+  line-height: 2rem;
+  text-align: center;
+  line-height: var(--line-height-default);
+}/*# sourceMappingURL=posibility-to-use-media.css.map */

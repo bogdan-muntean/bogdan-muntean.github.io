@@ -1,14 +1,18 @@
 @import "variables";
 
+// ############ Variables and Mixins ############
 @mixin vertical-center {
   top: 50%;
   transform: translateY(-50%);
 }
 :root {
-  @media (min-width: 500px) {
+  @media (min-width: 320px) {
     --principal-photo: 60vw;
   }
-  @media (min-width: 660px) {
+  // @media (min-width: 500px) {
+  //   // --principal-photo: 60vw;
+  // }
+  @media (min-width: 650px) {
     --principal-photo: 40vw;
   }
   @media (min-width: 800px) {
@@ -16,8 +20,8 @@
     --font-size-default-hover: 27px;
     //var title size
     --font-size-subtitle: 26px;
-    --font-size-title: 30px;
-    --font-size-big-title: 35px;
+    --font-size-title: 35px;
+    --font-size-big-title: 40px;
     //var icon size
     --font-size-icon: 30px;
     --font-size-icon-skills: 55px;
@@ -27,15 +31,7 @@
   }
 }
 
-//All containers
-.container {
-  @media (min-width: 800px) {
-    height: 100%;
-    padding: 50px 65px;
-    padding-left: 30px;
-  }
-}
-
+//   Home / Header section
 header {
   @media (min-width: 800px) {
     .header-content {
@@ -51,9 +47,9 @@ header {
         width: 50%;
         margin: 0;
         padding: 0;
-        padding-right: 170px;
+        margin-right: 20px;
         p {
-          padding: 0;
+          padding: 10px;
         }
         .btn-download {
           .main-btn {
@@ -65,40 +61,30 @@ header {
   }
 }
 
-.controls {
-  @media (min-width: 800px) {
-    width: 50px;
-    top: 50%;
-    right: 1.5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform: translateY(-50%);
-    background-color: transparent;
-    .control {
-      width: var(--size-icons-div-controls);
-      height: var(--size-icons-div-controls);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0.7rem 0;
+@media (max-width: 260px) and (max-height: 690px) {
+  #home {
+    height: 115%;
+    & .header-content {
+      padding: 0;
+      margin: 0;
+    }
+    & .left-header {
+      margin: 0;
+    }
+    & .right-header {
+      padding: 0;
     }
   }
 }
 
-// //About me container
-#about {
-  @media (min-width: 500px) {
-    .about-stats {
-      .skill-container {
-        grid-template-columns: repeat(3, 1fr);
-        .skill-item {
-          padding: 5px;
-        }
-      }
-    }
+//About me section
+.skill-item {
+@media screen and (min-width: 500px) {
+    width: 31%;
+    // padding: 5px;
   }
+}
+#about {
   @media (min-width: 800px) {
     .timeline {
       .timeline-item {
@@ -128,14 +114,16 @@ header {
   }
 }
 
-//  Portfolios container
-@media only screen and (min-width: 500px){
-  .portfolio-list {
-    gap: 20px;
-  }
-  .portfolio-item {
-    width: 40%;
-    height: 500px;
+//  Portfolio section
+#portfolio {
+  @media (min-width: 500px) {
+    & .portfolio-list {
+      gap: 5px;
+    }
+    & .portfolio-item {
+      width: 40%;
+      height: 500px;
+    }
   }
 }
 @media (min-width: 730px) {
@@ -144,57 +132,48 @@ header {
   }
 }
 
+//  Contact section
 
+/*Independed components*/
 
+.container {
+  //All containers
+  @media (min-width: 800px) {
+    height: 100%;
+    padding: 50px 65px;
+    padding-left: 30px;
+  }
+}
 
+@media (max-width: 270px) {
+  .btn-download {
+    & .main-btn {
+      height: 54px;
+    }
+    & .btn-icon {
+      display: none;
+    }
+  }
+}
 
-
-
-
-//Nu a functionat - voiam sa adaptez hover PC la click mobile 
-//     /* styles for hover state (PC only) */
-// @media (hover: hover) {
-//   .portfolio-item:hover {
-//     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-//     transform: translateY(-5px);
-//     transition: var(--transition-1);
-//     & > .portfolio-image {
-//       flex-basis: 30%;
-//       filter: grayscale(50%);
-//       transition: var(--transition-1);
-//     }
-//     & > .portfolio-text-container {
-//       flex-basis: 70%;
-//       .portfolio-description {
-//         p {
-//           height: min-content;
-//           overflow:visible;
-//           white-space:normal;
-//         }
-//       }
-//     }
-//   }
-// }
-//     /* styles for click state (mobile only) */
-// @media (pointer: fine) {
-//   .portfolio-item:active {
-//     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-//     transform: translateY(-5px);
-//     transition: var(--transition-1);
-//     & > .portfolio-image {
-//       flex-basis: 30%;
-//       filter: grayscale(50%);
-//       transition: var(--transition-1);
-//     }
-//     & > .portfolio-text-container {
-//       flex-basis: 70%;
-//       .portfolio-description {
-//         p {
-//           height: min-content;
-//           overflow:visible;
-//           white-space:normal;
-//         }
-//       }
-//     }
-//   }
-// }
+.controls {
+  @media (min-width: 800px) {
+    width: 50px;
+    top: 50%;
+    right: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-50%);
+    background-color: transparent;
+    .control {
+      width: var(--size-icons-div-controls);
+      height: var(--size-icons-div-controls);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0.7rem 0;
+    }
+  }
+}

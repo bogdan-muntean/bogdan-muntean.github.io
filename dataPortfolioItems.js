@@ -166,33 +166,6 @@ dataPortfolioItems.forEach((element, index) => {
 });
 
 
-
-
-
-//Read more / less 
-
-// const allMoreButton = document.querySelectorAll('.more');
-// allMoreButton.forEach((moreBtn) => {
-//   moreBtn.addEventListener('click', () => {
-//     console.log(this.querySelector('input').checked);
-//     // if(this.checked)
-//     // this.dataset.more-btn-id
-//   })
-// })
-
-// -------
-// 1.Sa selectez .more
-// 2.if(daca nu este checked - apare read more, altfel read less)
-// 3.addEventListener (daca este modificat .more, sa schimb)
-
-// function ifMoreIsChecked (elementCheck){
-//   if(elementCheck === true){
-//     return "Read Less";
-//   } else {
-//     return "Read More";
-//   }
-// }
-
 function onClickMore(element) {
   console.log(element);
   const datasetValueId = element.dataset.more; 
