@@ -1,0 +1,85 @@
+@import "../variables.css";
+#contact {
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.contact-title .contact-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 23px;
+  flex-shrink: 2;
+  flex-grow: 2;
+  margin: 17px;
+}
+.contact-title .contact-description p {
+  margin: 17px 0;
+  line-height: 2rem;
+  text-align: center;
+  line-height: var(--line-height-default);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.4rem;
+  line-break: anywhere;
+}
+.contact-info .contact-item {
+  display: block;
+  margin: auto;
+  margin-top: 2rem;
+}
+.contact-info .contact-item .icon {
+  display: block;
+  margin: auto;
+  width: -moz-max-content;
+  width: max-content;
+}
+.contact-info .contact-item .icon .ic {
+  display: inline;
+  margin-right: 1rem;
+}
+.contact-info .contact-item .icon i {
+  display: inline;
+  font-size: var(--font-size-icon);
+}
+.contact-info .contact-item p {
+  text-align: center;
+  margin: 0.3rem 0;
+}
+
+.contact-icons {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.contact-icons a {
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  background-color: var(--color-grey-5);
+  cursor: pointer;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin: 0 0.4rem;
+  transition: var(--transition-1);
+}
+.contact-icons a:hover {
+  background-color: var(--color-secondary);
+}
+.contact-icons a:hover i {
+  color: var(--color-primary);
+}
+.contact-icons a i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-icon);
+}/*# sourceMappingURL=contact-page.css.map */

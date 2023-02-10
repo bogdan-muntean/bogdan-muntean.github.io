@@ -3,12 +3,15 @@
   --font-size-default: 17px;
   --font-size-default-hover: calc(var(--font-size-default) + 2px);
 
-  //var icon size
+  //var icons size
   --font-size-icon: 20px;
-  --font-size-icon-timeline: 24px;
-  --font-size-icon-skills: 45px;
-  --size-icons-div-controls: 55px;
-  --size-icon-controls: 20px;
+  --font-size-icons-skills: 45px;
+  --font-size-icons-timeline: 20px;
+  --font-size-icons-controls: 20px;
+
+  --dimensions-div-icons-skills: 50%;
+  --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
+  --dimensions-div-icons-controls: 55px;
 
   //var title size
   --font-size-subtitle: 18px;
@@ -20,6 +23,10 @@
 
   //var line height size
   --line-height-default: 1.3rem;
+
+  //dimensions width and height
+  --width-controls: 100%;
+  --height-controls: 80px;
 
   //var colors
   --color-primary: #191d2b;
@@ -120,3 +127,41 @@
   top: 50%;
   transform: translateY(-50%);
 }
+@mixin vertical-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// ############ Variables and Mixins - Media Query ############
+:root {
+  // MAX WIDTH
+  @media (max-width: 310px) {
+    --dimensions-div-icons-skills: 100%;
+  }
+
+  // MIN WIDTH
+  @media (min-width: 320px) {
+    --principal-photo: 60vw;
+  }
+  @media (min-width: 650px) {
+    --principal-photo: 40vw;
+    --dimensions-div-icons-skills: 20%;
+  }
+  @media (min-width: 800px) {
+    --font-size-default: 25px;
+    --font-size-default-hover: 27px;
+    //var title size
+    --font-size-subtitle: 26px;
+    --font-size-title: 35px;
+    --font-size-big-title: 40px;
+    //var icon size
+    --font-size-icon: 30px;
+    --font-size-icons-skills: 55px;
+    --font-size-icons-timeline: 28px;
+    //width
+    --width-controls: 50px;
+    //photo
+    --principal-photo: 35vw;
+  }
+}
+

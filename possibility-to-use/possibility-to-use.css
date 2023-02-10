@@ -48,11 +48,10 @@
 }
 
 #contact {
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
 }
-#contact .contact-container .contact-content-con {
+#contact .contact-title .contact-description {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +62,7 @@
   flex-grow: 2;
   margin: 17px;
 }
-#contact .contact-container .contact-content-con p {
+#contact .contact-title .contact-description p {
   margin: 17px 0;
   line-height: 2rem;
   text-align: center;
@@ -84,7 +83,6 @@
 #contact .contact-info .contact-item .icon {
   display: block;
   margin: auto;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }

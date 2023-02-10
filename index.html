@@ -56,38 +56,36 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/media.css" />
+    <link rel="stylesheet" href="./styles/components/home-page.css" />
+    <link rel="stylesheet" href="./styles/components/about_me-page.css" />
+    <link rel="stylesheet" href="./styles/components/portfolio-page.css" />
+    <link rel="stylesheet" href="./styles/components/contact-page.css" />
     <title>Bogdan Muntean - My Presentation Website</title>
   </head>
   
   <body class="main-content">
-    <header class="container" id="home">
-      <div class="header-content">
-        <div class="left-header">
-          <!-- <img src="./images/profile-photo.jpg" alt="profile photo" /> -->
-          <!-- <div class="image" style="background-image: url(./images/profile-photo.jpg)"></div> -->
-          <div class="image">
-            <img src="./images/profile-photo.jpg" alt="profile photo" />
-          </div>
+    <header class="container header-content" id="home">
+      <div class="left-header">
+        <div class="image" style="background-image: url(./images/profile-photo.jpg);"></div>
+      </div>
+      <div class="right-header">
+        <h1 class="name">Bogdan <span>Muntean</span></h1>
+        <div class="header-par-con">
+          <p class="paragraph-header">
+            A passionate self-taught software developer at the beginning of the journey.
+          </p>
+          <p class="paragraph-header">
+            I am looking for new opportunities and collaborations to show my
+            skills and to continue to grow as a Software Developer.
+          </p>
         </div>
-        <div class="right-header">
-          <h1 class="name">Bogdan <span>Muntean</span></h1>
-          <div class="header-par-con">
-            <p class="paragraph-header">
-              A passionate self-taught software developer at the beginning of the journey.
-            </p>
-            <p class="paragraph-header">
-              I am looking for new opportunities and collaborations to show my
-              skills and to continue to grow as a Software Developer.
-            </p>
-          </div>
-          <div class="btn-download">
-            <a href="./docs/CV-Bogdan-Muntean.pdf" class="main-btn" download>
-              <span class="btn-text">Download CV</span>
-              <span class="btn-icon"><i class="fas fa-download"></i></span>
-            </a>
-          </div>
+        <div class="btn-download">
+          <a href="./docs/CV-Bogdan-Muntean.pdf" class="main-btn" download>
+            <span class="btn-text">Download CV</span>
+            <span class="btn-icon"><i class="fas fa-download"></i></span>
+          </a>
         </div>
       </div>
     </header>
@@ -167,7 +165,7 @@
         <h4 class="stat-title">Timeline</h4>
         <div class="timeline academic"></div>
         <h4 class="stat-title">Work Experience</h4>
-        <div class="timeline experience">
+        <div class="experience-container">
           <h5 id="item-experience">
             I gained experience from personal projects
           </h5>
@@ -184,11 +182,11 @@
         <div class="portfolio-list"></div>
       </section>
       <section class="container contact" id="contact">
-        <div class="contact-container">
+        <div class="contact-title">
           <div class="main-title">
             <h2>Contact <span>Me</span></h2>
           </div>
-          <div class="contact-content-con">
+          <div class="contact-description">
             <p>
               My contact details, all my links and social media profiles where I
               am active on.

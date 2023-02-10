@@ -2,15 +2,19 @@
   --font-size-default: 17px;
   --font-size-default-hover: calc(var(--font-size-default) + 2px);
   --font-size-icon: 20px;
-  --font-size-icon-timeline: 24px;
-  --font-size-icon-skills: 45px;
-  --size-icons-div-controls: 55px;
-  --size-icon-controls: 20px;
+  --font-size-icons-skills: 45px;
+  --font-size-icons-timeline: 20px;
+  --font-size-icons-controls: 20px;
+  --dimensions-div-icons-skills: 50%;
+  --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
+  --dimensions-div-icons-controls: 55px;
   --font-size-subtitle: 18px;
   --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
   --principal-photo: 160px;
   --line-height-default: 1.3rem;
+  --width-controls: 100%;
+  --height-controls: 80px;
   --color-primary: #191d2b;
   --color-secondary: #273dae;
   --color-white: #ffffff;
@@ -62,4 +66,35 @@
 }
 .light-mode .timeline .timeline-item .tl-duration {
   color: var(--color-black);
+}
+
+@media (max-width: 310px) {
+  :root {
+    --dimensions-div-icons-skills: 100%;
+  }
+}
+@media (min-width: 320px) {
+  :root {
+    --principal-photo: 60vw;
+  }
+}
+@media (min-width: 650px) {
+  :root {
+    --principal-photo: 40vw;
+    --dimensions-div-icons-skills: 20%;
+  }
+}
+@media (min-width: 800px) {
+  :root {
+    --font-size-default: 25px;
+    --font-size-default-hover: 27px;
+    --font-size-subtitle: 26px;
+    --font-size-title: 35px;
+    --font-size-big-title: 40px;
+    --font-size-icon: 30px;
+    --font-size-icons-skills: 55px;
+    --font-size-icons-timeline: 28px;
+    --width-controls: 50px;
+    --principal-photo: 35vw;
+  }
 }/*# sourceMappingURL=variables.css.map */
