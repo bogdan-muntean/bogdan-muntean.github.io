@@ -19,14 +19,18 @@
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
 
   //var photo size
-  --principal-photo: 160px;
+  --photo-principal: 160px;
+  --photo-height-portfolio: 300px;
 
   //var line height size
-  --line-height-default: 1.3rem;
+  --line-height-default: 22px;
 
   //dimensions width and height
   --width-controls: 100%;
   --height-controls: 80px;
+
+  // gap value
+  --gap-portfolio-list: 20px;
 
   //var colors
   --color-primary: #191d2b;
@@ -111,25 +115,27 @@
 }
 
 //Mixins
-@mixin orizontal-line-above {
-  content: "";
-  display: block;
-  width: 70%;
-  height: 1px;
-  position: relative;
-  left: 50%;
-  bottom: 20px;
-  background-color: var(--color-grey-5);
-  transform: translateX(-50%);
-}
-@mixin vertical-center {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-@mixin vertical-center {
-  top: 50%;
-  transform: translateY(-50%);
+:root{
+  @mixin orizontal-line-above {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 1px;
+    position: relative;
+    left: 50%;
+    bottom: 20px;
+    background-color: var(--color-grey-5);
+    transform: translateX(-50%);
+  }
+  @mixin vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @mixin vertical-center {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 // ############ Variables and Mixins - Media Query ############
@@ -141,11 +147,10 @@
 
   // MIN WIDTH
   @media (min-width: 320px) {
-    --principal-photo: 60vw;
+    --photo-principal: 60vw;
   }
   @media (min-width: 650px) {
-    --principal-photo: 40vw;
-    --dimensions-div-icons-skills: 20%;
+    --photo-principal: 40vw;
   }
   @media (min-width: 800px) {
     --font-size-default: 25px;
@@ -161,7 +166,10 @@
     //width
     --width-controls: 50px;
     //photo
-    --principal-photo: 35vw;
+    --photo-principal: 35vw;
+  }
+  @media (min-width: 950){
+    --dimensions-div-icons-skills:20%;
   }
 }
 

@@ -11,10 +11,12 @@
   --font-size-subtitle: 18px;
   --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
-  --principal-photo: 160px;
-  --line-height-default: 1.3rem;
+  --photo-principal: 160px;
+  --photo-height-portfolio: 300px;
+  --line-height-default: 22px;
   --width-controls: 100%;
   --height-controls: 80px;
+  --gap-portfolio-list: 20px;
   --color-primary: #191d2b;
   --color-secondary: #273dae;
   --color-white: #ffffff;
@@ -75,13 +77,12 @@
 }
 @media (min-width: 320px) {
   :root {
-    --principal-photo: 60vw;
+    --photo-principal: 60vw;
   }
 }
 @media (min-width: 650px) {
   :root {
-    --principal-photo: 40vw;
-    --dimensions-div-icons-skills: 20%;
+    --photo-principal: 40vw;
   }
 }
 @media (min-width: 800px) {
@@ -95,6 +96,11 @@
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
     --width-controls: 50px;
-    --principal-photo: 35vw;
+    --photo-principal: 35vw;
+  }
+}
+@media (min-width: 950) {
+  :root {
+    --dimensions-div-icons-skills:20%;
   }
 }/*# sourceMappingURL=variables.css.map */

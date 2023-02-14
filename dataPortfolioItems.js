@@ -123,30 +123,30 @@ function addPortfolioItems(container, arrayList, idArrayItem) {
     <div class="portfolio-image" style="background-image: url(${arrayList.imageLink})"></div>
     <div class="portfolio-text-container">
         <div class="portfolio-title">
+          <a ${checkLink(arrayList.liveLink)}>
             <h4>
-                <a href="${arrayList.liveLink}">
-                    ${arrayList.title}
-                </a>
+              ${arrayList.title}
             </h4>
+          </a>
         </div>
         <div class="portfolio-description">
-            <p>
-                ${arrayList.description} 
-            </p>
-            <label class="more">
-              <input type='checkbox' onclick="onClickMore(this)" data-more="${idArrayItem}" hidden/>
-              <span>Read More</span>
-            </label>
+            <div class="portfolio-description-text">${arrayList.description}</div>
+            <div>
+              <label class="more">
+                <input type='checkbox' onclick="onClickMore(this)" data-more="${idArrayItem}" hidden/>
+                <span>Read More</span>
+              </label>
+            </div>  
         </div>
         <div class="portfolio-links">
             <div>
-                <a href="${arrayList.repoLink}" target="_blank">
+                <a ${checkIcon(arrayList.repoLink)} target="_blank">
                     Source 
                     <i class="fa-solid fa-display"></i>
                 </a>
             </div>
             <div>
-                <a href="${arrayList.liveLink}" target="_blank">
+                <a ${checkIcon(arrayList.liveLink)} target="_blank">
                     Live 
                     <i class="fab fa-github"></i>
                 </a>
@@ -183,6 +183,21 @@ function onClickMore(element) {
   }
 }
 
+function checkLink(dataBaseLink) {
+  if(dataBaseLink == ""){
+    return `class="disable-title"`;
+  } else {
+    return `class="active-title" href="${dataBaseLink}"`;
+  }
+}
+
+function checkIcon(iconLink){
+  if(iconLink == ""){
+    return `class="disable-icon"`;
+  } else {
+    return `class="active-icon" href="${iconLink}"`;
+  }
+}
 
 
 

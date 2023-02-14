@@ -36,6 +36,7 @@
 .skill-item {
   display: block;
   flex-basis: calc(var(--dimensions-div-icons-skills) - 5px);
+
   min-width: 120px;
   max-width: var(--dimensions-div-icons-skills);
   flex-shrink: 1;
@@ -153,5 +154,10 @@
 @media (min-width: 800px) {
   .timeline-item {
     margin-left: 20px;
+  }
+  .text-about {
+    p {
+      padding-right: 5px;
+    }
   }
 }

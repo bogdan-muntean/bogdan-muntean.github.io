@@ -11,7 +11,7 @@
   --font-size-subtitle: 18px;
   --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
-  --principal-photo: 160px;
+  --photo-principal: 160px;
   --line-height-default: 1.3rem;
   --width-controls: 100%;
   --height-controls: 80px;
@@ -75,12 +75,12 @@
 }
 @media (min-width: 320px) {
   :root {
-    --principal-photo: 60vw;
+    --photo-principal: 60vw;
   }
 }
 @media (min-width: 650px) {
   :root {
-    --principal-photo: 40vw;
+    --photo-principal: 40vw;
   }
 }
 @media (min-width: 800px) {
@@ -94,12 +94,12 @@
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
     --width-controls: 50px;
-    --principal-photo: 35vw;
+    --photo-principal: 35vw;
   }
 }
-@media (min-width: 950px) {
+@media (min-width: 950) {
   :root {
-    --dimensions-div-icons-skills: 20%;
+    --dimensions-div-icons-skills:20%;
   }
 }
 
@@ -133,13 +133,14 @@ section {
   height: min-content;
   position: absolute;
   top: 0;
-  padding: 2rem 0.5rem;
-  padding-bottom: 5rem;
 }
 
 .container {
   display: none;
-  height: 100%;
+  height: -moz-min-content;
+  height: min-content;
+  padding: 30px 8px;
+  padding-bottom: var(--height-controls);
   transform: translateY(-100%) scale(0);
   transition: var(--transition-1);
   background-color: var(--color-primary);
@@ -270,9 +271,8 @@ section {
 }
 @media (min-width: 800px) {
   .container {
-    height: 100%;
-    padding: 50px 65px;
-    padding-left: 30px;
+    padding: 50px 30px;
+    padding-right: calc(var(--width-controls) + 20px);
   }
   .controls {
     width: 50px;
