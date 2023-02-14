@@ -13,7 +13,7 @@
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
   --photo-principal: 160px;
   --photo-height-portfolio: 300px;
-  --line-height-default: 22px;
+  --line-height-default: 26px;
   --width-controls: 100%;
   --height-controls: 80px;
   --gap-portfolio-list: 20px;

@@ -4,19 +4,19 @@
   padding-bottom: 2rem;
 }
 
-.text-about p {
-  line-height: var(--line-height-default);
-  padding: 17px 40px;
-  margin-bottom: 17px;
-  color: var(--color-grey-1);
-}
-.text-about p span {
+.text-about span {
   display: block;
   margin: auto;
   text-align: center;
   font-weight: bold;
   font-size: var(--font-size-title);
   color: var(--color-secondary);
+}
+.text-about p {
+  line-height: var(--line-height-default);
+  padding: 17px 40px;
+  margin-bottom: 17px;
+  color: var(--color-grey-1);
 }
 
 .skill-container {

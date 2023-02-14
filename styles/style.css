@@ -12,9 +12,11 @@
   --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
   --photo-principal: 160px;
-  --line-height-default: 1.3rem;
+  --photo-height-portfolio: 300px;
+  --line-height-default: 22px;
   --width-controls: 100%;
   --height-controls: 80px;
+  --gap-portfolio-list: 20px;
   --color-primary: #191d2b;
   --color-secondary: #273dae;
   --color-white: #ffffff;
@@ -175,7 +177,7 @@ section {
   background-color: var(--color-grey-5);
 }
 .controls .control {
-  margin: 0.5rem 0.3rem;
+  margin: 7px 5px;
   padding: 17px;
   cursor: pointer;
   background-color: var(--color-grey-4);
@@ -275,7 +277,6 @@ section {
     padding-right: calc(var(--width-controls) + 20px);
   }
   .controls {
-    width: 50px;
     top: 50%;
     right: 1.5%;
     display: flex;

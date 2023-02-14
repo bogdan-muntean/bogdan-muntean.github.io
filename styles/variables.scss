@@ -23,7 +23,7 @@
   --photo-height-portfolio: 300px;
 
   //var line height size
-  --line-height-default: 22px;
+  --line-height-default: 26px;
 
   //dimensions width and height
   --width-controls: 100%;
@@ -115,27 +115,27 @@
 }
 
 //Mixins
-:root{
-  @mixin orizontal-line-above {
-    content: "";
-    display: block;
-    width: 70%;
-    height: 1px;
-    position: relative;
-    left: 50%;
-    bottom: 20px;
-    background-color: var(--color-grey-5);
-    transform: translateX(-50%);
-  }
-  @mixin vertical-center {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  @mixin vertical-center {
-    top: 50%;
-    transform: translateY(-50%);
-  }
+// :root{
+// }
+@mixin orizontal-line-above {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1px;
+  position: relative;
+  left: 50%;
+  bottom: 20px;
+  background-color: var(--color-grey-5);
+  transform: translateX(-50%);
+}
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin vertical-center {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 // ############ Variables and Mixins - Media Query ############
