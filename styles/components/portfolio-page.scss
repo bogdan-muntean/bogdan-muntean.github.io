@@ -1,4 +1,4 @@
-@import "../variables.css";
+@import "../variables.scss";
 
 //Portfolios
 #portfolio {
@@ -15,7 +15,6 @@
 }
 .portfolio-list {
   margin-top: 17px;
-  height: min-content;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -27,7 +26,6 @@
 .portfolio-item {
   display: flex;
   width: 100%;
-  height: min-content;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
