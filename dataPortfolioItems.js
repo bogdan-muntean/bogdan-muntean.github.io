@@ -131,7 +131,7 @@ function addPortfolioItems(container, arrayList, idArrayItem) {
         </div>
         <div class="portfolio-description">
             <div class="portfolio-description-text">${arrayList.description}</div>
-            <div>
+            <div class="read-more-container">
               <label class="more">
                 <input type='checkbox' onclick="onClickMore(this)" data-more="${idArrayItem}" hidden/>
                 <span>Read More</span>
@@ -167,13 +167,14 @@ dataPortfolioItems.forEach((element, index) => {
 
 
 function onClickMore(element) {
-  console.log(element);
   const datasetValueId = element.dataset.more; 
-  console.log(datasetValueId)
   const parentPortfolioItem = document.querySelector(`.item-${datasetValueId}`);
-  console.log(parentPortfolioItem);
   parentPortfolioItem.classList.toggle("more-active", element.checked)
+  console.log(element);
+  console.log(datasetValueId)
+  console.log(parentPortfolioItem);
 
+  const readMoreContainer = document.querySelectorAll(".read-more-container");
   const elementSiblingSpan = element.nextElementSibling;
   console.log(elementSiblingSpan);
   if(element.checked){

@@ -124,11 +124,14 @@ label.more {
     transition: var(--transition-1);
   }
   & .portfolio-description-text {
-    max-height: 250px;
+    max-height: 90px;
     overflow: hidden;
     white-space: normal;
     overflow-y: scroll;
   }
+  // & .read-more-container {
+  //   margin-bottom: 3px;
+  // }
 }
 
 //  Portfolio media
