@@ -159,6 +159,7 @@
     --font-size-icon: 30px;
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
+    --dimensions-div-icons-skills: 33%;
     //width
     --width-controls: 50px;
     //photo
@@ -167,7 +168,7 @@
     --line-height-default: 32px;
   }
   @media (min-width: 950){
-    --dimensions-div-icons-skills:20%;
+    --dimensions-div-icons-skills: 20%;
   }
 }
 

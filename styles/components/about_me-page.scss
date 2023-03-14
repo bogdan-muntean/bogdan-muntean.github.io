@@ -27,7 +27,7 @@
 .skill-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: stretch;
   flex-wrap: wrap;
   gap: 10px;
@@ -157,5 +157,8 @@
     p {
       padding-right: 5px;
     }
+  }
+  .skill-item{
+    flex-basis: calc(var(--dimensions-div-icons-skills) - 7px);
   }
 }

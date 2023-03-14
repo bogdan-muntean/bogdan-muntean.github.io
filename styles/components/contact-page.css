@@ -97,7 +97,7 @@
     --font-size-icons-timeline: 28px;
     --width-controls: 50px;
     --photo-principal: 35vw;
-    --line-height-default: 40px;
+    --line-height-default: 32px;
   }
 }
 @media (min-width: 950) {
