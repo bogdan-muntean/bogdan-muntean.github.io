@@ -1,7 +1,4 @@
-// Schimba clasa 'active' cand este apasat  
-
 let sectBtn = document.querySelectorAll('.control');
-
 function PageTransitions(){
     sectBtn.forEach(button => {
         button.addEventListener("click", function() {
@@ -12,12 +9,16 @@ function PageTransitions(){
         })
     })
 }
-
 PageTransitions()
+
+
 
 document.querySelector(".theme-btn").addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
 })
+
+
+
 
 
 

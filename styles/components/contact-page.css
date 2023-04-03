@@ -95,6 +95,7 @@
     --font-size-icon: 30px;
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
+    --dimensions-div-icons-skills: 33%;
     --width-controls: 50px;
     --photo-principal: 35vw;
     --line-height-default: 32px;
@@ -102,7 +103,7 @@
 }
 @media (min-width: 950) {
   :root {
-    --dimensions-div-icons-skills:20%;
+    --dimensions-div-icons-skills: 20%;
   }
 }
 

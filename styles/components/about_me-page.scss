@@ -36,7 +36,6 @@
 .skill-item {
   display: block;
   flex-basis: calc(var(--dimensions-div-icons-skills) - 5px);
-
   min-width: 120px;
   max-width: var(--dimensions-div-icons-skills);
   flex-shrink: 1;

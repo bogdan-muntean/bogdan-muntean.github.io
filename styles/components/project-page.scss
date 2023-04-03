@@ -1,0 +1,25 @@
+.project-back{
+    display: block;
+    padding: 5px 40px;
+    margin-bottom: 5px;
+    width: max-content;
+    color: var(--color-grey-1);
+    line-height: var(--line-height-default);
+    user-select: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition-1);
+    &:hover {
+      color: var(--color-secondary);
+    }
+}
+
+// .project-title{
+//     align-items: ;
+// }
+// .project-description-container{
+// }
+// .project-description{
+// }
+// .project-media{
+// }

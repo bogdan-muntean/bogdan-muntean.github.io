@@ -105,33 +105,16 @@
     }
   }
 }
-label.more {
+.more {
   display: block;
   user-select: none;
   font-weight: bold;
+  width: max-content;
   cursor: pointer;
+  transition: var(--transition-1);
   &:hover {
     color: var(--color-secondary);
   }
-}
-.more-active {
-  transform: translateY(-5px);
-  transition: var(--transition-1);
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-  & .portfolio-image {
-    // height: var(--photo-height-portfolio-read-more);
-    // filter: grayscale(50%);
-    transition: var(--transition-1);
-  }
-  & .portfolio-description-text {
-    max-height: 90px;
-    overflow: hidden;
-    white-space: normal;
-    overflow-y: scroll;
-  }
-  // & .read-more-container {
-  //   margin-bottom: 3px;
-  // }
 }
 
 //  Portfolio media

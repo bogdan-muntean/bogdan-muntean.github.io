@@ -109,6 +109,35 @@ function addPortfolioItems(container, arrayList) {
     container.appendChild(portfolioItemHtml);
   }
 
+  //--------
+  <div class="portfolio-description">
+  <div class="portfolio-description-text">${arrayList.description}</div>
+  <div class="read-more-container">
+    <label class="more">
+      <input type='checkbox' onclick="onClickMore(this)" data-more="${idArrayItem}" hidden/>
+      <span>Read More</span>
+    </label>
+  </div>  
+</div>
+
+// function onClickMore(element) {
+//   const datasetValueId = element.dataset.more; 
+//   const parentPortfolioItem = document.querySelector(`.item-${datasetValueId}`);
+//   parentPortfolioItem.classList.toggle("more-active", element.checked)
+//   console.log(element);
+//   console.log(datasetValueId)
+//   console.log(parentPortfolioItem);
+
+//   const readMoreContainer = document.querySelectorAll(".read-more-container");
+//   const elementSiblingSpan = element.nextElementSibling;
+//   console.log(elementSiblingSpan);
+//   if(element.checked){
+//     elementSiblingSpan.innerHTML = "Read Less";
+//   } else {
+//     elementSiblingSpan.innerHTML = "Read More";
+//   }
+// }
+  //------
 
   //Read more / less 
 
@@ -133,3 +162,69 @@ function addPortfolioItems(container, arrayList) {
 //     return "Read More";
 //   }
 // }
+
+// 22.03.23
+// let readMoreBtn = document.querySelectorAll('.more');
+// function moreAboutProject(){
+//   let i = 0;
+//       for(let button of readMoreBtn) {
+//         button.addEventListener("click", function() {
+//           // let contentProject = button.dataset.more;
+//           // console.log(button.dataset.more)
+//           document.querySelector('.active').classList.remove("active");
+//           document.querySelector('#project').classList.add("active")
+//           addProject(dataPortfolioItems[i], i);
+
+//           // let titleProjectHtml = document.getElementById('project-title');
+//           // let descriptionProjectHtml = document.getElementById('project-description');
+//           // let mediaProjectHtml = document.getElementById('project-media');
+        
+//           // titleProjectHtml.innerHTML = `${dataPortfolioItems.i["title"]}`;
+//           // descriptionProjectHtml.innerHTML = `${dataPortfolioItems[i]["description"]}`;
+//           // mediaProjectHtml.innerHTML = `${dataPortfolioItems[i]["media"]}`;
+//         })
+//         i++;
+//       }
+// }
+// moreAboutProject()
+
+
+// function onClickMore(element) {
+//   const datasetValueId = element.dataset.more; 
+//   const parentPortfolioItem = document.querySelector(`.item-${datasetValueId}`);
+//   parentPortfolioItem.classList.toggle("more-active", element.checked)
+//   console.log(element);
+//   console.log(datasetValueId)
+//   console.log(parentPortfolioItem);
+
+//   const readMoreContainer = document.querySelectorAll(".read-more-container");
+//   const elementSiblingSpan = element.nextElementSibling;
+//   console.log(elementSiblingSpan);
+//   if(element.checked){
+//     elementSiblingSpan.innerHTML = "Read Less";
+//   } else {
+//     elementSiblingSpan.innerHTML = "Read More";
+//   }
+// }
+
+// ---------------------
+// const portfolios = document.getElementsByClassName("portfolioDescriptionContainer");
+
+// for (let i = 0; i < portfolios.length; i++) {   
+  //     const el = portfolios[i];
+  //     if (isOverflown(el)) {
+    //     }
+  // }
+    
+
+  // function isOverflown(element) {
+  //   return (
+  //     element.scrollHeight > element.clientHeight ||
+  //     element.scrollWidth > element.clientWidth
+  //   );
+  // }
+
+    //ES6 version
+    // const isOverflown = ({ clientWidth, clientHeight, scrollWidth, scrollHeight }) => {
+    //     return scrollHeight > clientHeight || scrollWidth > clientWidth;
+    // }
