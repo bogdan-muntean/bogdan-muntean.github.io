@@ -1,6 +1,6 @@
 :root {
   --font-size-default: 17px;
-  --font-size-default-hover: calc(var(--font-size-default) + 2px);
+  --font-size-default-hover: calc(var(--font-size-default) + 1px);
   --font-size-icon: 20px;
   --font-size-icons-skills: 45px;
   --font-size-icons-timeline: 20px;
@@ -9,8 +9,8 @@
   --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
   --dimensions-div-icons-controls: 55px;
   --font-size-subtitle: 18px;
-  --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
+  --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --photo-principal: 160px;
   --photo-height-portfolio: 300px;
   --line-height-default: 26px;

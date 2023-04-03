@@ -2,7 +2,9 @@ let dataPortfolioItems = [
   {
     title: "YourSpecialist",
     description:
-      "Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base.",
+      `<p>Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base. </p>
+      <p>I plan for this project to add the SQL database from which I will filter the information and from which I will retrieve information about the availability of each doctor in the database. And after that I will do the modularization of the components from scratch to be able to organize, set and reuse them. 
+      <br>Plus I will correct the mistake in SCSS in which I ranked the code, being a good habit.</p>`,
     imageLink: "images/your-specialist-img.PNG",
     liveLink: "",
     repoLink:
@@ -13,7 +15,7 @@ let dataPortfolioItems = [
   {
     title: "Task Tracker",
     description:
-      "Task tracker project made with React, JavaScript, React Router, React State HTML, SCSS",
+      `<p>Task tracker project made with React, JavaScript, React Router, React State HTML, SCSS.</p>`,
     imageLink: "images/task-tracker-img.PNG",
     liveLink: "",
     repoLink: "https://github.com/bogdan-muntean/task-tracker-react",
@@ -22,7 +24,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Link In Bio",
-    description: "An link-in-bio page created with HTML, SCSS, media queries.",
+    description: 
+    `<p>An link-in-bio page created with HTML, SCSS, media queries.</p>`,
     imageLink: "images/linkin-bio.PNG",
     liveLink: "https://bogdan-muntean.github.io/LinkInBio/",
     repoLink: "https://github.com/bogdan-muntean/LinkInBio",
@@ -32,7 +35,7 @@ let dataPortfolioItems = [
   {
     title: "Todo List",
     description:
-      "Todo List project created with react, api, local data base server.",
+      `<p>Todo List project created with react, api, local data base server.</p>`,
     imageLink: "images/todo-list.PNG",
     liveLink: "",
     repoLink:
@@ -43,7 +46,7 @@ let dataPortfolioItems = [
   {
     title: "Game Monsters Project",
     description:
-      "Game created with JS objects, classes, JavaScript, HTML, CSS.",
+      `<p>Game created with JS objects, classes, JavaScript, HTML, CSS.</p>`,
     imageLink: "images/game-monsters-project.PNG",
     liveLink: "",
     repoLink:
@@ -53,7 +56,8 @@ let dataPortfolioItems = [
   },
   {
     title: "BMI Calculator",
-    description: "Game Project made with JavaScript, HTML, CSS.",
+    description: 
+      `<p>Game Project made with JavaScript, HTML, CSS.</p>`,
     imageLink: "images/bmi.PNG",
     liveLink: "https://bogdan-muntean.github.io/BMI-Calculator-Project/",
     repoLink: "https://github.com/bogdan-muntean/BMI-Calculator-Project",
@@ -62,7 +66,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Rock-Paper-Scissors Game",
-    description: "Game Project made with JavaScript, HTML, CSS.",
+    description: 
+      `<p>Game Project made with JavaScript, HTML, CSS.</p>`,
     imageLink: "images/r-p-s-game.PNG",
     liveLink: "https://bogdan-muntean.github.io/Rock-Paper-Scissors_Game/",
     repoLink: "https://github.com/bogdan-muntean/Rock-Paper-Scissors_Game",
@@ -71,7 +76,9 @@ let dataPortfolioItems = [
   },
   {
     title: "Hangman Game",
-    description: "Game Project made with JavaScript, HTML, CSS.",
+    description:
+      `<p>Game Project made with JavaScript, HTML, CSS.</p>`,
+
     imageLink: "images/hangman-game.PNG",
     liveLink: "https://bogdan-muntean.github.io/Project_Hangman/",
     repoLink: "https://github.com/bogdan-muntean/Project_Hangman",
@@ -81,7 +88,7 @@ let dataPortfolioItems = [
   {
     title: "Clock Project",
     description:
-      "Project made with JavaScript, HTML, CSS, asynchronous function.",
+      `<p>Project made with JavaScript, HTML, CSS, asynchronous function.</p>`,
     imageLink: "images/clock-project.PNG",
     liveLink: "",
     repoLink:
@@ -92,7 +99,7 @@ let dataPortfolioItems = [
   {
     title: "Form project with fetch API",
     description:
-      "Project with a form that fetch images. HTML, CSS, JavaScript.",
+      `<p>Project with a form that fetch images. HTML, CSS, JavaScript.</p>`,
     imageLink: "images/fetch-api.PNG",
     liveLink: "",
     repoLink:
@@ -102,7 +109,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Spaceship Project",
-    description: "For this project I used JavaScript Objects, Classes and Vite",
+    description: 
+      `<p>For this project I used JavaScript Objects, Classes and Vite</p>`,
     imageLink: "images/spaceship-project.PNG",
     liveLink: "",
     repoLink:
@@ -112,7 +120,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Shop Site",
-    description: "Shop Site created with HTML and CSS.",
+    description: 
+      `<p>Shop Site created with HTML and CSS.</p>`,
     imageLink: "images/shop-site-siit-img.PNG",
     liveLink: "",
     repoLink:
@@ -122,7 +131,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Working with BOM,Cookies Project",
-    description: "Small Project where I worked on cookies.",
+    description: 
+      `<p>Small Project where I worked on cookies.</p>`,
     imageLink: "images/cookies-project.PNG",
     liveLink: "",
     repoLink:
@@ -132,7 +142,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Working with BOM",
-    description: "Small Project where I worked on Browser Object Model.",
+    description: 
+      `<p>Small Project where I worked on Browser Object Model.</p>`,
     imageLink: "images/bom-project.PNG",
     liveLink: "",
     repoLink:
@@ -142,7 +153,8 @@ let dataPortfolioItems = [
   },
   {
     title: "Blog Project",
-    description: "An blog created with HTML and CSS.",
+    description: 
+      `<p>An blog created with HTML and CSS.</p>`,
     imageLink: "images/blog-siit-img.PNG",
     liveLink: "",
     repoLink:
@@ -153,7 +165,7 @@ let dataPortfolioItems = [
   {
     title: "Workshop site - SIIT",
     description:
-      "Workshop created within the IT informal school courses. I used HTML and CSS.",
+      `<p>Workshop created within the IT informal school courses. I used HTML and CSS.</p>`,
     imageLink: "images/workshop-siit-img.PNG",
     liveLink: "",
     repoLink:
