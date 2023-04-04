@@ -55,10 +55,10 @@ let dataPortfolioItems = [
     video: " ",
   },
   {
-    title: "BMI Calculator",
+    title: "Calculator IMC",
     description: 
       `<p>Game Project made with JavaScript, HTML, CSS.</p>`,
-    imageLink: "images/bmi.PNG",
+    imageLink: "images/imc.PNG",
     liveLink: "https://bogdan-muntean.github.io/BMI-Calculator-Project/",
     repoLink: "https://github.com/bogdan-muntean/BMI-Calculator-Project",
     photo: " ",
@@ -243,9 +243,7 @@ readMoreBtn.forEach((button, index) => {
           <div class="project-back">
             Back to projects
           </div>
-          <p>
             ${dataPortfolioItems[index].description}
-          </p>
         </div>
         <div class="project-photo" id="project-photo">
           ${dataPortfolioItems[index].photo}
