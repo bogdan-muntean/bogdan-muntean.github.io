@@ -55,21 +55,36 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/components/home-page.css" />
-    <link rel="stylesheet" href="./styles/components/about_me-page.css" />
-    <link rel="stylesheet" href="./styles/components/portfolio-page.css" />
-    <link rel="stylesheet" href="./styles/components/contact-page.css" />
-    <link rel="stylesheet" href="./styles/components/project-page.css" />
-    <link rel="stylesheet" href="./styles/variables.css" />
+  
+  
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./pages/Home/home-page.css" />
+    <link rel="stylesheet" href="./pages/AboutMe/about_me-page.css" />
+    <link rel="stylesheet" href="./pages/Portfolio/portfolio-page.css" />
+    <link rel="stylesheet" href="./pages/Project/project-page.css" />
+    <link rel="stylesheet" href="./pages/Contact/contact-page.css" />
+    <link rel="stylesheet" href="./assets/variables.css" />
     <title>Bogdan Muntean - My Presentation Website</title>
   </head>
   
   <body class="main-content">
+    <!-- Main script + utils -->
+    <!-- <script type="application/javascript" src="./utils/pageTransitions.js"></script>
+    <script type="application/javascript" src="./utils/toggleLightMode.js"></script>
+    <script type="module" src="./utils/formatButtonReadMore.js"></script> -->
+
+    <!-- Portfolio Page script -->
+   <!-- <script type="module" src="./pages/Portfolio/checkIcon.js"></script>
+   <script type="module" src="./pages/Portfolio/checkLink.js"></script>
+   <script type="module" src="./pages/Portfolio/PortfolioItem.js"></script>
+   <script type="module" src="./pages/Portfolio/addPortfolioItems.js"></script> -->
+
+   <!-- Project Page script -->
+   <!-- <script type="module" src="./pages/Project/Project.js"></script> -->
+
     <header class="container header-content active" id="home">
       <div class="left-header">
-        <div class="image" style="background-image: url(./images/profile-photo.jpg);"></div>
+        <div class="image" style="background-image: url(./assets/about_me_images/profile-photo.jpg);"></div>
       </div>
       <div class="right-header">
         <h1 class="name">Bogdan <span>Muntean</span></h1>
@@ -83,7 +98,7 @@
           </p>
         </div>
         <div class="btn-download">
-          <a href="./docs/CV-Bogdan-Muntean.pdf" class="main-btn" download>
+          <a href="./assets/docs/CV-Bogdan-Muntean.pdf" class="main-btn" download>
             <span class="btn-text">Download CV</span>
             <span class="btn-icon"><i class="fas fa-download"></i></span>
           </a>
@@ -310,8 +325,43 @@
       <i class="fas fa-adjust"></i>
     </div>
 
-    <script type="module" src="./app.js"></script>
-    <script type="module" src="./dataPortfolioItems.js"></script>
-    <script type="module" src="./dataTimeline.js"></script>
+    <!-- Main script + utils -->
+    <script type="module" src="./main.js"></script>
+
+    <!-- About Me page -->
+    <script type="module" src="./pages/AboutMe/dataTimeline.js"></script>
+
+    <!-- Portfolio Page script -->
+    <script type="module" src="./pages/Portfolio/index.js"></script>
+
+    <!-- Project Page script -->
+    <script type="module" src="./pages/Project/index.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+ <!-- Main script + utils -->
+    <!-- <script type="application/javascript" src="./utils/pageTransitions.js"></script>
+    <script type="application/javascript" src="./utils/toggleLightMode.js"></script> -->
+    <!-- <script type="module" src="./utils/formatButtonReadMore.js"></script> 
+    <script type="module" src="./main.js"></script> -->
+
+    <!-- About Me page -->
+    <!-- <script type="module" src="./pages/AboutMe/dataTimeline.js"></script> -->
+
+    <!-- Portfolio Page script -->
+    <!-- <script type="module" src="./pages/Portfolio/PortfolioItem.js"></script>
+      <script type="module" src="./pages/Portfolio/checkIcon.js"></script>
+      <script type="module" src="./pages/Portfolio/checkLink.js"></script>
+      <script type="module" src="./pages/Portfolio/addPortfolioItems.js"></script> -->
+    <!-- <script type="module" src="./pages/Portfolio/index.js"></script> -->
+
+    <!-- Project Page script -->
+    <!-- <script type="module" src="./pages/Project/Project.js"></script> -->
+    <!-- <script type="module" src="./pages/Project/index.js"></script> -->
