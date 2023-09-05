@@ -96,6 +96,5 @@ function changeColor(element) {
 let academicContainer = document.querySelector(".academic");
 
 academicDataList.forEach((element) => {
-  console.log("timeline-item created");
   addItemsToTimeline(academicContainer, element);
 });

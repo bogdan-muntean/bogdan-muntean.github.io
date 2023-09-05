@@ -1,5 +1,5 @@
-import { checkLink } from "../../utils/checkLink"
-import { checkIcon } from "../../utils/checkIcon"; 
+import { checkLink } from "../../utils/checkLink.js"
+import { checkIcon } from "../../utils/checkIcon.js"; 
 
 //Create portfolio item
 export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
@@ -8,7 +8,7 @@ export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
   let liveLinkHtml = checkLink(liveLink);
   let repoLinkHtml = checkIcon(repoLink);
   portfolioItemHtml.innerHTML = `
-    <div class="portfolio-image" style="background-image: url(${image})"></div>
+    <div class="portfolio-image" style="background-image: url(./../${image})"></div>
     <div class="portfolio-text-container">
         <div class="portfolio-title">
           <a ${liveLinkHtml}>
@@ -40,45 +40,3 @@ export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
   `;
   return portfolioItemHtml;
 }
-
-
-
-//-------------------
-{/* <div class="portfolio-description">
-<div class="portfolio-description-text">
-  ${arrayList.description}
-</div>
-<div class="read-more-container more" data-more="${idArrayItem}">
-  See More
-</div>
-</div> */}
-
-//Code to check
-//   ------------------------------
-// readMoreBtn.forEach((button, index) => {
-//   button.addEventListener("click", function() {
-//     let contentProject = button.dataset.more;
-//     console.log(button.dataset.more)
-//     document.querySelector('.active').classList.remove("active");
-//     document.getElementById('project').classList.add('active')
-//     // OpenProject(dataPortfolioItems.index)
-
-//     let titleProjectHtml = document.getElementById('project-title');
-//     let descriptionProjectHtml = document.getElementById('project-description');
-//     let mediaProjectHtml = document.getElementById('project-media');
-
-//     titleProjectHtml.innerHTML = `${dataPortfolioItems[index][title]}`;
-//     descriptionProjectHtml.innerHTML = `${dataPortfolioItems.index.description}`;
-//     mediaProjectHtml.innerHTML = `${dataPortfolioItems.index.media}`;
-//   })
-// })
-
-// function OpenProject(projectContent){
-//   let titleProjectHtml = document.getElementById('#project-title');
-//   let descriptionProjectHtml = document.getElementById('#project-description');
-//   let mediaProjectHtml = document.getElementById('#project-media');
-
-//   titleProjectHtml.innerHTML = `${projectContent.title}`;
-//   descriptionProjectHtml.innerHTML = `${projectContent.description}`;
-//   mediaProjectHtml.innerHTML = `${projectContent.media}`;
-// }
