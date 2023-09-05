@@ -1,3 +1,5 @@
+// Create the database for Portfolio items.
+
 export let dataPortfolioItems = [
       {
       title: "YourSpecialist",

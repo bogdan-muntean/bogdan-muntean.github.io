@@ -1,5 +1,5 @@
+// Checks if the input is empty, and if it is not, returns the "active" class and href="input"
 export function checkLink(link) {
-  console.log(link)
     if (link == "") {
       return `class="disable-title"`;
     } else {
