@@ -1,3 +1,5 @@
+// Activates the script related to the general functionality of the project.
+
 import { pageTransitions } from "./utils/pageTransitions.js";
 import { toggleLightMode } from "./utils/toggleLightMode.js";
 

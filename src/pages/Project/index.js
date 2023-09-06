@@ -12,6 +12,7 @@ readMoreBtn.forEach((button, index) => {
     // Display current project's details.
     document.querySelector("#project").classList.add("active");
     const projectContainerHtml = document.querySelector("#project");
+    
     projectContainerHtml.innerHTML =
     `
     <div class="project-title main-title" id="project-title">
