@@ -69,8 +69,7 @@
 [![Screen Shot for Home Page from Project][product-screenshot]](https://bogdan-muntean.github.io/)
 
 The project contains several pages. Each page contains the following:
-* Home page: 
-    - the personal presentation picture; a short description about me; 
+* Home page: - the personal presentation picture; a short description about me; 
     - a button that allows downloading of the personal CV.
 
 * AboutMe page: 
