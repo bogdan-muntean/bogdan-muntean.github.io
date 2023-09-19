@@ -12,9 +12,9 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+[![MIT License][license-shield]][license-url]
+ 
 
 
 <!-- PROJECT LOGO -->
@@ -28,8 +28,6 @@
 
   <p align="center">
     It is a fully functional project written in HTML, CSS, SCSS, JS, which presents me, along with all the skills, experiences gained, as well as the projects I have completed over time.
-    <br />
-    <a href="https://github.com/bogdan-muntean/bogdan-muntean.github.io"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/bogdan-muntean/bogdan-muntean.github.io">View Demo</a>
@@ -53,8 +51,13 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+        <li><a href="#installation">Installation</a>
+            <ol>
+                <li><a href="#download-zip-method">Download ZIP method</a></li>
+                <li><a href="#visual-studio-code-method">Visual Studio Code method</a></li>
+            </ol>
+        </li>
+      </ul> 
     </li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -69,7 +72,8 @@
 [![Screen Shot for Home Page from Project][product-screenshot]](https://bogdan-muntean.github.io/)
 
 The project contains several pages. Each page contains the following:
-* Home page: - the personal presentation picture; a short description about me; 
+* Home page: 
+    - the personal presentation picture; a short description about me; 
     - a button that allows downloading of the personal CV.
 
 * AboutMe page: 
@@ -117,7 +121,13 @@ This will open the project in the browser.
 
 If it was not successfully completed, you do not have access to the Internet or the project is not live, you must install the project locally and then run it.
 
-### Installation
+### Instalation
+
+#### Download ZIP method
+
+
+
+#### Visual Studio Code method
 
 1. Install Visual Studio Code: https://code.visualstudio.com/download
 2. Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -125,7 +135,6 @@ If it was not successfully completed, you do not have access to the Internet or 
    ```sh
    git clone https://github.com/bogdan-muntean/bogdan-muntean.github.io.git
    ```
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,7 +157,7 @@ My social accounts:
 - [Facebook](https://www.facebook.com/bogdan.muntean.ro/)
 - [Twitter](https://twitter.com/BogdanMuntean_) 
 - [Github](https://github.com/bogdan-muntean)
-- email@bm.bogdanmuntean.com
+- bm.bogdanmuntean@gmail.com
 
 Project Link: [Live Link](https://bogdan-muntean.github.io/)
 
