@@ -9,8 +9,8 @@ export function TimelineItem(title, timeData, spanContent, textContent, icon){
           </div>
           <p class="tl-duration">${timeData}</p>
           <h5>${title}<span>${spanContent}</span></h5>
-          <p class="item-text">
-              ${textContent}<br><br>
+          <p class="tl-text">
+              ${textContent}
           </p>
     `;
     return timelineItemHtml;

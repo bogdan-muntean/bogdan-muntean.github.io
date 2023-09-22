@@ -9,13 +9,6 @@ export let dataTimeline = [
       icon: `<i class="fa-solid fa-display"></i>`,
     },
     {
-      title: `JavaScript Algorithms and Data Structures Challenges`,
-      span: "Edabit",
-      timeData: "09/2022 - Current",
-      text: "",
-      icon: `<i class="fa-solid fa-display"></i>`,
-    },
-    {
       title: `FRONT-END WEB DEVELOPMENT`,
       span: "Informal School of IT, Cluj-Napoca",
       timeData: "01/2022 – 05/2022",
