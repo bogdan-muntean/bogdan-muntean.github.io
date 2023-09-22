@@ -1,4 +1,4 @@
-// Create all Timeline items from "dataBase" and adds them to the HTML element "containerHtml".
+// Create all Timeline items from data table and adds them to the HTML element "containerHtml".
 import { TimelineItem } from "./TimelineItem.js";
 
 export function addTimelineItems(containerHtmlSelector, dataBase) {
