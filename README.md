@@ -42,12 +42,8 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#technologies-used">Technologies Used</a>
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#technologies-used">Technologies Used</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -59,6 +55,7 @@
         </li>
       </ul> 
     </li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -80,7 +77,7 @@ Here are some key features of the website:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
+<!-- TECHNOLOGIES USED -->
 ## Technologies Used
 
 The website is built using the following technologies:
@@ -96,11 +93,7 @@ The website is built using the following technologies:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To view the project instantly, click on the link: https://bogdan-muntean.github.io/
-
-This will open the project in the browser.
-
-If it was not successfully completed, you do not have access to the Internet or the project is not live, you must install the project locally and then run it.
+To run this website locally, follow these steps:
 
 ### Instalation
 
@@ -112,7 +105,6 @@ If it was not successfully completed, you do not have access to the Internet or 
 ![Instalation zip photo 2][instalation-zip-2]
 3. Double-click on 'index.html'
 ![Instalation zip photo 3][instalation-zip-3]
-
 
 #### Visual Studio Code method
 
@@ -135,6 +127,19 @@ If it was not successfully completed, you do not have access to the Internet or 
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- USAGE -->
+## Usage
+
+Feel free to use this website as a template for your own personal website. You can replace the content and customize the design to suit your preferences.
+
+To make changes to the website:
+
+1. Modify the HTML, CSS, or JavaScript files as needed.
+2. Test your changes locally to ensure they work as expected.
+3. Commit your changes and push them to your own GitHub repository.
 
 
 
