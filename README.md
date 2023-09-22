@@ -150,6 +150,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
+Thank you for visiting my personal website repository! If you have any questions or feedback, please don't hesitate to contact me. Enjoy your stay!
+
 My social accounts:
 - [LinkedIn](https://www.linkedin.com/in/bogdan-muntean-ro/)
 - [Facebook](https://www.facebook.com/bogdan.muntean.ro/)
@@ -163,7 +165,7 @@ Project Link: [Live Link](https://bogdan-muntean.github.io/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/bogdan-muntean/bogdan-muntean.github.io.svg?style=for-the-badge
 [license-url]: https://github.com/bogdan-muntean/bogdan-muntean.github.io/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
