@@ -107,17 +107,11 @@ If it was not successfully completed, you do not have access to the Internet or 
 #### Download ZIP method
 
 1. Go to GitHub and click on Code -> Download ZIP
-<img src="./src/assets/readmeImages/readmeExplanationZip1.png" alt="Logo" width="80" height="80">
-
-<!-- ![Instalation zip photo 1][instalation-zip-1] -->
+![Instalation zip photo 1][instalation-zip-1]
 2. Open the ZIP and double-click on 'bogdan-muntean.github.io-main' folder
-<img src="./src/assets/readmeImages/readmeExplanationZip2.png" alt="Logo" width="80" height="80">
-
-<!-- ![Instalation zip photo 2][instalation-zip-2] -->
+![Instalation zip photo 2][instalation-zip-2]
 3. Double-click on 'index.html'
-<img src="./src/assets/readmeImages/readmeExplanationZip3.png" alt="Logo" width="80" height="80">
-
-<!-- ![Instalation zip photo 3][instalation-zip-3] -->
+![Instalation zip photo 3][instalation-zip-3]
 
 
 #### Visual Studio Code method
