@@ -27,7 +27,7 @@
 <h3 align="center">My Personal Website</h3>
 
   <p align="center">
-    It is a fully functional project written in HTML, CSS, SCSS, JS, which presents me, along with all the skills, experiences gained, as well as the projects I have completed over time.
+    Welcome to my personal website! This repository contains the source code and assets for my personal website. Feel free to explore, provide feedback, or contribute if you'd like.
     <br />
     <br />
     <a href="https://github.com/bogdan-muntean/bogdan-muntean.github.io">View Demo</a>
@@ -44,9 +44,9 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+    </li>
+    <li>
+      <a href="#technologies-used">Technologies Used</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -71,42 +71,23 @@
 
 [![Screen Shot for Home Page from Project][product-screenshot]](https://bogdan-muntean.github.io/)
 
-The project contains several pages. Each page contains the following:
-* Home page: 
-    - the personal presentation picture; a short description about me; 
-    - a button that allows downloading of the personal CV.
+This website serves as a platform to showcase my portfolio and other personal projects. It's a place for me to share my thoughts, experiences, and work with the world.
 
-* AboutMe page: 
-    - one more detailed description about me;
-    - presents the skills I have acquired over time;
-    - Work experience list and Timeline list that contains the courses, diplomas and studies I have completed over time, starting in chronological order from the most recent ones to those of the past.
-
-* Portfolio page:
-    - List of all completed projects;
-    - To view the Live project, click on the "Live" button with the github icon next to or on the project title (if the button or link cannot be clicked and the project title turns gray, it means that the project is not deployed);
-    - To view the source code of the project, you can click on the "Source" button;
-    - To view more details about the project, press the "See More" button.
-
-* Project page:
-    - "Back to projects" button, to navigate back to the entire list with all projects;
-    - Detailed description of the project. Including images and videos in some cases.
-
-* ContactMe page:
-    - My current location; Personal email; Forms of education completed; My phone number; Languages known at an advanced level;
-    - Representative logos with links to personal social profiles for LinkedIn, Github, Facebook, Twitter.
-    
-* Generally available on all pages:
-    - The navigation buttons between pages and the button for changing the theme, present on the right of the page for larger screens, such as tablets, laptops or TVs, or at the bottom of the page in the case of smaller screens, such as phones.
+Here are some key features of the website:
+- Portfolio: A collection of my projects, with descriptions and links.
+- Contact: A way for visitors to get in touch with me.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-### Built With
+## Technologies Used
 
-* HTML
-* CSS and SCSS
-* JavaScript
+The website is built using the following technologies:
+- HTML5
+- CSS3
+- SCSS
+- JavaScript (ES6+)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,15 +106,32 @@ If it was not successfully completed, you do not have access to the Internet or 
 
 #### Download ZIP method
 
+1. Go to GitHub and click on Code -> Download ZIP
+![Instalation zip photo 1][instalation-zip-1]
+2. Open the ZIP and double-click on 'bogdan-muntean.github.io-main' folder
+![Instalation zip photo 2][instalation-zip-2]
+3. Double-click on 'index.html'
+![Instalation zip photo 3][instalation-zip-3]
 
 
 #### Visual Studio Code method
 
 1. Install Visual Studio Code: https://code.visualstudio.com/download
 2. Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-3. Clone the repo
+3. Open Visual Studio Code
+4. In Visual Studio Code, click on 'File' from top-left navigation bar -> click on Open Folder... -> select folder where do you want to add the repo -> click 'Select folder'.
+5. Under the 'Explorer' text from left of the screen, right click on the Folder where do you want to add the repo -> left click on 'Open in integrated terminal'
+6. Write in terminal to clone the repo into the folder
    ```sh
    git clone https://github.com/bogdan-muntean/bogdan-muntean.github.io.git
+   ```
+7. Navigate to the project directory
+   ```sh
+   cd bogdan-muntean.github.io
+   ```
+8. Open the project
+   ```sh
+   index.html
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -170,3 +168,6 @@ Project Link: [Live Link](https://bogdan-muntean.github.io/)
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: ./src/assets/readmeImages/home_page.png
+[instalation-zip-1]: ./src/assets/readmeImages/readmeExplanationZip1.png
+[instalation-zip-2]: ./src/assets/readmeImages/readmeExplanationZip2.png
+[instalation-zip-3]: ./src/assets/readmeImages/readmeExplanationZip3.png
