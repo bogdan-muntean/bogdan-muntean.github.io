@@ -122,16 +122,17 @@ section {
     pointer-events: none;
   }
 }
+
 /*Independed components*/
 .main-title {
   display: block;
   margin: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   font-size: var(--font-size-title);
   h2 {
     text-align: center;
     text-transform: uppercase;
-    font-weight: 1rem;
+    font-weight: 16px;
 
     span {
       display: inline;
@@ -139,23 +140,24 @@ section {
     }
   }
 }
+
 .stat-title {
   text-transform: uppercase;
   font-size: var(--font-size-title);
   text-align: center;
-  padding: 2rem;
+  padding: 34px;
   position: relative;
   &::before {
-    @include orizontal-line-above;
+    @include horizontal-line-above;
   }
 }
 
-/*Independent components - Media Query*/
+// ### Media Query ###
 @media (max-width: 270px) {
-  .main-btn {
+  .btn-download-item {
     height: 54px;
   }
-  .btn-icon {
+  .btn-download-icon {
     display: none;
   }
 }
@@ -184,4 +186,10 @@ section {
   }
 }
 
-
+// ### Light mode ###
+.light-mode {
+  html,
+  body {
+    color: var(--color-black);
+  }
+}

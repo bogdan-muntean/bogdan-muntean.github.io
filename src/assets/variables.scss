@@ -31,7 +31,7 @@
   --width-controls: 100%;
   --height-controls: 80px;
 
-  //padding 
+  //padding
   --padding-bottom-container-default: 34px;
 
   //margin
@@ -44,14 +44,16 @@
   --color-primary: #202948;
   --color-secondary: #273dae;
   --color-white: #ffffff;
-  --color-black: #000;
   --color-grey-0: #f8f8f8;
-  --color-grey-1: #dbe1e8;
-  --color-grey-2: #b2becd;
-  --color-grey-3: #6c7983;
-  --color-grey-4: #454e56;
-  --color-grey-5: #2a2e35;
-  --color-grey-6: #12181b;
+  --color-grey-1: #efefef;
+  --color-grey-2: #dddddd;
+  --color-grey-3: #cccccc;
+  --color-grey-4: #999999;
+  --color-grey-5: #888888;
+  --color-grey-6: #555555;
+  --color-grey-7: #333333;
+  --color-grey-8: #111111;
+  --color-black: #000000;
 
   //var borders
   --br-small: 10px; //border radius small.
@@ -63,17 +65,17 @@
 }
 
 .light-mode {
-  --color-primary: #ffffff;
+  --color-primary: var(--color-grey-1);
   --color-secondary: #273dae;
-  --color-white: #454e56; 
-  --color-black: #000;
-  --color-grey-0: #f8f8f8;
-  --color-grey-1: #6c7983;
-  --color-grey-2: #6c7983;
-  --color-grey-3: #6c7983;
-  --color-grey-4: #dde2e7; 
-  --color-grey-5: #5d5b5b;
-  --color-grey-6: #12181b;
+  // --color-white: #454e56;
+  // --color-black: #000;
+  // --color-grey-0: #f8f8f8;
+  // --color-grey-1: #6c7983;
+  // --color-grey-2: #6c7983;
+  // --color-grey-3: #6c7983;
+  // --color-grey-4: #dde2e7;
+  // --color-grey-5: #5d5b5b;
+  // --color-grey-6: #12181b;
   .controls {
     .active-btn {
       background-color: #354389;
@@ -84,9 +86,9 @@
     }
   }
 
-  .main-btn {
+  .btn-download-item {
     &:hover {
-      .btn-text {
+      .btn-download-text {
         color: var(--color-primary);
       }
     }
@@ -104,7 +106,7 @@
     }
   }
 
-  .btn-icon {
+  .btn-download-icon {
     color: var(--color-grey-0);
   }
 
@@ -123,8 +125,9 @@
   }
 }
 
-//Mixins
-@mixin orizontal-line-above {
+// ### Variables and Mixins - Media Query ###
+// Mixins
+@mixin horizontal-line-above {
   content: "";
   display: block;
   width: 70%;
@@ -132,7 +135,7 @@
   position: relative;
   left: 50%;
   bottom: 20px;
-  background-color: var(--color-grey-5);
+  background-color: var(--color-grey-6);
   transform: translateX(-50%);
 }
 @mixin vertical-center {
@@ -141,8 +144,8 @@
   transform: translateY(-50%);
 }
 
-// ############ Variables and Mixins - Media Query ############
 :root {
+  // Media
   // MAX WIDTH
   @media (max-width: 310px) {
     --dimensions-div-icons-skills: 100%;
@@ -174,8 +177,7 @@
     //height
     --line-height-default: 32px;
   }
-  @media (min-width: 950){
+  @media (min-width: 950) {
     --dimensions-div-icons-skills: 20%;
   }
 }
-

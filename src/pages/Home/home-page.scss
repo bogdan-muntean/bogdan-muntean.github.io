@@ -1,7 +1,7 @@
 @import "../../assets/variables.scss";
 
 /*Header-content*/
-#home {
+#home-page {
   display: flex;
   height: 100%;
   width: 100%;
@@ -11,7 +11,7 @@
   padding: 0;
   color: var(--color-white);
 }
-.left-header {
+.header-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +36,7 @@
     }
   }
 }
-.right-header {
+.header-right {
   display: flex;
   height: max-content;
   width: 100%;
@@ -45,7 +45,7 @@
   align-content: center;
   padding: 30px 20px;
   text-align: center;
-  .name {
+  .header-right-name {
     font-size: var(--font-size-big-title);
     span {
       color: var(--color-secondary);
@@ -56,7 +56,7 @@
     line-height: var(--line-height-default);
   }
 }
-.main-btn {
+.btn-download-item {
   border-radius: 50px;
   color: inherit;
   font-weight: 600;
@@ -66,10 +66,10 @@
   align-self: flex-start;
   align-items: center;
   overflow: hidden;
-  .btn-text {
+  .btn-download-text {
     padding: 0 2rem;
   }
-  .btn-icon {
+  .btn-download-icon {
     background-color: var(--color-secondary);
     display: flex;
     align-items: center;
@@ -100,45 +100,58 @@
     }
   }
 }
-.btn-download {
+.btn-download-container {
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-//   Home / Header section - media query
+
+
+// ### Light mode ###
+
+.light-mode{
+  #home-page {
+    color: var(--color-grey-7);
+  }
+}
+
+
+
+//   Media query
+
 @media (max-width: 260px) and (max-height: 690px) {
-  #home {
+  #home-page {
     height: 100%;
     padding: 0;
     margin: 0;
   }
-  .left-header {
+  .header-left {
     margin: 0;
   }
-  .right-header {
+  .header-right {
     padding: 0;
   }
 }
 @media (max-width: 240px) {
-  .btn-download {
-    & .btn-icon {
+  .btn-download-container {
+    & .btn-download-icon {
       display: none;
     }
   }
 }
 @media (min-width: 800px) {
-  #home {
+  #home-page {
     padding: 0;
     text-overflow: hidden;
     flex-direction: row;
   }
-  .left-header {
+  .header-left {
     height: 100%;
     width: 40%;
     margin-bottom: 0;
   }
-  .right-header {
+  .header-right {
     height: 100%;
     width: 60%;
     margin: 0;
@@ -147,8 +160,8 @@
     p {
       padding: 10px;
     }
-    .btn-download {
-      .main-btn {
+    .btn-download-container {
+      .btn-download-item {
         border-radius: 50px;
       }
     }

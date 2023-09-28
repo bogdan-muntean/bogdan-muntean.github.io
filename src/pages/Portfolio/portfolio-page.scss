@@ -10,7 +10,7 @@
   font-size: var(--font-size-default);
   text-align: center;
   &::before {
-    @include orizontal-line-above;
+    @include horizontal-line-above;
   }
 }
 .portfolio-list {
@@ -116,6 +116,11 @@
     color: var(--color-secondary);
   }
 }
+
+// ### Light mode ###
+// .light-mode{
+
+// }
 
 //  Portfolio media
 @media (min-width: 500px) {
