@@ -4,7 +4,7 @@
 // #about {}
 // .about-container {}
 .about-stats {
-  padding-bottom: 2rem;
+  padding-bottom: var(--padding-bottom-container-default);
 }
 .text-about {
   span {
@@ -52,26 +52,25 @@
   span {
     display: block;
     margin: auto;
-    margin-top: 0.5rem;
+    margin-top: 8px;
     text-align: center;
   }
 }
 
 //Timeline container
 .timeline-container {
-  margin-bottom: 2rem;
+  margin-bottom: var(--margin-bottom-container-default);
 }
 .timeline-item {
   position: relative;
-  margin-top: 17px;
-  margin-left: 37px;
+  margin: 17px 0px 25px 34px;
   border-left: 1px solid var(--color-grey-5);
   h5 {
     display: block;
-    padding: 1rem;
+    padding: 16px;
     text-transform: uppercase;
     font-size: var(--font-size-subtitle);
-    font-weight: 600;
+    font-weight: normal;
     text-align: center;
     span {
       display: block;
@@ -83,6 +82,7 @@
   }
   p {
     color: var(--color-grey-2);
+    white-space: pre-line;
   }
 }
 .tl-icon {
@@ -100,14 +100,13 @@
     display: inline-block;
     font-size: var(--font-size-icons-timeline);
     line-height: var(--dimensions-div-icons-timeline);
-    vertical-align: middle;
     margin: auto;
   }
 }
 .tl-duration {
   display: inline-block;
-  padding: 0.2rem 0.6rem;
-  margin-left: 2rem;
+  padding: 3px 9.6px;
+  margin-left: var(--dimensions-div-icons-timeline);
   font-weight: 500;
   border-radius: 15px;
   font-size: var(--font-size-default);
@@ -116,33 +115,62 @@
 }
 .tl-text {
   font-size: var(--font-size-default);
-  text-align: center;
-  padding-left: 1rem;
-  margin-right: 1rem;
+  text-align: left;
+  padding-left: 16px;
+  margin-right: 16px;
+}
+
+
+//Workexperience Container
+.workexperience-container {
+  margin-bottom: var(--margin-bottom-container-default);
+}
+.workexperience-item {
+  position: relative;
+  margin: 17px 0px 25px 34px;
+  border-left: 1px solid var(--color-grey-5);
+  h5 {
+    display: block;
+    padding: 16px;
+    text-transform: uppercase;
+    font-size: var(--font-size-subtitle);
+    font-weight: normal;
+    text-align: center;
+    span {
+      display: block;
+      color: var(--color-grey-2);
+      font-weight: 500;
+      font-size: var(--font-size-default);
+      text-transform: none;
+    }
+  }
+  p {
+    color: var(--color-grey-2);
+    white-space: pre-line;
+  }
 }
 .we-icon {
   display: block;
-  width: var(--dimensions-div-icons-timeline);
-  height: var(--dimensions-div-icons-timeline);
+  width: var(--dimensions-div-icons-workexperience);
+  height: var(--dimensions-div-icons-workexperience);
   position: absolute;
   margin: auto;
-  left: calc(-1 * var(--font-size-icons-timeline));
+  left: calc(-1 * var(--font-size-icons-workexperience));
   top: 0;
   border-radius: 50%;
   background-color: var(--color-secondary);
   text-align: center;
   i {
     display: inline-block;
-    font-size: var(--font-size-icons-timeline);
-    line-height: var(--dimensions-div-icons-timeline);
-    vertical-align: middle;
+    font-size: var(--font-size-icons-workexperience);
+    line-height: var(--dimensions-div-icons-workexperience);
     margin: auto;
   }
 }
 .we-duration {
   display: inline-block;
-  padding: 0.2rem 0.6rem;
-  margin-left: 2rem;
+  padding: 3px 9.6px;
+  margin-left: var(--dimensions-div-icons-workexperience);
   font-weight: 500;
   border-radius: 15px;
   font-size: var(--font-size-default);
@@ -151,25 +179,21 @@
 }
 .we-text {
   font-size: var(--font-size-default);
-  text-align: center;
-  padding-left: 1rem;
-  margin-right: 1rem;
+  text-align: left;
+  padding-left: 16px;
+  margin-right: 16px;
 }
 
 //Experience Container
-.experience-container {
-  margin-bottom: calc(var(--height-controls) + 30px); 
+.timeline-container {
+  margin-bottom: calc(var(--height-controls) - 30px); 
 }
 #item-experience {
   text-align: center;
 }
 //######  About me media  ######
 //    MAX
-@media (max-width: 800px) {
-  .timeline-experience{
-    margin-bottom: var(--height-controls);
-  }
-}
+
 @media (max-width: 400px) {
   .text-about {
     p {
@@ -185,6 +209,9 @@
 //    MIN
 @media (min-width: 800px) {
   .timeline-item {
+    margin-left: 20px;
+  }
+  .workexperience-item {
     margin-left: 20px;
   }
   .text-about {

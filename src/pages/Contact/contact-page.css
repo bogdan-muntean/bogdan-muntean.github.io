@@ -21,7 +21,7 @@
   --color-secondary: #273dae;
   --color-white: #ffffff;
   --color-black: #000;
-  --color-grey0: #f8f8f8;
+  --color-grey-0: #f8f8f8;
   --color-grey-1: #dbe1e8;
   --color-grey-2: #b2becd;
   --color-grey-3: #6c7983;
@@ -39,7 +39,7 @@
   --color-secondary: #273dae;
   --color-white: #454e56;
   --color-black: #000;
-  --color-grey0: #f8f8f8;
+  --color-grey-0: #f8f8f8;
   --color-grey-1: #6c7983;
   --color-grey-2: #6c7983;
   --color-grey-3: #6c7983;
@@ -61,7 +61,7 @@
   color: var(--color-primary);
 }
 .light-mode .btn-icon {
-  color: var(--color-grey0);
+  color: var(--color-grey-0);
 }
 .light-mode .portfolio-list .portfolio-item {
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);

@@ -1,5 +1,4 @@
 //Creates Workexperience Item and then returns it
-
 export function WorkexperienceItem(title, timeData, spanContent, textContent, icon){
     let workexperienceItemHtml = document.createElement("div");
     workexperienceItemHtml.setAttribute("class", "workexperience-item");
