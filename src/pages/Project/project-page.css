@@ -34,6 +34,7 @@
   --color-grey-7: #333333;
   --color-grey-8: #111111;
   --color-black: #000000;
+  --color-text-1: #ffffff;
   --br-small: 10px;
   --br-circle: 50%;
   --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
@@ -43,31 +44,7 @@
 .light-mode {
   --color-primary: var(--color-grey-1);
   --color-secondary: #273dae;
-}
-.light-mode .controls .active-btn {
-  background-color: #354389;
-  transition: var(--transition-1);
-}
-.light-mode .controls .active-btn i {
-  color: var(--color-primary);
-}
-.light-mode .btn-download-item:hover .btn-download-text {
-  color: var(--color-primary);
-}
-.light-mode .timeline-item i {
-  color: var(--color-primary);
-}
-.light-mode .workexperience-item i {
-  color: var(--color-primary);
-}
-.light-mode .btn-download-icon {
-  color: var(--color-grey-0);
-}
-.light-mode .portfolio-list .portfolio-item {
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
-}
-.light-mode .timeline-container .timeline-item .tl-duration {
-  color: var(--color-black);
+  --color-text-1: var(--color-black);
 }
 
 @media (max-width: 310px) {
@@ -95,6 +72,7 @@
     --font-size-icon: 30px;
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
+    --font-size-icons-workexperience: 28px;
     --dimensions-div-icons-skills: 33%;
     --width-controls: 50px;
     --photo-principal: 35vw;

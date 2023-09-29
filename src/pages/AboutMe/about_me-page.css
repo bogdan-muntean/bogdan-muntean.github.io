@@ -72,6 +72,7 @@
     --font-size-icon: 30px;
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
+    --font-size-icons-workexperience: 28px;
     --dimensions-div-icons-skills: 33%;
     --width-controls: 50px;
     --photo-principal: 35vw;
@@ -199,7 +200,7 @@
 .tl-text {
   font-size: var(--font-size-default);
   text-align: left;
-  padding-left: 16px;
+  padding: 0px 30px;
   margin-right: 16px;
 }
 
@@ -228,7 +229,6 @@
   text-transform: none;
 }
 .workexperience-item p {
-  color: var(--color-grey-2);
   white-space: pre-line;
 }
 
@@ -266,7 +266,7 @@
 .we-text {
   font-size: var(--font-size-default);
   text-align: left;
-  padding-left: 16px;
+  padding: 0px 30px;
   margin-right: 16px;
 }
 
