@@ -34,6 +34,7 @@
   --color-grey-7: #333333;
   --color-grey-8: #111111;
   --color-black: #000000;
+  --color-text-1: #ffffff;
   --br-small: 10px;
   --br-circle: 50%;
   --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
@@ -43,31 +44,7 @@
 .light-mode {
   --color-primary: var(--color-grey-1);
   --color-secondary: #273dae;
-}
-.light-mode .controls .active-btn {
-  background-color: #354389;
-  transition: var(--transition-1);
-}
-.light-mode .controls .active-btn i {
-  color: var(--color-primary);
-}
-.light-mode .btn-download-item:hover .btn-download-text {
-  color: var(--color-primary);
-}
-.light-mode .timeline-item i {
-  color: var(--color-primary);
-}
-.light-mode .workexperience-item i {
-  color: var(--color-primary);
-}
-.light-mode .btn-download-icon {
-  color: var(--color-grey-0);
-}
-.light-mode .portfolio-list .portfolio-item {
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
-}
-.light-mode .timeline-container .timeline-item .tl-duration {
-  color: var(--color-black);
+  --color-text-1: var(--color-black);
 }
 
 @media (max-width: 310px) {
@@ -120,7 +97,7 @@ body {
   background-color: var(--color-primary);
   font-family: "Oxygen", sans-serif;
   font-size: var(--font-size-default);
-  color: var(--color-white);
+  color: var(--color-text-1);
   transition: var(--transition-1);
 }
 
@@ -165,7 +142,7 @@ section {
 }
 
 /* Controls - butoanele pentru navigare */
-.controls {
+.controls-container {
   display: flex;
   width: var(--width-controls);
   height: var(--height-controls);
@@ -178,7 +155,7 @@ section {
   z-index: 10;
   background-color: var(--color-grey-5);
 }
-.controls .control {
+.controls-container .control-btn {
   margin: 7px 5px;
   padding: 17px;
   cursor: pointer;
@@ -191,16 +168,16 @@ section {
   align-items: center;
   box-shadow: var(--box-shadow);
 }
-.controls .control i {
+.controls-container .control-btn i {
   font-size: var(--font-size-icons-controls);
   color: var(--color-grey-2);
   pointer-events: none;
 }
-.controls .active-btn {
+.controls-container .active-btn {
   background-color: var(--color-secondary);
   transition: var(--transition-1);
 }
-.controls .active-btn i {
+.controls-container .active-btn i {
   color: var(--color-white);
 }
 
@@ -277,7 +254,7 @@ section {
     padding: 50px 30px;
     padding-right: calc(var(--width-controls) + 20px);
   }
-  .controls {
+  .controls-container {
     top: 50%;
     right: 1.5%;
     display: flex;
@@ -286,17 +263,33 @@ section {
     transform: translateY(-50%);
     background-color: transparent;
   }
-  .control {
+  .control-btn {
     width: var(--dimensions-div-icons-controls);
     height: var(--dimensions-div-icons-controls);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.7rem 0;
+    margin: 11px 0;
   }
 }
 .light-mode html,
 .light-mode body {
-  color: var(--color-black);
+  color: var(--color-black) !important;
+}
+.light-mode .controls-container .active-btn {
+  background-color: #354389;
+  transition: var(--transition-1);
+}
+.light-mode .controls-container .active-btn i {
+  color: var(--color-primary);
+}
+.light-mode .btn-download-item:hover .btn-download-text {
+  color: var(--color-primary);
+}
+.light-mode .btn-download-icon {
+  color: var(--color-grey-0);
+}
+.light-mode .portfolio-list .portfolio-item {
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
 }/*# sourceMappingURL=style.css.map */
