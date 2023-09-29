@@ -90,8 +90,8 @@
 }
 
 .portfolio-about {
-  padding: 0.5rem;
-  margin: 0.5rem 0.5rem;
+  padding: 8px;
+  margin: 8px;
   font-size: var(--font-size-default);
   text-align: center;
 }
@@ -138,6 +138,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 .portfolio-text-container {
@@ -196,9 +197,6 @@
   font-size: var(--font-size-default);
   line-height: var(--line-height-default);
 }
-.portfolio-links div .active-icon {
-  color: var(--color-white);
-}
 .portfolio-links div .active-icon:hover {
   font-size: var(--font-size-default-hover);
   cursor: pointer;
@@ -221,6 +219,10 @@
 }
 .more:hover {
   color: var(--color-secondary);
+}
+
+.light-mode .portfolio-links .disable-icon {
+  color: var(--color-grey-6);
 }
 
 @media (min-width: 500px) {

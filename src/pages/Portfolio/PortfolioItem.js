@@ -5,13 +5,16 @@ import { checkIcon } from "../../utils/checkIcon.js";
 export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
   let portfolioItemHtml = document.createElement("div");
   portfolioItemHtml.setAttribute("class", `portfolio-item item-${idArrayItem}`);
-  let liveLinkHtml = checkLink(liveLink);
-  let repoLinkHtml = checkIcon(repoLink);
+
+  let liveLinkHtmlTitle = checkLink(liveLink);
+  let liveLinkHtmlIcon = checkIcon(liveLink)
+  let repoLinkHtmlIcon = checkIcon(repoLink);
+
   portfolioItemHtml.innerHTML = `
-    <div class="portfolio-image" style="background-image: url(./${image})"></div>
+    <div class="portfolio-image" data-more="${idArrayItem}" style="background-image: url(./${image})"></div>
     <div class="portfolio-text-container">
         <div class="portfolio-title">
-          <a ${liveLinkHtml}>
+          <a ${liveLinkHtmlTitle}>
             <h4>
               ${title}
             </h4>
@@ -24,13 +27,13 @@ export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
         </div>
         <div class="portfolio-links">
             <div>
-                <a ${repoLinkHtml} target="_blank">
+                <a ${repoLinkHtmlIcon} target="_blank">
                     Source 
                     <i class="fa-solid fa-display"></i>
                 </a>
             </div>
             <div>
-                <a ${liveLinkHtml} target="_blank">
+                <a ${liveLinkHtmlIcon} target="_blank">
                     Live 
                     <i class="fab fa-github"></i>
                 </a>

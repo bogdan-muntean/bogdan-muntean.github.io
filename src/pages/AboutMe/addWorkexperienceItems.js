@@ -6,8 +6,6 @@ export function addWorkexperienceItems(containerHtmlSelector, dataBase) {
     
     dataBase.forEach((element) => {
         let workexperienceItemHtml = WorkexperienceItem(element.title, element.timeData, element.span, element.text, element.icon);
-        console.log(workexperienceItemHtml)
         containerHtml.appendChild(workexperienceItemHtml);
-        console.log(`workexperienceItemHtml item added`)
     })
 }

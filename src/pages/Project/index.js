@@ -3,8 +3,8 @@ they display the Portfolio section with details about the current Portfolio (whi
 At the same time, the event will hide the Portfolio section.*/
 import { dataPortfolioItems } from "../../data/dataPortfolioItems.js";
 
-let readMoreBtn = document.querySelectorAll(".more");
-readMoreBtn.forEach((button, index) => {
+let readMoreBtn = document.querySelectorAll(".more,.portfolio-image");
+readMoreBtn.forEach((button) => {
   button.addEventListener("click", () => {
     // Hide Portfolio page
     document.querySelector(".active").classList.remove("active");
@@ -17,7 +17,7 @@ readMoreBtn.forEach((button, index) => {
     `
     <div class="project-title main-title" id="project-title">
         <h2>
-          ${dataPortfolioItems[index].title}
+          ${dataPortfolioItems[button.dataset.more].title}
         </h2>
     </div>
     <div class="project-description-container">
@@ -25,13 +25,13 @@ readMoreBtn.forEach((button, index) => {
           <div class="project-back">
             Back to projects
           </div>
-            ${dataPortfolioItems[index].description}
+            ${dataPortfolioItems[button.dataset.more].description}
         </div>
         <div class="project-photo" id="project-photo">
-          ${dataPortfolioItems[index].photo}
+          ${dataPortfolioItems[button.dataset.more].photo}
         </div>
         <div class="project-video" id="project-video">
-          ${dataPortfolioItems[index].video}
+          ${dataPortfolioItems[button.dataset.more].video}
         </div>
     </div>
     `;
