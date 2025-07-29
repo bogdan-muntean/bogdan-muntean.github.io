@@ -59,45 +59,125 @@
   
     <link rel="stylesheet" href="./src/assets/variables.css" />
     <link rel="stylesheet" href="./src/assets/style.css" />
-    <link rel="stylesheet" href="./src/pages/Home/home-page.css" />
-    <link rel="stylesheet" href="./src/pages/AboutMe/about_me-page.css" />
+    <link rel="stylesheet" href="./src/pages/Home/home-section.css" />
+    <link rel="stylesheet" href="./src/pages/AboutMe/about-me-section.css" />
     <link rel="stylesheet" href="./src/pages/Portfolio/portfolio-page.css" />
     <link rel="stylesheet" href="./src/pages/Project/project-page.css" />
     <link rel="stylesheet" href="./src/pages/Contact/contact-page.css" />
 
     <title>Bogdan Muntean - My Presentation Website</title>
   </head>
+
+  <!-- const [isOpen, setIsOpen] = useState(false); -->
+<!-- <div className="lg:hidden">
+            <div
+              id="nav-icon"
+              className={`${styles.navIcon} ${isOpen ? styles.open : ""}`}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <span className="instructrion block h-1 bg-white transition-all"></span>
+              <span className="block h-1 bg-white transition-all"></span>
+              <span className="block h-1 bg-white transition-all"></span>
+            </div>
+
+            <div
+              className={`absolute left-1/2 mt-2 w-[90%] bg-[#222] text-white shadow-lg rounded z-50 -translate-x-1/2 
+                origin-top transform transition-all duration-700 ease-in-out
+                ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
+            >
+              <div className="flex flex-col justify-center align-center">
+                {navLinks.map((link, index) => (
+                  <React.Fragment key={index}>
+                    <div className="w-full flex flex-col ">
+                      <a
+                        href={link.href}
+                        className={`uppercase p-4 h-auto paragraph-semibold-1 hover:underline ${link.color || "text-white"} hover:bg-gray-700 transition-colors duration-300`}
+                        onClick={() => setIsOpen(!isOpen)}
+                        // className="uppercase p-4 h-auto text-white paragraph-semibold-1 hover:underline"
+                      >
+                        {link.name}
+                      </a>
+                      {index < navLinks.length - 1 && (
+                        <div className="w-full h-[1px] bg-white opacity-30" />
+                      )}
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+          </div> -->
   
   <body class="main-content">
-    <header class="container header-section active" id="home-page">
-      <div class="header-left">
-        <div class="image" style="background-image: url(./src/assets/aboutMeImages/profile-photo.jpg);"></div>
+    <header>
+      <div class="desktop-nav">
+        <div class="nav-links">
+          <nav>
+            <a href="#home-section">Home</a>
+            <a href="#about-me-section">About Me</a>
+            <a href="#about-me-page">My Skills</a>
+            <a href="#about-me-page">Work Experience</a>
+            <a href="#about-me-page">Timeline</a>
+            <a href="#portfolio">My Portfolio</a>
+            <a href="#contact">Contact Me</a>
+          </nav>
+        </div>
       </div>
-      <div class="header-right">
-        <h1 class="header-right-name">Bogdan <span>Muntean</span></h1>
-        <div class="header-right-description-container">
-          <p class="header-right-description-paragraph">
-            A passionate self-taught software developer at the beginning of the journey.
-          </p>
-          <p class="header-right-description-paragraph">
-            I am looking for new opportunities and collaborations to show my
-            skills and to continue to grow as a Software Developer.
-          </p>
+
+      <div class="mobile-nav">
+        <div id="nav-icon" class="nav-icon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
-        <div class="btn-download-container">
-          <a href="./src/assets/docs/CV-Bogdan-Muntean.pdf" class="btn-download-item" download>
-            <span class="btn-download-text">Download CV</span>
-            <span class="btn-download-icon"><i class="fas fa-download"></i></span>
-          </a>
+
+        <!-- Dropdown menu -->
+        <div id="menu" class="menu">
+          <div class="menu-links">
+            <a href="#home" class="menu-link">Home</a>
+            <div class="divider"></div>
+            <a href="#about" class="menu-link">About</a>
+            <div class="divider"></div>
+            <a href="#services" class="menu-link">Services</a>
+            <div class="divider"></div>
+            <a href="#contact" class="menu-link">Contact</a>
+          </div>
         </div>
+      </div>
+
+      <div class="theme-btn">
+        <i class="fas fa-adjust"></i>
       </div>
     </header>
     <main>
-      <section class="container about-me-section" id="about-me-page">
+      <section class="container home-section-section" id="home-section">
+        <div class="home-section-left">
+          <div class="image" style="background-image: url(./src/assets/aboutMeImages/profile-photo.jpg);"></div>
+        </div>
+        
+        <div class="home-section-right">
+          <h1 class="home-section-right-name">Bogdan <span>Muntean</span></h1>
+          <div class="home-section-right-description-container">
+            <p class="home-section-right-description-paragraph">
+              A passionate self-taught software developer at the beginning of the journey.
+            </p>
+            <p class="home-section-right-description-paragraph">
+              I am looking for new opportunities and collaborations to show my
+              skills and to continue to grow as a Software Developer.
+            </p>
+          </div>
+          <div class="btn-download-container">
+            <a href="./src/assets/docs/CV-Bogdan-Muntean.pdf" class="btn-download-item" download>
+              <span class="btn-download-text">Download CV</span>
+              <span class="btn-download-icon"><i class="fas fa-download"></i></span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="container about-me-section active" id="about-me-section">
         <div class="main-title">
           <h2>About <span>me</span></h2>
         </div>
-        <div class="about-page-description">
+        <div class="about-me-section-description">
           <div class="text-about">
             <span>Hi, I'm Bogdan, nice to meet you!</span>
             <p>
@@ -167,7 +247,7 @@
         <h4 class="stat-title">Timeline</h4>
         <div class="timeline-container"></div>
       </section>
-      <section class="container" id="portfolio">
+      <section class="container" id="portfolio-section">
         <div class="main-title">
           <h2>My <span>Portfolio</span></h2>
         </div>
@@ -177,9 +257,7 @@
         </p> 
         <div class="portfolio-list"></div>
       </section>
-      <section class="container" id="project">
-      </section>
-      <section class="container contact" id="contact">
+      <section class="container contact" id="contact-section">
         <div class="contact-title">
           <div class="main-title">
             <h2>Contact <span>Me</span></h2>
@@ -285,23 +363,6 @@
         </div>
       </section>
     </main>
-    <div class="controls-container">
-      <div class="control-btn active-btn" data-id="home-page">
-        <i class="fa-solid fa-house"></i>
-      </div>
-      <div class="control-btn" data-id="about-me-page">
-        <i class="fas fa-user"></i>
-      </div>
-      <div class="control-btn" data-id="portfolio">
-        <i class="fas fa-briefcase"></i>
-      </div>
-      <div class="control-btn" data-id="contact">
-        <i class="fas fa-envelope"></i>
-      </div>
-    </div>
-    <div class="theme-btn">
-      <i class="fas fa-adjust"></i>
-    </div>
 
     <!-- Main script + utils -->
     <script type="module" src="./src/main.js"></script>

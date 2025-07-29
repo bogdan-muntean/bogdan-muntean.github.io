@@ -86,7 +86,7 @@
 }
 
 /*Header-content*/
-#home-page {
+#home-section {
   display: flex;
   height: 100%;
   width: 100%;
@@ -97,7 +97,7 @@
   color: var(--color-white);
 }
 
-.header-left {
+.home-section-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,7 +107,7 @@
   width: 100%;
   margin-bottom: 80px;
 }
-.header-left .image {
+.home-section-left .image {
   height: var(--photo-principal);
   width: var(--photo-principal);
   flex-grow: 0;
@@ -120,11 +120,11 @@
   transition: var(--transition-1);
   filter: grayscale(100%);
 }
-.header-left .image:hover {
+.home-section-left .image:hover {
   filter: grayscale(0);
 }
 
-.header-right {
+.home-section-right {
   display: flex;
   height: -moz-max-content;
   height: max-content;
@@ -135,13 +135,13 @@
   padding: 30px 20px;
   text-align: center;
 }
-.header-right .header-right-name {
+.home-section-right .home-section-right-name {
   font-size: var(--font-size-big-title);
 }
-.header-right .header-right-name span {
+.home-section-right .home-section-right-name span {
   color: var(--color-secondary);
 }
-.header-right p {
+.home-section-right p {
   margin: 1rem 0;
   line-height: var(--line-height-default);
 }
@@ -197,20 +197,20 @@
   position: relative;
 }
 
-.light-mode #home-page {
+.light-mode #home-section {
   color: var(--color-grey-7);
 }
 
 @media (max-width: 260px) and (max-height: 690px) {
-  #home-page {
+  #home-section {
     height: 100%;
     padding: 0;
     margin: 0;
   }
-  .header-left {
+  .home-section-left {
     margin: 0;
   }
-  .header-right {
+  .home-section-right {
     padding: 0;
   }
 }
@@ -220,27 +220,27 @@
   }
 }
 @media (min-width: 800px) {
-  #home-page {
+  #home-section {
     padding: 0;
     text-overflow: hidden;
     flex-direction: row;
   }
-  .header-left {
+  .home-section-left {
     height: 100%;
     width: 40%;
     margin-bottom: 0;
   }
-  .header-right {
+  .home-section-right {
     height: 100%;
     width: 60%;
     margin: 0;
     padding: 0;
     padding-right: calc(var(--width-controls) + 15px);
   }
-  .header-right p {
+  .home-section-right p {
     padding: 10px;
   }
-  .header-right .btn-download-container .btn-download-item {
+  .home-section-right .btn-download-container .btn-download-item {
     border-radius: 50px;
   }
-}/*# sourceMappingURL=home-page.css.map */
+}/*# sourceMappingURL=home-section.css.map */
