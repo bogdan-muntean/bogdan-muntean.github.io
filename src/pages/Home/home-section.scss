@@ -1,4 +1,4 @@
-@import "../../assets/variables.scss";
+@use "../../assets/variables.scss" as *;
 
 /*Header-content*/
 #home-section {
@@ -11,6 +11,7 @@
   padding: 0;
   color: var(--color-white);
 }
+
 .home-section-left {
   display: flex;
   flex-direction: column;

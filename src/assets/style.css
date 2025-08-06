@@ -101,6 +101,7 @@ body {
   font-size: var(--font-size-default);
   color: var(--color-text-1);
   transition: var(--transition-1);
+  scroll-behavior: smooth;
 }
 
 a {

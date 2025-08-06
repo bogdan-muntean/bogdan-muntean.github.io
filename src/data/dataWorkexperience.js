@@ -2,6 +2,15 @@
 
 export let dataWorkexperience = [
     {
+        title: `Junior Software Developer`,
+        span: "Digital Distribution Group",
+        timeData: "12/2023 - 08/2025",
+        text: `
+        
+        `,
+        icon: `<i class="fa fa-building" aria-hidden="true"></i>`,
+    },
+    {
         title: `RPA Developer Internship`,
         span: "Automatify",
         timeData: "07/2023 - 09/2023",
@@ -17,5 +26,5 @@ export let dataWorkexperience = [
         I also applied the company's reframework on the same project.
         `,
         icon: `<i class="fa fa-building" aria-hidden="true"></i>`,
-      }
+    }
 ]
