@@ -339,6 +339,17 @@ header {
   display: inline;
   color: var(--color-secondary);
 }
+.main-title::before {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1px;
+  position: relative;
+  left: 50%;
+  bottom: 20px;
+  background-color: var(--color-grey-6);
+  transform: translateX(-50%);
+}
 
 .stat-title {
   text-transform: uppercase;

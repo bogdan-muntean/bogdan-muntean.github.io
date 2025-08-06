@@ -271,17 +271,22 @@ header {
       color: var(--color-secondary);
     }
   }
+
+    &::before {
+        @include horizontal-line-above;
+    }
 }
 
 .stat-title {
-  text-transform: uppercase;
-  font-size: var(--font-size-title);
-  text-align: center;
-  padding: 34px;
-  position: relative;
-  &::before {
-    @include horizontal-line-above;
-  }
+    text-transform: uppercase;
+    font-size: var(--font-size-title);
+    text-align: center;
+    padding: 34px;
+    position: relative;
+
+    &::before {
+        @include horizontal-line-above;
+    }
 }
 
 // ### Media Query ###

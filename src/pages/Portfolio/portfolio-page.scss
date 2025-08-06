@@ -1,27 +1,28 @@
-@import "../../assets/variables.scss";
+@use "../../assets/variables.scss" as *;
 
 //Portfolios
 #portfolio {
   padding-bottom: var(--height-controls);
 }
+
 .portfolio-about {
   padding: 8px;
   margin: 8px;
   font-size: var(--font-size-default);
   text-align: center;
-  &::before {
-    @include horizontal-line-above;
-  }
 }
+
 .portfolio-list {
-  margin-top: 17px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  gap: var(--gap-portfolio-list);
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: var(--gap-portfolio-list);
+    flex-wrap: wrap;
+    margin-top: 17px;
+    margin-bottom: 60px;
 }
 .portfolio-item {
   display: flex;
