@@ -1,6 +1,10 @@
 :root {
   --font-size-default: 17px;
   --font-size-default-hover: calc(var(--font-size-default) + 1px);
+  --font-size-nav: 18px;
+  --font-size-subtitle: 20px;
+  --font-size-title: calc(var(--font-size-subtitle) + 5px);
+  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
   --font-size-icon: 20px;
   --font-size-icons-skills: 45px;
   --font-size-icons-workexperience: 20px;
@@ -10,9 +14,6 @@
   --dimensions-div-icons-workexperience: calc(var(--font-size-icons-workexperience) * 2);
   --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
   --dimensions-div-icons-controls: 55px;
-  --font-size-subtitle: 18px;
-  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
-  --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --photo-principal: 160px;
   --photo-height-portfolio: 300px;
   --line-height-default: 26px;
@@ -79,7 +80,7 @@
     --line-height-default: 32px;
   }
 }
-@media (min-width: 950) {
+@media (min-width: 950px) {
   :root {
     --dimensions-div-icons-skills: 20%;
   }
