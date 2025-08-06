@@ -57,6 +57,7 @@
     line-height: var(--line-height-default);
   }
 }
+
 .btn-download-item {
   border-radius: 50px;
   color: inherit;
@@ -67,9 +68,13 @@
   align-self: flex-start;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
+  z-index: 0;
+
   .btn-download-text {
     padding: 0 2rem;
   }
+
   .btn-download-icon {
     background-color: var(--color-secondary);
     display: flex;
@@ -77,24 +82,29 @@
     justify-content: center;
     border-radius: 50%;
     padding: 1rem;
+
     i {
-      font-size: var(--font-size-icon);
+      font-size: var(--font-size-icon-download);
     }
   }
+
   &::before {
     content: "";
     position: absolute;
     top: 0;
     right: 0;
+    width: 100%;
+    height: 100%;
     transform: translateX(100%);
     transition: var(--transition-1);
     z-index: -1;
   }
+
   &:hover {
     transition: var(--transition-1);
+
     &::before {
-      width: 100%;
-      height: 100%;
+      
       background-color: var(--color-secondary);
       transform: translateX(0);
       transition: var(--transition-1);
@@ -106,8 +116,6 @@
   justify-content: center;
   position: relative;
 }
-
-
 
 // ### Light mode ###
 

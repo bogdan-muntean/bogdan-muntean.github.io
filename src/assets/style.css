@@ -5,7 +5,8 @@
   --font-size-subtitle: 20px;
   --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
-  --font-size-icon: 20px;
+  --font-size-icon: 24px;
+  --font-size-icon-download: 20px;
   --font-size-icons-skills: 45px;
   --font-size-icons-workexperience: 20px;
   --font-size-icons-timeline: 20px;
@@ -70,7 +71,7 @@
     --font-size-subtitle: 26px;
     --font-size-title: 35px;
     --font-size-big-title: 40px;
-    --font-size-icon: 30px;
+    --font-size-icon-download: 30px;
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
     --font-size-icons-workexperience: 28px;
@@ -123,6 +124,12 @@ header {
   align-items: center;
   gap: 20px;
   padding-right: 20px;
+  margin-bottom: 50px;
+}
+@media (max-width: 800px) {
+  header {
+    margin-bottom: 0;
+  }
 }
 
 .back-to-top {
@@ -145,6 +152,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.back-to-top i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-icon);
+  color: var(--color-grey-2);
+  pointer-events: none;
 }
 
 .back-to-top.show {
@@ -174,7 +190,7 @@ header {
     padding: 0;
     height: auto;
     font-size: var(--font-size-nav);
-    color: white;
+    color: var(--color-white);
     text-decoration: none;
     font-weight: 600;
     transition: -webkit-text-decoration 0.3s;
@@ -182,7 +198,7 @@ header {
     transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
   }
   .desktop-nav .nav-links nav a:hover {
-    text-decoration: underline;
+    color: var(--color-secondary);
   }
 }
 

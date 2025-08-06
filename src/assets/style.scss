@@ -29,34 +29,7 @@ a {
 section {
   width: 100%;
   height: 100%;
-  // height: min-content;
-  // position: absolute;
-  // top: 0;
 }
-
-// .container {
-//   // display: none;W
-//   // height: min-content;
-//   padding: 30px 8px;
-//   padding-bottom: var(--height-controls);
-//   transform: translateY(-100%) scale(0);
-//   transition: var(--transition-1);
-//   background-color: var(--color-primary);
-// }
-
-// .active {
-//   display: block;
-//   animation: appear 1s ease-in-out;
-//   transform: translateY(0) scaleY(1);
-//   @keyframes appear {
-//     0% {
-//       transform: translateY(-100%) scaleY(0);
-//     }
-//     100% {
-//       transform: translateY(0) scaleY(1);
-//     }
-//   }
-// }
 
 header {
   height: 80px;
@@ -66,6 +39,11 @@ header {
   align-items: center;
   gap: 20px;
   padding-right: 20px;
+  margin-bottom: 50px;
+
+  @media (max-width: $max-viewport-mobile) {
+      margin-bottom: 0;
+  }
 }
 
 // Back to top button
@@ -89,7 +67,18 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--font-size-icon);
+    color: var(--color-grey-2);
+    pointer-events: none;
+  }
 }
+
 .back-to-top.show {
   opacity: 1;
   pointer-events: auto;
@@ -116,13 +105,13 @@ header {
           padding: 0;
           height: auto;
           font-size: var(--font-size-nav);
-          color: white;
+          color: var(--color-white);
           text-decoration: none;
           font-weight: 600;
           transition: text-decoration 0.3s;
 
           &:hover {
-            text-decoration: underline;
+            color: var(--color-secondary);
           }
         }
       }
@@ -131,7 +120,6 @@ header {
 }
 
 .mobile-nav {
-  // position: relative;
   display: block;
   height: 50px;
   display: flex;
@@ -228,52 +216,8 @@ header {
         margin: 30px auto 0 auto;
       }
     }
-
   }
 }
-
-// .controls-container {
-//   display: flex;
-//   width: var(--width-controls);
-//   height: var(--height-controls);
-//   position: fixed;
-//   flex-direction: row;
-//   top: auto;
-//   bottom: 0;
-//   justify-content: center;
-//   align-items: center;
-//   z-index: 10;
-//   background-color: var(--color-grey-5);
-
-//   .control-btn {
-//     margin: 7px 5px;
-//     padding: 17px;
-//     cursor: pointer;
-//     background-color: var(--color-grey-4);
-//     width: var(--dimensions-div-icons-controls);
-//     height: var(--dimensions-div-icons-controls);
-//     border-radius: 50%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     box-shadow: var(--box-shadow);
-
-//     i {
-//       font-size: var(--font-size-icons-controls);
-//       color: var(--color-grey-2);
-//       pointer-events: none;
-//     }
-//   }
-
-//   .active-btn {
-//     background-color: var(--color-secondary);
-//     transition: var(--transition-1);
-
-//     i {
-//       color: var(--color-white);
-//     }
-//   }
-// }
 
 //Button to change theme
 .theme-btn {
