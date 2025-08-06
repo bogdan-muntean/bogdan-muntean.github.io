@@ -36,7 +36,6 @@
   --color-grey-7: #333333;
   --color-grey-8: #111111;
   --color-black: #000000;
-  --color-text-1: #ffffff;
   --br-small: 10px;
   --br-circle: 50%;
   --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
@@ -239,12 +238,10 @@ header {
 }
 
 .menu {
-  visibility: hidden;
   position: absolute;
   width: 95%;
   top: 60px;
   left: 50%;
-  padding: 20px 0;
   transform: translateX(-50%) scaleY(0);
   transform-origin: top;
   background: #222;
@@ -252,6 +249,7 @@ header {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
   z-index: 50;
@@ -270,7 +268,7 @@ header {
 .menu .menu-links .menu-link {
   width: 100%;
   text-transform: uppercase;
-  padding: 16px;
+  padding: 16px 16px 0 16px;
   text-decoration: none;
   text-align: center;
   color: white;
@@ -289,7 +287,14 @@ header {
   height: 1px;
   background: white;
   opacity: 0.5;
-  margin: 30px auto 0 auto;
+  margin-top: 20px;
+}
+.menu .menu-links .menu-link:first-child {
+  border-radius: 8px 8px 0px 0px;
+}
+.menu .menu-links .menu-link:last-child {
+  padding-bottom: 20px;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .theme-btn {

@@ -1,61 +1,62 @@
-@import "../../assets/variables.scss";
+@use "../../assets/variables.scss" as *;
 
 /*About*/
 // .about-me-section {}
 // .about-page-description {}
 .about-stats {
-  padding-bottom: var(--padding-bottom-container-default);
+    padding-bottom: var(--padding-bottom-container-default);
 }
 
 .text-about {
-  span {
-    display: block;
-    margin: auto;
-    text-align: center;
-    font-weight: bold;
-    font-size: var(--font-size-title);
-    color: var(--color-secondary);
-  }
-  p {
+    span {
+        display: block;
+        margin: auto;
+        text-align: center;
+        font-weight: bold;
+        font-size: var(--font-size-title);
+        color: var(--color-secondary);
+    }
+
+    p { 
     line-height: var(--line-height-default);
     padding: 17px 40px;
     margin-bottom: 17px;
-  }
+    }
 }
-
+    
 //Skill container
 .skill-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
 }
 
 .skill-item {
-  display: block;
-  flex-basis: calc(var(--dimensions-div-icons-skills) - 5px);
-  min-width: 120px;
-  max-width: var(--dimensions-div-icons-skills);
-  flex-shrink: 1;
-  flex-grow: 1;
-  padding: 20px;
-  text-align: center;
-  box-sizing: border-box;
-  i {
     display: block;
-    margin: auto;
-    font-size: var(--font-size-icons-skills);
+    flex-basis: calc(var(--dimensions-div-icons-skills) - 5px);
+    min-width: 120px;
+    max-width: var(--dimensions-div-icons-skills);
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding: 20px;
     text-align: center;
-  }
-  span {
-    display: block;
-    margin: auto;
-    margin-top: 8px;
-    text-align: center;
-  }
+    box-sizing: border-box;
+    i {
+        display: block;
+        margin: auto;
+        font-size: var(--font-size-icons-skills);
+        text-align: center;
+    }
+    span {
+        display: block;
+        margin: auto;
+        margin-top: 8px;
+        text-align: center;
+    }
 }
 
 //Timeline container
