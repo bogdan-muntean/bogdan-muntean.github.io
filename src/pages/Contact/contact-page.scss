@@ -5,6 +5,11 @@
 #contact {
   height: min-content;
 }
+
+#contact-section {
+  padding-bottom: 40px;
+}
+
 .contact-title {
   .contact-description {
     display: flex;
@@ -35,6 +40,11 @@
     display: block;
     margin: auto;
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     .icon {
       display: block;
       margin: auto;
@@ -50,6 +60,7 @@
     }
 
     p {
+      display: block;
       text-align: center;
       margin: 0.3rem 0;
       // span {
@@ -65,7 +76,7 @@
     display: flex;
     align-items: center;
     color: var(--color-white);
-    background-color: var(--color-grey-5);
+    background-color: #7e7e7e;
     cursor: pointer;
     justify-content: center;
     width: 2rem;
@@ -78,7 +89,7 @@
       background-color: var(--color-secondary);
 
       i {
-        color: var(--color-primary);
+        // color: var(--color-primary);
       }
     }
 
@@ -90,8 +101,3 @@
     }
   }
 }
-
-// ### Light mode ###
-// .light-mode{
-
-// }

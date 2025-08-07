@@ -1,18 +1,20 @@
 :root {
   --font-size-default: 17px;
   --font-size-default-hover: calc(var(--font-size-default) + 1px);
-  --font-size-icon: 20px;
+  --font-size-nav: 18px;
+  --font-size-subtitle: 20px;
+  --font-size-title: calc(var(--font-size-subtitle) + 5px);
+  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
+  --font-size-icon: 24px;
+  --font-size-icon-download: 20px;
   --font-size-icons-skills: 45px;
-  --font-size-icons-workexperience: 20px;
-  --font-size-icons-timeline: 20px;
+  --font-size-icons-workexperience: 24px;
+  --font-size-icons-timeline: 24px;
   --font-size-icons-controls: 20px;
   --dimensions-div-icons-skills: 50%;
   --dimensions-div-icons-workexperience: calc(var(--font-size-icons-workexperience) * 2);
   --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
   --dimensions-div-icons-controls: 55px;
-  --font-size-subtitle: 18px;
-  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
-  --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --photo-principal: 160px;
   --photo-height-portfolio: 300px;
   --line-height-default: 26px;
@@ -24,17 +26,15 @@
   --color-primary: #202948;
   --color-secondary: #273dae;
   --color-white: #ffffff;
-  --color-grey-0: #f8f8f8;
-  --color-grey-1: #efefef;
-  --color-grey-2: #dddddd;
-  --color-grey-3: #cccccc;
-  --color-grey-4: #999999;
-  --color-grey-5: #888888;
-  --color-grey-6: #555555;
-  --color-grey-7: #333333;
-  --color-grey-8: #111111;
   --color-black: #000000;
   --color-text-1: #ffffff;
+  --color-icon: #ffffff;
+  --color-timeline: #999999;
+  --color-item-title: #ffffff;
+  --color-item-subtitle: #cccccc;
+  --color-portfolio-item-bg: #888888;
+  --color-portfolio-item: #fff;
+  --color-portfolio-item-disable: #dddddd;
   --br-small: 10px;
   --br-circle: 50%;
   --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
@@ -42,9 +42,15 @@
 }
 
 .light-mode {
-  --color-primary: var(--color-grey-1);
+  --color-primary: #ffffff;
   --color-secondary: #273dae;
-  --color-text-1: var(--color-black);
+  --color-timeline: #273dae;
+  --color-text-1: #000000;
+  --color-item-title: #000000;
+  --color-item-subtitle: #5e5e5e;
+  --color-portfolio-item-bg: #cccccc;
+  --color-portfolio-item: #000;
+  --color-portfolio-item-disable: #525252;
 }
 
 @media (max-width: 310px) {
@@ -69,7 +75,7 @@
     --font-size-subtitle: 26px;
     --font-size-title: 35px;
     --font-size-big-title: 40px;
-    --font-size-icon: 30px;
+    --font-size-icon-download: 30px;
     --font-size-icons-skills: 55px;
     --font-size-icons-timeline: 28px;
     --font-size-icons-workexperience: 28px;
@@ -79,7 +85,7 @@
     --line-height-default: 32px;
   }
 }
-@media (min-width: 950) {
+@media (min-width: 950px) {
   :root {
     --dimensions-div-icons-skills: 20%;
   }
@@ -95,27 +101,18 @@
   font-size: var(--font-size-default);
   text-align: center;
 }
-.portfolio-about::before {
-  content: "";
-  display: block;
-  width: 70%;
-  height: 1px;
-  position: relative;
-  left: 50%;
-  bottom: 20px;
-  background-color: var(--color-grey-6);
-  transform: translateX(-50%);
-}
 
 .portfolio-list {
-  margin-top: 17px;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   gap: var(--gap-portfolio-list);
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-top: 17px;
+  margin-bottom: 60px;
 }
 
 .portfolio-item {
@@ -126,7 +123,7 @@
   align-items: stretch;
   padding: 7px;
   border-radius: 5px;
-  background-color: var(--color-grey-5);
+  background-color: var(--color-portfolio-item-bg);
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
   transition: var(--transition-1);
 }
@@ -156,6 +153,7 @@
 .portfolio-title {
   display: block;
   text-align: center;
+  color: var(--color-portfolio-item);
 }
 
 .active-title {
@@ -165,11 +163,6 @@
 }
 .active-title:hover {
   color: var(--color-secondary);
-}
-
-.disable-title:hover {
-  color: var(--color-grey-4);
-  transition: var(--transition-1);
 }
 
 .portfolio-description {
@@ -197,32 +190,20 @@
   font-size: var(--font-size-default);
   line-height: var(--line-height-default);
 }
+.portfolio-links div .active-icon {
+  color: var(--color-portfolio-item);
+}
 .portfolio-links div .active-icon:hover {
   font-size: var(--font-size-default-hover);
   cursor: pointer;
   transition: var(--transition-1);
 }
 .portfolio-links div .disable-icon {
-  color: var(--color-grey-2);
-}
-
-.more {
-  display: block;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  font-weight: bold;
-  width: -moz-max-content;
-  width: max-content;
-  cursor: pointer;
-  transition: var(--transition-1);
-}
-.more:hover {
-  color: var(--color-secondary);
+  color: var(--color-portfolio-item-disable);
 }
 
 .light-mode .portfolio-links .disable-icon {
-  color: var(--color-grey-6);
+  color: #555555;
 }
 
 @media (min-width: 500px) {

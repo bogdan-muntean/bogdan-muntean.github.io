@@ -1,10 +1,17 @@
 // Create the database for dataTimeline items.
 
 export let dataTimeline = [
+  {
+      title: `Master’s Degree in Computer Science Complements (CSC)`,
+      span: "Technical University of Cluj-Napoca",
+      timeData: "10/2023 - 07/2025",
+      text: "",
+      icon: `<i class="fa-solid fa-graduation-cap"></i>`,
+    },
     {
-      title: `JavaScript Algorithms and Data Structures Masterclass `,
+      title: `JavaScript Algorithms and Data Structures Masterclass`,
       span: "Udemy (Colt Steele)",
-      timeData: "11/2022 - Current",
+      timeData: "11/2022 - 01/2023",
       text: "",
       icon: `<i class="fa-solid fa-display"></i>`,
     },

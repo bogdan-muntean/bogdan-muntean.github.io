@@ -1,17 +1,17 @@
 // Create the database for Portfolio items.
 
 export let dataPortfolioItems = [
-      {
-      title: "YourSpecialist",
-      description:
-        `<p>Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base. </p>
-        <p>I plan for this project to add the SQL database from which I will filter the information and from which I will retrieve information about the availability of each doctor in the database. And after that I will do the modularization of the components from scratch to be able to organize, set and reuse them. 
-        <br>Plus I will correct the mistake in SCSS in which I ranked the code, being a good habit.</p>`,
-      imageLink: "src/assets/portfolioImages/your-specialist-img.PNG",
-      liveLink: "",
-      repoLink: "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
-      photo: " ",
-      video: " ",
+    {
+        title: "YourSpecialist",
+        description:
+            `<p>Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base. </p>
+            <p>I plan for this project to add the SQL database from which I will filter the information and from which I will retrieve information about the availability of each doctor in the database. And after that I will do the modularization of the components from scratch to be able to organize, set and reuse them. 
+            <br>Plus I will correct the mistake in SCSS in which I ranked the code, being a good habit.</p>`,
+        imageLink: "src/assets/portfolioImages/your-specialist-img.PNG",
+        liveLink: "",
+        repoLink: "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
+        photo: " ",
+        video: " ",
     },
     { 
       title: "Task Tracker",
