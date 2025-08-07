@@ -130,7 +130,7 @@ header {
   padding-right: 20px;
   margin-bottom: 50px;
 }
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   header {
     margin-bottom: 0;
   }
@@ -175,7 +175,7 @@ header {
 .desktop-nav {
   display: none;
 }
-@media (min-width: 800px) {
+@media (min-width: 850px) {
   .desktop-nav {
     display: block;
   }
@@ -235,7 +235,7 @@ header {
 .mobile-nav .nav-icon.open .bar:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
-@media (min-width: 800px) {
+@media (min-width: 850px) {
   .mobile-nav {
     display: none;
   }
@@ -329,6 +329,21 @@ header {
   color: #afafaf;
 }
 
+@media (min-width: 850px) {
+  .container {
+    margin-top: 60px;
+  }
+}
+@media (min-width: 950px) {
+  .container {
+    margin-top: 100px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    margin-top: 200px;
+  }
+}
 /*Independed components*/
 .main-title {
   display: block;
@@ -357,6 +372,21 @@ header {
   background-color: #555555;
   transform: translateX(-50%);
 }
+@media (min-width: 850px) {
+  .main-title.with-line::before {
+    bottom: 50px;
+  }
+}
+@media (min-width: 950px) {
+  .main-title.with-line::before {
+    bottom: 80px;
+  }
+}
+@media (min-width: 1200px) {
+  .main-title.with-line::before {
+    bottom: 100px;
+  }
+}
 
 .stat-title {
   text-transform: uppercase;
@@ -375,6 +405,21 @@ header {
   bottom: 20px;
   background-color: #555555;
   transform: translateX(-50%);
+}
+@media (min-width: 850px) {
+  .stat-title::before {
+    bottom: 50px;
+  }
+}
+@media (min-width: 950px) {
+  .stat-title::before {
+    bottom: 80px;
+  }
+}
+@media (min-width: 1200px) {
+  .stat-title::before {
+    bottom: 100px;
+  }
 }
 
 @media (max-width: 270px) {

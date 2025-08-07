@@ -1,3 +1,7 @@
+$max-viewport-mobile: 850px;
+$max-viewport-tablet: 950px;
+$max-viewport-desktop: 1200px;
+
 :root {
   //var font size text
   --font-size-default: 17px;
@@ -98,6 +102,18 @@
   bottom: 20px;
   background-color: #555555;
   transform: translateX(-50%);
+
+  @media (min-width: $max-viewport-mobile) {
+    bottom: 50px;
+  }
+
+  @media (min-width: $max-viewport-tablet) {
+    bottom: 80px;
+  }
+
+  @media (min-width: $max-viewport-desktop) {
+    bottom: 100px;
+  }
 }
 @mixin vertical-center {
   position: absolute;

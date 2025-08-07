@@ -112,36 +112,41 @@
 
 .skill-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  gap: 20px;
   padding: 0 20px;
 }
 
-.skill-item {
-  display: block;
-  flex-basis: calc(var(--dimensions-div-icons-skills) - 5px);
-  min-width: 120px;
-  max-width: var(--dimensions-div-icons-skills);
-  flex-shrink: 1;
-  flex-grow: 1;
-  padding: 20px;
+.skill-category h3 {
   text-align: center;
-  box-sizing: border-box;
+  font-size: var(--font-size-title);
+  color: var(--color-text-1);
+  margin-bottom: 1rem;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: auto;
+  text-align: center;
 }
 .skill-item i {
-  display: block;
-  margin: auto;
   font-size: var(--font-size-icons-skills);
-  text-align: center;
+  color: var(--color-text-1);
 }
 .skill-item span {
-  display: block;
-  margin: auto;
   margin-top: 8px;
-  text-align: center;
+  font-size: var(--font-size-default);
+  color: var(--color-text-1);
 }
 
 .timeline-container {

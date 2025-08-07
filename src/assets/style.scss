@@ -1,6 +1,8 @@
 @use "./variables.scss" as *;
 
-$max-viewport-mobile: 800px;
+$max-viewport-mobile: 850px;
+$max-viewport-tablet: 950px;
+$max-viewport-desktop: 1200px;
 
 * {
   margin: 0;
@@ -87,7 +89,7 @@ header {
 .desktop-nav {
   display: none;
 
-  @media (min-width: $max-viewport-mobile) {
+  @media (min-width: calc($max-viewport-mobile)) {
     display: block;
 
     .nav-links {
@@ -257,6 +259,28 @@ header {
             color: #afafaf;
         }
     }
+}
+
+// containers
+
+
+
+@media (min-width: $max-viewport-mobile) {
+  .container {
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: $max-viewport-tablet) {
+  .container {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: $max-viewport-desktop) {
+  .container {
+    margin-top: 200px;
+  }
 }
 
 /*Independed components*/
