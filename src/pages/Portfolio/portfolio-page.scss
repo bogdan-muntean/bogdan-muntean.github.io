@@ -24,6 +24,7 @@
     margin-top: 17px;
     margin-bottom: 60px;
 }
+
 .portfolio-item {
   display: flex;
   width: 100%;
@@ -32,10 +33,11 @@
   align-items: stretch;
   padding: 7px;
   border-radius: 5px;
-  background-color: var(--color-grey-5);
+  background-color: var(--color-portfolio-item-bg);
   box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
   transition: var(--transition-1);
 }
+
 .portfolio-image {
   display: block;
   height: var(--photo-height-portfolio);
@@ -59,21 +61,18 @@
 .portfolio-title {
   display: block;
   text-align: center;
+  color: var(--color-portfolio-item);
 }
 .active-title{
   cursor: pointer;
   font-size: var(--font-size-subtitle);
   transition: var(--transition-1);
+
   &:hover {
     color: var(--color-secondary);
   }
 }
-.disable-title{
-  &:hover {
-    color: var(--color-grey-4);
-    transition: var(--transition-1);
-  }
-}
+
 .portfolio-description {
   display: block;
   height: 50%;
@@ -91,30 +90,24 @@
   justify-content: space-evenly;
   align-content: center;
   bottom: 3px;
+
   div {
     font-size: var(--font-size-default);
     line-height: var(--line-height-default);
+
     .active-icon {
+      color: var(--color-portfolio-item);
+
       &:hover {
           font-size: var(--font-size-default-hover);
           cursor: pointer;
           transition: var(--transition-1);
       }
     }
+
     .disable-icon {
-      color: var(--color-grey-2);
+      color: var(--color-portfolio-item-disable);
     }
-  }
-}
-.more {
-  display: block;
-  user-select: none;
-  font-weight: bold;
-  width: max-content;
-  cursor: pointer;
-  transition: var(--transition-1);
-  &:hover {
-    color: var(--color-secondary);
   }
 }
 
@@ -122,7 +115,7 @@
 .light-mode{
   .portfolio-links{
     .disable-icon {
-      color: var(--color-grey-6);
+      color: #555555;
     }
   }
 }

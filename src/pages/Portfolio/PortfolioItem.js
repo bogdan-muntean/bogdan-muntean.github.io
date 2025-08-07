@@ -20,11 +20,6 @@ export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
             </h4>
           </a>
         </div>
-        <div class="portfolio-description">
-            <div class="read-more-container more" data-more="${idArrayItem}">
-              See More
-            </div>
-        </div>
         <div class="portfolio-links">
             <div>
                 <a ${repoLinkHtmlIcon} target="_blank">

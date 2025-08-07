@@ -8,8 +8,8 @@
   --font-size-icon: 24px;
   --font-size-icon-download: 20px;
   --font-size-icons-skills: 45px;
-  --font-size-icons-workexperience: 20px;
-  --font-size-icons-timeline: 20px;
+  --font-size-icons-workexperience: 24px;
+  --font-size-icons-timeline: 24px;
   --font-size-icons-controls: 20px;
   --dimensions-div-icons-skills: 50%;
   --dimensions-div-icons-workexperience: calc(var(--font-size-icons-workexperience) * 2);
@@ -26,16 +26,15 @@
   --color-primary: #202948;
   --color-secondary: #273dae;
   --color-white: #ffffff;
-  --color-grey-0: #f8f8f8;
-  --color-grey-1: #efefef;
-  --color-grey-2: #dddddd;
-  --color-grey-3: #cccccc;
-  --color-grey-4: #999999;
-  --color-grey-5: #888888;
-  --color-grey-6: #555555;
-  --color-grey-7: #333333;
-  --color-grey-8: #111111;
   --color-black: #000000;
+  --color-text-1: #ffffff;
+  --color-icon: #ffffff;
+  --color-timeline: #999999;
+  --color-item-title: #ffffff;
+  --color-item-subtitle: #cccccc;
+  --color-portfolio-item-bg: #888888;
+  --color-portfolio-item: #fff;
+  --color-portfolio-item-disable: #dddddd;
   --br-small: 10px;
   --br-circle: 50%;
   --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
@@ -43,9 +42,15 @@
 }
 
 .light-mode {
-  --color-primary: var(--color-grey-1);
+  --color-primary: #ffffff;
   --color-secondary: #273dae;
-  --color-text-1: var(--color-black);
+  --color-timeline: #273dae;
+  --color-text-1: #000000;
+  --color-item-title: #000000;
+  --color-item-subtitle: #5e5e5e;
+  --color-portfolio-item-bg: #cccccc;
+  --color-portfolio-item: #000;
+  --color-portfolio-item-disable: #525252;
 }
 
 @media (max-width: 310px) {
@@ -124,6 +129,10 @@
   display: block;
   margin: auto;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .contact-info .contact-item .icon {
   display: block;
@@ -140,6 +149,7 @@
   font-size: var(--font-size-icon);
 }
 .contact-info .contact-item p {
+  display: block;
   text-align: center;
   margin: 0.3rem 0;
 }
@@ -153,7 +163,7 @@
   display: flex;
   align-items: center;
   color: var(--color-white);
-  background-color: var(--color-grey-5);
+  background-color: #7e7e7e;
   cursor: pointer;
   justify-content: center;
   width: 2rem;
@@ -164,9 +174,6 @@
 }
 .contact-icons a:hover {
   background-color: var(--color-secondary);
-}
-.contact-icons a:hover i {
-  color: var(--color-primary);
 }
 .contact-icons a i {
   display: flex;

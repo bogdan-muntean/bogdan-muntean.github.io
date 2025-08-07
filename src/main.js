@@ -4,7 +4,6 @@ import { pageTransitions } from "./utils/pageTransitions.js";
 import { toggleLightMode } from "./utils/toggleLightMode.js";
 
 // Add the Page Transitions function for section buttons.
-// pageTransitions(".control-btn");
 document.addEventListener('DOMContentLoaded', function () {
   const navIcon = document.getElementById('nav-icon');
   const mobileMenu = document.getElementById('menu');

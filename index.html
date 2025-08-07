@@ -67,45 +67,6 @@
         <title>Bogdan Muntean - My Presentation Website</title>
     </head>
 
-<!-- const [isOpen, setIsOpen] = useState(false); -->
-<!-- <div className="lg:hidden">
-        <div
-            id="nav-icon"
-            className={`${styles.navIcon} ${isOpen ? styles.open : ""}`}
-            onClick={() => setIsOpen(!isOpen)}
-        >
-            <span className="instructrion block h-1 bg-white transition-all"></span>
-            <span className="block h-1 bg-white transition-all"></span>
-            <span className="block h-1 bg-white transition-all"></span>
-        </div>
-
-        <div
-            className={`absolute left-1/2 mt-2 w-[90%] bg-[#222] text-white shadow-lg rounded z-50 -translate-x-1/2 
-            origin-top transform transition-all duration-700 ease-in-out
-            ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
-        >
-            <div className="flex flex-col justify-center align-center">
-            {navLinks.map((link, index) => (
-                <React.Fragment key={index}>
-                <div className="w-full flex flex-col ">
-                    <a
-                    href={link.href}
-                    className={`uppercase p-4 h-auto paragraph-semibold-1 hover:underline ${link.color || "text-white"} hover:bg-gray-700 transition-colors duration-300`}
-                    onClick={() => setIsOpen(!isOpen)}
-                    // className="uppercase p-4 h-auto text-white paragraph-semibold-1 hover:underline"
-                    >
-                    {link.name}
-                    </a>
-                    {index < navLinks.length - 1 && (
-                    <div className="w-full h-[1px] bg-white opacity-30" />
-                    )}
-                </div>
-                </React.Fragment>
-            ))}
-            </div>
-        </div>
-        </div> -->
-
     <body class="main-content">
         <button id="back-to-top" class="back-to-top" aria-label="Back to top">
             <i class="fas fa-arrow-up"></i>
@@ -225,18 +186,18 @@
             </section>
 
             <section class="container" id="portfolio-section">
-                <div class="main-title">
+                <div class="main-title with-line">
                     <h2>My <span>Portfolio</span></h2>
                 </div>
                 <p class="portfolio-about">
-                    Here is some of my work that I've done during the study of front-end
+                    Here is some of my work that I've done during the study of software
                     development.
                 </p> 
                 <div class="portfolio-list"></div>
             </section>
             <section class="container contact" id="contact-section">
                 <div class="contact-title">
-                    <div class="main-title">
+                    <div class="main-title with-line">
                     <h2>Contact <span>Me</span></h2>
                     </div>
                     <div class="contact-description">
@@ -266,24 +227,34 @@
                         <span>Email: </span>
                     </div>
                     <p>
-                        <!-- <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSKkkHDrXTVCCmDhZTzpXXSkqVRSRZwwXRJvvJNNLRKCjLmbdgZbJVtjBfhMkLBpzCNwKDfj" target="_blank"><span style="text-decoration: underline;">bm.bogdanmuntean@gmail.com</span></a> -->
-                    <a href="mailto:bm.bogdanmuntean@gmail.com" target="_blank">
-                        <span style="text-decoration: underline" id="email">
-                        bm.bogdanmuntean@gmail.com
-                        </span>
-                    </a>
+                        <a href="mailto:bm.bogdanmuntean@gmail.com" target="_blank">
+                            <span style="text-decoration: underline" id="email">
+                            bm.bogdanmuntean@gmail.com
+                            </span>
+                        </a>
                     </p>
                     </div>
                     <div class="contact-item">
-                    <div class="icon">
-                        <div class="ic">
-                        <i class="fas fa-user-graduate"></i>
+                        <div class="icon">
+                            <div class="ic">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <span>Education: </span>
                         </div>
-                        <span>Education: </span>
-                    </div>
-                    <p>
-                        <span>Informal School of IT, Cluj-Napoca</span>
-                    </p>
+                        <p>
+                            <a href="https://ac.utcluj.ro/acasa.html" target="_blank">
+                                <span style="text-decoration: underline" id="email">
+                                    Technical University, Cluj-Napoca
+                                </span>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://informalschool.com/" target="_blank">
+                                <span style="text-decoration: underline" id="email">
+                                    Informal School of IT, Cluj-Napoca
+                                </span>
+                            </a>
+                        </p>
                     </div>
                     <div class="contact-item">
                     <div class="icon">
