@@ -143,10 +143,29 @@
   font-size: var(--font-size-icons-skills);
   color: var(--color-text-1);
 }
+.skill-item .custom-icon {
+  width: var(--font-size-icons-skills);
+  height: var(--font-size-icons-skills);
+}
 .skill-item span {
   margin-top: 8px;
   font-size: var(--font-size-default);
   color: var(--color-text-1);
+}
+
+.custom-icon-light {
+  display: none;
+}
+
+.custom-icon-dark {
+  display: inline-block;
+}
+
+.light-mode .custom-icon-light {
+  display: inline-block;
+}
+.light-mode .custom-icon-dark {
+  display: none;
 }
 
 .timeline-container {

@@ -60,11 +60,34 @@
     color: var(--color-text-1);
   }
 
+  .custom-icon {
+    width: var(--font-size-icons-skills);
+    height: var(--font-size-icons-skills);
+  }
+  
   span {
     margin-top: 8px;
     font-size: var(--font-size-default);
     color: var(--color-text-1);
   }
+}
+
+.custom-icon-light {
+    display: none;
+}
+
+.custom-icon-dark {
+    display: inline-block;
+}
+
+.light-mode {
+    .custom-icon-light {
+        display: inline-block;
+    }
+    
+    .custom-icon-dark {
+        display: none;
+    }
 }
 
 //Timeline container
