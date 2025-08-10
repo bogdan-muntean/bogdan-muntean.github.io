@@ -25,30 +25,14 @@ const skillCategories = [
       { label: "Symfony Framework", icon: '<img src="src/assets/icons/symfony.svg" alt="Symfony icon" class="custom-icon" />' },
       { label: "Java", icon: '<img src="src/assets/icons/java.svg" alt="Java icon" class="custom-icon" />' },
       { label: "Spring Boot Framework", icon: '<img src="src/assets/icons/spring-boot.svg" alt="Spring Boot icon" class="custom-icon" />' },
-      { label: "Node.js", icon: '<img src="src/assets/icons/node-js.svg" alt="Node.js icon" class="custom-icon" />' },
+      { label: "Node.js", icon: '<img src="src/assets/icons/nodejs.svg" alt="Node.js icon" class="custom-icon" />' },
       { label: "C", icon: '<img src="src/assets/icons/c.svg" alt="C icon" class="custom-icon" />' },
       { label: "C++", icon: '<img src="src/assets/icons/cpp.svg" alt="C++ icon" class="custom-icon" />' },
       { label: "C#", icon: '<img src="src/assets/icons/csharp.svg" alt="C# icon" class="custom-icon" />' },
-      { label: "Restful APIs", icon: '<img src="src/assets/icons/api.svg" alt="API icon" class="custom-icon" />' },
+      { label: "Restful APIs", icon: '<i class="fa-solid fa-code"></i>' },
       { label: "Redis", icon: '<img src="src/assets/icons/redis.svg" alt="Redis icon" class="custom-icon" />' }
     ]
   },
-
-  // {
-  //   category: "Back-End Development",
-  //   skills: [
-  //     { label: "PHP", icon: '<i class="fa-brands fa-php"></i>' },
-  //     { label: "Symfony Framework", icon: '<i class="fa-brands fa-symfony"></i>' },
-  //     { label: "Java", icon: '<i class="fa-brands fa-java"></i>' },
-  //     { label: "Spring Boot Framework", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-  //     { label: "Node.js", icon: '<i class="fa-brands fa-node-js"></i>' },
-  //     { label: "C", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-  //     { label: "C++", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-  //     { label: "C#", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-  //     { label: "Restful APIs", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-  //     { label: "Redis", icon: '<i class="fa-brands fa-css3-alt"></i>' }
-  //   ]
-  // },
   {
     category: "Databases",
     skills: [
@@ -78,62 +62,40 @@ const skillCategories = [
   {
     category: "Testing & Debugging",
     skills: [
-      { label: "PHPUnit", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "JUnit", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Symfony Profiler", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Unit, Functional, and Integration Testing", icon: '<i class="fa-brands fa-css3-alt"></i>' }
+      { label: "PHPUnit", icon: '<i class="fa-solid fa-display"></i>' },
+      { label: "JUnit", icon: '<i class="fa-solid fa-display"></i>' },
+      { label: "Symfony Profiler", icon: '<i class="fa-solid fa-display"></i>' },
+      { label: "Unit, Functional, and Integration Testing", icon: '<i class="fa-solid fa-display"></i>' }
     ]
   },
   {
     category: "RPA & Automation",
     skills: [
-      { label: "Automation Anywhere", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "PowerApps", icon: '<i class="fa-brands fa-css3-alt"></i>' }
+      { label: "Automation Anywhere", icon: '<img src="src/assets/icons/automation-anywhere.png" alt="Automation Anywhere icon" class="custom-icon" />' },
+      { label: "PowerApps", icon: '<img src="src/assets/icons/powerapps.svg" alt="PowerApps icon" class="custom-icon" />' }
     ]
   },
   {
     category: "AI & Productivity Tools",
     skills: [
-      {
-        label: "ChatGPT",
-        icon: '<img src="src/assets/icons/chatgpt.svg" alt="ChatGPT" class="custom-icon" />'
-        // icon: '<img src="src/assets/icons/chatgpt-white.svg" alt="ChatGPT" class="custom-icon-dark" /> <img src="src/assets/icons/chatgpt-black.svg" alt="ChatGPT" class="custom-icon-light" />'
-      },
-      { label: "Google Gemini", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "GitHub Copilot", icon: '<i class="fa-brands fa-css3-alt"></i>' }
+      { label: "ChatGPT", icon: '<img src="src/assets/icons/chatgpt.svg" alt="ChatGPT icon" class="custom-icon" />' },
+      { label: "Google Gemini", icon: '<img src="src/assets/icons/gemini.svg" alt="Google Gemini icon" class="custom-icon" />' },
+      { label: "GitHub Copilot", icon: '<img src="src/assets/icons/github-copilot.svg" alt="GitHub Copilot icon" class="custom-icon" />' }
     ]
   },
   {
     category: "Project Management & Collaboration",
     skills: [
-      { label: "Jira", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Trello", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Asana", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Slack", icon: '<i class="fa-brands fa-slack"></i>' },
-      { label: "Figma", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Microsoft 365 Suite", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-      { label: "Adobe Photoshop", icon: '<i class="fa-brands fa-css3-alt"></i>' }
+      { label: "Jira", icon: '<img src="src/assets/icons/jira.svg" alt="Jira icon" class="custom-icon" />' },
+      { label: "Trello", icon: '<img src="src/assets/icons/trello.svg" alt="Trello icon" class="custom-icon" />' },
+      { label: "Asana", icon: '<img src="src/assets/icons/asana.svg" alt="Asana icon" class="custom-icon" />' },
+      { label: "Slack", icon: '<img src="src/assets/icons/slack.svg" alt="Slack icon" class="custom-icon" />' },
+      { label: "Figma", icon: '<img src="src/assets/icons/figma.svg" alt="Figma icon" class="custom-icon" />' },
+      { label: "Microsoft 365 Suite", icon: '<img src="src/assets/icons/microsoft-365.svg" alt="Microsoft 365 Suite icon" class="custom-icon" />' },
+      { label: "Adobe Photoshop", icon: '<img src="src/assets/icons/adobe-photoshop.svg" alt="Adobe Photoshop icon" class="custom-icon" />' }
     ]
   }
 ];
-
-// {
-//   category: "DevOps & Tools",
-//   skills: [
-//     { label: "Git", icon: '<i class="fa-brands fa-git"></i>' },
-//     { label: "GitHub", icon: '<i class="fa-brands fa-github"></i>' },
-//     { label: "GitLab", icon: '<i class="fa-brands fa-gitlab"></i>' },
-//     { label: "TortoiseGit", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-//     { label: "Docker", icon: '<i class="fa-brands fa-docker"></i>' },
-//     { label: "Jenkins", icon: '<i class="fa-brands fa-jenkins"></i>' },
-//     { label: "Cloudflare", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-//     { label: "Postman", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-//     { label: "Linux (CLI, Bash)", icon: '<i class="fa-brands fa-linux"></i>' },
-//     { label: "VS Code", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-//     { label: "IntelliJ IDEA", icon: '<i class="fa-brands fa-css3-alt"></i>' },
-//     { label: "Visual Studio", icon: '<i class="fa-brands fa-css3-alt"></i>' }
-//   ]
-// },
 
 const skillContainer = document.getElementById('skills-list');
 
