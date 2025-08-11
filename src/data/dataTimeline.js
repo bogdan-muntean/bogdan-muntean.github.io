@@ -6,21 +6,15 @@ export let dataTimeline = [
         span: "Technical University of Cluj-Napoca",
         timeData: "10/2023 - 07/2025",
         text: `During my Master's program, I deepened my theoretical knowledge and practical skills across multiple core areas of computer science:
-        Programming Languages & Paradigms: Acquired advanced proficiency in C, C++, Java, C#, PHP, and Object-Oriented Programming (OOP) principles.
 
-        Frameworks & Backend Development: Gained hands-on experience with Spring Boot for building scalable and secure backend applications.
-
-        Database Management: Studied and worked with MySQL and PostgreSQL, covering database design, optimization, and administration.
-
-        Computer Science Fundamentals: Covered Fundamental Algorithms, Computer Architecture, and Operating System Administration.
-
-        Networking & Distributed Systems: Learned about Computer Networks and Distributed Systems, focusing on protocols, architecture, and fault tolerance.
-
-        Software Design & Engineering: Applied Software Design principles to create maintainable and scalable applications.
-
-        Statistics & Data Analysis: Developed a strong foundation in statistical methods relevant to data-driven problem solving.
-
-        This program strengthened both my problem-solving skills and my ability to design, develop, and maintain robust software systems, while also reinforcing my understanding of the theoretical concepts that underpin modern computing.`,
+        -Programming Languages & Paradigms: Acquired advanced proficiency in C, C++, Java, C#, PHP, and Object-Oriented Programming (OOP) principles.
+        -Frameworks & Backend Development: Gained hands-on experience with Spring Boot for building scalable and secure backend applications.
+        -Database Management: Studied and worked with MySQL and PostgreSQL, covering database design, optimization, and administration.
+        -Computer Science Fundamentals: Covered Fundamental Algorithms, Computer Architecture, and Operating System Administration.
+        -Networking & Distributed Systems: Learned about Computer Networks and Distributed Systems, focusing on protocols, architecture, and fault tolerance.
+        -Software Design & Engineering: Applied Software Design principles to create maintainable and scalable applications.
+        -Statistics & Data Analysis: Developed a strong foundation in statistical methods relevant to data-driven problem solving.
+        -This program strengthened both my problem-solving skills and my ability to design, develop, and maintain robust software systems, while also reinforcing my understanding of the theoretical concepts that underpin modern computing.`,
         icon: `<i class="fa-solid fa-graduation-cap"></i>`,
     },
     {
