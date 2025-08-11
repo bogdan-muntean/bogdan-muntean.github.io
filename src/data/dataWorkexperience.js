@@ -6,7 +6,21 @@ export let dataWorkexperience = [
         span: "Digital Distribution Group",
         timeData: "12/2023 - 08/2025",
         text: `
-        
+        Developed and maintained responsive, user-friendly web pages using HTML5, CSS3, SCSS, JavaScript, TypeScript, React, Bootstrap, Tailwind, Twig.
+
+        Integrated external and internal APIs into the company’s main project to enhance system capabilities.
+
+        Designed and implemented new features to improve platform functionality and user experience.
+
+        Created automation commands to optimize database and framework update processes, improving efficiency and reducing downtime.
+
+        Worked on live production servers, ensuring stability, security, and smooth deployment.
+
+        Managed and optimized relational (PostgreSQL) and non-relational (MongoDB) databases.
+
+        Utilized PHP (Symfony), Doctrine, and Symfony Profiler for backend development and performance tuning.
+
+        Employed tools and technologies including Jenkins, Redis, Node.js, Git, GitLab, TortoiseGit, Cloudflare, Postman, VSC, ChatGPT, GitHub Copilot, Asana, Slack, Figma, Adobe Photoshop for development, version control, CI/CD, collaboration, and design.
         `,
         icon: `<i class="fa fa-building" aria-hidden="true"></i>`,
     },
@@ -26,5 +40,5 @@ export let dataWorkexperience = [
         I also applied the company's reframework on the same project.
         `,
         icon: `<i class="fa fa-building" aria-hidden="true"></i>`,
-    }
-]
+    },
+];
