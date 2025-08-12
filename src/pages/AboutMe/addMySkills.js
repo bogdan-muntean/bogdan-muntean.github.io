@@ -70,6 +70,10 @@ const skillCategories = [
                 icon: '<img src="src/assets/icons/nodejs.svg" alt="Node.js icon" class="custom-icon" />',
             },
             {
+                label: "Python",
+                icon: '<img src="src/assets/icons/python.svg" alt="Node.js icon" class="custom-icon" />',
+            },
+            {
                 label: "C",
                 icon: '<img src="src/assets/icons/c.svg" alt="C icon" class="custom-icon" />',
             },
@@ -81,7 +85,10 @@ const skillCategories = [
                 label: "C#",
                 icon: '<img src="src/assets/icons/csharp.svg" alt="C# icon" class="custom-icon" />',
             },
-            { label: "Restful APIs", icon: '<i class="fa-solid fa-code"></i>' },
+            {
+                label: "Restful APIs",
+                icon: '<i class="fa-solid fa-code"></i>',
+            },
             {
                 label: "Redis",
                 icon: '<img src="src/assets/icons/redis.svg" alt="Redis icon" class="custom-icon" />',
@@ -156,6 +163,10 @@ const skillCategories = [
             {
                 label: "Visual Studio",
                 icon: '<img src="src/assets/icons/visual-studio.svg" alt="Visual Studio icon" class="custom-icon" />',
+            },
+            {
+                label: "Virtualization (VirtualBox)",
+                icon: '<img src="src/assets/icons/virtualbox.svg" alt="Virtual Box icon" class="custom-icon" />',
             },
         ],
     },

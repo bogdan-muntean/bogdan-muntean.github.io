@@ -6,21 +6,17 @@ export let dataWorkexperience = [
         span: "Digital Distribution Group",
         timeData: "12/2023 - 08/2025",
         text: `
-        Developed and maintained responsive, user-friendly web pages using HTML5, CSS3, SCSS, JavaScript, TypeScript, React, Bootstrap, Tailwind, Twig.
+        As a Junior Software Developer at Digital Distribution Group, I worked on a variety of development tasks that enhanced both my technical skills and problem-solving abilities:
+        -developed and maintained responsive, user-friendly web pages using HTML5, CSS3, SCSS, JavaScript, TypeScript, React, Bootstrap, Tailwind, and Twig;
+        -integrated both external and internal APIs into the company’s main project to enhance system capabilities;
+        -designed and implemented new features to improve platform functionality and user experience;
+        -created automation commands to optimize database and framework update processes, improving efficiency and reducing downtime;
+        -worked on live production servers, ensuring stability, security, and smooth deployment;
+        -managed and optimized relational (PostgreSQL) and non-relational (MongoDB) databases;
+        -utilized PHP (Symfony), Doctrine, and Symfony Profiler for backend development and performance tuning;
+        -employed tools and technologies including Jenkins, Redis, Node.js, Git, GitLab, TortoiseGit, Cloudflare, Postman, VS Code, ChatGPT, GitHub Copilot, Asana, Slack, Figma, and Adobe Photoshop for development, version control, CI/CD, collaboration, and design.
 
-        Integrated external and internal APIs into the company’s main project to enhance system capabilities.
-
-        Designed and implemented new features to improve platform functionality and user experience.
-
-        Created automation commands to optimize database and framework update processes, improving efficiency and reducing downtime.
-
-        Worked on live production servers, ensuring stability, security, and smooth deployment.
-
-        Managed and optimized relational (PostgreSQL) and non-relational (MongoDB) databases.
-
-        Utilized PHP (Symfony), Doctrine, and Symfony Profiler for backend development and performance tuning.
-
-        Employed tools and technologies including Jenkins, Redis, Node.js, Git, GitLab, TortoiseGit, Cloudflare, Postman, VSC, ChatGPT, GitHub Copilot, Asana, Slack, Figma, Adobe Photoshop for development, version control, CI/CD, collaboration, and design.
+        From this experience, I learned to work effectively in a production environment, collaborate with multidisciplinary teams, and apply best practices in both front-end and back-end development.
         `,
         icon: `<i class="fa fa-building" aria-hidden="true"></i>`,
     },
@@ -30,6 +26,7 @@ export let dataWorkexperience = [
         timeData: "07/2023 - 09/2023",
         text: `
         As an Intern RPA Specialist at Automatify, I learned more about the following: 
+        
         -process optimization and automation methods that help significantly in operational efficiency and productivity;
         -designing and developing methods for RPA bots to automate repetitive and rule-based tasks;
         -implemented exception handling mechanisms to ensure smooth bot operation and minimize manual intervention;

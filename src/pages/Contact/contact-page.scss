@@ -63,11 +63,14 @@
       display: block;
       text-align: center;
       margin: 0.3rem 0;
-      // span {
-      // }
+
+      span {
+        display: block-inline;
+      }
     }
   }
 }
+
 .contact-icons {
   display: flex;
   margin-top: 1rem;
@@ -99,5 +102,19 @@
       justify-content: center;
       font-size: var(--font-size-icon);
     }
+  }
+}
+
+.icon-languages {
+  position: relative;
+  left: -4px;
+  margin-bottom: 10px !important;
+}
+
+.languages {
+  span {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }

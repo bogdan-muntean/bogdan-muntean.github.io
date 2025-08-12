@@ -153,6 +153,9 @@
   text-align: center;
   margin: 0.3rem 0;
 }
+.contact-info .contact-item p span {
+  display: block-inline;
+}
 
 .contact-icons {
   display: flex;
@@ -180,4 +183,16 @@
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-icon);
+}
+
+.icon-languages {
+  position: relative;
+  left: -4px;
+  margin-bottom: 10px !important;
+}
+
+.languages span {
+  display: block;
+  width: 100%;
+  text-align: center;
 }/*# sourceMappingURL=contact-page.css.map */
