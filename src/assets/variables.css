@@ -6,13 +6,16 @@
   --font-size-title: calc(var(--font-size-subtitle) + 5px);
   --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
   --font-size-icon: 24px;
+  --font-size-icon-up: 24px;
   --font-size-icon-download: 20px;
   --font-size-icons-skills: 45px;
   --font-size-icons-workexperience: 24px;
   --font-size-icons-timeline: 24px;
   --font-size-icons-controls: 20px;
   --dimensions-div-icons-skills: 50%;
-  --dimensions-div-icons-workexperience: calc(var(--font-size-icons-workexperience) * 2);
+  --dimensions-div-icons-workexperience: calc(
+      var(--font-size-icons-workexperience) * 2
+  );
   --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
   --dimensions-div-icons-controls: 55px;
   --photo-principal: 160px;
@@ -88,5 +91,16 @@
 @media (min-width: 950px) {
   :root {
     --dimensions-div-icons-skills: 20%;
+    --photo-principal: 400px;
+  }
+}
+@media (min-width: 1000px) {
+  :root {
+    --font-size-icon-up: 35px;
+  }
+}
+@media (min-width: 1100px) {
+  :root {
+    --photo-principal: 400px;
   }
 }/*# sourceMappingURL=variables.css.map */

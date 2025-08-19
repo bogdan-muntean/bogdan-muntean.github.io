@@ -26,7 +26,6 @@ export let dataWorkexperience = [
         timeData: "07/2023 - 09/2023",
         text: `
         As an Intern RPA Specialist at Automatify, I learned more about the following: 
-        
         -process optimization and automation methods that help significantly in operational efficiency and productivity;
         -designing and developing methods for RPA bots to automate repetitive and rule-based tasks;
         -implemented exception handling mechanisms to ensure smooth bot operation and minimize manual intervention;

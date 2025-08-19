@@ -3,160 +3,172 @@ $max-viewport-tablet: 950px;
 $max-viewport-desktop: 1200px;
 
 :root {
-  //var font size text
-  --font-size-default: 17px;
-  --font-size-default-hover: calc(var(--font-size-default) + 1px);
-  --font-size-nav: 18px;
+    //var font size text
+    --font-size-default: 17px;
+    --font-size-default-hover: calc(var(--font-size-default) + 1px);
+    --font-size-nav: 18px;
 
-  //var title size
-  --font-size-subtitle: 20px;
-  --font-size-title: calc(var(--font-size-subtitle) + 5px);
-  --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
+    //var title size
+    --font-size-subtitle: 20px;
+    --font-size-title: calc(var(--font-size-subtitle) + 5px);
+    --font-size-big-title: calc(var(--font-size-subtitle) + 12px);
 
-  //var icons size
-  --font-size-icon: 24px;
-  --font-size-icon-download: 20px;
-  --font-size-icons-skills: 45px;
-  --font-size-icons-workexperience: 24px;
-  --font-size-icons-timeline: 24px;
-  --font-size-icons-controls: 20px;
+    //var icons size
+    --font-size-icon: 24px;
+    --font-size-icon-up: 24px;
+    --font-size-icon-download: 20px;
+    --font-size-icons-skills: 45px;
+    --font-size-icons-workexperience: 24px;
+    --font-size-icons-timeline: 24px;
+    --font-size-icons-controls: 20px;
 
-  --dimensions-div-icons-skills: 50%;
-  --dimensions-div-icons-workexperience: calc(var(--font-size-icons-workexperience) * 2);
-  --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
-  --dimensions-div-icons-controls: 55px;
+    --dimensions-div-icons-skills: 50%;
+    --dimensions-div-icons-workexperience: calc(
+        var(--font-size-icons-workexperience) * 2
+    );
+    --dimensions-div-icons-timeline: calc(var(--font-size-icons-timeline) * 2);
+    --dimensions-div-icons-controls: 55px;
 
-  //var photo size
-  --photo-principal: 160px;
-  --photo-height-portfolio: 300px;
+    //var photo size
+    --photo-principal: 160px;
+    --photo-height-portfolio: 300px;
 
-  //var line height size
-  --line-height-default: 26px;
+    //var line height size
+    --line-height-default: 26px;
 
-  //dimensions width and height
-  --width-controls: 100%;
-  --height-controls: 80px;
+    //dimensions width and height
+    --width-controls: 100%;
+    --height-controls: 80px;
 
-  //padding
-  --padding-bottom-container-default: 34px;
+    //padding
+    --padding-bottom-container-default: 34px;
 
-  //margin
-  --margin-bottom-container-default: 34px;
+    //margin
+    --margin-bottom-container-default: 34px;
 
-  // gap value
-  --gap-portfolio-list: 20px;
+    // gap value
+    --gap-portfolio-list: 20px;
 
-  //var colors
-  --color-primary: #202948;
-  --color-secondary: #273dae;
+    //var colors
+    --color-primary: #202948;
+    --color-secondary: #273dae;
 
-  --color-white: #ffffff;
-  --color-black: #000000;
+    --color-white: #ffffff;
+    --color-black: #000000;
 
-  --color-text-1: #ffffff;
+    --color-text-1: #ffffff;
 
-  --color-icon: #ffffff;
-  --color-timeline: #999999;
+    --color-icon: #ffffff;
+    --color-timeline: #999999;
 
-  --color-item-title: #ffffff;
-  --color-item-subtitle: #cccccc;
+    --color-item-title: #ffffff;
+    --color-item-subtitle: #cccccc;
 
-  --color-portfolio-item-bg: #888888;
-  --color-portfolio-item: #fff;
-  --color-portfolio-item-disable: #dddddd;
+    --color-portfolio-item-bg: #888888;
+    --color-portfolio-item: #fff;
+    --color-portfolio-item-disable: #dddddd;
 
-  //var borders
-  --br-small: 10px; //border radius small.
-  --br-circle: 50%;
-  --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    //var borders
+    --br-small: 10px; //border radius small.
+    --br-circle: 50%;
+    --box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
 
-  //var transitions
-  --transition-1: all 0.4s ease-in-out;
+    //var transitions
+    --transition-1: all 0.4s ease-in-out;
 }
 
 .light-mode {
-  --color-primary: #ffffff;
-  --color-secondary: #273dae;
+    --color-primary: #ffffff;
+    --color-secondary: #273dae;
 
-  --color-timeline: #273dae;
+    --color-timeline: #273dae;
 
-  --color-text-1: #000000;
+    --color-text-1: #000000;
 
-  --color-item-title: #000000;
-  --color-item-subtitle: #5e5e5e;
+    --color-item-title: #000000;
+    --color-item-subtitle: #5e5e5e;
 
-  --color-portfolio-item-bg: #cccccc;
-  --color-portfolio-item: #000;
-  --color-portfolio-item-disable: #525252;
+    --color-portfolio-item-bg: #cccccc;
+    --color-portfolio-item: #000;
+    --color-portfolio-item-disable: #525252;
 }
 
 // ### Variables and Mixins - Media Query ###
 // Mixins
 @mixin horizontal-line-above {
-  content: "";
-  display: block;
-  width: 70%;
-  height: 1px;
-  position: relative;
-  left: 50%;
-  bottom: 20px;
-  background-color: #555555;
-  transform: translateX(-50%);
+    content: "";
+    display: block;
+    width: 70%;
+    height: 1px;
+    position: relative;
+    left: 50%;
+    bottom: 20px;
+    background-color: #555555;
+    transform: translateX(-50%);
 
-  @media (min-width: $max-viewport-mobile) {
-    bottom: 50px;
-  }
+    @media (min-width: $max-viewport-mobile) {
+        bottom: 50px;
+    }
 
-  @media (min-width: $max-viewport-tablet) {
-    bottom: 80px;
-  }
+    @media (min-width: $max-viewport-tablet) {
+        bottom: 80px;
+    }
 
-  @media (min-width: $max-viewport-desktop) {
-    bottom: 100px;
-  }
+    @media (min-width: $max-viewport-desktop) {
+        bottom: 100px;
+    }
 }
 @mixin vertical-center {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 :root {
-  // Media
-  // MAX WIDTH
-  @media (max-width: 310px) {
-    --dimensions-div-icons-skills: 100%;
-  }
+    // Media
+    // MAX WIDTH
+    @media (max-width: 310px) {
+        --dimensions-div-icons-skills: 100%;
+    }
 
-  // MIN WIDTH
-  @media (min-width: 320px) {
-    --photo-principal: 60vw;
-  }
-  @media (min-width: 650px) {
-    --photo-principal: 40vw;
-  }
-  @media (min-width: 800px) {
-    --font-size-default: 25px;
-    --font-size-default-hover: 27px;
-    //var title size
-    --font-size-subtitle: 26px;
-    --font-size-title: 35px;
-    --font-size-big-title: 40px;
-    //var icon size
-    --font-size-icon-download: 30px;
-    --font-size-icons-skills: 55px;
-    --font-size-icons-timeline: 28px;
-    --font-size-icons-workexperience: 28px;
-    --dimensions-div-icons-skills: 33%;
+    // MIN WIDTH
+    @media (min-width: 320px) {
+        --photo-principal: 60vw;
+    }
+    @media (min-width: 650px) {
+        --photo-principal: 40vw;
+    }
+    @media (min-width: 800px) {
+        --font-size-default: 25px;
+        --font-size-default-hover: 27px;
+        //var title size
+        --font-size-subtitle: 26px;
+        --font-size-title: 35px;
+        --font-size-big-title: 40px;
+        //var icon size
+        --font-size-icon-download: 30px;
+        --font-size-icons-skills: 55px;
+        --font-size-icons-timeline: 28px;
+        --font-size-icons-workexperience: 28px;
+        --dimensions-div-icons-skills: 33%;
 
-    //width
-    --width-controls: 50px;
-    //photo
-    --photo-principal: 35vw;
-    //height
-    --line-height-default: 32px;
-  }
-  @media (min-width: 950px) {
-    --dimensions-div-icons-skills: 20%;
-  }
+        //width
+        --width-controls: 50px;
+        //photo
+        --photo-principal: 35vw;
+        //height
+        --line-height-default: 32px;
+    }
+    @media (min-width: 950px) {
+        --dimensions-div-icons-skills: 20%;
+        --photo-principal: 400px;
+    }
+
+    @media (min-width: 1000px) {
+        --font-size-icon-up: 35px;
+    }
+
+    @media (min-width: 1100px) {
+        --photo-principal: 400px;
+    }
 }
