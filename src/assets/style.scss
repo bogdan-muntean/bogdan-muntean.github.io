@@ -21,6 +21,7 @@ body {
     scroll-behavior: smooth;
     max-width: 1400px;
     margin: auto;
+    position: relative;
 }
 
 a {
@@ -44,10 +45,23 @@ header {
     gap: 20px;
     padding-right: 20px;
     margin-bottom: 50px;
+    background-color: transparent;
 
     @media (max-width: $max-viewport-mobile) {
         margin-bottom: 0;
     }
+}
+
+.header-background {
+    display: block;
+    position: absolute;
+    background-color: #0035ff29;
+    z-index: 1;
+    height: 80px;
+    width: 100vw;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 // Back to top button
@@ -90,6 +104,12 @@ header {
 /* Controls - butoanele pentru navigare */
 .desktop-nav {
     display: none;
+    width: 100%;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: 2;
 
     @media (min-width: calc($max-viewport-mobile)) {
         display: block;
@@ -99,6 +119,7 @@ header {
             justify-content: center;
             align-items: center;
             gap: 20px;
+            margin: 0 auto;
 
             nav {
                 display: flex;
@@ -241,6 +262,7 @@ header {
     cursor: pointer;
     background-color: var(--color-secondary);
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
 
     &:active {
         transform: translateY(-3px);
