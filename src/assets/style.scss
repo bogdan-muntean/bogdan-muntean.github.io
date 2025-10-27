@@ -46,6 +46,8 @@ header {
     padding-right: 20px;
     margin-bottom: 50px;
     background-color: transparent;
+    z-index: 999;
+    position: relative;
 
     @media (max-width: $max-viewport-mobile) {
         margin-bottom: 0;
