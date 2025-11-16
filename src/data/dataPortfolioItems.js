@@ -13,7 +13,7 @@ export let dataPortfolioItems = [
     {
         title: "Energy Monitoring System",
         description: ``,
-        imageLink: "src/assets/portfolioImages/energy-monitoring-system.PNG",
+        imageLink: "src/assets/portfolioImages/energy-monitoring-system.png",
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/Energy-Monitoring-System-Microservices-Architecture",
