@@ -21,6 +21,15 @@ export let dataPortfolioItems = [
         video: " ",
     },
     {
+        title: "Buddy Weather App",
+        description: ``,
+        imageLink: "src/assets/portfolioImages/buddy-weather-app.PNG",
+        liveLink: "",
+        repoLink: "https://github.com/bogdan-muntean/buddy-weather",
+        photo: " ",
+        video: " ",
+    },
+    {
         title: "YourSpecialist",
         description: `<p>Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base. </p>
 <p>I plan for this project to add the SQL database from which I will filter the information and from which I will retrieve information about the availability of each doctor in the database. And after that I will do the modularization of the components from scratch to be able to organize, set and reuse them. 
