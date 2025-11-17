@@ -2,7 +2,7 @@
 
 export let dataPortfolioItems = [
     {
-        title: "Fintrack",
+        title: "Fintrack - Budget Tracker App",
         description: ``,
         imageLink: "src/assets/portfolioImages/fintrack.PNG",
         liveLink: "",
