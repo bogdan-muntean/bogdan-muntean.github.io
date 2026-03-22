@@ -215,11 +215,11 @@ const skillCategories = [
             },
             {
                 label: "Cursor",
-                icon: '<img src="src/assets/icons/cursor-ai-image.png" alt="Cursor icon" class="custom-icon" />',
+                icon: '<img src="src/assets/icons/cursor-ai-image.png" alt="Cursor AI icon" class="custom-icon" />',
             },
             {
                 label: "Antigravity",
-                icon: '<img src="src/assets/icons/antigravity-ai-img.png" alt="Antigravity icon" class="custom-icon" />',
+                icon: '<img src="src/assets/icons/antigravity-ai-img.png" alt="Antigravity AI icon" class="custom-icon" />',
             },
         ],
     },
