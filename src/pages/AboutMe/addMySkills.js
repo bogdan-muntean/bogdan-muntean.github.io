@@ -213,6 +213,14 @@ const skillCategories = [
                 label: "GitHub Copilot",
                 icon: '<img src="src/assets/icons/github-copilot.svg" alt="GitHub Copilot icon" class="custom-icon" />',
             },
+            {
+                label: "Cursor",
+                icon: '<img src="src/assets/icons/cursor-ai-image.png" alt="Cursor icon" class="custom-icon" />',
+            },
+            {
+                label: "Antigravity",
+                icon: '<img src="src/assets/icons/antigravity-ai-img.png" alt="Antigravity icon" class="custom-icon" />',
+            },
         ],
     },
     {
