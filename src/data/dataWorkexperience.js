@@ -2,6 +2,22 @@
 
 export let dataWorkexperience = [
     {
+        title: `PHP Software Developer`,
+        span: "Authentic Spirit Romania",
+        timeData: "01/2026 - Current",
+        text: `
+        As a PHP Software Developer at Authentic Spirit Romania, I gained hands-on experience in software development using PHP and the Drupal framework:
+        -developed and maintained backend functionalities using PHP and Drupal;
+        -automated data processing workflows from Excel files;
+        -performed database operations and optimizations;
+        -refactored and improved front-end pages for better performance and usability;
+        -utilized modern development tools such as Cursor, Antigravity, and ChatGPT to improve productivity and streamline workflows.
+
+        This role helped me strengthen my backend development skills and improve my efficiency using modern AI-assisted tools.
+        `,
+        icon: `<i class="fa fa-building" aria-hidden="true"></i>`,
+    },
+    {
         title: `Junior Software Developer`,
         span: "Digital Distribution Group",
         timeData: "12/2023 - 08/2025",
