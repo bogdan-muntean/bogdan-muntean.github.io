@@ -11,7 +11,7 @@ export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
   let repoLinkHtmlIcon = checkIcon(repoLink);
 
   portfolioItemHtml.innerHTML = `
-    <div class="portfolio-image" data-more="${idArrayItem}" style="background-image: url(./${image})"></div>
+    <div class="portfolio-image" style="background-image: url(./${image})"></div>
     <div class="portfolio-text-container">
         <div class="portfolio-title">
           <a ${liveLinkHtmlTitle}>

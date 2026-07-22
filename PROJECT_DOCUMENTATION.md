@@ -14,7 +14,7 @@ There is no backend application, API server, database connection, build pipeline
 - `src/main.js`: Main JavaScript module for general UI behavior. It handles mobile menu open/close behavior, closes the mobile menu on link click/outside click/desktop resize, controls the back-to-top button, and activates the theme toggle through `toggleLightMode(".theme-btn")`.
 - `src/pages/AboutMe/index.js`: Loads and renders work experience and timeline data, and imports `src/pages/AboutMe/addMySkills.js` for skill rendering.
 - `src/pages/Portfolio/index.js`: Loads portfolio data and renders portfolio cards into `.portfolio-list`.
-- `src/pages/Project/index.js`: Contains intended project-detail view behavior, but it does not match the current `index.html` structure. It is currently guarded so the legacy behavior stays inactive when required DOM is missing. See "Known limitations".
+- `src/pages/Project/index.js`: Contains intended project-detail view behavior that does not match the current `index.html` structure. As of Phase 2 it is no longer loaded by `index.html`; the file is kept in the repo, reserved for the Phase 7 overlay redesign. See "Known limitations".
 
 ## How The App Works
 
@@ -26,7 +26,6 @@ There is no backend application, API server, database connection, build pipeline
    - `src/pages/Home/home-section.css`
    - `src/pages/AboutMe/about-me-section.css`
    - `src/pages/Portfolio/portfolio-page.css`
-   - `src/pages/Project/project-page.css`
    - `src/pages/Contact/contact-page.css`
 4. Static HTML sections render immediately:
    - `#home-section`
@@ -49,7 +48,7 @@ There is no backend application, API server, database connection, build pipeline
    - work experience from `src/data/dataWorkexperience.js` into `.experience-container`.
    - timeline entries from `src/data/dataTimeline.js` into `.timeline-container`.
 7. `src/pages/Portfolio/index.js` renders project cards from `src/data/dataPortfolioItems.js` into `.portfolio-list`.
-8. `src/pages/Project/index.js` loads after portfolio cards render, but it only attaches project-detail handlers if legacy `.active`, `#project`, and `#portfolio` DOM exists. Those elements are absent in the current `index.html`.
+8. `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2. It targeted legacy `.active`, `#project`, and `#portfolio` DOM that the current markup does not contain; the file is reserved for the Phase 7 overlay redesign.
 
 ## Main Modules, Pages, And Components
 
@@ -115,7 +114,7 @@ There is no backend application, API server, database connection, build pipeline
 - `src/pages/Portfolio/PortfolioItem.js`
   - Creates `.portfolio-item` cards.
   - Uses `checkLink()` and `checkIcon()` to enable or visually disable portfolio links.
-  - Adds `data-more` to `.portfolio-image`, apparently for project-detail behavior.
+  - Previously added `data-more` to `.portfolio-image` for the legacy detail flow; removed in Phase 2.
 
 ### Project Detail Area
 
@@ -124,7 +123,7 @@ There is no backend application, API server, database connection, build pipeline
   - Attempts to hide an `.active` section and show `#project`.
   - Attempts to populate `#project` from `dataPortfolioItems`.
   - Attempts to return to `#portfolio` through `.project-back`.
-  - Current limitation: `index.html` does not define `#project`, `#portfolio`, or `.active` sections required by the legacy flow. Phase 1 guards prevent the handler from attaching when those elements are absent.
+  - As of Phase 2 this file is no longer loaded by `index.html`; it is reserved for the Phase 7 overlay redesign. `index.html` does not define the `#project`, `#portfolio`, or `.active` sections the legacy flow required.
 
 ### Contact Area
 
@@ -244,16 +243,16 @@ No npm-installed external library is declared.
 
 ## Known Limitations Visible From Code
 
-- `src/pages/Project/index.js` appears stale relative to `index.html`.
+- `src/pages/Project/index.js` is stale relative to `index.html` and, as of Phase 2, is no longer loaded by it (reserved for Phase 7):
   - It expects `#project`, but no such element exists.
   - It expects `#portfolio`, but the current portfolio section is `#portfolio-section`.
   - It expects an `.active` section, but no section has this class in `index.html`.
-  - It is guarded so click behavior is not attached unless missing `.active`, `#project`, and `#portfolio` elements exist.
+  - It was internally guarded (Phase 1) so no click behavior attached without those missing elements, and is now not loaded at all (Phase 2).
 - `src/pages/Portfolio/PortfolioItem.js` labels the repo link as `Source` but uses a display icon, and labels the live link as `Live` but uses a GitHub icon. Whether this is intentional is unclear from current codebase.
 - Several portfolio data fields use `" "` for `photo` and `video`.
 - Some strings in data files show mojibake/encoding artifacts in words such as Master's, dash-separated dates, Babes-Bolyai, and Hatieganu. Encoding history is unclear from current codebase.
-- `index.html` links to `src/assets/docs/Recommendation_Letters.pdf`, but only `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` exists.
-- `index.html` repeats `id="email"` on multiple contact spans.
+- `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
+- `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - `package.json` points `main` to missing `app.js`, points `directories.doc` to missing `docs/`, and declares `license: "ISC"` while `LICENSE.md` contains MIT License text.
 - No automated tests are present.
 - No local development server, Sass compilation, build, lint, or deployment scripts are defined.

@@ -15,7 +15,7 @@ The site appears functionally centered around `index.html` and several dynamic r
 - Portfolio cards are generated from `src/data/dataPortfolioItems.js`.
 - Contact and main personal text are mostly hardcoded in `index.html`.
 
-Important: project-detail behavior in `src/pages/Project/index.js` appears inconsistent with the current `index.html`. Phase 1 safety work now prevents it from attaching broken behavior when the legacy project-detail DOM is missing, but the feature itself remains stale/unresolved.
+Important: project-detail behavior in `src/pages/Project/index.js` is stale relative to the current `index.html`. As of Phase 2 the file is no longer loaded by `index.html` (its `<script>` tag was removed), and `src/pages/Project/project-page.css` is no longer linked either. Both files remain in the repo, reserved for the Phase 7 overlay redesign.
 
 Important future architecture requirement: the user wants to eventually avoid editing live project code for every project content update. `PHASES_INFO.md` documents future static-compatible options such as repo-controlled JSON, Excel-to-JSON, Google Sheets-to-JSON, GitHub Actions generation, and external/cloud image workflows. None of those options are implemented yet.
 
@@ -93,9 +93,8 @@ Important future architecture requirement: the user wants to eventually avoid ed
   - Creates portfolio card DOM elements from title, image, live link, and repo link.
 
 - `src/pages/Project/index.js`
-  - Intended project-detail script.
-  - Currently expects DOM that does not exist in `index.html`.
-  - Guarded in Phase 1 so it does not attach project-detail click behavior unless `.active`, `#project`, and `#portfolio` exist.
+  - Intended project-detail script; expects `.active`, `#project`, and `#portfolio` DOM that does not exist in `index.html`.
+  - No longer loaded by `index.html` as of Phase 2 (script tag removed); guarded internally since Phase 1. Kept in the repo, reserved for the Phase 7 overlay redesign.
 
 - `src/data/dataPortfolioItems.js`
   - Portfolio project data and commented-out older project data.
@@ -153,7 +152,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 4. If changing JavaScript:
    - Preserve the existing module script loading in `index.html`.
    - Check DOM element existence before attaching listeners.
-   - Be careful with project-detail behavior. `Project/index.js` currently loads after `Portfolio/index.js`, but the current page still lacks the legacy `.active`, `#project`, and `#portfolio` elements needed for the intended detail flow.
+   - Be careful with project-detail behavior. As of Phase 2, `Project/index.js` is no longer loaded by `index.html`. The page still lacks the legacy `.active`, `#project`, and `#portfolio` elements the intended detail flow needs; the file is reserved for the Phase 7 overlay redesign.
 5. If adding dependencies:
    - Update `package.json` and `package-lock.json`.
    - Add documented install/run/build scripts if needed.
@@ -167,11 +166,11 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Do not assume `src/pages/Project/index.js` works; verify and reconcile its expected DOM first.
 - Do not assume SCSS changes affect the site until compiled CSS is updated.
 - Do not rely on `npm test`; it is a placeholder that exits with failure.
-- Do not assume the recommendation letters download link is correct; `index.html` currently points to `src/assets/docs/Recommendation_Letters.pdf`, while the existing file is `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf`.
+- The recommendation letters download link in `index.html` points to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 
 ## Suggested Next Improvements
 
-- Fix or remove the stale project-detail flow in `src/pages/Project/index.js`.
+- Design the Phase 7 overlay before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
 - Fix the broken recommendation letters PDF link in `index.html`.
 - Add a real local development script, for example a static server, after choosing the preferred tool.
 - Add a Sass compilation workflow and document it.
@@ -187,8 +186,8 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Portfolio project details are guarded against runtime errors, but not currently reliable as a feature because required DOM nodes/classes do not exist.
 - Current package metadata has a `main` value of `app.js`, but no `app.js` exists. This does not affect the static site unless npm package entry behavior is used.
 - Current package metadata points `directories.doc` to `docs/`, but no `docs/` folder exists.
-- `index.html` repeats `id="email"` on multiple contact spans.
-- `index.html` links to `src/assets/docs/Recommendation_Letters.pdf`, but that file is not present.
+- `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
+- The recommendation letters PDF link in `index.html` resolves to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (verified over HTTP in Phase 2).
 - `src/pages/Portfolio/portfolio-page.scss` and `.css` target `#portfolio`, but the current HTML section is `#portfolio-section`.
 - `src/pages/Contact/contact-page.scss` and `.css` include `#contact`, while the current HTML uses `id="contact-section"` with `class="contact"`.
 - `package.json` declares `license: "ISC"`, while `LICENSE.md` contains MIT License text; the intended license is unclear from current codebase.

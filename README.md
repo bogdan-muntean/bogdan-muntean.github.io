@@ -113,8 +113,8 @@ Additional documentation files in this repository:
 
 ## Known Limitations Visible From Code
 
-- `src/pages/Project/index.js` is guarded against missing legacy DOM, but it still expects `.active`, `#project`, and `#portfolio` to enable project-detail behavior. The current `index.html` contains `#portfolio-section` and no `#project` section.
-- `index.html` links to `src/assets/docs/Recommendation_Letters.pdf`, but the repository contains `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf`.
+- `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7). It expected `.active`, `#project`, and `#portfolio`, but the current `index.html` uses `#portfolio-section` and has no `#project` section.
+- `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 - `package.json` has no scripts for Sass compilation, local serving, building, deployment, linting, or testing.
 - Several Font Awesome CSS versions are loaded from CDN in `index.html`; whether all are required is unclear from current codebase.
 - `package.json` metadata has confirmed inconsistencies: `main` points to missing `app.js`, `directories.doc` points to missing `docs/`, and `license` is `ISC` while `LICENSE.md` contains MIT License text.

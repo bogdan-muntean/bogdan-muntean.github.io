@@ -229,7 +229,7 @@ Special behavior:
 - Uses `checkLink(liveLink)` for the project title anchor.
 - Uses `checkIcon(repoLink)` for source link behavior.
 - Uses `checkIcon(liveLink)` for live link behavior.
-- Sets `data-more` on `.portfolio-image`.
+- No longer sets `data-more` on `.portfolio-image`; that legacy attribute was removed in Phase 2.
 
 Used by:
 
@@ -336,4 +336,4 @@ Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code;
 
 - Most component functions use `innerHTML`, so only trusted local data should be inserted unless escaping/sanitization is added.
 - Renderer functions now guard missing target containers, but future renderer code should keep the same pattern.
-- `src/pages/Project/index.js` currently cannot be treated as a reliable component because its required DOM structure is absent from `index.html`.
+- `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7); its required DOM structure is absent from the current markup.

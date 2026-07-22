@@ -55,7 +55,7 @@
 - `src/main.js`: Main general UI script.
 - `src/pages/AboutMe/index.js`: About/work/timeline/skills dynamic entry.
 - `src/pages/Portfolio/index.js`: Portfolio dynamic entry.
-- `src/pages/Project/index.js`: Intended project-detail entry, currently guarded and inactive because required legacy DOM is absent.
+- `src/pages/Project/index.js`: Intended project-detail entry; no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7). Its required legacy DOM is absent from the current markup.
 
 ## UI Files
 

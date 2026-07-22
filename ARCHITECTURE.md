@@ -80,8 +80,7 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
    - skills into `#skills-list` via `addMySkills.js`
 7. `index.html` loads `src/pages/Portfolio/index.js` as a module.
 8. `src/pages/Portfolio/index.js` renders portfolio cards into `.portfolio-list`.
-9. `index.html` loads `src/pages/Project/index.js` as a module.
-10. `src/pages/Project/index.js` checks for legacy project-detail DOM before attaching project-detail click handlers. The current HTML does not include `.active`, `#project`, or `#portfolio`, so the guarded project-detail behavior remains inactive.
+9. `index.html` no longer loads `src/pages/Project/index.js` (its script tag was removed in Phase 2). The file remains in the repo, reserved for the Phase 7 overlay redesign; it targeted legacy `.active`/`#project`/`#portfolio` DOM that the current markup does not contain.
 
 ## File Dependencies
 
@@ -97,14 +96,14 @@ index.html
   |   |-- src/pages/AboutMe/addTimelineItems.js
   |   |   `-- src/pages/AboutMe/TimelineItem.js
   |   `-- src/pages/AboutMe/addMySkills.js
-  |-- src/pages/Portfolio/index.js
-  |   |-- src/data/dataPortfolioItems.js
-  |   `-- src/pages/Portfolio/addPortfolioItems.js
-  |       `-- src/pages/Portfolio/PortfolioItem.js
-  |           |-- src/utils/checkLink.js
-  |           `-- src/utils/checkIcon.js
-  `-- src/pages/Project/index.js
-      `-- src/data/dataPortfolioItems.js
+  `-- src/pages/Portfolio/index.js
+      |-- src/data/dataPortfolioItems.js
+      `-- src/pages/Portfolio/addPortfolioItems.js
+          `-- src/pages/Portfolio/PortfolioItem.js
+              |-- src/utils/checkLink.js
+              `-- src/utils/checkIcon.js
+
+(`src/pages/Project/index.js` is present in the repo but no longer loaded by `index.html`; reserved for Phase 7.)
 ```
 
 CSS dependencies:
@@ -116,8 +115,9 @@ index.html
   |-- src/pages/Home/home-section.css
   |-- src/pages/AboutMe/about-me-section.css
   |-- src/pages/Portfolio/portfolio-page.css
-  |-- src/pages/Project/project-page.css
   `-- src/pages/Contact/contact-page.css
+
+(`src/pages/Project/project-page.css` exists but is no longer linked by `index.html`; reserved for Phase 7.)
 ```
 
 SCSS source dependencies:
