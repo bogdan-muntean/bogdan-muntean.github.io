@@ -260,30 +260,32 @@ const skillCategories = [
 
 const skillContainer = document.getElementById("skills-list");
 
-skillCategories.forEach((category) => {
-    const categoryBlock = document.createElement("div");
-    categoryBlock.className = "skill-category";
+if (skillContainer) {
+    skillCategories.forEach((category) => {
+        const categoryBlock = document.createElement("div");
+        categoryBlock.className = "skill-category";
 
-    const title = document.createElement("h3");
-    title.textContent = category.category;
-    categoryBlock.appendChild(title);
+        const title = document.createElement("h3");
+        title.textContent = category.category;
+        categoryBlock.appendChild(title);
 
-    const skillsWrapper = document.createElement("div");
-    skillsWrapper.className = "skill-grid";
+        const skillsWrapper = document.createElement("div");
+        skillsWrapper.className = "skill-grid";
 
-    category.skills.forEach((skill) => {
-        const skillItem = document.createElement("div");
-        skillItem.className = "skill-item";
+        category.skills.forEach((skill) => {
+            const skillItem = document.createElement("div");
+            skillItem.className = "skill-item";
 
-        let iconHtml = skill.icon;
+            let iconHtml = skill.icon;
 
-        skillItem.innerHTML = `
+            skillItem.innerHTML = `
       <div class="skill-icon-wrapper">${iconHtml}</div>
       <span class="skill-description">${skill.label}</span>
     `;
-        skillsWrapper.appendChild(skillItem);
-    });
+            skillsWrapper.appendChild(skillItem);
+        });
 
-    categoryBlock.appendChild(skillsWrapper);
-    skillContainer.appendChild(categoryBlock);
-});
+        categoryBlock.appendChild(skillsWrapper);
+        skillContainer.appendChild(categoryBlock);
+    });
+}

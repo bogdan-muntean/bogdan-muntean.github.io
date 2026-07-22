@@ -3,6 +3,9 @@ import { TimelineItem } from "./TimelineItem.js";
 
 export function addTimelineItems(containerHtmlSelector, dataBase) {
     let containerHtml = document.querySelector(`${containerHtmlSelector}`)
+    if (!containerHtml) {
+        return;
+    }
     
     dataBase.forEach((element) => {
         let timelineItemHtml = TimelineItem(element.title, element.timeData, element.span, element.text, element.icon);

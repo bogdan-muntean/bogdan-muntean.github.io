@@ -3,6 +3,9 @@ import { WorkexperienceItem } from "./WorkexperienceItem.js";
 
 export function addWorkexperienceItems(containerHtmlSelector, dataBase) {
     let containerHtml = document.querySelector(`${containerHtmlSelector}`)
+    if (!containerHtml) {
+        return;
+    }
     
     dataBase.forEach((element) => {
         let workexperienceItemHtml = WorkexperienceItem(element.title, element.timeData, element.span, element.text, element.icon);

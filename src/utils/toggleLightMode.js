@@ -3,8 +3,13 @@
 // elements's style specific to light mode, style which is coded in scss and css.
 
 export function toggleLightMode(classBtn) {
-    let themeBtn = document.querySelectorAll(`${classBtn}`);
-    themeBtn[0].addEventListener("click", () => {
+    const themeBtn = document.querySelector(classBtn);
+
+    if (!themeBtn) {
+        return;
+    }
+
+    themeBtn.addEventListener("click", () => {
         document.body.classList.toggle("light-mode");
         document.documentElement.classList.toggle("light-mode");
     });

@@ -1,43 +1,44 @@
 // Activates the script related to the general functionality of the project.
 
-import { pageTransitions } from "./utils/pageTransitions.js";
 import { toggleLightMode } from "./utils/toggleLightMode.js";
 
-// Add the Page Transitions function for section buttons.
+// Initialize general UI behavior after the DOM is available.
 document.addEventListener('DOMContentLoaded', function () {
   const navIcon = document.getElementById('nav-icon');
   const mobileMenu = document.getElementById('menu');
   const menuLinks = document.querySelectorAll('.menu-link');
 
-  navIcon.addEventListener('click', function () {
-    navIcon.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-
-  menuLinks.forEach(link => {
-    link.addEventListener('click', function () {
+  if (navIcon && mobileMenu) {
+    const closeMobileMenu = function () {
       navIcon.classList.remove('open');
       mobileMenu.classList.remove('open');
+    };
+
+    navIcon.addEventListener('click', function () {
+      navIcon.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
     });
-  });
 
-  document.addEventListener('click', function (e) {
-    if (
-      mobileMenu.classList.contains('open') &&
-      !mobileMenu.contains(e.target) &&
-      !navIcon.contains(e.target)
-    ) {
-      navIcon.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    }
-  });
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
 
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 800) {
-      navIcon.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    }
-  });
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('open') &&
+        !mobileMenu.contains(e.target) &&
+        !navIcon.contains(e.target)
+      ) {
+        closeMobileMenu();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 800) {
+        closeMobileMenu();
+      }
+    });
+  }
 
   // Back to top button functionality
   const backToTopBtn = document.getElementById('back-to-top');
