@@ -33,7 +33,6 @@
 |   |-- utils
 |   |   |-- checkIcon.js
 |   |   |-- checkLink.js
-|   |   |-- pageTransitions.js
 |   |   `-- toggleLightMode.js
 |   `-- main.js
 |-- index.html
@@ -101,7 +100,6 @@
 ## Utility Files
 
 - `src/utils/toggleLightMode.js`: Theme toggle behavior.
-- `src/utils/pageTransitions.js`: Unused class-based transition behavior.
 - `src/utils/checkLink.js`: Portfolio title link attribute helper.
 - `src/utils/checkIcon.js`: Portfolio icon link attribute helper.
 

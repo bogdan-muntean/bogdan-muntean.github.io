@@ -48,9 +48,8 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - `src/utils/toggleLightMode.js`
   - Toggles `.light-mode` on `<html>` and `<body>`.
 
-- `src/utils/pageTransitions.js`
-  - Unused helper for class-based section transitions.
-  - Depends on `.active-btn`, `.active`, and `data-id` conventions that current markup does not use.
+- `src/utils/pageTransitions.js` (removed in Phase 1)
+  - Removed as dead code: an unused helper for class-based section transitions that depended on `.active-btn`, `.active`, and `data-id` conventions the current markup does not use.
 
 - `src/utils/checkLink.js`
   - Produces active or disabled title link attributes for portfolio cards.

@@ -308,11 +308,9 @@ File: `src/utils/checkIcon.js`
 
 Returns an attribute string for portfolio source/live links. Empty and whitespace-only strings are treated as disabled links.
 
-### `pageTransitions()`
+### `pageTransitions()` — removed
 
-File: `src/utils/pageTransitions.js`
-
-Unused in the current app. It appears to be designed for an older or planned active-section UI.
+Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code; it was designed for an older active-section UI (`.active`/`.active-btn`/`data-id`) that the current anchor-based navigation does not use.
 
 ## Styling Components
 

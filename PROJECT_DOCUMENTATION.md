@@ -170,10 +170,8 @@ There is no `src/pages/Contact/index.js`.
   - Returns `class="disable-icon"` when `icon` is empty or whitespace-only.
   - Returns `class="active-icon" href="..."` when the link is present.
 
-- `src/utils/pageTransitions.js`
-  - Exports `pageTransitions(classBtn)`.
-  - Intended to toggle `.active-btn` and `.active` classes based on `data-id`.
-  - Not imported or called by current code.
+- `src/utils/pageTransitions.js` — removed in Phase 1
+  - Was an unused helper exporting `pageTransitions(classBtn)` to toggle `.active-btn`/`.active` by `data-id`; not imported or called by any code, so it was deleted as dead code.
 
 ## Styling System
 
@@ -246,7 +244,6 @@ No npm-installed external library is declared.
 
 ## Known Limitations Visible From Code
 
-- `src/utils/pageTransitions.js` expects `.active-btn`, `.active`, and `data-id` conventions that are not used by the current `index.html` navigation.
 - `src/pages/Project/index.js` appears stale relative to `index.html`.
   - It expects `#project`, but no such element exists.
   - It expects `#portfolio`, but the current portfolio section is `#portfolio-section`.

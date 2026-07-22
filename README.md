@@ -113,7 +113,6 @@ Additional documentation files in this repository:
 
 ## Known Limitations Visible From Code
 
-- `src/utils/pageTransitions.js` is unused and expects `.active-btn`, `.active`, and `data-id` conventions that the current `index.html` navigation does not use.
 - `src/pages/Project/index.js` is guarded against missing legacy DOM, but it still expects `.active`, `#project`, and `#portfolio` to enable project-detail behavior. The current `index.html` contains `#portfolio-section` and no `#project` section.
 - `index.html` links to `src/assets/docs/Recommendation_Letters.pdf`, but the repository contains `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf`.
 - `package.json` has no scripts for Sass compilation, local serving, building, deployment, linting, or testing.

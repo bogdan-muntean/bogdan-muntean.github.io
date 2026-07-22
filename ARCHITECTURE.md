@@ -63,7 +63,6 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 ### `src/utils`
 
 - `toggleLightMode.js`: Theme toggling.
-- `pageTransitions.js`: Unused active-section transition helper.
 - `checkLink.js`: Enables/disables portfolio title links.
 - `checkIcon.js`: Enables/disables portfolio icon links.
 
@@ -179,7 +178,7 @@ The working navigation is anchor-based:
 
 There is no router library.
 
-`src/utils/pageTransitions.js` suggests a prior or planned class-based navigation system using `.active`, `.active-btn`, and `data-id`, but this is not used by current `index.html`.
+A former `src/utils/pageTransitions.js` helper suggested a prior class-based navigation system using `.active`, `.active-btn`, and `data-id`; it was unused by the current anchor-based navigation and was removed in Phase 1.
 
 ## Styling And Theme System
 
