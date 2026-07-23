@@ -8,7 +8,15 @@
 |-- .gitignore
 |-- .vscode
 |   `-- settings.json
-|-- node_modules  (untracked, gitignored; created by `npm install` for the `sass` devDependency)
+|-- node_modules  (untracked, gitignored; created by `npm install` for the `sass`/`@playwright/test` devDependencies)
+|-- tests
+|   |-- helpers.js
+|   |-- page-load.spec.js
+|   |-- rendering.spec.js
+|   |-- mobile-menu.spec.js
+|   |-- theme-toggle.spec.js
+|   |-- back-to-top.spec.js
+|   `-- portfolio.spec.js
 |-- src
 |   |-- assets
 |   |   |-- aboutMeImages
@@ -41,6 +49,7 @@
 |-- LICENSE.md
 |-- package-lock.json
 |-- package.json
+|-- playwright.config.js
 |-- README.md
 |-- PROJECT_DOCUMENTATION.md
 |-- ARCHITECTURE.md
@@ -48,7 +57,8 @@
 |-- CODEBASE_MAP.md
 |-- COMPONENTS.md
 |-- NEXT_STEPS.md
-`-- PHASES_INFO.md
+|-- PHASES_INFO.md
+`-- TESTING.md
 ```
 
 ## Entry Points
@@ -107,13 +117,14 @@
 
 ## Config Files
 
-- `package.json`: npm metadata, a `serve` script (Phase 3, local static server), a `build:css` script (Phase 4, Dart Sass compile), and a placeholder `test` script. One devDependency: `sass`.
-- `package-lock.json`: npm lockfile metadata, including the `sass` dependency tree (Phase 4).
-- `.gitignore`: excludes `node_modules/` (added in Phase 4 alongside the first devDependency).
+- `package.json`: npm metadata, a `serve` script (Phase 3, local static server), a `build:css` script (Phase 4, Dart Sass compile), and a `test` script (Phase 5, Playwright smoke suite). Two devDependencies: `sass` and `@playwright/test`.
+- `package-lock.json`: npm lockfile metadata, including the `sass` and `@playwright/test` dependency trees.
+- `playwright.config.js`: Playwright Test configuration (Phase 5) — Chromium project, auto-managed `npm run serve` web server, serial-within-file test execution.
+- `.gitignore`: excludes `node_modules/`, `test-results/`, and `playwright-report/`.
 - `.vscode/settings.json`: VS Code visual settings.
 - `.agents`: Empty directory in the current workspace. No runtime effect detected.
 
-No bundler, lint, formatter, test, or deployment config was found.
+No bundler, lint, formatter, or deployment config was found.
 
 ## Assets
 
@@ -184,19 +195,18 @@ Other screenshots exist for commented-out portfolio items.
 - `COMPONENTS.md`
 - `NEXT_STEPS.md`
 - `PHASES_INFO.md`
+- `TESTING.md`
 - `LICENSE.md`
 
 ## Tests
 
-No test files were found.
-
-`package.json` defines:
+As of Phase 5, a Playwright smoke suite lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio` spec files), configured by `playwright.config.js`. Run it with:
 
 ```sh
 npm test
 ```
 
-The command currently prints `Error: no test specified` and exits with failure.
+This runs `playwright test`, which starts `npm run serve` automatically and shuts it down after. See `TESTING.md` for the one-time browser install step and full coverage details.
 
 ## API
 

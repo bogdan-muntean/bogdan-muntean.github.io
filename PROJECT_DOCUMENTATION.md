@@ -215,8 +215,8 @@ As of Phase 4, `npm run build:css` compiles every `.scss` entry point to its mat
 - `package.json`
   - Package name: `my_presentation_website`.
   - Version: `1.0.0`.
-  - Scripts: `serve` (local static server via Python's `http.server`, Phase 3), `build:css` (Dart Sass compile, Phase 4), and `test` (placeholder that exits with an error).
-  - No runtime dependencies; one devDependency, `sass` (Phase 4).
+  - Scripts: `serve` (local static server via Python's `http.server`, Phase 3), `build:css` (Dart Sass compile, Phase 4), and `test` (Playwright smoke suite, Phase 5).
+  - No runtime dependencies; two devDependencies: `sass` (Phase 4) and `@playwright/test` (Phase 5).
   - License field: `MIT` (matches `LICENSE.md`, fixed in Phase 3).
 
 - `package-lock.json`
@@ -255,7 +255,7 @@ No npm-installed external library is declared.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, confirmed against the actual `git remote`.
-- No automated tests are present.
+- As of Phase 5, a Playwright smoke suite exists in `tests/` (run via `npm test`); see `TESTING.md`.
 - `npm run serve` (Phase 3) provides a local development server, and `npm run build:css` (Phase 4) compiles SCSS to CSS; build, lint, and deployment scripts are still not defined.
 
 ## Unconfirmed Assumptions

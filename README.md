@@ -93,7 +93,7 @@ Compiles all SCSS to the committed CSS (see "Build And Deploy" above).
 npm test
 ```
 
-This script currently prints `Error: no test specified` and exits with code `1`.
+Runs the Playwright smoke suite (Phase 5) against the site served locally, checking page load, rendering, mobile menu, theme toggle, back-to-top, and portfolio interactions. See [TESTING.md](TESTING.md) for the one-time browser install step and full details.
 
 No other npm scripts are defined.
 
@@ -104,8 +104,18 @@ No other npm scripts are defined.
 |-- index.html
 |-- package.json
 |-- package-lock.json
+|-- playwright.config.js
 |-- LICENSE.md
 |-- README.md
+|-- TESTING.md
+|-- tests
+|   |-- helpers.js
+|   |-- page-load.spec.js
+|   |-- rendering.spec.js
+|   |-- mobile-menu.spec.js
+|   |-- theme-toggle.spec.js
+|   |-- back-to-top.spec.js
+|   `-- portfolio.spec.js
 `-- src
     |-- main.js
     |-- assets
@@ -137,6 +147,7 @@ Additional documentation files in this repository:
 - `COMPONENTS.md`: UI/component and data-rendering reference.
 - `NEXT_STEPS.md`: earlier safe improvement plan based on the codebase.
 - `PHASES_INFO.md`: architectural stabilization roadmap before new features.
+- `TESTING.md`: smoke test suite setup and coverage (Phase 5).
 
 ## Known Limitations Visible From Code
 

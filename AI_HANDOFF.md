@@ -166,7 +166,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Do not delete portfolio screenshots in `src/assets/portfolioImages` without checking `src/data/dataPortfolioItems.js`, including commented-out project data if the owner may restore it.
 - Do not assume `src/pages/Project/index.js` works; verify and reconcile its expected DOM first.
 - Do not assume SCSS changes affect the site until compiled CSS is updated.
-- Do not rely on `npm test`; it is a placeholder that exits with failure.
+- `npm test` (Phase 5) runs a real Playwright smoke suite (`tests/`): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, and portfolio interactions. See `TESTING.md` for the one-time browser install step.
 - The recommendation letters download link in `index.html` points to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 
 ## Suggested Next Improvements
@@ -174,7 +174,6 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Design the Phase 7 overlay before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
 - Remove duplicate or unnecessary Font Awesome stylesheet links after testing icon coverage.
 - Move skills from `src/pages/AboutMe/addMySkills.js` into `src/data` if the project wants all content data centralized.
-- Add basic smoke testing for rendered sections and required assets.
 - Fix mojibake/encoding issues in data strings.
 - Continue adding DOM safety checks to any future scripts before attaching listeners or appending rendered content.
 

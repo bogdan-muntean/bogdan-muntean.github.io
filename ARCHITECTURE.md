@@ -19,7 +19,7 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 ### Root
 
 - `index.html`: Single-page document and primary runtime entry point.
-- `package.json`: npm package metadata. Has a `serve` script (Phase 3, local static server) and a placeholder `test` script.
+- `package.json`: npm package metadata. Has `serve` (Phase 3, local static server), `build:css` (Phase 4, Dart Sass compile), and `test` (Phase 5, Playwright smoke suite) scripts.
 - `package-lock.json`: npm lockfile with root package metadata only.
 - `LICENSE.md`: MIT License.
 - `README.md`: Project overview and usage documentation.
