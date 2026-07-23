@@ -46,9 +46,11 @@ There are no declared `dependencies` or `devDependencies` in `package.json`, and
 
 ## Run Locally
 
-No `start`, `dev`, or `serve` script is defined in `package.json`.
+```sh
+npm run serve
+```
 
-The existing project structure is static and centered on `index.html`. The previous README described opening `index.html` directly. Because the current HTML loads JavaScript with `<script type="module">`, behavior from a `file://` URL can depend on browser security rules. If direct opening does not load modules correctly, serve the folder with a local static HTTP server of your choice. No project-specific server command is defined in this repository.
+This starts a local static HTTP server on `http://localhost:8080` by shelling out to Python's built-in `http.server` module (no npm dependency required). Because `index.html` loads JavaScript with `<script type="module">`, opening the file directly via a `file://` URL can hit browser module-loading restrictions, so serving it over HTTP is the supported way to run the site locally. Requires Python 3 to be installed and available as `python`; if it isn't, run `npx serve -l 8080` instead.
 
 ## Build And Deploy
 
@@ -61,6 +63,12 @@ The current project context says the site is deployed through GitHub Pages, and 
 ## Important Project Commands
 
 Verified from `package.json`:
+
+```sh
+npm run serve
+```
+
+Serves the site locally at `http://localhost:8080` (see "Run Locally" above).
 
 ```sh
 npm test
@@ -115,6 +123,6 @@ Additional documentation files in this repository:
 
 - `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7). It expected `.active`, `#project`, and `#portfolio`, but the current `index.html` uses `#portfolio-section` and has no `#project` section.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
-- `package.json` has no scripts for Sass compilation, local serving, building, deployment, linting, or testing.
+- `package.json` has a `serve` script (Phase 3) but no scripts for Sass compilation, building, deployment, linting, or testing.
 - Several Font Awesome CSS versions are loaded from CDN in `index.html`; whether all are required is unclear from current codebase.
-- `package.json` metadata has confirmed inconsistencies: `main` points to missing `app.js`, `directories.doc` points to missing `docs/`, and `license` is `ISC` while `LICENSE.md` contains MIT License text.
+- `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, matching the actual git remote.

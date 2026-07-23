@@ -105,12 +105,12 @@
 
 ## Config Files
 
-- `package.json`: npm metadata and placeholder test script.
+- `package.json`: npm metadata, a `serve` script (Phase 3, local static server), and a placeholder `test` script.
 - `package-lock.json`: npm lockfile metadata.
 - `.vscode/settings.json`: VS Code visual settings.
 - `.agents`: Empty directory in the current workspace. No runtime effect detected.
 
-No bundler, lint, formatter, test, Sass, CI, or deployment config was found.
+No bundler, lint, formatter, test, Sass, or deployment config was found.
 
 ## Assets
 

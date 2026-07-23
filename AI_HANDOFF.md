@@ -28,7 +28,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - External browser CDNs:
   - Google Fonts.
   - Font Awesome from cdnjs.
-- npm package metadata exists, but no dependencies or devDependencies are declared.
+- npm package metadata exists, but no dependencies or devDependencies are declared. `npm run serve` (Phase 3) starts a local static server via Python's built-in `http.server`, so no new dependency was needed.
 - No backend, database, API, router, bundler, test framework, linter, formatter, CI config, or deployment config detected.
 
 ## Key Files And What Each One Does
@@ -147,8 +147,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
    - Update skills in `src/pages/AboutMe/addMySkills.js`.
 3. If changing styles:
    - Edit the relevant `.scss` source file.
-   - Also ensure the corresponding `.css` file is regenerated, because `index.html` loads CSS directly.
-   - No Sass compile command is defined, so ask/check before choosing a compiler workflow.
+   - Also ensure the corresponding `.css` file is regenerated, because `index.html` loads CSS directly. No Sass compile command is defined yet (planned for Phase 4).
 4. If changing JavaScript:
    - Preserve the existing module script loading in `index.html`.
    - Check DOM element existence before attaching listeners.
@@ -171,9 +170,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 ## Suggested Next Improvements
 
 - Design the Phase 7 overlay before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
-- Fix the broken recommendation letters PDF link in `index.html`.
-- Add a real local development script, for example a static server, after choosing the preferred tool.
-- Add a Sass compilation workflow and document it.
+- Add a Sass compilation workflow and document it (Phase 4).
 - Remove duplicate or unnecessary Font Awesome stylesheet links after testing icon coverage.
 - Move skills from `src/pages/AboutMe/addMySkills.js` into `src/data` if the project wants all content data centralized.
 - Add basic smoke testing for rendered sections and required assets.
@@ -184,14 +181,11 @@ Important future architecture requirement: the user wants to eventually avoid ed
 
 - `TimelineItem()` returns `undefined` for non-graduation icons from `changeAcademicIconColor()`, which is inserted as an attribute string. Browsers may ignore it, but the generated markup is not clean.
 - Portfolio project details are guarded against runtime errors, but not currently reliable as a feature because required DOM nodes/classes do not exist.
-- Current package metadata has a `main` value of `app.js`, but no `app.js` exists. This does not affect the static site unless npm package entry behavior is used.
-- Current package metadata points `directories.doc` to `docs/`, but no `docs/` folder exists.
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - The recommendation letters PDF link in `index.html` resolves to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (verified over HTTP in Phase 2).
 - `src/pages/Portfolio/portfolio-page.scss` and `.css` target `#portfolio`, but the current HTML section is `#portfolio-section`.
 - `src/pages/Contact/contact-page.scss` and `.css` include `#contact`, while the current HTML uses `id="contact-section"` with `class="contact"`.
-- `package.json` declares `license: "ISC"`, while `LICENSE.md` contains MIT License text; the intended license is unclear from current codebase.
-- `package.json` repository/bugs/homepage URLs use `bogdanmuntean.github.io`, while the folder/docs/live links use `bogdan-muntean.github.io`; the intended repository URL should be verified before metadata cleanup.
+- `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, confirmed against the actual `git remote`.
 
 ## Open Questions Unclear From Current Codebase
 
@@ -201,6 +195,5 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Are the multiple Font Awesome CDN links all required?
 - Should commented-out portfolio items remain as archive content?
 - Should contact details remain hardcoded in `index.html` or move to a data file?
-- Should the site support direct `file://` opening, or should it require a static HTTP server because of ES modules?
 - Which browser versions are intended to be supported?
 - Which future content workflow should be chosen after stabilization: static JSON, local Excel-to-JSON, Google Sheets-to-JSON, GitHub Actions generation, direct public image URLs, or cloud-to-static image sync?

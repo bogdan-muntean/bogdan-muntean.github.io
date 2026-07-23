@@ -215,8 +215,9 @@ No Sass compiler command is defined in `package.json`, so the exact compile work
 - `package.json`
   - Package name: `my_presentation_website`.
   - Version: `1.0.0`.
-  - Only script: `npm test`, which exits with an error.
+  - Scripts: `serve` (local static server via Python's `http.server`, Phase 3) and `test` (placeholder that exits with an error).
   - No dependencies or devDependencies.
+  - License field: `MIT` (matches `LICENSE.md`, fixed in Phase 3).
 
 - `package-lock.json`
   - Lockfile version 2.
@@ -253,9 +254,9 @@ No npm-installed external library is declared.
 - Some strings in data files show mojibake/encoding artifacts in words such as Master's, dash-separated dates, Babes-Bolyai, and Hatieganu. Encoding history is unclear from current codebase.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
-- `package.json` points `main` to missing `app.js`, points `directories.doc` to missing `docs/`, and declares `license: "ISC"` while `LICENSE.md` contains MIT License text.
+- `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, confirmed against the actual `git remote`.
 - No automated tests are present.
-- No local development server, Sass compilation, build, lint, or deployment scripts are defined.
+- `npm run serve` (Phase 3) provides a local development server; Sass compilation, build, lint, and deployment scripts are still not defined.
 
 ## Unconfirmed Assumptions
 
