@@ -109,13 +109,10 @@
   display: block;
   padding: 5px 40px;
   margin-bottom: 5px;
-  width: -moz-max-content;
   width: max-content;
   color: #efefef;
   line-height: var(--line-height-default);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
@@ -127,4 +124,6 @@
 
 .light-mode .project-back {
   color: #555555;
-}/*# sourceMappingURL=project-page.css.map */
+}
+
+/*# sourceMappingURL=project-page.css.map */

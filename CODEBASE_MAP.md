@@ -5,8 +5,10 @@
 ```text
 .
 |-- .agents
+|-- .gitignore
 |-- .vscode
 |   `-- settings.json
+|-- node_modules  (untracked, gitignored; created by `npm install` for the `sass` devDependency)
 |-- src
 |   |-- assets
 |   |   |-- aboutMeImages
@@ -105,12 +107,13 @@
 
 ## Config Files
 
-- `package.json`: npm metadata, a `serve` script (Phase 3, local static server), and a placeholder `test` script.
-- `package-lock.json`: npm lockfile metadata.
+- `package.json`: npm metadata, a `serve` script (Phase 3, local static server), a `build:css` script (Phase 4, Dart Sass compile), and a placeholder `test` script. One devDependency: `sass`.
+- `package-lock.json`: npm lockfile metadata, including the `sass` dependency tree (Phase 4).
+- `.gitignore`: excludes `node_modules/` (added in Phase 4 alongside the first devDependency).
 - `.vscode/settings.json`: VS Code visual settings.
 - `.agents`: Empty directory in the current workspace. No runtime effect detected.
 
-No bundler, lint, formatter, test, Sass, or deployment config was found.
+No bundler, lint, formatter, test, or deployment config was found.
 
 ## Assets
 

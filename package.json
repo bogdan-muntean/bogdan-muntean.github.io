@@ -4,7 +4,8 @@
   "description": "📧💻 On this site I will post more details about my resume, contact details, projects, bibliography and more informations.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "python -m http.server 8080"
+    "serve": "python -m http.server 8080",
+    "build:css": "sass src/assets/variables.scss:src/assets/variables.css src/assets/style.scss:src/assets/style.css src/pages/Home/home-section.scss:src/pages/Home/home-section.css src/pages/AboutMe/about-me-section.scss:src/pages/AboutMe/about-me-section.css src/pages/Portfolio/portfolio-page.scss:src/pages/Portfolio/portfolio-page.css src/pages/Project/project-page.scss:src/pages/Project/project-page.css src/pages/Contact/contact-page.scss:src/pages/Contact/contact-page.css"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/bogdan-muntean/bogdan-muntean.github.io/issues"
   },
-  "homepage": "https://github.com/bogdan-muntean/bogdan-muntean.github.io#readme"
+  "homepage": "https://github.com/bogdan-muntean/bogdan-muntean.github.io#readme",
+  "devDependencies": {
+    "sass": "^1.101.6"
+  }
 }

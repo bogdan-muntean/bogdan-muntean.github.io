@@ -200,7 +200,7 @@ There is no `src/pages/Contact/index.js`.
 
 `index.html` loads the `.css` files directly, not the `.scss` files. Matching `.css.map` files are committed beside the CSS files.
 
-No Sass compiler command is defined in `package.json`, so the exact compile workflow is unclear from current codebase.
+As of Phase 4, `npm run build:css` compiles every `.scss` entry point to its matching `.css`/`.css.map` via Dart Sass (the `sass` devDependency). SCSS is the source of truth; any SCSS-only edit has no effect until this command regenerates the CSS. Two entry points (`project-page.scss`, `contact-page.scss`) still use the older `@import` syntax, which compiles with a deprecation warning.
 
 ## Assets And Static Files
 
@@ -215,8 +215,8 @@ No Sass compiler command is defined in `package.json`, so the exact compile work
 - `package.json`
   - Package name: `my_presentation_website`.
   - Version: `1.0.0`.
-  - Scripts: `serve` (local static server via Python's `http.server`, Phase 3) and `test` (placeholder that exits with an error).
-  - No dependencies or devDependencies.
+  - Scripts: `serve` (local static server via Python's `http.server`, Phase 3), `build:css` (Dart Sass compile, Phase 4), and `test` (placeholder that exits with an error).
+  - No runtime dependencies; one devDependency, `sass` (Phase 4).
   - License field: `MIT` (matches `LICENSE.md`, fixed in Phase 3).
 
 - `package-lock.json`
@@ -256,10 +256,9 @@ No npm-installed external library is declared.
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, confirmed against the actual `git remote`.
 - No automated tests are present.
-- `npm run serve` (Phase 3) provides a local development server; Sass compilation, build, lint, and deployment scripts are still not defined.
+- `npm run serve` (Phase 3) provides a local development server, and `npm run build:css` (Phase 4) compiles SCSS to CSS; build, lint, and deployment scripts are still not defined.
 
 ## Unconfirmed Assumptions
 
 - The current user context says the site is deployed through GitHub Pages, but no deployment config is present.
-- SCSS files are likely source files for committed CSS, but the Sass compile command is not documented in repo files.
 - `src/pages/Project/index.js` may be legacy code from an earlier section-based navigation system, but this is unconfirmed.

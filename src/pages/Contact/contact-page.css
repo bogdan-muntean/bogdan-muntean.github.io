@@ -106,7 +106,6 @@
 }
 
 #contact {
-  height: -moz-min-content;
   height: min-content;
 }
 
@@ -151,7 +150,6 @@
 .contact-info .contact-item .icon {
   display: block;
   margin: auto;
-  width: -moz-max-content;
   width: max-content;
 }
 .contact-info .contact-item .icon .ic {
@@ -209,4 +207,6 @@
   display: block;
   width: 100%;
   text-align: center;
-}/*# sourceMappingURL=contact-page.css.map */
+}
+
+/*# sourceMappingURL=contact-page.css.map */

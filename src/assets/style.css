@@ -235,9 +235,7 @@ header {
     color: var(--color-text-1);
     text-decoration: none;
     font-weight: 600;
-    transition: -webkit-text-decoration 0.3s;
     transition: text-decoration 0.3s;
-    transition: text-decoration 0.3s, -webkit-text-decoration 0.3s;
   }
   .desktop-nav .nav-links nav a:hover {
     color: var(--color-secondary);
@@ -480,4 +478,6 @@ header {
     width: 80px;
     height: 80px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

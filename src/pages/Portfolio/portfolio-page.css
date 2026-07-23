@@ -191,7 +191,6 @@
 
 .portfolio-links {
   display: flex;
-  height: -moz-max-content;
   height: max-content;
   width: 100%;
   flex-direction: row;
@@ -233,4 +232,6 @@
   .portfolio-item {
     width: calc(25% - var(--gap-portfolio-list) * 3 / 4);
   }
-}/*# sourceMappingURL=portfolio-page.css.map */
+}
+
+/*# sourceMappingURL=portfolio-page.css.map */

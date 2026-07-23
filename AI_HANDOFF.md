@@ -28,7 +28,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - External browser CDNs:
   - Google Fonts.
   - Font Awesome from cdnjs.
-- npm package metadata exists, but no dependencies or devDependencies are declared. `npm run serve` (Phase 3) starts a local static server via Python's built-in `http.server`, so no new dependency was needed.
+- npm package metadata exists; no runtime dependencies are declared. `npm run serve` (Phase 3) starts a local static server via Python's built-in `http.server`, so no dependency was needed for that. `sass` (Phase 4) is the one devDependency, used only to compile SCSS to CSS via `npm run build:css`.
 - No backend, database, API, router, bundler, test framework, linter, formatter, CI config, or deployment config detected.
 
 ## Key Files And What Each One Does
@@ -147,7 +147,9 @@ Important future architecture requirement: the user wants to eventually avoid ed
    - Update skills in `src/pages/AboutMe/addMySkills.js`.
 3. If changing styles:
    - Edit the relevant `.scss` source file.
-   - Also ensure the corresponding `.css` file is regenerated, because `index.html` loads CSS directly. No Sass compile command is defined yet (planned for Phase 4).
+   - Run `npm run build:css` (Phase 4, Dart Sass via the `sass` devDependency) to regenerate the corresponding `.css`/`.css.map` file — `index.html` loads only the CSS, so an SCSS-only edit has no effect until this runs.
+   - Commit the regenerated `.css`/`.css.map` alongside the `.scss` change.
+   - `Project/project-page.scss` and `Contact/contact-page.scss` still use the older `@import` syntax; this prints a deprecation warning but compiles fine. Don't rewrite them to `@use` as a side effect of an unrelated change.
 4. If changing JavaScript:
    - Preserve the existing module script loading in `index.html`.
    - Check DOM element existence before attaching listeners.
@@ -170,7 +172,6 @@ Important future architecture requirement: the user wants to eventually avoid ed
 ## Suggested Next Improvements
 
 - Design the Phase 7 overlay before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
-- Add a Sass compilation workflow and document it (Phase 4).
 - Remove duplicate or unnecessary Font Awesome stylesheet links after testing icon coverage.
 - Move skills from `src/pages/AboutMe/addMySkills.js` into `src/data` if the project wants all content data centralized.
 - Add basic smoke testing for rendered sections and required assets.
@@ -189,7 +190,6 @@ Important future architecture requirement: the user wants to eventually avoid ed
 
 ## Open Questions Unclear From Current Codebase
 
-- What exact command or tool was used to compile SCSS to CSS?
 - Which GitHub Pages deployment mode is used, and is deployment branch-based or workflow-based?
 - Should project-detail pages exist, or should portfolio cards only link externally?
 - Are the multiple Font Awesome CDN links all required?

@@ -127,7 +127,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: -moz-min-content;
   height: min-content;
   width: 100%;
 }
@@ -146,7 +145,6 @@
 
 .home-section-right {
   display: flex;
-  height: -moz-max-content;
   height: max-content;
   width: 100%;
   flex-direction: column;
@@ -273,4 +271,6 @@
   .home-section-right .btn-download-container .btn-download-item {
     border-radius: 50px;
   }
-}/*# sourceMappingURL=home-section.css.map */
+}
+
+/*# sourceMappingURL=home-section.css.map */

@@ -40,9 +40,13 @@ No frontend framework, backend server, bundler, or test framework is declared in
 
 ## Install Dependencies
 
-There are no declared `dependencies` or `devDependencies` in `package.json`, and the app runs from static files. No dependency installation is required for the current codebase.
+There are no declared runtime `dependencies` — the app runs from static files loaded directly by the browser. As of Phase 4, `package.json` declares one `devDependency`, `sass` (Dart Sass), used only to compile SCSS to the committed CSS; it plays no part in what the browser loads.
 
-`package-lock.json` exists, but it contains only the root package metadata.
+```sh
+npm install
+```
+
+`package-lock.json` now reflects the `sass` dependency tree.
 
 ## Run Locally
 
@@ -54,9 +58,18 @@ This starts a local static HTTP server on `http://localhost:8080` by shelling ou
 
 ## Build And Deploy
 
-No build script, bundler config, deployment workflow, or deployment command is present in the repository.
+No bundler, deployment workflow, or deployment command is present in the repository.
 
-The committed CSS files are the files loaded by `index.html`. The SCSS files appear to be source files for those CSS files, but no Sass compiler command is defined in `package.json`.
+SCSS is the source of truth for styling; the committed `.css` files are generated output, and `index.html` loads only the `.css` files directly. **Any SCSS-only edit has no effect until the CSS is regenerated.** Compile with:
+
+```sh
+npm install
+npm run build:css
+```
+
+This runs Dart Sass (the `sass` npm package, added as a devDependency in Phase 4) over every SCSS entry point and writes the matching `.css`/`.css.map` file at its existing path, preserving the current `sourceMappingURL` convention. Two entry points (`src/pages/Project/project-page.scss`, `src/pages/Contact/contact-page.scss`) still use the older `@import` syntax and will print a Dart Sass deprecation warning during compilation — this is expected and does not fail the build; migrating them to `@use` is a separate, deliberate style-source cleanup, not part of this pipeline.
+
+Run `npm run build:css` after every SCSS edit, and commit the regenerated `.css`/`.css.map` files alongside the `.scss` change.
 
 The current project context says the site is deployed through GitHub Pages, and the previous README linked to `https://bogdan-muntean.github.io/`. However, no GitHub Pages or CI deployment configuration is present in the current files.
 
@@ -69,6 +82,12 @@ npm run serve
 ```
 
 Serves the site locally at `http://localhost:8080` (see "Run Locally" above).
+
+```sh
+npm run build:css
+```
+
+Compiles all SCSS to the committed CSS (see "Build And Deploy" above).
 
 ```sh
 npm test
@@ -123,6 +142,6 @@ Additional documentation files in this repository:
 
 - `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7). It expected `.active`, `#project`, and `#portfolio`, but the current `index.html` uses `#portfolio-section` and has no `#project` section.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
-- `package.json` has a `serve` script (Phase 3) but no scripts for Sass compilation, building, deployment, linting, or testing.
+- `package.json` has `serve` (Phase 3) and `build:css` (Phase 4) scripts, but no scripts for a general build, deployment, or linting.
 - Several Font Awesome CSS versions are loaded from CDN in `index.html`; whether all are required is unclear from current codebase.
 - `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, matching the actual git remote.
