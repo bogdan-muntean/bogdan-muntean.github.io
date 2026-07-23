@@ -20,7 +20,8 @@ export function TimelineItem(title, timeData, spanContent, textContent, icon){
 /*Function that checks if the icon element is not the default one and 
 returns the specific color depending on the icon element type.*/
 function changeAcademicIconColor(element){
-    if (element === `<i class="fa-solid fa-graduation-cap"></i>`) 
+    if (element === `<i class="fa-solid fa-graduation-cap"></i>`)
         return `style="background-color: #c6c614;"`;
+    return "";
 }
 

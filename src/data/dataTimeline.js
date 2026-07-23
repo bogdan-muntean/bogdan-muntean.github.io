@@ -70,7 +70,7 @@ export let dataTimeline = [
     },
     {
         title: `Faculty of Medicine - Balneo-Physio-Kinetotherapy and Medical Recovery Specialist`,
-        span: `"Iuliu Haţieganu" University of Medicine and Pharmacy, Cluj-Napoca`,
+        span: `"Iuliu Hațieganu" University of Medicine and Pharmacy, Cluj-Napoca`,
         timeData: "2017-2020",
         text: `Graduated with specialized training in physical therapy, rehabilitation, and balneotherapy techniques for patient recovery and health improvement.
         Gained expertise in anatomy, physiology, and evidence-based therapeutic interventions, combining clinical knowledge with hands-on practice in rehabilitation programs.

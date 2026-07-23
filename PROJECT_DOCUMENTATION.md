@@ -151,6 +151,50 @@ There is no `src/pages/Contact/index.js`.
   - Exports `dataWorkexperience`.
   - Contains work experience entries for Authentic Spirit Romania, Digital Distribution Group, and Automatify.
 
+## Content Data Schema
+
+Documents the shape of the current JS-array data (Phase 6). This is the existing in-code schema, not a JSON schema — no data source migration has happened or is planned by this document.
+
+### Portfolio items (`src/data/dataPortfolioItems.js`, `dataPortfolioItems` array)
+
+Consumed by `src/pages/Portfolio/addPortfolioItems.js` → `PortfolioItem()`.
+
+| Field | Type | Required? | Notes |
+|---|---|---|---|
+| `title` | string | Required | Rendered as the card heading. |
+| `description` | string (HTML template literal) | Future-only | Not read by any currently-loaded script. Reserved for the Phase 7 project-detail overlay. May be an empty string. |
+| `imageLink` | string (relative path) | Required | Path under `src/assets/portfolioImages/`, used as the card's background image. |
+| `liveLink` | string (URL or `""`) | Optional | Empty string disables the "Live" link (via `checkLink`/`checkIcon`, which `.trim()` before checking). |
+| `repoLink` | string (URL or `""`) | Optional | Empty string disables the "Source" link. |
+| `photo` | string | Future-only | Not read by any currently-loaded script (only the unloaded `src/pages/Project/index.js` reads it). Reserved for Phase 7. Normalized to `""` in Phase 6 (previously `" "` in several entries). |
+| `video` | string | Future-only | Same as `photo`. |
+
+Commented-out entries below the active array follow the same shape and are kept as archive content; do not remove without explicit confirmation.
+
+### Timeline items (`src/data/dataTimeline.js`, `dataTimeline` array)
+
+Consumed by `src/pages/AboutMe/addTimelineItems.js` → `TimelineItem()`.
+
+| Field | Type | Required? | Notes |
+|---|---|---|---|
+| `title` | string | Required | Entry heading. |
+| `span` | string | Required | Institution/organization, rendered in a `<span>` inside the heading. |
+| `timeData` | string | Required | Free-text date range (formats vary: `MM/YYYY - MM/YYYY`, `YYYY-YYYY`, a single `YYYY`). |
+| `text` | string | Required | Free-text body, may contain multiple lines and a leading `-`-bulleted list as plain text (not HTML list markup). |
+| `icon` | string (HTML template literal, e.g. `` `<i class="fa-solid fa-graduation-cap"></i>` ``) | Required | Must exactly match the literal graduation-cap markup for `changeAcademicIconColor()` in `TimelineItem.js` to apply the special background color; any other icon markup renders with no inline style (Phase 6 fix — previously produced a literal `undefined` attribute). |
+
+### Work experience items (`src/data/dataWorkexperience.js`, `dataWorkexperience` array)
+
+Consumed by `src/pages/AboutMe/addWorkexperienceItems.js` → `WorkexperienceItem()`. Same shape as timeline items (`title`, `span`, `timeData`, `text`, `icon`), except `icon` has no special-case styling logic — every icon renders identically.
+
+### Skills (`src/pages/AboutMe/addMySkills.js`, internal `skillCategories` array)
+
+Not in `src/data`; kept in the renderer module itself. Each category has `category` (string heading) and `skills` (array of `{ label: string, icon: string }`, where `icon` is either an `<img>` tag pointing at `src/assets/icons/*` or an inline `<i>` icon-font tag). Centralizing this into `src/data` was considered but not done in Phase 6 — it would need explicit confirmation first, since it changes data ownership conventions.
+
+### Hardcoded vs. data-driven content
+
+Hardcoded directly in `index.html`: Home hero text, About Me body text, all Contact section content (location, email, education links, phone, languages, social links), and the CV/Recommendation-Letters download links. Data-driven: Skills, Work Experience, Timeline, and Portfolio cards, via the sources above.
+
 ## Utilities And Shared Functionality
 
 - `src/utils/toggleLightMode.js`
@@ -251,7 +295,7 @@ No npm-installed external library is declared.
   - It was internally guarded (Phase 1) so no click behavior attached without those missing elements, and is now not loaded at all (Phase 2).
 - `src/pages/Portfolio/PortfolioItem.js` labels the repo link as `Source` but uses a display icon, and labels the live link as `Live` but uses a GitHub icon. Whether this is intentional is unclear from current codebase.
 - Several portfolio data fields use `" "` for `photo` and `video`.
-- Some strings in data files show mojibake/encoding artifacts in words such as Master's, dash-separated dates, Babes-Bolyai, and Hatieganu. Encoding history is unclear from current codebase.
+- Investigated in Phase 6: a byte-level check of `dataTimeline.js`/`dataWorkexperience.js` found no actual encoding corruption — the curly apostrophe (’) and en dash (–) present are valid, correctly-encoded characters (just inconsistent in style with plain ASCII used elsewhere, left as-is). The one genuine issue, a wrong-but-valid diacritic (`ţ` cedilla vs. the correct `ț` comma-below in "Hațieganu"), was fixed for consistency with "Babeș" in the same file.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - `package.json` metadata was cleaned up in Phase 3: the unused `main`/`directories` fields were removed, `license` now reads `MIT` (matching `LICENSE.md`), and the `repository`/`bugs`/`homepage` URLs now use `bogdan-muntean.github.io`, confirmed against the actual `git remote`.

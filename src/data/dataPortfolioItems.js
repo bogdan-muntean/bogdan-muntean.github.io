@@ -7,8 +7,8 @@ export let dataPortfolioItems = [
         imageLink: "src/assets/portfolioImages/fintrack.PNG",
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/fintrack",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
     {
         title: "Energy Monitoring System",
@@ -17,8 +17,8 @@ export let dataPortfolioItems = [
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/Energy-Monitoring-System-Microservices-Architecture",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
     {
         title: "Buddy Weather App",
@@ -26,8 +26,8 @@ export let dataPortfolioItems = [
         imageLink: "src/assets/portfolioImages/buddy-weather-app.PNG",
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/buddy-weather",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
     {
         title: "YourSpecialist",
@@ -38,8 +38,8 @@ export let dataPortfolioItems = [
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
     {
         title: "Task Tracker",
@@ -47,8 +47,8 @@ export let dataPortfolioItems = [
         imageLink: "src/assets/portfolioImages/task-tracker-img.PNG",
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/task-tracker-react",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
     {
         title: "Link In Bio",
@@ -56,8 +56,8 @@ export let dataPortfolioItems = [
         imageLink: "src/assets/portfolioImages/linkin-bio.PNG",
         liveLink: "https://bogdan-muntean.github.io/LinkInBio/",
         repoLink: "https://github.com/bogdan-muntean/LinkInBio",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
     {
         title: "Todo List",
@@ -66,8 +66,8 @@ export let dataPortfolioItems = [
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week15_homework-todo-react/todo-app",
-        photo: " ",
-        video: " ",
+        photo: "",
+        video: "",
     },
 ];
 

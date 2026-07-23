@@ -174,12 +174,13 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Design the Phase 7 overlay before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
 - Remove duplicate or unnecessary Font Awesome stylesheet links after testing icon coverage.
 - Move skills from `src/pages/AboutMe/addMySkills.js` into `src/data` if the project wants all content data centralized.
-- Fix mojibake/encoding issues in data strings.
 - Continue adding DOM safety checks to any future scripts before attaching listeners or appending rendered content.
 
 ## Known Risks Or Fragile Areas
 
-- `TimelineItem()` returns `undefined` for non-graduation icons from `changeAcademicIconColor()`, which is inserted as an attribute string. Browsers may ignore it, but the generated markup is not clean.
+- Fixed in Phase 6: `changeAcademicIconColor()` in `TimelineItem.js` now returns `""` instead of `undefined` for non-graduation icons, so no literal `undefined` attribute is generated. `WorkexperienceItem.js` was checked for the same pattern and does not have it (no equivalent attribute-interpolation call exists there).
+- Fixed in Phase 6: the Source/Live icon pairing in `PortfolioItem.js` was swapped — "Source" (repo link) now shows the GitHub icon, and "Live" (deployed link) now shows the display icon. Confirmed the underlying `repoLink`/`liveLink` wiring was already correct; only the icon glyphs were backwards.
+- Investigated in Phase 6: prior docs described "mojibake" in `dataTimeline.js`/`dataWorkexperience.js`, but a byte-level check found no actual encoding corruption — the curly apostrophe (’) and en dash (–) present are valid, correctly-encoded characters, just typographically inconsistent with the plain ASCII apostrophes/hyphens used elsewhere (a style choice, left as-is). The one genuine issue was a wrong-but-valid Romanian diacritic: `ţ` (cedilla, U+0163) in "Haţieganu" was inconsistent with the correct `ș` (comma-below, U+0219) used for "Babeș" in the same file; fixed to `ț` (comma-below, U+021B) — "Hațieganu".
 - Portfolio project details are guarded against runtime errors, but not currently reliable as a feature because required DOM nodes/classes do not exist.
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - The recommendation letters PDF link in `index.html` resolves to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (verified over HTTP in Phase 2).

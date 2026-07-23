@@ -1,6 +1,6 @@
 //Create portfolio item and return it.
 import { checkLink } from "../../utils/checkLink.js"
-import { checkIcon } from "../../utils/checkIcon.js"; 
+import { checkIcon } from "../../utils/checkIcon.js";
 
 export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
   let portfolioItemHtml = document.createElement("div");
@@ -23,14 +23,14 @@ export function PortfolioItem(idArrayItem, title, image, liveLink, repoLink) {
         <div class="portfolio-links">
             <div>
                 <a ${repoLinkHtmlIcon} target="_blank">
-                    Source 
-                    <i class="fa-solid fa-display"></i>
+                    Source
+                    <i class="fab fa-github"></i>
                 </a>
             </div>
             <div>
                 <a ${liveLinkHtmlIcon} target="_blank">
-                    Live 
-                    <i class="fab fa-github"></i>
+                    Live
+                    <i class="fa-solid fa-display"></i>
                 </a>
             </div>
         </div>
