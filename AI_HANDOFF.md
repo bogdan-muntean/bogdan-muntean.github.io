@@ -15,7 +15,7 @@ The site appears functionally centered around `index.html` and several dynamic r
 - Portfolio cards are generated from `src/data/dataPortfolioItems.js`.
 - Contact and main personal text are mostly hardcoded in `index.html`.
 
-Important: project-detail behavior in `src/pages/Project/index.js` is stale relative to the current `index.html`. As of Phase 2 the file is no longer loaded by `index.html` (its `<script>` tag was removed), and `src/pages/Project/project-page.css` is no longer linked either. Both files remain in the repo, reserved for the Phase 7 overlay redesign.
+Important: the legacy project-detail script `src/pages/Project/index.js` (the `.active`/`#project`/`#portfolio` flow) remains stale, unloaded since Phase 2, and kept in the repo only as historical reference — do not revive it. The project-detail overlay is now implemented **fresh**, in a different file: `src/pages/Project/projectDetail.js`, styled by the rewritten `src/pages/Project/project-page.scss`/`.css` (relinked in `index.html`), per the design in `PROJECT_DETAIL_OVERLAY_DESIGN.md` (Phase 7). It uses a native `<dialog id="project-detail">` (see `index.html`), populated from `dataPortfolioItems` at click time; `.portfolio-image` in `PortfolioItem.js` is now a `<button>` with `data-project-id`, not a `<div>`.
 
 Important future architecture requirement: the user wants to eventually avoid editing live project code for every project content update. `PHASES_INFO.md` documents future static-compatible options such as repo-controlled JSON, Excel-to-JSON, Google Sheets-to-JSON, GitHub Actions generation, and external/cloud image workflows. None of those options are implemented yet.
 
@@ -25,6 +25,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - CSS: committed `.css` files loaded by `index.html`.
 - SCSS: source `.scss` files in `src/assets` and `src/pages/**`.
 - JavaScript: vanilla ES modules loaded with `<script type="module">`.
+- The project-detail overlay uses a native `<dialog>` element (`showModal()`/`close()`) — no modal library.
 - External browser CDNs:
   - Google Fonts.
   - Font Awesome from cdnjs.
@@ -91,10 +92,16 @@ Important future architecture requirement: the user wants to eventually avoid ed
 
 - `src/pages/Portfolio/PortfolioItem.js`
   - Creates portfolio card DOM elements from title, image, live link, and repo link.
+  - `.portfolio-image` is a `<button type="button">` with `data-project-id="${idArrayItem}"` and `aria-label="View details for ${title}"` (Phase 7 overlay implementation) — not a plain `<div>`.
 
 - `src/pages/Project/index.js`
-  - Intended project-detail script; expects `.active`, `#project`, and `#portfolio` DOM that does not exist in `index.html`.
-  - No longer loaded by `index.html` as of Phase 2 (script tag removed); guarded internally since Phase 1. Kept in the repo, reserved for the Phase 7 overlay redesign.
+  - Legacy project-detail script; expects `.active`, `#project`, and `#portfolio` DOM that does not exist in `index.html`.
+  - Not loaded by `index.html` (unloaded since Phase 2). Kept in the repo only as historical reference — the real overlay implementation is `projectDetail.js`, a different, fresh file.
+
+- `src/pages/Project/projectDetail.js`
+  - The actual project-detail overlay implementation (Phase 7 design, implemented). Delegated click listener on `.portfolio-list` for `.portfolio-image[data-project-id]`; looks up `dataPortfolioItems[id]` fresh at click time and populates the shared `<dialog id="project-detail">` (in `index.html`).
+  - Opens via `dialog.showModal()`, focuses the close button. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener handles focus-return to the trigger button for all three paths.
+  - Omits the description/media sections entirely when `description`/`photo`/`video` are empty (today's data has empty `photo`/`video` on every entry, and empty `description` on 3 of 7). Reuses `checkIcon()` for the Source/Live links so disabled-link styling matches the card.
 
 - `src/data/dataPortfolioItems.js`
   - Portfolio project data and commented-out older project data.
@@ -126,12 +133,12 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Data files export arrays with named objects.
 - Portfolio items are rendered from object fields:
   - `title`
-  - `description`
+  - `description` — now read by the project-detail overlay (`projectDetail.js`, Phase 7); omitted from the overlay when empty.
   - `imageLink`
   - `liveLink`
   - `repoLink`
-  - `photo`
-  - `video`
+  - `photo` — read by the overlay; omitted when empty (always empty in today's live data).
+  - `video` — same as `photo`.
 - Styling uses CSS custom properties from `src/assets/variables.scss`.
 - The loaded runtime CSS files are `.css`, not `.scss`.
 - Light mode depends on a `.light-mode` class on `<html>` and `<body>`.
@@ -153,7 +160,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 4. If changing JavaScript:
    - Preserve the existing module script loading in `index.html`.
    - Check DOM element existence before attaching listeners.
-   - Be careful with project-detail behavior. As of Phase 2, `Project/index.js` is no longer loaded by `index.html`. The page still lacks the legacy `.active`, `#project`, and `#portfolio` elements the intended detail flow needs; the file is reserved for the Phase 7 overlay redesign.
+   - The project-detail overlay is `projectDetail.js`, not the legacy `Project/index.js` (still unloaded, historical only). Changes to portfolio card fields or the `<dialog id="project-detail">` markup in `index.html` should keep both in sync.
 5. If adding dependencies:
    - Update `package.json` and `package-lock.json`.
    - Add documented install/run/build scripts if needed.
@@ -164,14 +171,13 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Do not move `src/assets/docs/CV_Bogdan_Muntean.pdf` or `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` without updating download links.
 - Do not delete icons in `src/assets/icons` without checking `src/pages/AboutMe/addMySkills.js`.
 - Do not delete portfolio screenshots in `src/assets/portfolioImages` without checking `src/data/dataPortfolioItems.js`, including commented-out project data if the owner may restore it.
-- Do not assume `src/pages/Project/index.js` works; verify and reconcile its expected DOM first.
+- Do not assume `src/pages/Project/index.js` works or revive it; it's historical only. The real overlay is `projectDetail.js`.
 - Do not assume SCSS changes affect the site until compiled CSS is updated.
-- `npm test` (Phase 5) runs a real Playwright smoke suite (`tests/`): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, and portfolio interactions. See `TESTING.md` for the one-time browser install step.
+- `npm test` (Phase 5, extended in the Phase 7 overlay implementation) runs a real Playwright smoke suite (`tests/`, 23 tests): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, portfolio interactions, and the project-detail overlay (open/close paths, focus management, fallback rendering). See `TESTING.md` for the one-time browser install step.
 - The recommendation letters download link in `index.html` points to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 
 ## Suggested Next Improvements
 
-- Implement the Phase 7 overlay per the design in `PROJECT_DETAIL_OVERLAY_DESIGN.md`, pending approval, before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
 - Remove duplicate or unnecessary Font Awesome stylesheet links after testing icon coverage.
 - Move skills from `src/pages/AboutMe/addMySkills.js` into `src/data` if the project wants all content data centralized.
 - Continue adding DOM safety checks to any future scripts before attaching listeners or appending rendered content.
@@ -181,7 +187,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Fixed in Phase 6: `changeAcademicIconColor()` in `TimelineItem.js` now returns `""` instead of `undefined` for non-graduation icons, so no literal `undefined` attribute is generated. `WorkexperienceItem.js` was checked for the same pattern and does not have it (no equivalent attribute-interpolation call exists there).
 - Fixed in Phase 6: the Source/Live icon pairing in `PortfolioItem.js` was swapped — "Source" (repo link) now shows the GitHub icon, and "Live" (deployed link) now shows the display icon. Confirmed the underlying `repoLink`/`liveLink` wiring was already correct; only the icon glyphs were backwards.
 - Investigated in Phase 6: prior docs described "mojibake" in `dataTimeline.js`/`dataWorkexperience.js`, but a byte-level check found no actual encoding corruption — the curly apostrophe (’) and en dash (–) present are valid, correctly-encoded characters, just typographically inconsistent with the plain ASCII apostrophes/hyphens used elsewhere (a style choice, left as-is). The one genuine issue was a wrong-but-valid Romanian diacritic: `ţ` (cedilla, U+0163) in "Haţieganu" was inconsistent with the correct `ș` (comma-below, U+0219) used for "Babeș" in the same file; fixed to `ț` (comma-below, U+021B) — "Hațieganu".
-- Portfolio project details are guarded against runtime errors, but not currently reliable as a feature because required DOM nodes/classes do not exist.
+- Implemented: the project-detail overlay (`projectDetail.js`, native `<dialog>`). Chromium's focus containment doesn't cycle back to the first focusable element when tabbing past the last one (it can land on `<body>`/the dialog itself for a step) — this still fully satisfies "focus never reaches real page content behind the dialog," just not via a perfect wrap-around cycle. Documented in `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note.
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.
 - The recommendation letters PDF link in `index.html` resolves to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (verified over HTTP in Phase 2).
 - `src/pages/Portfolio/portfolio-page.scss` and `.css` target `#portfolio`, but the current HTML section is `#portfolio-section`.
@@ -191,7 +197,6 @@ Important future architecture requirement: the user wants to eventually avoid ed
 ## Open Questions Unclear From Current Codebase
 
 - Which GitHub Pages deployment mode is used, and is deployment branch-based or workflow-based?
-- Should project-detail pages exist, or should portfolio cards only link externally?
 - Are the multiple Font Awesome CDN links all required?
 - Should commented-out portfolio items remain as archive content?
 - Should contact details remain hardcoded in `index.html` or move to a data file?

@@ -14,7 +14,8 @@ There is no backend application, API server, database connection, build pipeline
 - `src/main.js`: Main JavaScript module for general UI behavior. It handles mobile menu open/close behavior, closes the mobile menu on link click/outside click/desktop resize, controls the back-to-top button, and activates the theme toggle through `toggleLightMode(".theme-btn")`.
 - `src/pages/AboutMe/index.js`: Loads and renders work experience and timeline data, and imports `src/pages/AboutMe/addMySkills.js` for skill rendering.
 - `src/pages/Portfolio/index.js`: Loads portfolio data and renders portfolio cards into `.portfolio-list`.
-- `src/pages/Project/index.js`: Contains intended project-detail view behavior that does not match the current `index.html` structure. As of Phase 2 it is no longer loaded by `index.html`; the file is kept in the repo, reserved for the Phase 7 overlay redesign. See "Known limitations".
+- `src/pages/Project/index.js`: Legacy project-detail script; does not match the current `index.html` structure and is not loaded (unloaded since Phase 2). Kept in the repo only as historical reference. See "Known limitations".
+- `src/pages/Project/projectDetail.js`: The actual project-detail overlay implementation (Phase 7 design, implemented). Populates a shared native `<dialog id="project-detail">` from `dataPortfolioItems` at click time.
 
 ## How The App Works
 
@@ -26,6 +27,7 @@ There is no backend application, API server, database connection, build pipeline
    - `src/pages/Home/home-section.css`
    - `src/pages/AboutMe/about-me-section.css`
    - `src/pages/Portfolio/portfolio-page.css`
+   - `src/pages/Project/project-page.css`
    - `src/pages/Contact/contact-page.css`
 4. Static HTML sections render immediately:
    - `#home-section`
@@ -47,8 +49,9 @@ There is no backend application, API server, database connection, build pipeline
    - skill categories from `src/pages/AboutMe/addMySkills.js` into `#skills-list`.
    - work experience from `src/data/dataWorkexperience.js` into `.experience-container`.
    - timeline entries from `src/data/dataTimeline.js` into `.timeline-container`.
-7. `src/pages/Portfolio/index.js` renders project cards from `src/data/dataPortfolioItems.js` into `.portfolio-list`.
-8. `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2. It targeted legacy `.active`, `#project`, and `#portfolio` DOM that the current markup does not contain; the file is reserved for the Phase 7 overlay redesign.
+7. `src/pages/Portfolio/index.js` renders project cards from `src/data/dataPortfolioItems.js` into `.portfolio-list`. Each card's `.portfolio-image` is a `<button>` carrying `data-project-id`.
+8. `src/pages/Project/index.js` is not loaded (unloaded since Phase 2); kept only as historical reference. It targeted legacy `.active`, `#project`, and `#portfolio` DOM that the current markup does not contain.
+9. `src/pages/Project/projectDetail.js` attaches a delegated click listener on `.portfolio-list`. Clicking a `.portfolio-image[data-project-id]` looks up `dataPortfolioItems[id]` fresh, populates the shared `<dialog id="project-detail">`, and opens it via `showModal()`.
 
 ## Main Modules, Pages, And Components
 
@@ -114,16 +117,21 @@ There is no backend application, API server, database connection, build pipeline
 - `src/pages/Portfolio/PortfolioItem.js`
   - Creates `.portfolio-item` cards.
   - Uses `checkLink()` and `checkIcon()` to enable or visually disable portfolio links.
-  - Previously added `data-more` to `.portfolio-image` for the legacy detail flow; removed in Phase 2.
+  - `.portfolio-image` is a `<button type="button">` with `data-project-id="${idArrayItem}"` and `aria-label="View details for ${title}"` (Phase 7 overlay implementation, replacing the legacy `data-more` attribute removed in Phase 2).
 
 ### Project Detail Area
 
-- `src/pages/Project/index.js`
+- `src/pages/Project/index.js` — legacy, not loaded
   - Intended to listen for clicks on `.more` or `.portfolio-image`.
   - Attempts to hide an `.active` section and show `#project`.
   - Attempts to populate `#project` from `dataPortfolioItems`.
   - Attempts to return to `#portfolio` through `.project-back`.
-  - As of Phase 2 this file is no longer loaded by `index.html`; it is reserved for the Phase 7 overlay redesign. `index.html` does not define the `#project`, `#portfolio`, or `.active` sections the legacy flow required.
+  - Not loaded by `index.html` (unloaded since Phase 2); kept only as historical reference. `index.html` does not define the `#project`, `#portfolio`, or `.active` sections this legacy flow required.
+
+- `src/pages/Project/projectDetail.js` — the real implementation (Phase 7)
+  - Delegated click listener on `.portfolio-list` for `.portfolio-image[data-project-id]`.
+  - Looks up `dataPortfolioItems[id]` fresh at click time (not cached), populates the shared `<dialog id="project-detail">`: title, image, description (omitted if empty), photo/video (omitted if empty), and Source/Live links via `checkIcon()`, reusing the `.portfolio-links` class so disabled-link styling matches the card.
+  - Opens via `dialog.showModal()` and focuses the close button. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to whichever trigger button opened it, covering all three close paths.
 
 ### Contact Area
 
@@ -157,17 +165,17 @@ Documents the shape of the current JS-array data (Phase 6). This is the existing
 
 ### Portfolio items (`src/data/dataPortfolioItems.js`, `dataPortfolioItems` array)
 
-Consumed by `src/pages/Portfolio/addPortfolioItems.js` → `PortfolioItem()`.
+Consumed by `src/pages/Portfolio/addPortfolioItems.js` → `PortfolioItem()`, and (all fields) by `src/pages/Project/projectDetail.js`, the project-detail overlay implemented in Phase 7.
 
 | Field | Type | Required? | Notes |
 |---|---|---|---|
-| `title` | string | Required | Rendered as the card heading. |
-| `description` | string (HTML template literal) | Future-only | Not read by any currently-loaded script. Reserved for the Phase 7 project-detail overlay. May be an empty string. |
-| `imageLink` | string (relative path) | Required | Path under `src/assets/portfolioImages/`, used as the card's background image. |
-| `liveLink` | string (URL or `""`) | Optional | Empty string disables the "Live" link (via `checkLink`/`checkIcon`, which `.trim()` before checking). |
-| `repoLink` | string (URL or `""`) | Optional | Empty string disables the "Source" link. |
-| `photo` | string | Future-only | Not read by any currently-loaded script (only the unloaded `src/pages/Project/index.js` reads it). Reserved for Phase 7. Normalized to `""` in Phase 6 (previously `" "` in several entries). |
-| `video` | string | Future-only | Same as `photo`. |
+| `title` | string | Required | Rendered as the card heading and the overlay's title. |
+| `description` | string (HTML template literal) | Optional | Read by the overlay; omitted entirely when empty (3 of 7 active entries today). |
+| `imageLink` | string (relative path) | Required | Path under `src/assets/portfolioImages/`, used as the card's background image and reused as the overlay's detail image (`<img>`). |
+| `liveLink` | string (URL or `""`) | Optional | Empty string disables the "Live" link (via `checkLink`/`checkIcon`, which `.trim()` before checking) on both the card and the overlay. |
+| `repoLink` | string (URL or `""`) | Optional | Empty string disables the "Source" link, on both the card and the overlay. |
+| `photo` | string | Optional | Read by the overlay; omitted entirely when empty (all 7 active entries today). The legacy `src/pages/Project/index.js` also reads this field but is not loaded. |
+| `video` | string | Optional | Same as `photo`. |
 
 Commented-out entries below the active array follow the same shape and are kept as archive content; do not remove without explicit confirmation.
 
@@ -244,7 +252,7 @@ Hardcoded directly in `index.html`: Home hero text, About Me body text, all Cont
 
 `index.html` loads the `.css` files directly, not the `.scss` files. Matching `.css.map` files are committed beside the CSS files.
 
-As of Phase 4, `npm run build:css` compiles every `.scss` entry point to its matching `.css`/`.css.map` via Dart Sass (the `sass` devDependency). SCSS is the source of truth; any SCSS-only edit has no effect until this command regenerates the CSS. Two entry points (`project-page.scss`, `contact-page.scss`) still use the older `@import` syntax, which compiles with a deprecation warning.
+As of Phase 4, `npm run build:css` compiles every `.scss` entry point to its matching `.css`/`.css.map` via Dart Sass (the `sass` devDependency). SCSS is the source of truth; any SCSS-only edit has no effect until this command regenerates the CSS. One entry point, `contact-page.scss`, still uses the older `@import` syntax, which compiles with a deprecation warning (`project-page.scss` was rewritten to `@use` as part of the Phase 7 overlay implementation).
 
 ## Assets And Static Files
 
@@ -288,13 +296,13 @@ No npm-installed external library is declared.
 
 ## Known Limitations Visible From Code
 
-- `src/pages/Project/index.js` is stale relative to `index.html` and, as of Phase 2, is no longer loaded by it (reserved for Phase 7):
+- `src/pages/Project/index.js` is stale relative to `index.html`, not loaded (unloaded since Phase 2), and kept only as historical reference:
   - It expects `#project`, but no such element exists.
   - It expects `#portfolio`, but the current portfolio section is `#portfolio-section`.
   - It expects an `.active` section, but no section has this class in `index.html`.
-  - It was internally guarded (Phase 1) so no click behavior attached without those missing elements, and is now not loaded at all (Phase 2).
-- `src/pages/Portfolio/PortfolioItem.js` labels the repo link as `Source` but uses a display icon, and labels the live link as `Live` but uses a GitHub icon. Whether this is intentional is unclear from current codebase.
-- Several portfolio data fields use `" "` for `photo` and `video`.
+  - Its real replacement is `src/pages/Project/projectDetail.js`, implemented fresh in Phase 7 against a native `<dialog>`, not this file's DOM assumptions.
+- Fixed in Phase 6: `src/pages/Portfolio/PortfolioItem.js`'s icon pairing was backwards (Source showed a display icon, Live showed the GitHub icon); swapped so Source shows the GitHub icon and Live shows the display icon.
+- Fixed in Phase 6: portfolio `photo`/`video` fields normalized from `" "` to `""` across all active entries.
 - Investigated in Phase 6: a byte-level check of `dataTimeline.js`/`dataWorkexperience.js` found no actual encoding corruption — the curly apostrophe (’) and en dash (–) present are valid, correctly-encoded characters (just inconsistent in style with plain ASCII used elsewhere, left as-is). The one genuine issue, a wrong-but-valid diacritic (`ţ` cedilla vs. the correct `ț` comma-below in "Hațieganu"), was fixed for consistency with "Babeș" in the same file.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.

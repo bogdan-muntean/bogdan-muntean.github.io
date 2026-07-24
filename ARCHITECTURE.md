@@ -57,7 +57,7 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 - `Home`: Home section styling only.
 - `AboutMe`: About-related renderers, item factories, skills data/rendering, and section styling.
 - `Portfolio`: Portfolio renderers, card factory, and section styling.
-- `Project`: Intended project-detail behavior and styling, currently mismatched with `index.html`.
+- `Project`: `index.js` is the legacy, unloaded project-detail script (historical only). `projectDetail.js` and `project-page.scss`/`.css` are the actual, loaded project-detail overlay implementation (Phase 7).
 - `Contact`: Contact styling only.
 
 ### `src/utils`
@@ -79,8 +79,9 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
    - timeline items into `.timeline-container`
    - skills into `#skills-list` via `addMySkills.js`
 7. `index.html` loads `src/pages/Portfolio/index.js` as a module.
-8. `src/pages/Portfolio/index.js` renders portfolio cards into `.portfolio-list`.
-9. `index.html` no longer loads `src/pages/Project/index.js` (its script tag was removed in Phase 2). The file remains in the repo, reserved for the Phase 7 overlay redesign; it targeted legacy `.active`/`#project`/`#portfolio` DOM that the current markup does not contain.
+8. `src/pages/Portfolio/index.js` renders portfolio cards into `.portfolio-list`. Each card's `.portfolio-image` is a `<button>` with `data-project-id`.
+9. `index.html` no longer loads `src/pages/Project/index.js` (its script tag was removed in Phase 2). The file remains in the repo as historical reference only; it targeted legacy `.active`/`#project`/`#portfolio` DOM that the current markup does not contain.
+10. `index.html` loads `src/pages/Project/projectDetail.js` as a module (Phase 7 overlay implementation). It attaches a delegated click listener on `.portfolio-list`; clicking a `.portfolio-image[data-project-id]` looks up the matching `dataPortfolioItems` entry and opens the shared `<dialog id="project-detail">` via `showModal()`.
 
 ## File Dependencies
 
@@ -96,14 +97,17 @@ index.html
   |   |-- src/pages/AboutMe/addTimelineItems.js
   |   |   `-- src/pages/AboutMe/TimelineItem.js
   |   `-- src/pages/AboutMe/addMySkills.js
-  `-- src/pages/Portfolio/index.js
+  |-- src/pages/Portfolio/index.js
+  |   |-- src/data/dataPortfolioItems.js
+  |   `-- src/pages/Portfolio/addPortfolioItems.js
+  |       `-- src/pages/Portfolio/PortfolioItem.js
+  |           |-- src/utils/checkLink.js
+  |           `-- src/utils/checkIcon.js
+  `-- src/pages/Project/projectDetail.js
       |-- src/data/dataPortfolioItems.js
-      `-- src/pages/Portfolio/addPortfolioItems.js
-          `-- src/pages/Portfolio/PortfolioItem.js
-              |-- src/utils/checkLink.js
-              `-- src/utils/checkIcon.js
+      `-- src/utils/checkIcon.js
 
-(`src/pages/Project/index.js` is present in the repo but no longer loaded by `index.html`; reserved for Phase 7.)
+(`src/pages/Project/index.js` is present in the repo but no longer loaded by `index.html`; historical reference only.)
 ```
 
 CSS dependencies:
@@ -115,10 +119,11 @@ index.html
   |-- src/pages/Home/home-section.css
   |-- src/pages/AboutMe/about-me-section.css
   |-- src/pages/Portfolio/portfolio-page.css
+  |-- src/pages/Project/project-page.css
   `-- src/pages/Contact/contact-page.css
-
-(`src/pages/Project/project-page.css` exists but is no longer linked by `index.html`; reserved for Phase 7.)
 ```
+
+`project-page.css` was unlinked in Phase 2 (stale legacy styles) and relinked in the Phase 7 overlay implementation with entirely rewritten content (the dialog's own styles, not the old `.project-back`).
 
 SCSS source dependencies:
 
@@ -156,6 +161,7 @@ Runtime state is stored in:
   - `.open` on `#nav-icon` and `#menu`.
   - `.show` on `#back-to-top`.
   - `.light-mode` on `<html>` and `<body>`.
+- Native `<dialog>` open/closed state: `#project-detail`'s `.open` property, managed by `showModal()`/`close()` in `projectDetail.js`; a module-local variable there tracks the trigger button to restore focus to on close.
 - JavaScript module-local arrays:
   - `skillCategories` inside `src/pages/AboutMe/addMySkills.js`.
   - exported data arrays in `src/data`.
@@ -246,6 +252,16 @@ dataPortfolioItems item
   -> checkLink(liveLink)
   -> checkIcon(liveLink/repoLink)
   -> active or disabled anchor markup
+```
+
+Clicking `.portfolio-image` opens the project-detail overlay:
+
+```text
+click on .portfolio-image[data-project-id]
+  -> projectDetail.js reads data-project-id
+  -> dataPortfolioItems[id] (fresh lookup, not cached)
+  -> populates #project-detail (title, image, description/photo/video if non-empty, Source/Live links via checkIcon)
+  -> dialog.showModal()
 ```
 
 ## Deployment Architecture

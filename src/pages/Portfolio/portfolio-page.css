@@ -149,6 +149,11 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font: inherit;
 }
 
 .portfolio-text-container {

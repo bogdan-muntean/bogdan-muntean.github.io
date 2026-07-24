@@ -16,7 +16,8 @@
 |   |-- mobile-menu.spec.js
 |   |-- theme-toggle.spec.js
 |   |-- back-to-top.spec.js
-|   `-- portfolio.spec.js
+|   |-- portfolio.spec.js
+|   `-- project-detail.spec.js
 |-- src
 |   |-- assets
 |   |   |-- aboutMeImages
@@ -58,7 +59,10 @@
 |-- COMPONENTS.md
 |-- NEXT_STEPS.md
 |-- PHASES_INFO.md
-`-- TESTING.md
+|-- TESTING.md
+|-- PROJECT_DETAIL_OVERLAY_DESIGN.md
+|-- CONTENT_SOURCE_WORKFLOW_DESIGN.md
+`-- IMAGE_HOSTING_WORKFLOW_DESIGN.md
 ```
 
 ## Entry Points
@@ -67,7 +71,8 @@
 - `src/main.js`: Main general UI script.
 - `src/pages/AboutMe/index.js`: About/work/timeline/skills dynamic entry.
 - `src/pages/Portfolio/index.js`: Portfolio dynamic entry.
-- `src/pages/Project/index.js`: Intended project-detail entry; no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7). Its required legacy DOM is absent from the current markup.
+- `src/pages/Project/index.js`: Legacy project-detail entry; not loaded (unloaded since Phase 2), kept only as historical reference. Its required legacy DOM is absent from the current markup.
+- `src/pages/Project/projectDetail.js`: The actual project-detail overlay entry (Phase 7 implementation) — populates a native `<dialog>` from `dataPortfolioItems` at click time.
 
 ## UI Files
 
@@ -84,7 +89,8 @@
 - `src/pages/AboutMe/TimelineItem.js`
 - `src/pages/Portfolio/addPortfolioItems.js`
 - `src/pages/Portfolio/PortfolioItem.js`
-- `src/pages/Project/index.js`
+- `src/pages/Project/index.js` (legacy, not loaded)
+- `src/pages/Project/projectDetail.js` (Phase 7 implementation, loaded)
 
 ### Styling
 
@@ -196,11 +202,14 @@ Other screenshots exist for commented-out portfolio items.
 - `NEXT_STEPS.md`
 - `PHASES_INFO.md`
 - `TESTING.md`
+- `PROJECT_DETAIL_OVERLAY_DESIGN.md` (Phase 7 — implemented)
+- `CONTENT_SOURCE_WORKFLOW_DESIGN.md` (Phase 8 — plan only)
+- `IMAGE_HOSTING_WORKFLOW_DESIGN.md` (Phase 9 — plan only)
 - `LICENSE.md`
 
 ## Tests
 
-As of Phase 5, a Playwright smoke suite lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio` spec files), configured by `playwright.config.js`. Run it with:
+As of Phase 5 (extended in the Phase 7 overlay implementation), a Playwright smoke suite (23 tests) lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio`, `project-detail` spec files), configured by `playwright.config.js`. Run it with:
 
 ```sh
 npm test

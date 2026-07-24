@@ -23,6 +23,7 @@ This repository provides a public portfolio/resume website that can be hosted as
 - Light/dark theme toggle using CSS variables and the `.light-mode` class.
 - Back-to-top button that appears after scrolling.
 - Dynamic skills, work experience, timeline, and portfolio rendering.
+- Project-detail overlay: clicking a portfolio card's image opens a native `<dialog>` with the project's title, description, and links (closable via a close button, Escape, or backdrop click).
 - Static assets for profile images, portfolio screenshots, icons, PDFs, and README screenshots.
 
 ## Tech Stack
@@ -67,7 +68,7 @@ npm install
 npm run build:css
 ```
 
-This runs Dart Sass (the `sass` npm package, added as a devDependency in Phase 4) over every SCSS entry point and writes the matching `.css`/`.css.map` file at its existing path, preserving the current `sourceMappingURL` convention. Two entry points (`src/pages/Project/project-page.scss`, `src/pages/Contact/contact-page.scss`) still use the older `@import` syntax and will print a Dart Sass deprecation warning during compilation — this is expected and does not fail the build; migrating them to `@use` is a separate, deliberate style-source cleanup, not part of this pipeline.
+This runs Dart Sass (the `sass` npm package, added as a devDependency in Phase 4) over every SCSS entry point and writes the matching `.css`/`.css.map` file at its existing path, preserving the current `sourceMappingURL` convention. One entry point, `src/pages/Contact/contact-page.scss`, still uses the older `@import` syntax and will print a Dart Sass deprecation warning during compilation — this is expected and does not fail the build; migrating it to `@use` is a separate, deliberate style-source cleanup, not part of this pipeline.
 
 Run `npm run build:css` after every SCSS edit, and commit the regenerated `.css`/`.css.map` files alongside the `.scss` change.
 
@@ -93,7 +94,7 @@ Compiles all SCSS to the committed CSS (see "Build And Deploy" above).
 npm test
 ```
 
-Runs the Playwright smoke suite (Phase 5) against the site served locally, checking page load, rendering, mobile menu, theme toggle, back-to-top, and portfolio interactions. See [TESTING.md](TESTING.md) for the one-time browser install step and full details.
+Runs the Playwright smoke suite (Phase 5, extended for the Phase 7 project-detail overlay) against the site served locally, checking page load, rendering, mobile menu, theme toggle, back-to-top, portfolio interactions, and the project-detail overlay. See [TESTING.md](TESTING.md) for the one-time browser install step and full details.
 
 No other npm scripts are defined.
 
@@ -115,7 +116,11 @@ No other npm scripts are defined.
 |   |-- mobile-menu.spec.js
 |   |-- theme-toggle.spec.js
 |   |-- back-to-top.spec.js
-|   `-- portfolio.spec.js
+|   |-- portfolio.spec.js
+|   `-- project-detail.spec.js
+|-- PROJECT_DETAIL_OVERLAY_DESIGN.md
+|-- CONTENT_SOURCE_WORKFLOW_DESIGN.md
+|-- IMAGE_HOSTING_WORKFLOW_DESIGN.md
 `-- src
     |-- main.js
     |-- assets
@@ -132,7 +137,7 @@ No other npm scripts are defined.
     |   |-- Contact
     |   |-- Home
     |   |-- Portfolio
-    |   `-- Project
+    |   `-- Project (index.js legacy/unloaded, projectDetail.js = the real overlay)
     `-- utils
 ```
 
@@ -148,10 +153,13 @@ Additional documentation files in this repository:
 - `NEXT_STEPS.md`: earlier safe improvement plan based on the codebase.
 - `PHASES_INFO.md`: architectural stabilization roadmap before new features.
 - `TESTING.md`: smoke test suite setup and coverage (Phase 5).
+- `PROJECT_DETAIL_OVERLAY_DESIGN.md`: project-detail overlay design (Phase 7) — implemented.
+- `CONTENT_SOURCE_WORKFLOW_DESIGN.md`: future content-source workflow evaluation (Phase 8) — plan only.
+- `IMAGE_HOSTING_WORKFLOW_DESIGN.md`: future image-hosting workflow evaluation (Phase 9) — plan only.
 
 ## Known Limitations Visible From Code
 
-- `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7). It expected `.active`, `#project`, and `#portfolio`, but the current `index.html` uses `#portfolio-section` and has no `#project` section.
+- `src/pages/Project/index.js` is not loaded (unloaded since Phase 2) and kept only as historical reference. It expected `.active`, `#project`, and `#portfolio`, but the current `index.html` uses `#portfolio-section` and has no `#project` section. The real project-detail overlay is `src/pages/Project/projectDetail.js` (Phase 7), using a native `<dialog>`.
 - `index.html` links to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 - `package.json` has `serve` (Phase 3) and `build:css` (Phase 4) scripts, but no scripts for a general build, deployment, or linting.
 - Several Font Awesome CSS versions are loaded from CDN in `index.html`; whether all are required is unclear from current codebase.

@@ -638,7 +638,7 @@ Suggested git commit message:
 
 ## Phase 7 - Prepare Project-Detail Overlay Architecture
 
-Design doc: `PROJECT_DETAIL_OVERLAY_DESIGN.md`.
+Design doc: `PROJECT_DETAIL_OVERLAY_DESIGN.md` — implemented; see `src/pages/Project/projectDetail.js`.
 
 Goal:
 

@@ -73,6 +73,7 @@
             rel="stylesheet"
             href="./src/pages/Portfolio/portfolio-page.css"
         />
+        <link rel="stylesheet" href="./src/pages/Project/project-page.css" />
         <link rel="stylesheet" href="./src/pages/Contact/contact-page.css" />
 
         <title>Bogdan Muntean - My Presentation Website</title>
@@ -426,6 +427,25 @@
             </section>
         </main>
 
+        <dialog
+            id="project-detail"
+            class="project-detail"
+            aria-labelledby="project-detail-title"
+        >
+            <button
+                type="button"
+                class="project-detail-close"
+                aria-label="Close"
+            >
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="project-detail-title" class="project-detail-title"></h2>
+            <div class="project-detail-image"></div>
+            <div class="project-detail-description"></div>
+            <div class="project-detail-media"></div>
+            <div class="portfolio-links"></div>
+        </dialog>
+
         <!-- Main script + utils -->
         <script type="module" src="./src/main.js"></script>
 
@@ -434,5 +454,8 @@
 
         <!-- Portfolio Page script -->
         <script type="module" src="./src/pages/Portfolio/index.js"></script>
+
+        <!-- Project detail overlay -->
+        <script type="module" src="./src/pages/Project/projectDetail.js"></script>
     </body>
 </html>

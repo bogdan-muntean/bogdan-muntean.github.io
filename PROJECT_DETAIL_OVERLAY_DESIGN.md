@@ -1,5 +1,7 @@
 # Project Detail Overlay — Design (Phase 7)
 
+**Status: Implemented**, per this design, in `src/pages/Project/projectDetail.js`, `src/pages/Project/project-page.scss`, the `<dialog id="project-detail">` markup in `index.html`, and the `.portfolio-image` button conversion in `src/pages/Portfolio/PortfolioItem.js`. One real deviation from the design found during implementation: Chromium's native `<dialog>` focus containment does not cycle back to the first focusable element when tabbing past the last one — it can land on `<body>` or the `<dialog>` element itself for a step first. This still fully satisfies the actual requirement (focus never reaches real page content behind the dialog), just not via a perfect wrap-to-first-element cycle; see the implementation commit for details. The rest of this document is left as originally written, describing the design that was implemented.
+
 ## Purpose
 
 This is a **planning document only**. It designs the future project-detail overlay — the thing a user sees after clicking a portfolio card for more information — before any of it is built. No overlay code, markup, or styles exist yet as a result of this document. Implementation is a later, separate piece of work that should be reviewed against this design first.

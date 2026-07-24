@@ -132,7 +132,7 @@ Key elements:
 - `.portfolio-about`
 - `.portfolio-list`
 - `.portfolio-item`
-- `.portfolio-image`
+- `.portfolio-image` — a `<button type="button">` with `data-project-id`, opens the project-detail overlay.
 - `.portfolio-text-container`
 - `.portfolio-title`
 - `.portfolio-links`
@@ -151,6 +151,24 @@ src/pages/Portfolio/index.js
   -> checkIcon()
   -> .portfolio-list
 ```
+
+### Project Detail Overlay
+
+Defined in `index.html` (a single shared `<dialog id="project-detail">`, placed after `<main>`), styled by `src/pages/Project/project-page.scss` and `.css`, populated by `src/pages/Project/projectDetail.js` (Phase 7 implementation).
+
+Key elements:
+
+- `#project-detail` (the `<dialog>`)
+- `.project-detail-close`
+- `#project-detail-title` / `.project-detail-title`
+- `.project-detail-image`
+- `.project-detail-description`
+- `.project-detail-media`
+- `.portfolio-links` (reused inside the dialog, not redefined, so link styling matches the card exactly)
+
+Data source: `src/data/dataPortfolioItems.js`, read fresh at click time by array index (`data-project-id` on the trigger button).
+
+Behavior: opens via `dialog.showModal()` on clicking a `.portfolio-image[data-project-id]`, focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths. `description`/`photo`/`video` sections are omitted entirely (not rendered empty) when the corresponding data field is blank.
 
 ### Contact Section
 
@@ -229,7 +247,7 @@ Special behavior:
 - Uses `checkLink(liveLink)` for the project title anchor.
 - Uses `checkIcon(repoLink)` for source link behavior.
 - Uses `checkIcon(liveLink)` for live link behavior.
-- No longer sets `data-more` on `.portfolio-image`; that legacy attribute was removed in Phase 2.
+- `.portfolio-image` is a `<button type="button">` with `data-project-id="${idArrayItem}"` and `aria-label="View details for ${title}"` (Phase 7 overlay implementation), not the legacy `data-more` attribute removed in Phase 2.
 
 Used by:
 
@@ -331,9 +349,17 @@ Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code;
   - `.workexperience-*`
   - `.timeline-*`
   - `.portfolio-*`
+- Project detail overlay:
+  - `.project-detail` (the `<dialog>` box and its `::backdrop`)
+  - `.project-detail-close`
+  - `.project-detail-title`
+  - `.project-detail-image`
+  - `.project-detail-description`
+  - `.project-detail-media`
 
 ## Component Risks
 
 - Most component functions use `innerHTML`, so only trusted local data should be inserted unless escaping/sanitization is added.
 - Renderer functions now guard missing target containers, but future renderer code should keep the same pattern.
-- `src/pages/Project/index.js` is no longer loaded by `index.html` as of Phase 2 (reserved for Phase 7); its required DOM structure is absent from the current markup.
+- `src/pages/Project/index.js` is not loaded (unloaded since Phase 2) and kept only as historical reference; its required DOM structure is absent from the current markup. The real project-detail implementation is `src/pages/Project/projectDetail.js` (Phase 7).
+- Chromium's native `<dialog>` focus containment doesn't cycle back to the first focusable element when tabbing past the last one inside `#project-detail` — it can land on `<body>`/the dialog itself for a step. This still fully prevents reaching real page content behind the dialog; see `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note.
