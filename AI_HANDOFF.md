@@ -197,4 +197,4 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Should contact details remain hardcoded in `index.html` or move to a data file?
 - Which browser versions are intended to be supported?
 - Which future content-source workflow should be chosen — static JSON, local Excel-to-JSON, Google Sheets-to-JSON, or GitHub Actions generation — is evaluated with a recommendation in `CONTENT_SOURCE_WORKFLOW_DESIGN.md` (Phase 8); still open pending the user's answers to that document's Section 8 questions.
-- Which future external image workflow should be chosen — direct public image URLs or cloud-to-static image sync — remains open (Phase 9).
+- Which future external image workflow should be chosen — direct public image URLs or cloud-to-static image sync — is evaluated with a recommendation in `IMAGE_HOSTING_WORKFLOW_DESIGN.md` (Phase 9): stay repo-hosted for now, since the real measured asset weight (~5.7 MiB total) doesn't justify the added risk; still open pending the user's answers to that document's Section 7 questions.

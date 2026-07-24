@@ -767,6 +767,8 @@ Suggested git commit message:
 
 ## Phase 9 - Future Optional External Image Hosting/Cloud Asset Workflow
 
+Design doc: `IMAGE_HOSTING_WORKFLOW_DESIGN.md`.
+
 Goal:
 
 - Decide how project images should be managed if the user wants to update images outside the codebase.
