@@ -706,6 +706,8 @@ Suggested git commit message:
 
 ## Phase 8 - Future Optional Static Content Source Workflow
 
+Design doc: `CONTENT_SOURCE_WORKFLOW_DESIGN.md`.
+
 Goal:
 
 - Decide whether project metadata should remain in repo-controlled files or be generated from an external spreadsheet-like source.
