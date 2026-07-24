@@ -638,6 +638,8 @@ Suggested git commit message:
 
 ## Phase 7 - Prepare Project-Detail Overlay Architecture
 
+Design doc: `PROJECT_DETAIL_OVERLAY_DESIGN.md`.
+
 Goal:
 
 - Design the future project-detail overlay before implementing it.

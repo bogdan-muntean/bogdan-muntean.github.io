@@ -171,7 +171,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 
 ## Suggested Next Improvements
 
-- Design the Phase 7 overlay before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
+- Implement the Phase 7 overlay per the design in `PROJECT_DETAIL_OVERLAY_DESIGN.md`, pending approval, before reloading or rewriting `src/pages/Project/index.js` (unloaded in Phase 2).
 - Remove duplicate or unnecessary Font Awesome stylesheet links after testing icon coverage.
 - Move skills from `src/pages/AboutMe/addMySkills.js` into `src/data` if the project wants all content data centralized.
 - Continue adding DOM safety checks to any future scripts before attaching listeners or appending rendered content.
