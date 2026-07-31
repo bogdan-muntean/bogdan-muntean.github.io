@@ -1,6 +1,11 @@
 # Project Detail Overlay — Design (Phase 7)
 
-**Status: Implemented**, per this design, in `src/pages/Project/projectDetail.js`, `src/pages/Project/project-page.scss`, the `<dialog id="project-detail">` markup in `index.html`, and the `.portfolio-image` button conversion in `src/pages/Portfolio/PortfolioItem.js`. One real deviation from the design found during implementation: Chromium's native `<dialog>` focus containment does not cycle back to the first focusable element when tabbing past the last one — it can land on `<body>` or the `<dialog>` element itself for a step first. This still fully satisfies the actual requirement (focus never reaches real page content behind the dialog), just not via a perfect wrap-to-first-element cycle; see the implementation commit for details. The rest of this document is left as originally written, describing the design that was implemented.
+**Status: Implemented**, per this design, in `src/pages/Project/projectDetail.js`, `src/pages/Project/project-page.scss`, the `<dialog id="project-detail">` markup in `index.html`, and the `.portfolio-image` button conversion in `src/pages/Portfolio/PortfolioItem.js`. Two real deviations from the design found during and after implementation:
+
+1. Chromium's native `<dialog>` focus containment does not cycle back to the first focusable element when tabbing past the last one — it can land on `<body>` or the `<dialog>` element itself for a step first. This still fully satisfies the actual requirement (focus never reaches real page content behind the dialog), just not via a perfect wrap-to-first-element cycle; see the implementation commit for details.
+2. The overlay was originally sized as a centered 600px-wide card and, per section 6 below, disabled (not hidden) missing `liveLink`/`repoLink`. A follow-up fix changed both: `.project-detail` is now a full-viewport overlay (`position: fixed; inset: 0; width/height: 100vw/100vh`), and missing `liveLink`/`repoLink` are now omitted entirely from the overlay's link row (unlike the portfolio card, which keeps the dimmed-disabled convention). See section 6's note.
+
+The rest of this document is left as originally written, describing the design that was implemented, except where noted.
 
 ## Purpose
 
@@ -69,7 +74,7 @@ Since every live entry today has empty `photo`/`video` and 3 of 7 have empty `de
 
 - **`description` empty** → omit the description block entirely (no empty paragraph/container rendered).
 - **`photo` / `video` empty** → omit those sections/elements entirely; never render an `<img>`/`<video>` with an empty `src`.
-- **`liveLink` / `repoLink` empty** → reuse the existing `checkLink`/`checkIcon` disabled-link convention (Phase 1's `.trim()`-based disabling) inside the overlay, so a disabled link looks and behaves the same way there as it already does on the card — not hidden, visibly disabled, for consistency.
+- **`liveLink` / `repoLink` empty** → **(updated post-implementation)** the corresponding Source/Live row is omitted from the overlay entirely — not rendered at all, rather than shown dimmed/disabled as originally designed here. The card itself is unchanged and still uses the dimmed-disabled `checkIcon`/`checkLink` convention; this hide-when-missing behavior applies only inside the overlay.
 
 ## 7. No-JS behavior
 

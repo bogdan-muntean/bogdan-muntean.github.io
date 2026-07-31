@@ -129,12 +129,23 @@ test("renders the description when populated (YourSpecialist)", async ({
     await expect(description).toContainText("Medical Locator site project");
 });
 
-test("disabled/active link styling matches the card's own convention", async ({
+test("missing links are omitted entirely (unlike the card's dimmed convention)", async ({
     page,
 }) => {
     // Fintrack: liveLink empty, repoLink set.
     await page.locator(".portfolio-image").first().click();
     const links = page.locator("#project-detail .portfolio-links a");
+    await expect(links).toHaveCount(1);
     await expect(links.nth(0)).toHaveClass("active-icon");
-    await expect(links.nth(1)).toHaveClass("disable-icon");
+    await expect(links.nth(0)).toContainText("Source");
+});
+
+test("both links render when both are present (Link In Bio)", async ({
+    page,
+}) => {
+    await page.locator(".portfolio-image").nth(5).click();
+    const links = page.locator("#project-detail .portfolio-links a");
+    await expect(links).toHaveCount(2);
+    await expect(links.nth(0)).toHaveClass("active-icon");
+    await expect(links.nth(1)).toHaveClass("active-icon");
 });

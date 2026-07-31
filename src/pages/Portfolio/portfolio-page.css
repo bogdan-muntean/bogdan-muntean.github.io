@@ -194,6 +194,10 @@
   text-overflow: ellipsis;
 }
 
+.portfolio-item .portfolio-links {
+  display: none;
+}
+
 .portfolio-links {
   display: flex;
   height: max-content;

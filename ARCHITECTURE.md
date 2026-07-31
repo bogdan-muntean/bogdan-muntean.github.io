@@ -260,8 +260,10 @@ Clicking `.portfolio-image` opens the project-detail overlay:
 click on .portfolio-image[data-project-id]
   -> projectDetail.js reads data-project-id
   -> dataPortfolioItems[id] (fresh lookup, not cached)
-  -> populates #project-detail (title, image, description/photo/video if non-empty, Source/Live links via checkIcon)
-  -> dialog.showModal()
+  -> populates #project-detail (title, image, description/photo/video if non-empty,
+     Source/Live links only rendered when repoLink/liveLink is non-empty - omitted
+     entirely otherwise, unlike the card's dimmed-disabled convention)
+  -> dialog.showModal() (full-viewport dialog, not a centered card)
 ```
 
 ## Deployment Architecture

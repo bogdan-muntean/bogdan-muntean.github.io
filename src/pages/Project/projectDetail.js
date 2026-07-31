@@ -43,20 +43,33 @@ if (dialog && portfolioList) {
         mediaEl.innerHTML = mediaHtml;
         mediaEl.hidden = mediaHtml === "";
 
-        linksEl.innerHTML = `
-            <div>
-                <a ${checkIcon(item.repoLink)} target="_blank">
-                    Source
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <div>
-                <a ${checkIcon(item.liveLink)} target="_blank">
-                    Live
-                    <i class="fa-solid fa-display"></i>
-                </a>
-            </div>
-        `;
+        const repoLink =
+            typeof item.repoLink === "string" ? item.repoLink.trim() : "";
+        const liveLink =
+            typeof item.liveLink === "string" ? item.liveLink.trim() : "";
+
+        let linksHtml = "";
+        if (repoLink !== "") {
+            linksHtml += `
+                <div>
+                    <a ${checkIcon(repoLink)} target="_blank">
+                        Source
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            `;
+        }
+        if (liveLink !== "") {
+            linksHtml += `
+                <div>
+                    <a ${checkIcon(liveLink)} target="_blank">
+                        Live
+                        <i class="fa-solid fa-display"></i>
+                    </a>
+                </div>
+            `;
+        }
+        linksEl.innerHTML = linksHtml;
     }
 
     function openProject(id, trigger) {

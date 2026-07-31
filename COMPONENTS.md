@@ -135,7 +135,7 @@ Key elements:
 - `.portfolio-image` — a `<button type="button">` with `data-project-id`, opens the project-detail overlay.
 - `.portfolio-text-container`
 - `.portfolio-title`
-- `.portfolio-links`
+- `.portfolio-links` — present in the card's DOM but hidden (`.portfolio-item .portfolio-links { display: none; }`); Source/Live only become visible inside the project-detail overlay.
 
 Data source:
 
@@ -168,7 +168,7 @@ Key elements:
 
 Data source: `src/data/dataPortfolioItems.js`, read fresh at click time by array index (`data-project-id` on the trigger button).
 
-Behavior: opens via `dialog.showModal()` on clicking a `.portfolio-image[data-project-id]`, focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths. `description`/`photo`/`video` sections are omitted entirely (not rendered empty) when the corresponding data field is blank.
+Behavior: opens via `dialog.showModal()` on clicking a `.portfolio-image[data-project-id]`, focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths. `description`/`photo`/`video` sections are omitted entirely (not rendered empty) when the corresponding data field is blank. The Source/Live links are also omitted entirely (not just dimmed) when `repoLink`/`liveLink` is blank — this differs from the portfolio card, which keeps the dimmed `disable-icon` convention. `.project-detail` renders as a full-viewport overlay (`position: fixed; inset: 0`, `width`/`height: 100vw`/`100vh`), not a centered card. The Source/Live row is hidden on the card itself (`.portfolio-item .portfolio-links`) and only visible once the overlay's own `.portfolio-links` renders it. `.project-detail-image img` is capped at `max-width: 1000px` (centered) even though the overlay panel spans the full viewport width.
 
 ### Contact Section
 
@@ -363,3 +363,4 @@ Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code;
 - Renderer functions now guard missing target containers, but future renderer code should keep the same pattern.
 - `src/pages/Project/index.js` is not loaded (unloaded since Phase 2) and kept only as historical reference; its required DOM structure is absent from the current markup. The real project-detail implementation is `src/pages/Project/projectDetail.js` (Phase 7).
 - Chromium's native `<dialog>` focus containment doesn't cycle back to the first focusable element when tabbing past the last one inside `#project-detail` — it can land on `<body>`/the dialog itself for a step. This still fully prevents reaching real page content behind the dialog; see `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note.
+- Missing `liveLink`/`repoLink` are hidden entirely inside `#project-detail`, unlike the portfolio card's dimmed-disabled convention. This is an intentional, documented divergence between the card and the overlay — see `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note and section 6.
