@@ -15,7 +15,9 @@ The site appears functionally centered around `index.html` and several dynamic r
 - Portfolio cards are generated from `src/data/dataPortfolioItems.js`.
 - Contact and main personal text are mostly hardcoded in `index.html`.
 
-Important: the legacy project-detail script `src/pages/Project/index.js` (the `.active`/`#project`/`#portfolio` flow) remains stale, unloaded since Phase 2, and kept in the repo only as historical reference — do not revive it. The project-detail overlay is now implemented **fresh**, in a different file: `src/pages/Project/projectDetail.js`, styled by the rewritten `src/pages/Project/project-page.scss`/`.css` (relinked in `index.html`), per the design in `PROJECT_DETAIL_OVERLAY_DESIGN.md` (Phase 7). It uses a native `<dialog id="project-detail">` (see `index.html`), populated from `dataPortfolioItems` at click time; `.portfolio-image` in `PortfolioItem.js` is now a `<button>` with `data-project-id`, not a `<div>`.
+Important: the legacy project-detail script `src/pages/Project/index.js` (the `.active`/`#project`/`#portfolio` flow) remains stale, unloaded since Phase 2, and kept in the repo only as historical reference — do not revive it. The project-detail overlay is now implemented **fresh**, in a different file: `src/pages/Project/projectDetail.js`, styled by the rewritten `src/pages/Project/project-page.scss`/`.css` (relinked in `index.html`), per the design in `PROJECT_DETAIL_OVERLAY_DESIGN.md` (Phase 7). It uses a native `<dialog id="project-detail">` (see `index.html`), populated from `dataPortfolioItems` at click time; the click trigger is `.portfolio-more-info[data-project-id]`, a dedicated button kept in sync with the carousel's active project.
+
+Important: the portfolio section was redesigned several times after Phase 7. It is now an **image carousel** (`src/pages/Portfolio/portfolioCarousel.js`, `.portfolio-carousel` in `index.html`): a large image stage (`.portfolio-carousel-images`, one `<img>` per project, crossfaded) with prev/next arrow buttons, auto-advancing through projects every 4 seconds. Clicking an arrow or a title tab (below the stage, `.portfolio-list` — now a horizontal wrapping row of small tabs, active one blue via `--color-secondary`, others a muted blue-gray via `--color-portfolio-tab-inactive-bg`) jumps directly to that project and pauses autoplay, which resumes after 20 seconds of no further interaction. A dedicated `.portfolio-more-info` button (directly under the stage) is the **only** thing that opens the project-detail overlay, for whichever project is currently active. The earlier "hover reveals a floating image preview" mechanism (`portfolioHoverPreview.js`, `#portfolio-hover-preview`) has been **removed** — it doesn't fit the carousel design, and `PortfolioItem.js`/`addPortfolioItems.js` were removed along with it (replaced by the single `portfolioCarousel.js` module). `checkLink.js` remains removed from an earlier iteration. See `COMPONENTS.md`'s Portfolio Section for the full breakdown.
 
 Important future architecture requirement: the user wants to eventually avoid editing live project code for every project content update. `PHASES_INFO.md` documents future static-compatible options such as repo-controlled JSON, Excel-to-JSON, Google Sheets-to-JSON, GitHub Actions generation, and external/cloud image workflows. None of those options are implemented yet.
 
@@ -52,9 +54,8 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - `src/utils/pageTransitions.js` (removed in Phase 1)
   - Removed as dead code: an unused helper for class-based section transitions that depended on `.active-btn`, `.active`, and `data-id` conventions the current markup does not use.
 
-- `src/utils/checkLink.js`
-  - Produces active or disabled title link attributes for portfolio cards.
-  - Treats empty and whitespace-only strings as disabled links.
+- `src/utils/checkLink.js` (removed)
+  - Removed once the portfolio card's title stopped being a live-site anchor; its sole caller, `PortfolioItem.js`, has since itself been replaced by `portfolioCarousel.js`.
 
 - `src/utils/checkIcon.js`
   - Produces active or disabled icon link attributes for portfolio cards.
@@ -84,27 +85,25 @@ Important future architecture requirement: the user wants to eventually avoid ed
   - Creates individual timeline DOM elements.
 
 - `src/pages/Portfolio/index.js`
-  - Renders portfolio cards into `.portfolio-list`.
+  - Calls `initPortfolioCarousel(dataPortfolioItems)`.
 
-- `src/pages/Portfolio/addPortfolioItems.js`
-  - Iterates portfolio data and appends portfolio item elements.
-  - Returns safely if the requested container is missing.
-
-- `src/pages/Portfolio/PortfolioItem.js`
-  - Creates portfolio card DOM elements from title, image, live link, and repo link.
-  - `.portfolio-image` is a `<button type="button">` with `data-project-id="${idArrayItem}"` and `aria-label="View details for ${title}"` (Phase 7 overlay implementation) — not a plain `<div>`.
+- `src/pages/Portfolio/portfolioCarousel.js`
+  - Builds the carousel image stage (`.portfolio-carousel-images`, one `<img>` per project from `imageLink`) and the title-tab row (`.portfolio-list`, one `.portfolio-title-box` per project).
+  - Owns the active-project index, an autoplay `setInterval` (4000ms), and a resume `setTimeout` (20000ms).
+  - Wires prev/next arrow clicks and title-tab clicks to jump directly to a project and pause/reschedule autoplay; keeps `.portfolio-more-info`'s `data-project-id` in sync with the active project.
+  - Returns safely if any required static container is missing, or the data array is empty.
 
 - `src/pages/Project/index.js`
   - Legacy project-detail script; expects `.active`, `#project`, and `#portfolio` DOM that does not exist in `index.html`.
   - Not loaded by `index.html` (unloaded since Phase 2). Kept in the repo only as historical reference — the real overlay implementation is `projectDetail.js`, a different, fresh file.
 
 - `src/pages/Project/projectDetail.js`
-  - The actual project-detail overlay implementation (Phase 7 design, implemented). Delegated click listener on `.portfolio-list` for `.portfolio-image[data-project-id]`; looks up `dataPortfolioItems[id]` fresh at click time and populates the shared `<dialog id="project-detail">` (in `index.html`).
+  - The actual project-detail overlay implementation (Phase 7 design, implemented). Delegated click listener on `.portfolio-carousel` for `.portfolio-more-info[data-project-id]`; looks up `dataPortfolioItems[id]` fresh at click time and populates the shared `<dialog id="project-detail">` (in `index.html`).
   - Opens via `dialog.showModal()`, focuses the close button. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener handles focus-return to the trigger button for all three paths.
-  - Omits the description/media sections entirely when `description`/`photo`/`video` are empty (today's data has empty `photo`/`video` on every entry, and empty `description` on 3 of 7). Reuses `checkIcon()` for the Source/Live links so disabled-link styling matches the card.
+  - Renders one `<img>` per entry in `images` (falling back to `[imageLink]` if empty) as a stacked gallery. Omits the description/media sections entirely when `description`/`photo`/`video` are empty (today's 4 active entries have empty `photo`/`video` on all 4, and empty `description` on 3 of 4 - only YourSpecialist has one). Reuses `checkIcon()` for the Source/Live links.
 
 - `src/data/dataPortfolioItems.js`
-  - Portfolio project data and commented-out older project data.
+  - Portfolio project data and commented-out older project data. Each active entry has an `images` array (feeds the project-detail overlay's gallery, currently one path per project) alongside `imageLink` (used as the carousel stage's single image for that project).
 
 - `src/data/dataTimeline.js`
   - Education/training timeline data.
@@ -128,6 +127,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
   - `#skills-list`
   - `.experience-container`
   - `.timeline-container`
+  - `.portfolio-carousel-images`
   - `.portfolio-list`
 - JavaScript renderers use `document.createElement()` and `innerHTML`, then append nodes into existing containers.
 - Data files export arrays with named objects.
@@ -173,7 +173,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Do not delete portfolio screenshots in `src/assets/portfolioImages` without checking `src/data/dataPortfolioItems.js`, including commented-out project data if the owner may restore it.
 - Do not assume `src/pages/Project/index.js` works or revive it; it's historical only. The real overlay is `projectDetail.js`.
 - Do not assume SCSS changes affect the site until compiled CSS is updated.
-- `npm test` (Phase 5, extended in the Phase 7 overlay implementation) runs a real Playwright smoke suite (`tests/`, 23 tests): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, portfolio interactions, and the project-detail overlay (open/close paths, focus management, fallback rendering). See `TESTING.md` for the one-time browser install step.
+- `npm test` (Phase 5, extended in the Phase 7 overlay implementation and the portfolio carousel redesign) runs a real Playwright smoke suite (`tests/`, 30 tests): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, portfolio carousel interactions (arrows, tabs, autoplay/pause), and the project-detail overlay (open/close paths, focus management, fallback rendering). See `TESTING.md` for the one-time browser install step.
 - The recommendation letters download link in `index.html` points to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 
 ## Suggested Next Improvements
@@ -185,7 +185,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 ## Known Risks Or Fragile Areas
 
 - Fixed in Phase 6: `changeAcademicIconColor()` in `TimelineItem.js` now returns `""` instead of `undefined` for non-graduation icons, so no literal `undefined` attribute is generated. `WorkexperienceItem.js` was checked for the same pattern and does not have it (no equivalent attribute-interpolation call exists there).
-- Fixed in Phase 6: the Source/Live icon pairing in `PortfolioItem.js` was swapped — "Source" (repo link) now shows the GitHub icon, and "Live" (deployed link) now shows the display icon. Confirmed the underlying `repoLink`/`liveLink` wiring was already correct; only the icon glyphs were backwards.
+- Fixed in Phase 6: the Source/Live icon pairing was swapped — "Source" (repo link) now shows the GitHub icon, and "Live" (deployed link) now shows the display icon. Confirmed the underlying `repoLink`/`liveLink` wiring was already correct; only the icon glyphs were backwards. This logic now lives in `src/pages/Project/projectDetail.js`, the overlay's only remaining Source/Live rendering site.
 - Investigated in Phase 6: prior docs described "mojibake" in `dataTimeline.js`/`dataWorkexperience.js`, but a byte-level check found no actual encoding corruption — the curly apostrophe (’) and en dash (–) present are valid, correctly-encoded characters, just typographically inconsistent with the plain ASCII apostrophes/hyphens used elsewhere (a style choice, left as-is). The one genuine issue was a wrong-but-valid Romanian diacritic: `ţ` (cedilla, U+0163) in "Haţieganu" was inconsistent with the correct `ș` (comma-below, U+0219) used for "Babeș" in the same file; fixed to `ț` (comma-below, U+021B) — "Hațieganu".
 - Implemented: the project-detail overlay (`projectDetail.js`, native `<dialog>`). Chromium's focus containment doesn't cycle back to the first focusable element when tabbing past the last one (it can land on `<body>`/the dialog itself for a step) — this still fully satisfies "focus never reaches real page content behind the dialog," just not via a perfect wrap-around cycle. Documented in `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note.
 - `index.html` previously repeated `id="email"` on three contact spans; fixed in Phase 2 — the email span keeps `id="email"`, and the education spans use `id="education-university"` and `id="education-school"`.

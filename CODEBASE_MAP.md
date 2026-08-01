@@ -43,7 +43,6 @@
 |   |   `-- Project
 |   |-- utils
 |   |   |-- checkIcon.js
-|   |   |-- checkLink.js
 |   |   `-- toggleLightMode.js
 |   `-- main.js
 |-- index.html
@@ -87,8 +86,7 @@
 - `src/pages/AboutMe/WorkexperienceItem.js`
 - `src/pages/AboutMe/addTimelineItems.js`
 - `src/pages/AboutMe/TimelineItem.js`
-- `src/pages/Portfolio/addPortfolioItems.js`
-- `src/pages/Portfolio/PortfolioItem.js`
+- `src/pages/Portfolio/portfolioCarousel.js` (image carousel + title-tab selector, cycles through projects)
 - `src/pages/Project/index.js` (legacy, not loaded)
 - `src/pages/Project/projectDetail.js` (Phase 7 implementation, loaded)
 
@@ -111,15 +109,14 @@
 
 ## Data Files
 
-- `src/data/dataPortfolioItems.js`: Portfolio cards and project-detail content fields.
+- `src/data/dataPortfolioItems.js`: Portfolio cards and project-detail content fields, including `images` (array of screenshots the project-detail overlay renders as a gallery) and `imageLink` (the single image the carousel stage shows for that project).
 - `src/data/dataTimeline.js`: Timeline entries.
 - `src/data/dataWorkexperience.js`: Work experience entries.
 
 ## Utility Files
 
 - `src/utils/toggleLightMode.js`: Theme toggle behavior.
-- `src/utils/checkLink.js`: Portfolio title link attribute helper.
-- `src/utils/checkIcon.js`: Portfolio icon link attribute helper.
+- `src/utils/checkIcon.js`: Portfolio icon link attribute helper (used by the project-detail overlay).
 
 ## Config Files
 
@@ -209,7 +206,7 @@ Other screenshots exist for commented-out portfolio items.
 
 ## Tests
 
-As of Phase 5 (extended in the Phase 7 overlay implementation), a Playwright smoke suite (23 tests) lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio`, `project-detail` spec files), configured by `playwright.config.js`. Run it with:
+As of Phase 5 (extended in the Phase 7 overlay implementation and the portfolio carousel redesign), a Playwright smoke suite (30 tests) lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio`, `project-detail` spec files), configured by `playwright.config.js`. Run it with:
 
 ```sh
 npm test

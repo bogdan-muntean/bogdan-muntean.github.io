@@ -10,7 +10,7 @@ test("opens via click and populates the correct project", async ({
 }) => {
     const errors = collectConsoleErrors(page);
 
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
 
     const dialog = page.locator("#project-detail");
     await expect(dialog).toHaveJSProperty("open", true);
@@ -24,7 +24,7 @@ test("opens via click and populates the correct project", async ({
 test("opens via keyboard (Enter on the focused trigger)", async ({
     page,
 }) => {
-    await page.locator(".portfolio-image").first().focus();
+    await page.locator(".portfolio-more-info").focus();
     await page.keyboard.press("Enter");
 
     await expect(page.locator("#project-detail")).toHaveJSProperty(
@@ -34,7 +34,7 @@ test("opens via keyboard (Enter on the focused trigger)", async ({
 });
 
 test("closes via the explicit close button", async ({ page }) => {
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
     await page.locator(".project-detail-close").click();
 
     await expect(page.locator("#project-detail")).toHaveJSProperty(
@@ -44,7 +44,7 @@ test("closes via the explicit close button", async ({ page }) => {
 });
 
 test("closes via Escape", async ({ page }) => {
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
     await page.keyboard.press("Escape");
 
     await expect(page.locator("#project-detail")).toHaveJSProperty(
@@ -54,7 +54,7 @@ test("closes via Escape", async ({ page }) => {
 });
 
 test("closes via backdrop click", async ({ page }) => {
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
     await expect(page.locator("#project-detail")).toHaveJSProperty(
         "open",
         true
@@ -73,7 +73,7 @@ test("closes via backdrop click", async ({ page }) => {
 test("focus moves into the overlay on open and returns to the trigger on close", async ({
     page,
 }) => {
-    const trigger = page.locator(".portfolio-image").first();
+    const trigger = page.locator(".portfolio-more-info");
     await trigger.click();
 
     await expect(page.locator(".project-detail-close")).toBeFocused();
@@ -92,7 +92,7 @@ test("Tab never reaches real page content behind the overlay", async ({
     // returning to dialog content. That's fine: the actual requirement is
     // that focus never reaches a real interactive element *behind* the
     // dialog (nav links, the menu, theme toggle, back-to-top, etc.).
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
 
     const dialog = page.locator("#project-detail");
     for (let i = 0; i < 6; i++) {
@@ -110,7 +110,7 @@ test("Tab never reaches real page content behind the overlay", async ({
 test("renders with description/media omitted when empty (Fintrack, today's real data)", async ({
     page,
 }) => {
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
 
     await expect(page.locator(".project-detail-description")).toBeHidden();
     await expect(page.locator(".project-detail-media")).toBeHidden();
@@ -119,7 +119,8 @@ test("renders with description/media omitted when empty (Fintrack, today's real 
 test("renders the description when populated (YourSpecialist)", async ({
     page,
 }) => {
-    await page.locator(".portfolio-image").nth(3).click();
+    await page.locator(".portfolio-title-box").nth(3).click();
+    await page.locator(".portfolio-more-info").click();
 
     await expect(page.locator("#project-detail-title")).toHaveText(
         "YourSpecialist"
@@ -129,23 +130,25 @@ test("renders the description when populated (YourSpecialist)", async ({
     await expect(description).toContainText("Medical Locator site project");
 });
 
-test("missing links are omitted entirely (unlike the card's dimmed convention)", async ({
+test("missing links are omitted entirely from the overlay", async ({
     page,
 }) => {
     // Fintrack: liveLink empty, repoLink set.
-    await page.locator(".portfolio-image").first().click();
+    await page.locator(".portfolio-more-info").click();
     const links = page.locator("#project-detail .portfolio-links a");
     await expect(links).toHaveCount(1);
     await expect(links.nth(0)).toHaveClass("active-icon");
     await expect(links.nth(0)).toContainText("Source");
 });
 
-test("both links render when both are present (Link In Bio)", async ({
+// No "both links render" coverage: "Link In Bio", the only entry with both
+// liveLink and repoLink, is currently commented out of the active
+// dataPortfolioItems array (kept as archive content, not deleted).
+
+test("the overlay renders one image per entry in the project's images array", async ({
     page,
 }) => {
-    await page.locator(".portfolio-image").nth(5).click();
-    const links = page.locator("#project-detail .portfolio-links a");
-    await expect(links).toHaveCount(2);
-    await expect(links.nth(0)).toHaveClass("active-icon");
-    await expect(links.nth(1)).toHaveClass("active-icon");
+    await page.locator(".portfolio-more-info").click();
+
+    await expect(page.locator(".project-detail-image img")).toHaveCount(1);
 });

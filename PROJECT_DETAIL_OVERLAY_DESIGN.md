@@ -4,6 +4,7 @@
 
 1. Chromium's native `<dialog>` focus containment does not cycle back to the first focusable element when tabbing past the last one — it can land on `<body>` or the `<dialog>` element itself for a step first. This still fully satisfies the actual requirement (focus never reaches real page content behind the dialog), just not via a perfect wrap-to-first-element cycle; see the implementation commit for details.
 2. The overlay was originally sized as a centered 600px-wide card and, per section 6 below, disabled (not hidden) missing `liveLink`/`repoLink`. A follow-up fix changed both: `.project-detail` is now a full-viewport overlay (`position: fixed; inset: 0; width/height: 100vw/100vh`), and missing `liveLink`/`repoLink` are now omitted entirely from the overlay's link row (unlike the portfolio card, which keeps the dimmed-disabled convention). See section 6's note.
+3. The portfolio section was later redesigned again as an image carousel (`src/pages/Portfolio/portfolioCarousel.js`, replacing `PortfolioItem.js`/`addPortfolioItems.js`). The overlay's trigger is no longer `.portfolio-image`/`.portfolio-title-box` — it is now a dedicated `.portfolio-more-info[data-project-id]` button, kept in sync with whichever project is active in the carousel. `.project-detail-image` also now renders a gallery (one `<img>` per entry in `item.images`, falling back to `[item.imageLink]`) instead of a single image, since `images` was repurposed to feed this overlay rather than the removed hover-preview mechanism.
 
 The rest of this document is left as originally written, describing the design that was implemented, except where noted.
 
@@ -17,7 +18,7 @@ It replaces, by fresh design rather than revival, the legacy `.active`/`#project
 
 - **Trigger surface today**: `src/pages/Portfolio/PortfolioItem.js` renders each card as `.portfolio-item` (with a class suffix `item-${idArrayItem}`, no data attribute — the old `data-more` attribute was removed in Phase 2), containing a `.portfolio-image` background-image `<div>`, a `.portfolio-title` anchor (disabled via `checkLink` when `liveLink` is empty), and two icon links under `.portfolio-links` for Source (`repoLink`) and Live (`liveLink`), each disabled via `checkIcon` when empty. `addPortfolioItems.js` already threads the array index into `PortfolioItem(index, ...)` for every card.
 - **Data shape** (documented in `PROJECT_DOCUMENTATION.md`'s Content Data Schema, Phase 6): `title`, `description`, `imageLink`, `liveLink`, `repoLink`, `photo`, `video`. `description`/`photo`/`video` are explicitly reserved for this overlay and are not read by any currently-loaded script.
-- **Actual live data today**: of the 7 active `dataPortfolioItems` entries, `photo` and `video` are `""` on **all 7** (normalized in Phase 6), and `description` is a non-empty HTML string on only **4 of 7** (YourSpecialist, Task Tracker, Link In Bio, Todo List; empty on Fintrack, Energy Monitoring System, Buddy Weather App). This means the "fallback state" this design must handle is not an edge case — it is the majority/default case in the live site today.
+- **Actual live data today**: `dataPortfolioItems` currently has **4 active entries** (Fintrack, Energy Monitoring System, Buddy Weather App, YourSpecialist) — Task Tracker, Link In Bio, and Todo List were intentionally commented out later, kept as archive content, not deleted. `photo` and `video` are `""` on **all 4** (normalized in Phase 6), and `description` is a non-empty HTML string on only **1 of 4** (YourSpecialist; empty on Fintrack, Energy Monitoring System, Buddy Weather App). This means the "fallback state" this design must handle is not an edge case — it is the majority/default case in the live site today.
 - **No router, no state library, no framework** — anything here is vanilla DOM manipulation, consistent with the rest of the codebase.
 - **Existing accessibility precedent in this codebase**: `#back-to-top` uses `aria-label="Back to top"` in `index.html`; the mobile menu already closes on outside click (`main.js`) — both are reused as precedent below rather than inventing new conventions.
 
@@ -70,7 +71,7 @@ No new field is needed. The overlay reads exactly the fields already documented 
 
 ## 6. Fallback states
 
-Since every live entry today has empty `photo`/`video` and 3 of 7 have empty `description`, the overlay must look complete and intentional with only `title` + `imageLink` + `liveLink`/`repoLink` populated — that is the common case, not an edge case:
+Since every live entry today has empty `photo`/`video` and 3 of the 4 active entries have empty `description`, the overlay must look complete and intentional with only `title` + `imageLink` + `liveLink`/`repoLink` populated — that is the common case, not an edge case:
 
 - **`description` empty** → omit the description block entirely (no empty paragraph/container rendered).
 - **`photo` / `video` empty** → omit those sections/elements entirely; never render an `<img>`/`<video>` with an empty `src`.

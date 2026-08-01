@@ -124,32 +124,38 @@ src/pages/AboutMe/index.js
 
 ### Portfolio Section
 
-Defined in `index.html`, populated by `src/pages/Portfolio/index.js`.
+Defined in `index.html` as a static carousel shell, populated/wired by `src/pages/Portfolio/index.js` calling `initPortfolioCarousel()`.
 
 Key elements:
 
 - `#portfolio-section`
 - `.portfolio-about`
-- `.portfolio-list`
-- `.portfolio-item`
-- `.portfolio-image` — a `<button type="button">` with `data-project-id`, opens the project-detail overlay.
-- `.portfolio-text-container`
-- `.portfolio-title`
-- `.portfolio-links` — present in the card's DOM but hidden (`.portfolio-item .portfolio-links { display: none; }`); Source/Live only become visible inside the project-detail overlay.
+- `.portfolio-carousel` — the outer wrapper (stage + "More info" button + title-tab row).
+- `.portfolio-carousel-stage` — holds the prev arrow, the image stage, and the next arrow.
+- `.portfolio-carousel-arrow-prev` / `.portfolio-carousel-arrow-next` — round arrow buttons that move to the previous/next project.
+- `.portfolio-carousel-images` — the large image stage; contains one `.portfolio-carousel-image` `<img>` per project (from `imageLink`), crossfaded via an `is-active` class toggle.
+- `.portfolio-more-info` — a `<button type="button" data-project-id>`, kept in sync with the active project by `portfolioCarousel.js`. The **only** trigger that opens the project-detail overlay.
+- `.portfolio-list` — now a horizontal, wrapping row of small title tabs (not a vertical list of cards).
+- `.portfolio-title-box` — a `<button type="button" data-project-id aria-label="Show project X">` per project, title text only. Clicking one makes that project active in the carousel (does **not** open the overlay). The active tab gets `.is-active` (blue background, `--color-secondary`); inactive tabs use a muted blue-gray (`--color-portfolio-tab-inactive-bg`).
+- `.portfolio-title-text` — the tab's title text span.
 
 Data source:
 
-- `src/data/dataPortfolioItems.js`
+- `src/data/dataPortfolioItems.js` — `imageLink` feeds the carousel stage (one image per project); `images` feeds the project-detail overlay's gallery (see below).
+
+Behavior, all wired by `src/pages/Portfolio/portfolioCarousel.js`:
+
+- Autoplay advances to the next project every 4 seconds (`setInterval`).
+- Clicking a prev/next arrow or a title tab jumps directly to that project and immediately stops autoplay; if 20 seconds pass with no further arrow/tab/"More info" click, autoplay restarts on its own (`setTimeout`, reset on every interaction).
+- Clicking "More info" also counts as an interaction for the 20s resume timer (so the carousel can't silently change project while the detail overlay is open on top of it), but does not itself change the active project.
 
 Renderer chain:
 
 ```text
 src/pages/Portfolio/index.js
-  -> addPortfolioItems()
-  -> PortfolioItem()
-  -> checkLink()
-  -> checkIcon()
-  -> .portfolio-list
+  -> initPortfolioCarousel(dataPortfolioItems)
+  -> builds .portfolio-carousel-images + .portfolio-list content
+  -> wires arrows, tabs, "More info", autoplay/resume timers
 ```
 
 ### Project Detail Overlay
@@ -166,9 +172,9 @@ Key elements:
 - `.project-detail-media`
 - `.portfolio-links` (reused inside the dialog, not redefined, so link styling matches the card exactly)
 
-Data source: `src/data/dataPortfolioItems.js`, read fresh at click time by array index (`data-project-id` on the trigger button).
+Data source: `src/data/dataPortfolioItems.js`, read fresh at click time by array index (`data-project-id` on `.portfolio-more-info`, kept current by `portfolioCarousel.js`).
 
-Behavior: opens via `dialog.showModal()` on clicking a `.portfolio-image[data-project-id]`, focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths. `description`/`photo`/`video` sections are omitted entirely (not rendered empty) when the corresponding data field is blank. The Source/Live links are also omitted entirely (not just dimmed) when `repoLink`/`liveLink` is blank — this differs from the portfolio card, which keeps the dimmed `disable-icon` convention. `.project-detail` renders as a full-viewport overlay (`position: fixed; inset: 0`, `width`/`height: 100vw`/`100vh`), not a centered card. The Source/Live row is hidden on the card itself (`.portfolio-item .portfolio-links`) and only visible once the overlay's own `.portfolio-links` renders it. `.project-detail-image img` is capped at `max-width: 1000px` (centered) even though the overlay panel spans the full viewport width.
+Behavior: opens via `dialog.showModal()` on clicking `.portfolio-more-info[data-project-id]` (the carousel's title tabs no longer open it directly), focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths. `description`/`photo`/`video` sections are omitted entirely (not rendered empty) when the corresponding data field is blank. The Source/Live links are also omitted entirely when `repoLink`/`liveLink` is blank. `.project-detail-image` renders one `<img>` per entry in `item.images` (falling back to `[item.imageLink]` if empty) as a stacked gallery — each capped at `max-width: 1000px` (centered) via the existing `.project-detail-image img` rule. `.project-detail` renders as a full-viewport overlay (`position: fixed; inset: 0`, `width`/`height: 100vw`/`100vh`), not a centered card.
 
 ### Contact Section
 
@@ -228,30 +234,29 @@ Used by:
 
 - `src/pages/AboutMe/addTimelineItems.js`
 
-### `PortfolioItem()`
+### `initPortfolioCarousel()`
 
-File: `src/pages/Portfolio/PortfolioItem.js`
+File: `src/pages/Portfolio/portfolioCarousel.js`
 
 Signature:
 
 ```js
-PortfolioItem(idArrayItem, title, image, liveLink, repoLink)
+initPortfolioCarousel(dataBase)
 ```
 
-Returns:
-
-- A `div.portfolio-item` element.
+Returns: nothing (imperatively builds/wires the static carousel shell already in `index.html`).
 
 Special behavior:
 
-- Uses `checkLink(liveLink)` for the project title anchor.
-- Uses `checkIcon(repoLink)` for source link behavior.
-- Uses `checkIcon(liveLink)` for live link behavior.
-- `.portfolio-image` is a `<button type="button">` with `data-project-id="${idArrayItem}"` and `aria-label="View details for ${title}"` (Phase 7 overlay implementation), not the legacy `data-more` attribute removed in Phase 2.
+- Builds one `.portfolio-carousel-image` `<img>` per project (from `imageLink`) into `.portfolio-carousel-images`, and one `.portfolio-title-box` tab per project into `.portfolio-list`; index 0 of each starts with `.is-active`.
+- Tracks the active index, an autoplay `setInterval` (4000ms, advances to the next project), and a resume `setTimeout` (20000ms).
+- `setActive(index)` toggles `.is-active` on the matching image + tab and updates `.portfolio-more-info`'s `data-project-id`.
+- Arrow clicks and title-tab clicks call `goTo()`/`registerInteraction()` — the latter stops autoplay and reschedules it to restart after 20s of no further interaction (arrows, tabs, or "More info").
+- No-ops if any of the required static containers (`.portfolio-carousel-images`, `.portfolio-list`, the two arrows, `.portfolio-more-info`) are missing, or `dataBase` is empty.
 
 Used by:
 
-- `src/pages/Portfolio/addPortfolioItems.js`
+- `src/pages/Portfolio/index.js`
 
 ## Renderer Functions
 
@@ -289,23 +294,6 @@ Purpose:
 - Loops through data.
 - Appends `TimelineItem()` elements.
 
-### `addPortfolioItems()`
-
-File: `src/pages/Portfolio/addPortfolioItems.js`
-
-Signature:
-
-```js
-addPortfolioItems(containerHtmlSelector, dataBase)
-```
-
-Purpose:
-
-- Selects a container.
-- Returns safely if the container is missing.
-- Loops through data.
-- Appends `PortfolioItem()` elements.
-
 ## Utility Functions Used By Components
 
 ### `toggleLightMode()`
@@ -314,11 +302,9 @@ File: `src/utils/toggleLightMode.js`
 
 Controls the global theme by toggling `.light-mode` on `<html>` and `<body>`. Returns safely if the requested theme button is missing.
 
-### `checkLink()`
+### `checkLink()` — removed
 
-File: `src/utils/checkLink.js`
-
-Returns an attribute string for portfolio title links. Empty and whitespace-only strings are treated as disabled links.
+Formerly `src/utils/checkLink.js`. Removed when the portfolio card's title stopped being a live-site anchor; its sole caller, `PortfolioItem.js`, has since itself been replaced by `portfolioCarousel.js`.
 
 ### `checkIcon()`
 
@@ -363,4 +349,4 @@ Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code;
 - Renderer functions now guard missing target containers, but future renderer code should keep the same pattern.
 - `src/pages/Project/index.js` is not loaded (unloaded since Phase 2) and kept only as historical reference; its required DOM structure is absent from the current markup. The real project-detail implementation is `src/pages/Project/projectDetail.js` (Phase 7).
 - Chromium's native `<dialog>` focus containment doesn't cycle back to the first focusable element when tabbing past the last one inside `#project-detail` — it can land on `<body>`/the dialog itself for a step. This still fully prevents reaching real page content behind the dialog; see `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note.
-- Missing `liveLink`/`repoLink` are hidden entirely inside `#project-detail`, unlike the portfolio card's dimmed-disabled convention. This is an intentional, documented divergence between the card and the overlay — see `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note and section 6.
+- Missing `liveLink`/`repoLink` are hidden entirely inside `#project-detail`; the portfolio card itself never renders Source/Live at all. See `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note and section 6.

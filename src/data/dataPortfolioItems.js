@@ -5,6 +5,7 @@ export let dataPortfolioItems = [
         title: "Fintrack - Budget Tracker App",
         description: ``,
         imageLink: "src/assets/portfolioImages/fintrack.PNG",
+        images: ["src/assets/portfolioImages/fintrack.PNG"],
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/fintrack",
         photo: "",
@@ -14,6 +15,7 @@ export let dataPortfolioItems = [
         title: "Energy Monitoring System",
         description: ``,
         imageLink: "src/assets/portfolioImages/energy-monitoring-system.png",
+        images: ["src/assets/portfolioImages/energy-monitoring-system.png"],
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/Energy-Monitoring-System-Microservices-Architecture",
@@ -24,6 +26,7 @@ export let dataPortfolioItems = [
         title: "Buddy Weather App",
         description: ``,
         imageLink: "src/assets/portfolioImages/buddy-weather-app.PNG",
+        images: ["src/assets/portfolioImages/buddy-weather-app.PNG"],
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/buddy-weather",
         photo: "",
@@ -35,41 +38,46 @@ export let dataPortfolioItems = [
 <p>I plan for this project to add the SQL database from which I will filter the information and from which I will retrieve information about the availability of each doctor in the database. And after that I will do the modularization of the components from scratch to be able to organize, set and reuse them. 
 <br>Plus I will correct the mistake in SCSS in which I ranked the code, being a good habit.</p>`,
         imageLink: "src/assets/portfolioImages/your-specialist-img.PNG",
+        images: ["src/assets/portfolioImages/your-specialist-img.PNG"],
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
         photo: "",
         video: "",
     },
-    {
-        title: "Task Tracker",
-        description: `<p>Task tracker project made with React, JavaScript, React Router, React State HTML, SCSS.</p>`,
-        imageLink: "src/assets/portfolioImages/task-tracker-img.PNG",
-        liveLink: "",
-        repoLink: "https://github.com/bogdan-muntean/task-tracker-react",
-        photo: "",
-        video: "",
-    },
-    {
-        title: "Link In Bio",
-        description: `<p>An link-in-bio page created with HTML, SCSS, media queries.</p>`,
-        imageLink: "src/assets/portfolioImages/linkin-bio.PNG",
-        liveLink: "https://bogdan-muntean.github.io/LinkInBio/",
-        repoLink: "https://github.com/bogdan-muntean/LinkInBio",
-        photo: "",
-        video: "",
-    },
-    {
-        title: "Todo List",
-        description: `<p>Todo List project created with react, api, local data base server.</p>`,
-        imageLink: "src/assets/portfolioImages/todo-list.PNG",
-        liveLink: "",
-        repoLink:
-            "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week15_homework-todo-react/todo-app",
-        photo: "",
-        video: "",
-    },
 ];
+
+// {
+//         title: "Task Tracker",
+//         description: `<p>Task tracker project made with React, JavaScript, React Router, React State HTML, SCSS.</p>`,
+//         imageLink: "src/assets/portfolioImages/task-tracker-img.PNG",
+//         images: ["src/assets/portfolioImages/task-tracker-img.PNG"],
+//         liveLink: "",
+//         repoLink: "https://github.com/bogdan-muntean/task-tracker-react",
+//         photo: "",
+//         video: "",
+//     },
+//     {
+//         title: "Link In Bio",
+//         description: `<p>An link-in-bio page created with HTML, SCSS, media queries.</p>`,
+//         imageLink: "src/assets/portfolioImages/linkin-bio.PNG",
+//         images: ["src/assets/portfolioImages/linkin-bio.PNG"],
+//         liveLink: "https://bogdan-muntean.github.io/LinkInBio/",
+//         repoLink: "https://github.com/bogdan-muntean/LinkInBio",
+//         photo: "",
+//         video: "",
+//     },
+//     {
+//         title: "Todo List",
+//         description: `<p>Todo List project created with react, api, local data base server.</p>`,
+//         imageLink: "src/assets/portfolioImages/todo-list.PNG",
+//         images: ["src/assets/portfolioImages/todo-list.PNG"],
+//         liveLink: "",
+//         repoLink:
+//             "https://github.com/bogdan-muntean/Projects-SIIT_Bogdan_Muntean/tree/main/week15_homework-todo-react/todo-app",
+//         photo: "",
+//         video: "",
+//     },
 
 // {
 //     title: "Game Monsters Project",

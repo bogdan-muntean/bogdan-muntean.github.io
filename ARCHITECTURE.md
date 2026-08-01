@@ -56,15 +56,14 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 
 - `Home`: Home section styling only.
 - `AboutMe`: About-related renderers, item factories, skills data/rendering, and section styling.
-- `Portfolio`: Portfolio renderers, card factory, and section styling.
+- `Portfolio`: Portfolio carousel renderer/behavior and section styling.
 - `Project`: `index.js` is the legacy, unloaded project-detail script (historical only). `projectDetail.js` and `project-page.scss`/`.css` are the actual, loaded project-detail overlay implementation (Phase 7).
 - `Contact`: Contact styling only.
 
 ### `src/utils`
 
 - `toggleLightMode.js`: Theme toggling.
-- `checkLink.js`: Enables/disables portfolio title links.
-- `checkIcon.js`: Enables/disables portfolio icon links.
+- `checkIcon.js`: Enables/disables portfolio icon links (used by the project-detail overlay only).
 
 ## Main Execution Flow
 
@@ -79,9 +78,9 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
    - timeline items into `.timeline-container`
    - skills into `#skills-list` via `addMySkills.js`
 7. `index.html` loads `src/pages/Portfolio/index.js` as a module.
-8. `src/pages/Portfolio/index.js` renders portfolio cards into `.portfolio-list`. Each card's `.portfolio-image` is a `<button>` with `data-project-id`.
+8. `src/pages/Portfolio/index.js` calls `initPortfolioCarousel(dataPortfolioItems)` (`portfolioCarousel.js`), which populates the static carousel shell in `index.html`: one `<img>` per project in `.portfolio-carousel-images` (from `imageLink`) and one `.portfolio-title-box` tab per project in `.portfolio-list` (title text only). It auto-advances through projects every 4s, wires the prev/next arrows and title tabs to jump directly to a project, and keeps `.portfolio-more-info`'s `data-project-id` in sync with whichever project is active. Clicking an arrow, a title tab, or "More info" stops autoplay and schedules it to resume after 20s of no further interaction.
 9. `index.html` no longer loads `src/pages/Project/index.js` (its script tag was removed in Phase 2). The file remains in the repo as historical reference only; it targeted legacy `.active`/`#project`/`#portfolio` DOM that the current markup does not contain.
-10. `index.html` loads `src/pages/Project/projectDetail.js` as a module (Phase 7 overlay implementation). It attaches a delegated click listener on `.portfolio-list`; clicking a `.portfolio-image[data-project-id]` looks up the matching `dataPortfolioItems` entry and opens the shared `<dialog id="project-detail">` via `showModal()`.
+10. `index.html` loads `src/pages/Project/projectDetail.js` as a module (Phase 7 overlay implementation). It attaches a delegated click listener on `.portfolio-carousel`; clicking `.portfolio-more-info[data-project-id]` looks up the matching `dataPortfolioItems` entry and opens the shared `<dialog id="project-detail">` via `showModal()`, rendering every entry in that project's `images` array (falling back to `imageLink`) as a stacked gallery.
 
 ## File Dependencies
 
@@ -99,10 +98,7 @@ index.html
   |   `-- src/pages/AboutMe/addMySkills.js
   |-- src/pages/Portfolio/index.js
   |   |-- src/data/dataPortfolioItems.js
-  |   `-- src/pages/Portfolio/addPortfolioItems.js
-  |       `-- src/pages/Portfolio/PortfolioItem.js
-  |           |-- src/utils/checkLink.js
-  |           `-- src/utils/checkIcon.js
+  |   `-- src/pages/Portfolio/portfolioCarousel.js
   `-- src/pages/Project/projectDetail.js
       |-- src/data/dataPortfolioItems.js
       `-- src/utils/checkIcon.js
@@ -162,6 +158,7 @@ Runtime state is stored in:
   - `.show` on `#back-to-top`.
   - `.light-mode` on `<html>` and `<body>`.
 - Native `<dialog>` open/closed state: `#project-detail`'s `.open` property, managed by `showModal()`/`close()` in `projectDetail.js`; a module-local variable there tracks the trigger button to restore focus to on close.
+- Portfolio carousel state (module-local in `portfolioCarousel.js`): the active project index, the autoplay `setInterval` id, and the resume `setTimeout` id.
 - JavaScript module-local arrays:
   - `skillCategories` inside `src/pages/AboutMe/addMySkills.js`.
   - exported data arrays in `src/data`.
@@ -244,25 +241,30 @@ src/pages/AboutMe/addMySkills.js
   -> DOM append into #skills-list
 ```
 
-Portfolio link display uses helper functions:
+Portfolio carousel (cycles through projects, not through one project's images):
 
 ```text
-dataPortfolioItems item
-  -> PortfolioItem()
-  -> checkLink(liveLink)
-  -> checkIcon(liveLink/repoLink)
-  -> active or disabled anchor markup
+dataPortfolioItems (imageLink per project)
+  -> initPortfolioCarousel() builds:
+     - one <img class="portfolio-carousel-image"> per project in .portfolio-carousel-images
+     - one <button class="portfolio-title-box" data-project-id> per project in .portfolio-list
+  -> setInterval(4000ms) advances the active project (is-active toggled on both
+     the image and its matching title tab); .portfolio-more-info's data-project-id
+     is kept in sync with the active index
+  -> clicking a prev/next arrow or a title tab jumps directly (goTo) and calls
+     registerInteraction(): stops autoplay, then setTimeout(20000ms) restarts it
+     if no further arrow/tab/"More info" click happens in the meantime
 ```
 
-Clicking `.portfolio-image` opens the project-detail overlay:
+Clicking `.portfolio-more-info` opens the project-detail overlay for the currently active project:
 
 ```text
-click on .portfolio-image[data-project-id]
-  -> projectDetail.js reads data-project-id
+click on .portfolio-more-info[data-project-id]
+  -> projectDetail.js reads data-project-id (kept current by portfolioCarousel.js)
   -> dataPortfolioItems[id] (fresh lookup, not cached)
-  -> populates #project-detail (title, image, description/photo/video if non-empty,
-     Source/Live links only rendered when repoLink/liveLink is non-empty - omitted
-     entirely otherwise, unlike the card's dimmed-disabled convention)
+  -> populates #project-detail (title, an <img> per entry in images - falling back
+     to [imageLink] if empty - description/photo/video if non-empty,
+     Source/Live links only rendered when repoLink/liveLink is non-empty)
   -> dialog.showModal() (full-viewport dialog, not a centered card)
 ```
 

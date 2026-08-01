@@ -1,15 +1,16 @@
 // Project-detail overlay. Fresh implementation per PROJECT_DETAIL_OVERLAY_DESIGN.md
 // (Phase 7) - not a revival of the old .active/#project/#portfolio flow.
 // A single shared <dialog> (see index.html) is populated from
-// dataPortfolioItems at click time, keyed by the data-project-id set on
-// each card's .portfolio-image button.
+// dataPortfolioItems at click time, keyed by the data-project-id kept in
+// sync on the carousel's "More info" button (src/pages/Portfolio/portfolioCarousel.js)
+// as the active project changes.
 import { dataPortfolioItems } from "../../data/dataPortfolioItems.js";
 import { checkIcon } from "../../utils/checkIcon.js";
 
 const dialog = document.querySelector("#project-detail");
-const portfolioList = document.querySelector(".portfolio-list");
+const portfolioCarousel = document.querySelector(".portfolio-carousel");
 
-if (dialog && portfolioList) {
+if (dialog && portfolioCarousel) {
     const titleEl = dialog.querySelector(".project-detail-title");
     const imageEl = dialog.querySelector(".project-detail-image");
     const descriptionEl = dialog.querySelector(".project-detail-description");
@@ -22,9 +23,13 @@ if (dialog && portfolioList) {
     function renderProject(item) {
         titleEl.textContent = item.title;
 
-        imageEl.innerHTML = item.imageLink
-            ? `<img src="./${item.imageLink}" alt="${item.title} screenshot" />`
-            : "";
+        const images =
+            Array.isArray(item.images) && item.images.length > 0
+                ? item.images
+                : [item.imageLink].filter(Boolean);
+        imageEl.innerHTML = images
+            .map((src) => `<img src="./${src}" alt="${item.title} screenshot" />`)
+            .join("");
 
         const description =
             typeof item.description === "string" ? item.description.trim() : "";
@@ -87,8 +92,8 @@ if (dialog && portfolioList) {
         }
     }
 
-    portfolioList.addEventListener("click", (event) => {
-        const trigger = event.target.closest(".portfolio-image[data-project-id]");
+    portfolioCarousel.addEventListener("click", (event) => {
+        const trigger = event.target.closest(".portfolio-more-info[data-project-id]");
         if (!trigger) {
             return;
         }

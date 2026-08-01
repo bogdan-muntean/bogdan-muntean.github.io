@@ -31,7 +31,7 @@ $max-viewport-desktop: 1200px;
 
     //var photo size
     --photo-principal: 160px;
-    --photo-height-portfolio: 300px;
+    --photo-height-portfolio: 420px;
 
     //var line height size
     --line-height-default: 26px;
@@ -45,9 +45,6 @@ $max-viewport-desktop: 1200px;
 
     //margin
     --margin-bottom-container-default: 34px;
-
-    // gap value
-    --gap-portfolio-list: 20px;
 
     //var colors
     --color-primary: #202948;
@@ -67,6 +64,7 @@ $max-viewport-desktop: 1200px;
     --color-portfolio-item-bg: #888888;
     --color-portfolio-item: #fff;
     --color-portfolio-item-disable: #dddddd;
+    --color-portfolio-tab-inactive-bg: #3d4a72;
 
     //var borders
     --br-small: 10px; //border radius small.
@@ -91,6 +89,7 @@ $max-viewport-desktop: 1200px;
     --color-portfolio-item-bg: #cccccc;
     --color-portfolio-item: #000;
     --color-portfolio-item-disable: #525252;
+    --color-portfolio-tab-inactive-bg: #aab2cf;
 }
 
 // ### Variables and Mixins - Media Query ###
