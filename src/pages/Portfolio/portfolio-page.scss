@@ -69,6 +69,10 @@
   &:focus-visible {
     background-color: rgba(39, 61, 174, 0.8);
   }
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .portfolio-carousel-arrow-prev {
@@ -131,10 +135,6 @@
 
   @media (min-width: 500px) {
     flex-basis: calc(50% - 4px);
-  }
-
-  @media (min-width: 800px) {
-    flex-basis: calc(33.333% - 6px);
   }
 }
 

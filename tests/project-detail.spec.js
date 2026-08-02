@@ -145,10 +145,67 @@ test("missing links are omitted entirely from the overlay", async ({
 // liveLink and repoLink, is currently commented out of the active
 // dataPortfolioItems array (kept as archive content, not deleted).
 
-test("the overlay renders one image per entry in the project's images array", async ({
+test("the overlay renders one image per entry in the project's images array (Fintrack, today's real data)", async ({
     page,
 }) => {
     await page.locator(".portfolio-more-info").click();
 
-    await expect(page.locator(".project-detail-image img")).toHaveCount(1);
+    await expect(
+        page.locator(".project-detail-carousel .portfolio-carousel-image")
+    ).toHaveCount(3);
+});
+
+test("image carousel arrows/dots are hidden when there's only one image (Energy Monitoring System, today's real data)", async ({
+    page,
+}) => {
+    await page.locator(".portfolio-title-box").nth(1).click();
+    await page.locator(".portfolio-more-info").click();
+
+    const carousel = page.locator(".project-detail-carousel");
+    await expect(carousel.locator(".portfolio-carousel-arrow-prev")).toBeHidden();
+    await expect(carousel.locator(".portfolio-carousel-arrow-next")).toBeHidden();
+    await expect(
+        carousel.locator(".project-detail-carousel-dot")
+    ).toHaveCount(0);
+});
+
+test("image carousel arrows/dots navigate and the active dot updates (Fintrack, today's real data)", async ({
+    page,
+}) => {
+    await page.locator(".portfolio-more-info").click();
+
+    const carousel = page.locator(".project-detail-carousel");
+    await expect(carousel.locator(".project-detail-carousel-dot")).toHaveCount(3);
+    await expect(
+        carousel.locator(".project-detail-carousel-dot").first()
+    ).toHaveClass(/is-active/);
+
+    await carousel.locator(".portfolio-carousel-arrow-next").click();
+
+    await expect(carousel.locator(".portfolio-carousel-image").nth(1)).toHaveClass(
+        /is-active/
+    );
+    await expect(
+        carousel.locator(".project-detail-carousel-dot").nth(1)
+    ).toHaveClass(/is-active/);
+});
+
+test("image carousel autoplay advances on its own (Fintrack, today's real data)", async ({
+    page,
+}) => {
+    await page.locator(".portfolio-more-info").click();
+
+    await expect(
+        page
+            .locator(".project-detail-carousel .portfolio-carousel-image")
+            .nth(1)
+    ).toHaveClass(/is-active/, { timeout: 5000 });
+});
+
+test("video carousel is hidden when the project has no videos (today's real data)", async ({
+    page,
+}) => {
+    await page.locator(".portfolio-more-info").click();
+
+    await expect(page.locator(".project-detail-video-carousel")).toBeHidden();
 });

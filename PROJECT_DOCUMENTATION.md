@@ -130,7 +130,9 @@ There is no backend application, API server, database connection, build pipeline
 
 - `src/pages/Project/projectDetail.js` — the real implementation (Phase 7)
   - Delegated click listener on `.portfolio-carousel` for `.portfolio-more-info[data-project-id]`.
-  - Looks up `dataPortfolioItems[id]` fresh at click time (not cached), populates the shared `<dialog id="project-detail">`: title, an image gallery (one `<img>` per entry in `images`, falling back to `[imageLink]`), description (omitted if empty), photo/video (omitted if empty), and Source/Live links via `checkIcon()` (omitted entirely when `repoLink`/`liveLink` is empty).
+  - Looks up `dataPortfolioItems[id]` fresh at click time (not cached), populates the shared `<dialog id="project-detail">` in this order: title, an image carousel (one `<img>` per entry in `images`, falling back to `[imageLink]`; dot-indicator navigation and 4s autoplay when more than one - Fintrack has 3 today), description (omitted if empty), Source/Live links via `checkIcon()` (omitted entirely when `repoLink`/`liveLink` is empty), then a video carousel built from `videos` (hidden entirely when empty, manual navigation only).
+  - The video carousel renders one YouTube thumbnail/play-button at a time (not all pre-rendered, to avoid loading multiple hidden iframes); clicking a thumbnail swaps in a live `<iframe>` embed. Each thumbnail's title (top-left, links out to the original YouTube URL) is fetched asynchronously via the public YouTube oEmbed endpoint and filled in once it resolves.
+  - Both the image and video carousels reuse the main Portfolio carousel's arrow/stage styling; the image carousel's autoplay uses the same `createAutoplayController()` (`src/utils/autoplayCarousel.js`) as the main carousel, stopped/reset when the dialog closes.
   - Opens via `dialog.showModal()` and focuses the close button. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to whichever trigger button opened it, covering all three close paths.
 
 ### Contact Area
@@ -172,11 +174,10 @@ Consumed by `src/pages/Portfolio/portfolioCarousel.js` (`imageLink`, `title` onl
 | `title` | string | Required | Rendered as the carousel tab's text and the overlay's title. |
 | `description` | string (HTML template literal) | Optional | Read by the overlay; omitted entirely when empty (3 of the 4 active entries today - only YourSpecialist has one). |
 | `imageLink` | string (relative path) | Required | Path under `src/assets/portfolioImages/`, used as the carousel stage's single image for that project. Falls back into `images` when that array is empty. |
-| `images` | array of string (relative paths) | Required | Feeds the project-detail overlay's image gallery (one `<img>` per entry, rendered by `projectDetail.js`); each active entry currently holds a single path (the same as `imageLink`). `projectDetail.js` falls back to `[imageLink]` if this field is absent/empty. Not read by the carousel stage itself (see `imageLink`). |
+| `images` | array of string (relative paths) | Required | Feeds the project-detail overlay's image carousel (one `<img>` per entry, dot-indicator navigation and autoplay when more than one). Fintrack has 3 paths today (real multi-image data); the other 3 active entries hold a single path (the same as `imageLink`), so their carousel's arrows/dots stay hidden. `projectDetail.js` falls back to `[imageLink]` if this field is absent/empty. Not read by the carousel stage itself (see `imageLink`). |
 | `liveLink` | string (URL or `""`) | Optional | Empty string omits the "Live" link entirely from the overlay (via `checkIcon`, which `.trim()`s before checking). None of the 4 active entries has a `liveLink` today. |
 | `repoLink` | string (URL or `""`) | Optional | Empty string omits the "Source" link entirely from the overlay. |
-| `photo` | string | Optional | Read by the overlay; omitted entirely when empty (all 4 active entries today). The legacy `src/pages/Project/index.js` also reads this field but is not loaded. |
-| `video` | string | Optional | Same as `photo`. |
+| `videos` | array of string (YouTube URLs) | Required | Feeds the overlay's video carousel, below the Source/Live links. Each URL's video ID is parsed client-side (supports `youtu.be/<id>`, `?v=<id>`, and `/embed/<id>` forms) to build a thumbnail (`https://img.youtube.com/vi/<id>/hqdefault.jpg`) and an embed URL; the title shown top-left of the thumbnail is fetched via the YouTube oEmbed endpoint. Empty on all 4 active entries today, so the whole video carousel section is hidden (`hidden` attribute) until a real URL is added. Replaces the removed `photo`/`video` fields. |
 
 Commented-out entries below the active array follow the same shape and are kept as archive content; do not remove without explicit confirmation.
 
@@ -219,6 +220,10 @@ Hardcoded directly in `index.html`: Home hero text, About Me body text, all Cont
   - Exports `checkIcon(icon)`.
   - Returns `class="disable-icon"` when `icon` is empty or whitespace-only.
   - Returns `class="active-icon" href="..."` when the link is present.
+
+- `src/utils/autoplayCarousel.js`
+  - Exports `createAutoplayController(advance, { autoplayDelayMs, resumeDelayMs })` → `{ start, stop, registerInteraction, reset }`.
+  - Shared 4s-autoplay/20s-resume timer logic, used by `src/pages/Portfolio/portfolioCarousel.js` (the main carousel) and `src/pages/Project/projectDetail.js` (the overlay's image carousel only - the video carousel is manual).
 
 - `src/utils/pageTransitions.js` — removed in Phase 1
   - Was an unused helper exporting `pageTransitions(classBtn)` to toggle `.active-btn`/`.active` by `data-id`; not imported or called by any code, so it was deleted as dead code.
@@ -290,6 +295,7 @@ Detected from `index.html`:
   - Kdam Thmor Pro
   - Oxygen
 - Font Awesome CSS from `cdnjs.cloudflare.com`, with multiple versions/stylesheets linked.
+- YouTube: `src/pages/Project/projectDetail.js` calls the public YouTube oEmbed endpoint (`https://www.youtube.com/oembed?url=...&format=json`) via `fetch()` to get a video's title, derives its thumbnail URL directly (`https://img.youtube.com/vi/<id>/hqdefault.jpg`, no request needed), and embeds `https://www.youtube.com/embed/<id>` in an `<iframe>` once a thumbnail is clicked. This is the first runtime network call to a third-party service in the codebase; no API key or npm dependency is involved, and a failed/blocked oEmbed fetch is caught and just leaves the video title blank (the thumbnail/play button still works).
 
 No npm-installed external library is declared.
 

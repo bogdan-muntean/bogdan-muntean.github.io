@@ -5,11 +5,14 @@ export let dataPortfolioItems = [
         title: "Fintrack - Budget Tracker App",
         description: ``,
         imageLink: "src/assets/portfolioImages/fintrack.PNG",
-        images: ["src/assets/portfolioImages/fintrack.PNG"],
+        images: [
+            "src/assets/portfolioImages/fintrack.PNG",
+            "src/assets/portfolioImages/buddy-weather-app.PNG",
+            "src/assets/portfolioImages/energy-monitoring-system.png",
+        ],
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/fintrack",
-        photo: "",
-        video: "",
+        videos: [],
     },
     {
         title: "Energy Monitoring System",
@@ -19,8 +22,7 @@ export let dataPortfolioItems = [
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/Energy-Monitoring-System-Microservices-Architecture",
-        photo: "",
-        video: "",
+        videos: [],
     },
     {
         title: "Buddy Weather App",
@@ -29,8 +31,7 @@ export let dataPortfolioItems = [
         images: ["src/assets/portfolioImages/buddy-weather-app.PNG"],
         liveLink: "",
         repoLink: "https://github.com/bogdan-muntean/buddy-weather",
-        photo: "",
-        video: "",
+        videos: [],
     },
     {
         title: "YourSpecialist",
@@ -42,8 +43,7 @@ export let dataPortfolioItems = [
         liveLink: "",
         repoLink:
             "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
-        photo: "",
-        video: "",
+        videos: [],
     },
 ];
 

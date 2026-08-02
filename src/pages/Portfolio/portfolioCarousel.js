@@ -3,15 +3,23 @@
 // directly to a project, and a "More info" button (kept in sync via
 // data-project-id) that src/pages/Project/projectDetail.js listens on to
 // open the full project-detail overlay for the currently active project.
-const AUTOPLAY_DELAY_MS = 4000;
-const RESUME_DELAY_MS = 20000;
+import { createAutoplayController } from "../../utils/autoplayCarousel.js";
 
 export function initPortfolioCarousel(dataBase) {
-    const imagesContainer = document.querySelector(".portfolio-carousel-images");
-    const tabsContainer = document.querySelector(".portfolio-list");
-    const prevBtn = document.querySelector(".portfolio-carousel-arrow-prev");
-    const nextBtn = document.querySelector(".portfolio-carousel-arrow-next");
-    const moreInfoBtn = document.querySelector(".portfolio-more-info");
+    // Scoped to .portfolio-carousel (not document-wide): the project-detail
+    // overlay reuses these same arrow/stage class names for its own image
+    // and video carousels, so a document-wide query would risk matching the
+    // wrong element.
+    const root = document.querySelector(".portfolio-carousel");
+    if (!root) {
+        return;
+    }
+
+    const imagesContainer = root.querySelector(".portfolio-carousel-images");
+    const tabsContainer = root.querySelector(".portfolio-list");
+    const prevBtn = root.querySelector(".portfolio-carousel-arrow-prev");
+    const nextBtn = root.querySelector(".portfolio-carousel-arrow-next");
+    const moreInfoBtn = root.querySelector(".portfolio-more-info");
 
     if (
         !imagesContainer ||
@@ -44,8 +52,6 @@ export function initPortfolioCarousel(dataBase) {
     const tabEls = tabsContainer.querySelectorAll(".portfolio-title-box");
 
     let activeIndex = 0;
-    let autoplayIntervalId = null;
-    let resumeTimeoutId = null;
 
     function setActive(index) {
         activeIndex = index;
@@ -67,30 +73,16 @@ export function initPortfolioCarousel(dataBase) {
         goTo(activeIndex - 1);
     }
 
-    function stopAutoplay() {
-        clearInterval(autoplayIntervalId);
-        autoplayIntervalId = null;
-    }
-
-    function startAutoplay() {
-        stopAutoplay();
-        autoplayIntervalId = setInterval(next, AUTOPLAY_DELAY_MS);
-    }
-
-    function registerInteraction() {
-        stopAutoplay();
-        clearTimeout(resumeTimeoutId);
-        resumeTimeoutId = setTimeout(startAutoplay, RESUME_DELAY_MS);
-    }
+    const autoplay = createAutoplayController(next);
 
     prevBtn.addEventListener("click", () => {
         prev();
-        registerInteraction();
+        autoplay.registerInteraction();
     });
 
     nextBtn.addEventListener("click", () => {
         next();
-        registerInteraction();
+        autoplay.registerInteraction();
     });
 
     tabsContainer.addEventListener("click", (event) => {
@@ -99,10 +91,10 @@ export function initPortfolioCarousel(dataBase) {
             return;
         }
         goTo(Number(trigger.dataset.projectId));
-        registerInteraction();
+        autoplay.registerInteraction();
     });
 
-    moreInfoBtn.addEventListener("click", registerInteraction);
+    moreInfoBtn.addEventListener("click", autoplay.registerInteraction);
 
-    startAutoplay();
+    autoplay.start();
 }

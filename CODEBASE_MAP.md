@@ -42,6 +42,7 @@
 |   |   |-- Portfolio
 |   |   `-- Project
 |   |-- utils
+|   |   |-- autoplayCarousel.js
 |   |   |-- checkIcon.js
 |   |   `-- toggleLightMode.js
 |   `-- main.js
@@ -117,6 +118,7 @@
 
 - `src/utils/toggleLightMode.js`: Theme toggle behavior.
 - `src/utils/checkIcon.js`: Portfolio icon link attribute helper (used by the project-detail overlay).
+- `src/utils/autoplayCarousel.js`: Shared autoplay/pause/resume timer controller (`createAutoplayController()`), used by both the main Portfolio carousel and the project-detail overlay's image carousel.
 
 ## Config Files
 
@@ -206,7 +208,7 @@ Other screenshots exist for commented-out portfolio items.
 
 ## Tests
 
-As of Phase 5 (extended in the Phase 7 overlay implementation and the portfolio carousel redesign), a Playwright smoke suite (30 tests) lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio`, `project-detail` spec files), configured by `playwright.config.js`. Run it with:
+As of Phase 5 (extended in the Phase 7 overlay implementation, the portfolio carousel redesign, and the project-detail image/video carousels), a Playwright smoke suite (33 tests) lives in `tests/` (`page-load`, `rendering`, `mobile-menu`, `theme-toggle`, `back-to-top`, `portfolio`, `project-detail` spec files), configured by `playwright.config.js`. Run it with:
 
 ```sh
 npm test
@@ -216,7 +218,7 @@ This runs `playwright test`, which starts `npm run serve` automatically and shut
 
 ## API
 
-No API endpoints, backend routes, server files, or fetch calls were found in the current source files.
+No backend routes or server files exist in this repository. One client-side `fetch()` call exists: `src/pages/Project/projectDetail.js` calls the public YouTube oEmbed endpoint to get a video's title for the project-detail overlay's video carousel (no API key, no npm dependency).
 
 ## Deployment Files
 

@@ -172,6 +172,9 @@
 .portfolio-carousel-arrow:hover, .portfolio-carousel-arrow:focus-visible {
   background-color: rgba(39, 61, 174, 0.8);
 }
+.portfolio-carousel-arrow[hidden] {
+  display: none;
+}
 
 .portfolio-carousel-arrow-prev {
   left: 12px;
@@ -229,11 +232,6 @@
 @media (min-width: 500px) {
   .portfolio-title-box {
     flex-basis: calc(50% - 4px);
-  }
-}
-@media (min-width: 800px) {
-  .portfolio-title-box {
-    flex-basis: calc(33.333% - 6px);
   }
 }
 

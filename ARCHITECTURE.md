@@ -262,11 +262,48 @@ Clicking `.portfolio-more-info` opens the project-detail overlay for the current
 click on .portfolio-more-info[data-project-id]
   -> projectDetail.js reads data-project-id (kept current by portfolioCarousel.js)
   -> dataPortfolioItems[id] (fresh lookup, not cached)
-  -> populates #project-detail (title, an <img> per entry in images - falling back
-     to [imageLink] if empty - description/photo/video if non-empty,
-     Source/Live links only rendered when repoLink/liveLink is non-empty)
+  -> populates #project-detail, in order:
+     1. title
+     2. image carousel: one <img> per entry in images (falling back to [imageLink]
+        if empty), dot-indicator navigation (arrows + dots hidden when only one);
+        autoplays every 4s like the main Portfolio carousel (same shared
+        createAutoplayController() from src/utils/autoplayCarousel.js), paused by
+        arrow/dot interaction and resumed after 20s, stopped/reset on dialog close
+     3. description, omitted entirely when empty
+     4. Source/Live links, omitted entirely when repoLink/liveLink is empty
+     5. video carousel: built from videos (a YouTube URL array), section hidden
+        entirely when empty - see below
   -> dialog.showModal() (full-viewport dialog, not a centered card)
 ```
+
+The video carousel (`.project-detail-video-carousel`) shows one YouTube thumbnail/play-button at a time rather than pre-rendering every video (avoids loading several hidden iframes at once):
+
+```text
+goToVideo(index) -> renderVideoSlide()
+  -> extractYouTubeId(videos[index]) (parses youtu.be/<id>, ?v=<id>, /embed/<id>)
+  -> thumbnail: https://img.youtube.com/vi/<id>/hqdefault.jpg (no request needed)
+  -> title (top-left overlay, links to the original URL): fetched async via
+     fetch("https://www.youtube.com/oembed?url=...&format=json") - the
+     codebase's first runtime network call to a third-party service; a
+     failed/blocked fetch is caught and just leaves the title blank
+  -> click on the thumbnail replaces it with an <iframe src="youtube.com/embed/<id>?autoplay=1">
+     so the video plays in place; navigating to another slide resets back to
+     a thumbnail (playback state isn't preserved across slides)
+```
+
+Both the image carousel and the video carousel reuse `.portfolio-carousel-stage`/
+`.portfolio-carousel-arrow(-prev/-next)`/`.portfolio-carousel-images`/
+`.portfolio-carousel-image` from the main Portfolio section's carousel for
+identical visual styling - `portfolioCarousel.js` and `projectDetail.js` each
+scope their `querySelector` calls to their own root container (`.portfolio-carousel`,
+`.project-detail-carousel`, `.project-detail-video-carousel`) specifically to
+avoid one module's arrows matching another's.
+
+`src/utils/autoplayCarousel.js` exports `createAutoplayController(advance, options)`
+- a tiny shared `start`/`stop`/`registerInteraction`/`reset` timer controller
+used by both `portfolioCarousel.js` (the main carousel) and `projectDetail.js`
+(the overlay's image carousel); the overlay's video carousel doesn't use it,
+since it stays manual-only.
 
 ## Deployment Architecture
 

@@ -145,8 +145,8 @@ Data source:
 
 Behavior, all wired by `src/pages/Portfolio/portfolioCarousel.js`:
 
-- Autoplay advances to the next project every 4 seconds (`setInterval`).
-- Clicking a prev/next arrow or a title tab jumps directly to that project and immediately stops autoplay; if 20 seconds pass with no further arrow/tab/"More info" click, autoplay restarts on its own (`setTimeout`, reset on every interaction).
+- Autoplay advances to the next project every 4 seconds, via the shared `createAutoplayController()` (`src/utils/autoplayCarousel.js`).
+- Clicking a prev/next arrow or a title tab jumps directly to that project and immediately stops autoplay; if 20 seconds pass with no further arrow/tab/"More info" click, autoplay restarts on its own (`registerInteraction()`, reset on every interaction).
 - Clicking "More info" also counts as an interaction for the 20s resume timer (so the carousel can't silently change project while the detail overlay is open on top of it), but does not itself change the active project.
 
 Renderer chain:
@@ -162,19 +162,21 @@ src/pages/Portfolio/index.js
 
 Defined in `index.html` (a single shared `<dialog id="project-detail">`, placed after `<main>`), styled by `src/pages/Project/project-page.scss` and `.css`, populated by `src/pages/Project/projectDetail.js` (Phase 7 implementation).
 
-Key elements:
+Key elements, in the order they're stacked inside the dialog:
 
 - `#project-detail` (the `<dialog>`)
 - `.project-detail-close`
 - `#project-detail-title` / `.project-detail-title`
-- `.project-detail-image`
+- `.project-detail-carousel` — image carousel: `.portfolio-carousel-stage` (reused from the main Portfolio carousel) containing `.portfolio-carousel-arrow(-prev/-next)` and `.portfolio-carousel-images`/`.portfolio-carousel-image` (also reused), plus its own `.project-detail-carousel-dots`/`.project-detail-carousel-dot` row below the stage. Autoplays every 4s (paused on interaction, resumed after 20s, stopped on close) via the same shared `createAutoplayController()` the main carousel uses. Arrows and dots are hidden when the project has only one image (true for 3 of the 4 active entries today; Fintrack has 3).
 - `.project-detail-description`
-- `.project-detail-media`
 - `.portfolio-links` (reused inside the dialog, not redefined, so link styling matches the card exactly)
+- `.project-detail-video-carousel` — video carousel, same stage/arrow/dots pattern as the image carousel, but `.project-detail-video-frame` renders one video "slide" at a time: a `.project-detail-video-thumb-btn` (YouTube thumbnail + `.project-detail-video-play-icon`) that gets replaced by a `.project-detail-video-iframe` on click, plus a `.project-detail-video-title` link overlaid top-left (points at the real YouTube URL, its text filled in once the oEmbed fetch resolves). The whole section is `hidden` when the project has no `videos` (every active entry today).
 
 Data source: `src/data/dataPortfolioItems.js`, read fresh at click time by array index (`data-project-id` on `.portfolio-more-info`, kept current by `portfolioCarousel.js`).
 
-Behavior: opens via `dialog.showModal()` on clicking `.portfolio-more-info[data-project-id]` (the carousel's title tabs no longer open it directly), focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths. `description`/`photo`/`video` sections are omitted entirely (not rendered empty) when the corresponding data field is blank. The Source/Live links are also omitted entirely when `repoLink`/`liveLink` is blank. `.project-detail-image` renders one `<img>` per entry in `item.images` (falling back to `[item.imageLink]` if empty) as a stacked gallery — each capped at `max-width: 1000px` (centered) via the existing `.project-detail-image img` rule. `.project-detail` renders as a full-viewport overlay (`position: fixed; inset: 0`, `width`/`height: 100vw`/`100vh`), not a centered card.
+Behavior: opens via `dialog.showModal()` on clicking `.portfolio-more-info[data-project-id]` (the carousel's title tabs no longer open it directly), focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths (also resets/stops the image carousel's autoplay timers). The description section is omitted entirely (not rendered empty) when blank. The Source/Live links are also omitted entirely when `repoLink`/`liveLink` is blank. `.project-detail` renders as a full-viewport overlay (`position: fixed; inset: 0`, `width`/`height: 100vw`/`100vh`), not a centered card.
+
+Because the image and video carousels both reuse `.portfolio-carousel-arrow-prev`/`-next` (etc.) from the main Portfolio carousel, `projectDetail.js` scopes every carousel-related `querySelector` call to `.project-detail-carousel`/`.project-detail-video-carousel` specifically (never `document`) so its arrows can't be confused with the main carousel's, or with each other's.
 
 ### Contact Section
 
@@ -249,14 +251,31 @@ Returns: nothing (imperatively builds/wires the static carousel shell already in
 Special behavior:
 
 - Builds one `.portfolio-carousel-image` `<img>` per project (from `imageLink`) into `.portfolio-carousel-images`, and one `.portfolio-title-box` tab per project into `.portfolio-list`; index 0 of each starts with `.is-active`.
-- Tracks the active index, an autoplay `setInterval` (4000ms, advances to the next project), and a resume `setTimeout` (20000ms).
+- Creates a `createAutoplayController(next)` (from `src/utils/autoplayCarousel.js`) to own the autoplay `setInterval`/resume `setTimeout` (4000ms/20000ms).
 - `setActive(index)` toggles `.is-active` on the matching image + tab and updates `.portfolio-more-info`'s `data-project-id`.
-- Arrow clicks and title-tab clicks call `goTo()`/`registerInteraction()` — the latter stops autoplay and reschedules it to restart after 20s of no further interaction (arrows, tabs, or "More info").
+- Arrow clicks and title-tab clicks call `goTo()`/`autoplay.registerInteraction()` — the latter stops autoplay and reschedules it to restart after 20s of no further interaction (arrows, tabs, or "More info").
 - No-ops if any of the required static containers (`.portfolio-carousel-images`, `.portfolio-list`, the two arrows, `.portfolio-more-info`) are missing, or `dataBase` is empty.
 
 Used by:
 
 - `src/pages/Portfolio/index.js`
+
+### `createAutoplayController()`
+
+File: `src/utils/autoplayCarousel.js`
+
+Signature:
+
+```js
+createAutoplayController(advance, { autoplayDelayMs = 4000, resumeDelayMs = 20000 } = {})
+```
+
+Returns an object `{ start, stop, registerInteraction, reset }`: `start()` begins calling `advance` on a `setInterval`; `stop()` clears it; `registerInteraction()` stops it and schedules `start()` again after `resumeDelayMs`; `reset()` stops it and clears any pending resume timer (used when a carousel closes/unmounts, e.g. the project-detail dialog).
+
+Used by:
+
+- `src/pages/Portfolio/portfolioCarousel.js` (the main carousel)
+- `src/pages/Project/projectDetail.js` (the overlay's image carousel only - the video carousel stays manual)
 
 ## Renderer Functions
 
@@ -339,9 +358,9 @@ Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code;
   - `.project-detail` (the `<dialog>` box and its `::backdrop`)
   - `.project-detail-close`
   - `.project-detail-title`
-  - `.project-detail-image`
+  - `.project-detail-carousel` / `.project-detail-carousel-dots` / `.project-detail-carousel-dot`
   - `.project-detail-description`
-  - `.project-detail-media`
+  - `.project-detail-video-carousel` / `.project-detail-video-frame` / `.project-detail-video-thumb-btn` / `.project-detail-video-play-icon` / `.project-detail-video-iframe` / `.project-detail-video-title`
 
 ## Component Risks
 
@@ -350,3 +369,4 @@ Formerly `src/utils/pageTransitions.js`. Removed in Phase 1 as unused dead code;
 - `src/pages/Project/index.js` is not loaded (unloaded since Phase 2) and kept only as historical reference; its required DOM structure is absent from the current markup. The real project-detail implementation is `src/pages/Project/projectDetail.js` (Phase 7).
 - Chromium's native `<dialog>` focus containment doesn't cycle back to the first focusable element when tabbing past the last one inside `#project-detail` — it can land on `<body>`/the dialog itself for a step. This still fully prevents reaching real page content behind the dialog; see `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note.
 - Missing `liveLink`/`repoLink` are hidden entirely inside `#project-detail`; the portfolio card itself never renders Source/Live at all. See `PROJECT_DETAIL_OVERLAY_DESIGN.md`'s status note and section 6.
+- The video carousel's title text comes from an external API (YouTube oEmbed) and is set via `.textContent`, not `.innerHTML`, so an untrusted/unexpected title string can't inject markup. The fetch itself is wrapped in try/catch — a blocked or failing request just leaves the title blank; the thumbnail and play button still work either way.

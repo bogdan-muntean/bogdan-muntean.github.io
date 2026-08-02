@@ -19,6 +19,10 @@ Important: the legacy project-detail script `src/pages/Project/index.js` (the `.
 
 Important: the portfolio section was redesigned several times after Phase 7. It is now an **image carousel** (`src/pages/Portfolio/portfolioCarousel.js`, `.portfolio-carousel` in `index.html`): a large image stage (`.portfolio-carousel-images`, one `<img>` per project, crossfaded) with prev/next arrow buttons, auto-advancing through projects every 4 seconds. Clicking an arrow or a title tab (below the stage, `.portfolio-list` — now a horizontal wrapping row of small tabs, active one blue via `--color-secondary`, others a muted blue-gray via `--color-portfolio-tab-inactive-bg`) jumps directly to that project and pauses autoplay, which resumes after 20 seconds of no further interaction. A dedicated `.portfolio-more-info` button (directly under the stage) is the **only** thing that opens the project-detail overlay, for whichever project is currently active. The earlier "hover reveals a floating image preview" mechanism (`portfolioHoverPreview.js`, `#portfolio-hover-preview`) has been **removed** — it doesn't fit the carousel design, and `PortfolioItem.js`/`addPortfolioItems.js` were removed along with it (replaced by the single `portfolioCarousel.js` module). `checkLink.js` remains removed from an earlier iteration. See `COMPONENTS.md`'s Portfolio Section for the full breakdown.
 
+Important: three portfolio entries (Task Tracker, Link In Bio, Todo List) are currently commented out of the active `dataPortfolioItems` array — this was an intentional choice by the site owner, confirmed explicitly, not something to "fix" by uncommenting. Only Fintrack, Energy Monitoring System, Buddy Weather App, and YourSpecialist are active today.
+
+Important: the project-detail overlay's own content was then redesigned too. `.project-detail-carousel` shows `item.images` as its own dot-indicator carousel (`.project-detail-carousel-dots`/`.project-detail-carousel-dot`) — reusing `.portfolio-carousel-stage`/`.portfolio-carousel-arrow(-prev/-next)`/`.portfolio-carousel-images`/`.portfolio-carousel-image` from the main carousel above for identical styling. It **autoplays** every 4s just like the main carousel (paused on arrow/dot interaction, resumed after 20s, stopped/reset when the dialog closes), sharing the same `createAutoplayController()` from `src/utils/autoplayCarousel.js`. Fintrack (the default project) now has 3 real images in its `images` array, so this carousel's navigation is genuinely exercised, not just a dormant mechanism. Below the description and Source/Live links, `.project-detail-video-carousel` (same stage/arrow/dots pattern, but manual only - no autoplay) plays YouTube videos from a new `videos` field (an array of URLs), replacing the removed `photo`/`video` fields and `.project-detail-media`. Each video shows a thumbnail (derived directly from the video ID, no request) with a play icon; clicking it swaps in a live `<iframe>` embed. The thumbnail's title, overlaid top-left and linking out to the real YouTube URL, is fetched asynchronously from the public YouTube oEmbed endpoint — **the codebase's first runtime network call to a third-party service** (no API key, no npm dependency; a failed/blocked fetch just leaves the title blank). Because three separate carousels on the page (`portfolio-carousel`, `.project-detail-carousel`, `.project-detail-video-carousel`) all reuse the same arrow/stage class names for styling, both `portfolioCarousel.js` and `projectDetail.js` scope their `querySelector` calls to their own root container rather than `document` — don't reintroduce a document-wide `querySelector` for these classes. A wider hover/focus "zone" around each arrow (revealing a translucent-blue gradient) was tried and then explicitly reverted per the site owner's request - arrows are plain absolutely-positioned circular buttons again (`.portfolio-carousel-arrow-prev { left: 12px; }` / `-next { right: 12px; }`), with no wrapper element; don't reintroduce the zone wrapper unless asked again.
+
 Important future architecture requirement: the user wants to eventually avoid editing live project code for every project content update. `PHASES_INFO.md` documents future static-compatible options such as repo-controlled JSON, Excel-to-JSON, Google Sheets-to-JSON, GitHub Actions generation, and external/cloud image workflows. None of those options are implemented yet.
 
 ## Exact Tech Stack Detected
@@ -32,7 +36,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
   - Google Fonts.
   - Font Awesome from cdnjs.
 - npm package metadata exists; no runtime dependencies are declared. `npm run serve` (Phase 3) starts a local static server via Python's built-in `http.server`, so no dependency was needed for that. `sass` (Phase 4) is the one devDependency, used only to compile SCSS to CSS via `npm run build:css`.
-- No backend, database, API, router, bundler, test framework, linter, formatter, CI config, or deployment config detected.
+- No backend, database, router, bundler, test framework, linter, formatter, CI config, or deployment config detected. One third-party API call exists: `src/pages/Project/projectDetail.js` uses `fetch()` against the public YouTube oEmbed endpoint (no key, no npm dependency) to get a video title for the project-detail overlay's video carousel.
 
 ## Key Files And What Each One Does
 
@@ -89,7 +93,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 
 - `src/pages/Portfolio/portfolioCarousel.js`
   - Builds the carousel image stage (`.portfolio-carousel-images`, one `<img>` per project from `imageLink`) and the title-tab row (`.portfolio-list`, one `.portfolio-title-box` per project).
-  - Owns the active-project index, an autoplay `setInterval` (4000ms), and a resume `setTimeout` (20000ms).
+  - Owns the active-project index and a `createAutoplayController()` instance (`src/utils/autoplayCarousel.js`) for the 4000ms autoplay / 20000ms resume timers.
   - Wires prev/next arrow clicks and title-tab clicks to jump directly to a project and pause/reschedule autoplay; keeps `.portfolio-more-info`'s `data-project-id` in sync with the active project.
   - Returns safely if any required static container is missing, or the data array is empty.
 
@@ -100,10 +104,15 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - `src/pages/Project/projectDetail.js`
   - The actual project-detail overlay implementation (Phase 7 design, implemented). Delegated click listener on `.portfolio-carousel` for `.portfolio-more-info[data-project-id]`; looks up `dataPortfolioItems[id]` fresh at click time and populates the shared `<dialog id="project-detail">` (in `index.html`).
   - Opens via `dialog.showModal()`, focuses the close button. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener handles focus-return to the trigger button for all three paths.
-  - Renders one `<img>` per entry in `images` (falling back to `[imageLink]` if empty) as a stacked gallery. Omits the description/media sections entirely when `description`/`photo`/`video` are empty (today's 4 active entries have empty `photo`/`video` on all 4, and empty `description` on 3 of 4 - only YourSpecialist has one). Reuses `checkIcon()` for the Source/Live links.
+  - Renders, in order: an image carousel (one `<img>` per entry in `images`, falling back to `[imageLink]`; dot-indicator navigation; autoplays every 4s via its own `createAutoplayController()`, paused on arrow/dot interaction and resumed after 20s, reset on dialog close), the description (omitted when empty - 3 of 4 active entries today), Source/Live links via `checkIcon()`, then a video carousel built from `videos` (whole section `hidden` when empty - all 4 active entries today, manual navigation only). The `photo`/`video` fields and the old `.project-detail-media` section were removed; `videos` replaces them.
+  - The video carousel renders one YouTube thumbnail/play-button at a time (not pre-rendered side by side, to avoid loading several hidden iframes). Thumbnail comes from `https://img.youtube.com/vi/<id>/hqdefault.jpg` (no request); the title overlay (top-left, links to the real YouTube URL) is fetched via the public YouTube oEmbed endpoint and filled in once it resolves - the codebase's first runtime third-party network call. Clicking the thumbnail swaps in a live `<iframe>` embed.
+  - Reuses `.portfolio-carousel-stage`/`.portfolio-carousel-arrow(-prev/-next)`/`.portfolio-carousel-images`/`.portfolio-carousel-image` from the main Portfolio carousel for identical styling. Scopes its own `querySelector` calls to `.project-detail-carousel`/`.project-detail-video-carousel` (not `document`) since those classes are shared across three separate carousels on the page. Hides navigation by setting `hidden` directly on the arrow button when a carousel has only one item.
+
+- `src/utils/autoplayCarousel.js`
+  - Exports `createAutoplayController(advance, options)` → `{ start, stop, registerInteraction, reset }`. Shared by `portfolioCarousel.js` and `projectDetail.js`'s image carousel so the 4s-autoplay/20s-resume logic isn't duplicated.
 
 - `src/data/dataPortfolioItems.js`
-  - Portfolio project data and commented-out older project data. Each active entry has an `images` array (feeds the project-detail overlay's gallery, currently one path per project) alongside `imageLink` (used as the carousel stage's single image for that project).
+  - Portfolio project data and commented-out older project data (including Task Tracker, Link In Bio, and Todo List, intentionally commented out of the active array - only Fintrack, Energy Monitoring System, Buddy Weather App, and YourSpecialist are active today). Each active entry has an `images` array (feeds the overlay's image carousel, currently one path per project) alongside `imageLink` (used as the main Portfolio carousel's single image for that project), and a `videos` array (feeds the overlay's video carousel, empty on all 4 active entries today).
 
 - `src/data/dataTimeline.js`
   - Education/training timeline data.
@@ -133,12 +142,12 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Data files export arrays with named objects.
 - Portfolio items are rendered from object fields:
   - `title`
-  - `description` — now read by the project-detail overlay (`projectDetail.js`, Phase 7); omitted from the overlay when empty.
-  - `imageLink`
+  - `description` — read by the project-detail overlay (`projectDetail.js`, Phase 7); omitted from the overlay when empty.
+  - `imageLink` — the main Portfolio carousel's single image for this project.
+  - `images` — feeds the overlay's image carousel (falls back to `[imageLink]` if empty).
   - `liveLink`
   - `repoLink`
-  - `photo` — read by the overlay; omitted when empty (always empty in today's live data).
-  - `video` — same as `photo`.
+  - `videos` — YouTube URLs, feeds the overlay's video carousel (whole section hidden when empty).
 - Styling uses CSS custom properties from `src/assets/variables.scss`.
 - The loaded runtime CSS files are `.css`, not `.scss`.
 - Light mode depends on a `.light-mode` class on `<html>` and `<body>`.
@@ -173,7 +182,7 @@ Important future architecture requirement: the user wants to eventually avoid ed
 - Do not delete portfolio screenshots in `src/assets/portfolioImages` without checking `src/data/dataPortfolioItems.js`, including commented-out project data if the owner may restore it.
 - Do not assume `src/pages/Project/index.js` works or revive it; it's historical only. The real overlay is `projectDetail.js`.
 - Do not assume SCSS changes affect the site until compiled CSS is updated.
-- `npm test` (Phase 5, extended in the Phase 7 overlay implementation and the portfolio carousel redesign) runs a real Playwright smoke suite (`tests/`, 30 tests): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, portfolio carousel interactions (arrows, tabs, autoplay/pause), and the project-detail overlay (open/close paths, focus management, fallback rendering). See `TESTING.md` for the one-time browser install step.
+- `npm test` (Phase 5, extended in the Phase 7 overlay implementation, the portfolio carousel redesign, and the project-detail image/video carousels) runs a real Playwright smoke suite (`tests/`, 33 tests): page load/console errors, the four dynamic render targets, mobile menu, theme toggle, back-to-top, portfolio carousel interactions (arrows, tabs, autoplay/pause), and the project-detail overlay (open/close paths, focus management, fallback rendering, image carousel navigation/autoplay with Fintrack's real 3-image data, video carousel hidden-state with today's no-video data). See `TESTING.md` for the one-time browser install step.
 - The recommendation letters download link in `index.html` points to the existing `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf` (a transient working-tree regression to the shorter path was discarded in Phase 1).
 
 ## Suggested Next Improvements

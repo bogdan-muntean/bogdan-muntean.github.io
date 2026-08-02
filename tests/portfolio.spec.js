@@ -45,7 +45,9 @@ test("clicking the next arrow advances the active project", async ({
 }) => {
     await page.goto("/");
 
-    await page.locator(".portfolio-carousel-arrow-next").click();
+    // Scoped by aria-label since .portfolio-carousel-arrow-next is also
+    // reused by the project-detail overlay's own image/video carousels.
+    await page.getByLabel("Next project").click();
 
     await expect(
         page.locator(".portfolio-carousel-image").nth(1)
@@ -91,7 +93,9 @@ test("clicking an arrow stops autoplay from advancing again immediately", async 
 }) => {
     await page.goto("/");
 
-    await page.locator(".portfolio-carousel-arrow-next").click();
+    // Scoped by aria-label since .portfolio-carousel-arrow-next is also
+    // reused by the project-detail overlay's own image/video carousels.
+    await page.getByLabel("Next project").click();
     await expect(page.locator(".portfolio-title-box").nth(1)).toHaveClass(
         /is-active/
     );
