@@ -265,11 +265,12 @@
 }
 .portfolio-links div .active-icon {
   color: var(--color-portfolio-item);
+  transition: var(--transition-1);
 }
 .portfolio-links div .active-icon:hover {
+  color: var(--color-secondary);
   font-size: var(--font-size-default-hover);
   cursor: pointer;
-  transition: var(--transition-1);
 }
 .portfolio-links div .disable-icon {
   color: var(--color-portfolio-item-disable);

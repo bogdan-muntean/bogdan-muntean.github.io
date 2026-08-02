@@ -166,11 +166,12 @@
 
     .active-icon {
       color: var(--color-portfolio-item);
+      transition: var(--transition-1);
 
       &:hover {
+          color: var(--color-secondary);
           font-size: var(--font-size-default-hover);
           cursor: pointer;
-          transition: var(--transition-1);
       }
     }
 
