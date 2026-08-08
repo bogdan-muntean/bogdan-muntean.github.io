@@ -12,10 +12,10 @@ There is no backend application, API server, database connection, build pipeline
 
 - `index.html`: Main document loaded by the browser. It contains the page markup, navigation anchors, static content for the Home/About/Contact sections, stylesheet links, external font/icon CDN links, and module script tags.
 - `src/main.js`: Main JavaScript module for general UI behavior. It handles mobile menu open/close behavior, closes the mobile menu on link click/outside click/desktop resize, controls the back-to-top button, and activates the theme toggle through `toggleLightMode(".theme-btn")`.
-- `src/pages/AboutMe/index.js`: Loads and renders work experience and timeline data, and imports `src/pages/AboutMe/addMySkills.js` for skill rendering.
-- `src/pages/Portfolio/index.js`: Loads portfolio data and initializes the portfolio carousel (image stage + title-tab selector) via `portfolioCarousel.js`.
+- `src/pages/AboutMe/index.js`: Fetches work experience and timeline JSON (`src/data/dataWorkexperience.json`/`dataTimeline.json`) and renders them, and imports `src/pages/AboutMe/addMySkills.js` for skill rendering.
+- `src/pages/Portfolio/index.js`: Fetches portfolio JSON (`src/data/dataPortfolioItems.json`) and initializes the portfolio carousel (image stage + title-tab selector) via `portfolioCarousel.js`.
 - `src/pages/Project/index.js`: Legacy project-detail script; does not match the current `index.html` structure and is not loaded (unloaded since Phase 2). Kept in the repo only as historical reference. See "Known limitations".
-- `src/pages/Project/projectDetail.js`: The actual project-detail overlay implementation (Phase 7 design, implemented). Populates a shared native `<dialog id="project-detail">` from `dataPortfolioItems` at click time.
+- `src/pages/Project/projectDetail.js`: The actual project-detail overlay implementation (Phase 7 design, implemented). Populates a shared native `<dialog id="project-detail">` from `dataPortfolioItems` (fetched from `dataPortfolioItems.json`, Phase 8) at click time.
 
 ## How The App Works
 
@@ -45,13 +45,13 @@ There is no backend application, API server, database connection, build pipeline
    - `#back-to-top` gets `.show` when `window.scrollY > 200`.
    - clicking `#back-to-top` scrolls to the top smoothly.
    - `.theme-btn` toggles `.light-mode` on `document.body` and `document.documentElement`.
-6. `src/pages/AboutMe/index.js` renders:
-   - skill categories from `src/pages/AboutMe/addMySkills.js` into `#skills-list`.
-   - work experience from `src/data/dataWorkexperience.js` into `.experience-container`.
-   - timeline entries from `src/data/dataTimeline.js` into `.timeline-container`.
-7. `src/pages/Portfolio/index.js` calls `initPortfolioCarousel(dataPortfolioItems)`. It builds one image per project (from `imageLink`) into `.portfolio-carousel-images` and one title tab per project into `.portfolio-list`, then auto-advances through projects every 4 seconds. Prev/next arrows and title-tab clicks jump directly to a project and pause autoplay, which resumes after 20 seconds of no further interaction. `.portfolio-more-info`'s `data-project-id` is kept in sync with whichever project is currently active.
+6. `src/pages/AboutMe/index.js` fetches `dataWorkexperience.json`/`dataTimeline.json` (via `src/utils/loadJsonData.js`) and renders:
+   - skill categories, fetched from `dataSkills.json` inside `src/pages/AboutMe/addMySkills.js`, into `#skills-list`.
+   - work experience into `.experience-container`.
+   - timeline entries into `.timeline-container`.
+7. `src/pages/Portfolio/index.js` fetches `dataPortfolioItems.json` then calls `initPortfolioCarousel(dataPortfolioItems)`. It builds one image per project (from `imageLink`) into `.portfolio-carousel-images` and one title tab per project into `.portfolio-list`, then auto-advances through projects every 4 seconds. Prev/next arrows and title-tab clicks jump directly to a project and pause autoplay, which resumes after 20 seconds of no further interaction. `.portfolio-more-info`'s `data-project-id` is kept in sync with whichever project is currently active.
 8. `src/pages/Project/index.js` is not loaded (unloaded since Phase 2); kept only as historical reference. It targeted legacy `.active`, `#project`, and `#portfolio` DOM that the current markup does not contain.
-9. `src/pages/Project/projectDetail.js` attaches a delegated click listener on `.portfolio-carousel`. Clicking `.portfolio-more-info[data-project-id]` looks up `dataPortfolioItems[id]` fresh, populates the shared `<dialog id="project-detail">` (rendering a gallery of that project's `images`), and opens it via `showModal()`.
+9. `src/pages/Project/projectDetail.js` fetches `dataPortfolioItems.json` at module load and attaches a delegated click listener on `.portfolio-carousel`. Clicking `.portfolio-more-info[data-project-id]` looks up `dataPortfolioItems[id]` fresh, populates the shared `<dialog id="project-detail">` (rendering a gallery of that project's `images`), and opens it via `showModal()`.
 
 ## Main Modules, Pages, And Components
 
@@ -79,12 +79,12 @@ There is no backend application, API server, database connection, build pipeline
 ### About Me Area
 
 - `src/pages/AboutMe/index.js`
-  - Imports work experience and timeline data.
+  - Fetches work experience and timeline JSON via `loadJsonData()`.
   - Imports renderer helpers.
   - Imports `addMySkills.js` for side-effect rendering.
 
 - `src/pages/AboutMe/addMySkills.js`
-  - Contains `skillCategories`, an internal array of categorized skills.
+  - Fetches `dataSkills.json` via `loadJsonData()` into `skillCategories`.
   - Creates `.skill-category`, `.skill-grid`, and `.skill-item` DOM nodes.
   - Appends generated skills to `#skills-list`.
 
@@ -110,7 +110,7 @@ There is no backend application, API server, database connection, build pipeline
 ### Portfolio Area
 
 - `src/pages/Portfolio/index.js`
-  - Imports `dataPortfolioItems`.
+  - Fetches `dataPortfolioItems.json` via `loadJsonData()`.
   - Calls `initPortfolioCarousel(dataPortfolioItems)`.
 
 - `src/pages/Portfolio/portfolioCarousel.js`
@@ -124,11 +124,12 @@ There is no backend application, API server, database connection, build pipeline
 - `src/pages/Project/index.js` — legacy, not loaded
   - Intended to listen for clicks on `.more` or `.portfolio-image`.
   - Attempts to hide an `.active` section and show `#project`.
-  - Attempts to populate `#project` from `dataPortfolioItems`.
+  - Attempts to populate `#project` from `dataPortfolioItems`, statically imported from `src/data/dataPortfolioItems.js` — which, since the Phase 8 migration, no longer exports anything (it's archive-only). Harmless since this file is never loaded.
   - Attempts to return to `#portfolio` through `.project-back`.
   - Not loaded by `index.html` (unloaded since Phase 2); kept only as historical reference. `index.html` does not define the `#project`, `#portfolio`, or `.active` sections this legacy flow required.
 
 - `src/pages/Project/projectDetail.js` — the real implementation (Phase 7)
+  - Fetches `dataPortfolioItems.json` via `loadJsonData()` at module load (Phase 8) into a module-scoped `dataPortfolioItems` variable.
   - Delegated click listener on `.portfolio-carousel` for `.portfolio-more-info[data-project-id]`.
   - Looks up `dataPortfolioItems[id]` fresh at click time (not cached), populates the shared `<dialog id="project-detail">` in this order: title, an image carousel (one `<img>` per entry in `images`, falling back to `[imageLink]`; dot-indicator navigation and 4s autoplay when more than one - Fintrack has 3 today), description (omitted if empty), Source/Live links via `checkIcon()` (omitted entirely when `repoLink`/`liveLink` is empty), then a video carousel built from `videos` (hidden entirely when empty, manual navigation only).
   - The video carousel renders one YouTube thumbnail/play-button at a time (not all pre-rendered, to avoid loading multiple hidden iframes); clicking a thumbnail swaps in a live `<iframe>` embed. Each thumbnail's title (top-left, links out to the original YouTube URL) is fetched asynchronously via the public YouTube oEmbed endpoint and filled in once it resolves.
@@ -148,24 +149,30 @@ There is no `src/pages/Contact/index.js`.
 
 ## Data Files
 
-- `src/data/dataPortfolioItems.js`
-  - Exports `dataPortfolioItems`.
-  - Active items include Fintrack, Energy Monitoring System, Buddy Weather App, and YourSpecialist.
-  - Task Tracker, Link In Bio, and Todo List are commented out (intentionally, per the site owner), alongside the older archived portfolio items.
+Since Phase 8 (Option A, `CONTENT_SOURCE_WORKFLOW_DESIGN.md`), content lives in plain `.json` files under `src/data/`, loaded at runtime via `fetch()` (see `src/utils/loadJsonData.js` in "Utilities" below) rather than imported as JS modules. Edit these `.json` files directly. Option B (Excel-to-JSON) was tried and reverted.
 
-- `src/data/dataTimeline.js`
-  - Exports `dataTimeline`.
-  - Contains education, certifications, and training entries.
+- `src/data/dataPortfolioItems.json`
+  - Array of the 4 active portfolio items: Fintrack, Energy Monitoring System, Buddy Weather App, and YourSpecialist.
+  - Fetched by `src/pages/Portfolio/index.js` and `src/pages/Project/projectDetail.js` (each does its own fetch; no shared cache beyond the browser's HTTP cache).
 
-- `src/data/dataWorkexperience.js`
-  - Exports `dataWorkexperience`.
-  - Contains work experience entries for Authentic Spirit Romania, Digital Distribution Group, and Automatify.
+- `src/data/dataPortfolioItems.js` — inert archive only, not imported by anything
+  - No longer exports data (the active array moved to the `.json` file above).
+  - Kept solely to hold the commented-out archive of retired projects (Task Tracker, Link In Bio, Todo List, and older ones) at the site owner's explicit request — JSON can't hold comments, so this content couldn't move into the `.json` file.
+
+- `src/data/dataTimeline.json`
+  - Contains education, certifications, and training entries. Fetched by `src/pages/AboutMe/index.js`.
+
+- `src/data/dataWorkexperience.json`
+  - Contains work experience entries for Authentic Spirit Romania, Digital Distribution Group, and Automatify. Fetched by `src/pages/AboutMe/index.js`.
+
+- `src/data/dataSkills.json`
+  - Categorized skills array, extracted from the formerly-inline `skillCategories` in `src/pages/AboutMe/addMySkills.js`. Fetched by that same module.
 
 ## Content Data Schema
 
-Documents the shape of the current JS-array data (Phase 6). This is the existing in-code schema, not a JSON schema — no data source migration has happened or is planned by this document.
+Documents the shape of the data (Phase 6 schema, now stored as JSON per Phase 8 rather than JS object literals — field names/shapes are unchanged by that migration).
 
-### Portfolio items (`src/data/dataPortfolioItems.js`, `dataPortfolioItems` array)
+### Portfolio items (`src/data/dataPortfolioItems.json`, array)
 
 Consumed by `src/pages/Portfolio/portfolioCarousel.js` (`imageLink`, `title` only), and (all fields) by `src/pages/Project/projectDetail.js`, the project-detail overlay implemented in Phase 7.
 
@@ -181,7 +188,7 @@ Consumed by `src/pages/Portfolio/portfolioCarousel.js` (`imageLink`, `title` onl
 
 Commented-out entries below the active array follow the same shape and are kept as archive content; do not remove without explicit confirmation.
 
-### Timeline items (`src/data/dataTimeline.js`, `dataTimeline` array)
+### Timeline items (`src/data/dataTimeline.json`, array)
 
 Consumed by `src/pages/AboutMe/addTimelineItems.js` → `TimelineItem()`.
 
@@ -193,13 +200,13 @@ Consumed by `src/pages/AboutMe/addTimelineItems.js` → `TimelineItem()`.
 | `text` | string | Required | Free-text body, may contain multiple lines and a leading `-`-bulleted list as plain text (not HTML list markup). |
 | `icon` | string (HTML template literal, e.g. `` `<i class="fa-solid fa-graduation-cap"></i>` ``) | Required | Must exactly match the literal graduation-cap markup for `changeAcademicIconColor()` in `TimelineItem.js` to apply the special background color; any other icon markup renders with no inline style (Phase 6 fix — previously produced a literal `undefined` attribute). |
 
-### Work experience items (`src/data/dataWorkexperience.js`, `dataWorkexperience` array)
+### Work experience items (`src/data/dataWorkexperience.json`, array)
 
 Consumed by `src/pages/AboutMe/addWorkexperienceItems.js` → `WorkexperienceItem()`. Same shape as timeline items (`title`, `span`, `timeData`, `text`, `icon`), except `icon` has no special-case styling logic — every icon renders identically.
 
-### Skills (`src/pages/AboutMe/addMySkills.js`, internal `skillCategories` array)
+### Skills (`src/data/dataSkills.json`, array)
 
-Not in `src/data`; kept in the renderer module itself. Each category has `category` (string heading) and `skills` (array of `{ label: string, icon: string }`, where `icon` is either an `<img>` tag pointing at `src/assets/icons/*` or an inline `<i>` icon-font tag). Centralizing this into `src/data` was considered but not done in Phase 6 — it would need explicit confirmation first, since it changes data ownership conventions.
+Fetched by `src/pages/AboutMe/addMySkills.js` (Phase 8; formerly an internal `skillCategories` array in that same module — now data, not code). Each category has `category` (string heading) and `skills` (array of `{ label: string, icon: string }`, where `icon` is either an `<img>` tag pointing at `src/assets/icons/*` or an inline `<i>` icon-font tag).
 
 ### Hardcoded vs. data-driven content
 
@@ -227,6 +234,10 @@ Hardcoded directly in `index.html`: Home hero text, About Me body text, all Cont
 
 - `src/utils/pageTransitions.js` — removed in Phase 1
   - Was an unused helper exporting `pageTransitions(classBtn)` to toggle `.active-btn`/`.active` by `data-id`; not imported or called by any code, so it was deleted as dead code.
+
+- `src/utils/loadJsonData.js` — added in Phase 8
+  - Exports `async function loadJsonData(url)`: `fetch(url)`, throws if `!response.ok`, otherwise returns `response.json()`.
+  - Called by `src/pages/Portfolio/index.js`, `src/pages/Project/projectDetail.js`, `src/pages/AboutMe/index.js` (twice), and `src/pages/AboutMe/addMySkills.js`, each resolving its own JSON path with `new URL("../../data/xxx.json", import.meta.url)` and wrapping the call in try/catch (logs `console.error`, skips rendering on failure).
 
 ## Styling System
 
@@ -263,7 +274,7 @@ As of Phase 4, `npm run build:css` compiles every `.scss` entry point to its mat
 - `src/assets/aboutMeImages`: Profile images used by the home section.
 - `src/assets/docs`: `CV_Bogdan_Muntean.pdf` and `Recommendation_Letters_Bogdan_Muntean.pdf`.
 - `src/assets/icons`: Skill and tool icons used by `src/pages/AboutMe/addMySkills.js`.
-- `src/assets/portfolioImages`: Screenshots used by `src/data/dataPortfolioItems.js`.
+- `src/assets/portfolioImages`: Screenshots used by `src/data/dataPortfolioItems.json` (and the archived entries in `dataPortfolioItems.js`).
 - `src/assets/readmeImages`: Images used by the previous README and available for documentation.
 
 ## Configuration Files

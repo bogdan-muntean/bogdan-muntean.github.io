@@ -1,5 +1,11 @@
 # Content Source Workflow — Design (Phase 8)
 
+## Implementation status
+
+**Option A has been implemented.** `src/data/*.js` (portfolio, timeline, work experience) and the `skillCategories` array formerly inline in `src/pages/AboutMe/addMySkills.js` now live in `src/data/dataPortfolioItems.json`, `dataTimeline.json`, `dataWorkexperience.json`, and `dataSkills.json`, loaded at runtime via `fetch()` through `src/utils/loadJsonData.js` (each entry-point module resolves its JSON path with `new URL("../../data/xxx.json", import.meta.url)` and awaits the fetch at module top level, wrapped in try/catch). `src/data/dataPortfolioItems.js` was kept, stripped down to only the commented-out archive of retired projects (Section 8, open question 1's answer: repo-hosted JSON is an acceptable end state, not just a stepping stone, for now).
+
+**Option B was briefly implemented and then reverted** at the site owner's request — editing content through the spreadsheet form wasn't a good fit for what they needed to set. `content-source/`, `scripts/generateDataFromExcel.js`, the `generate:data` npm script, and the `exceljs` devDependency were all removed. The `.json` files (Option A) are the sole editing surface again. Options B/C/D below remain future/optional, unstarted.
+
 ## Purpose
 
 This is a **decision-support planning document only**. It evaluates the four content-source options `PHASES_INFO.md` already lists (repo-controlled JSON, local Excel-to-JSON, Google Sheets-published, GitHub Actions generation) against this project's actual current data model, and recommends an order to adopt them in, if at all. It answers `AI_HANDOFF.md`'s open question about which future content workflow to choose — with a recommendation, not a final implementation decision. Nothing is implemented as a result of this document: no JSON files, no migration, no generation script, no `.github/workflows` file.

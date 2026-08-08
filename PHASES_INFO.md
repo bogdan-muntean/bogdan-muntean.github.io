@@ -197,7 +197,7 @@ Practical note: the local static server from Phase 3 should be set up as the fir
 
 ## Phase 0 - Documentation/Code Reality Check
 
-Status: In progress through current documentation work.
+Status: Complete. Documentation (`README.md`, `PROJECT_DOCUMENTATION.md`, `ARCHITECTURE.md`, `AI_HANDOFF.md`, `CODEBASE_MAP.md`, `COMPONENTS.md`, `TESTING.md`) has since been kept in sync with the code through every later phase.
 
 Goal:
 
@@ -262,7 +262,7 @@ Suggested git commit message:
 
 ## Phase 1 - Runtime Safety And Dead-Code Cleanup
 
-Status: Mostly completed in current code, but should still receive browser verification.
+Status: Complete. DOM guards are in place across `src/main.js` and the render/utility modules listed below, and the manual verification checklist has since passed in a real browser (page load, mobile menu open/close/outside-click/resize, theme toggle, back-to-top, all four renderers, portfolio-image click safety, disabled-link rendering).
 
 Goal:
 
@@ -333,6 +333,8 @@ Suggested git commit message:
 
 ## Phase 2 - Resolve Stale Project-Detail Architecture Without Adding New Feature Yet
 
+Status: Complete. The legacy `.active`/`#project`/`#portfolio` assumptions were removed; `src/pages/Project/index.js` is legacy/inactive (see `CODEBASE_MAP.md`), and the project-detail architecture was later rebuilt from scratch in Phase 7 as `src/pages/Project/projectDetail.js`. The Recommendation Letters download link and the duplicate `id="email"` spans were fixed in `index.html`.
+
 Goal:
 
 - Decide what to do with the current guarded but stale project-detail files before implementing any new overlay or detail experience.
@@ -399,6 +401,8 @@ Suggested git commit message:
 
 ## Phase 3 - Clean Package Metadata And Local Development Workflow
 
+Status: Complete. `package.json` now has a correct `license` (MIT, matching `LICENSE.md`), correct `bogdan-muntean.github.io` repository/bugs/homepage URLs, no stale `main`/`directories` fields, and a `"serve"` script (`python -m http.server 8080`) documented in `README.md`/`AI_HANDOFF.md`.
+
 Goal:
 
 - Make the repository easier to run and less misleading.
@@ -455,6 +459,8 @@ Suggested git commit message:
 - `Clean package metadata and local setup`
 
 ## Phase 4 - Define And Add Sass Workflow
+
+Status: Complete. `sass` is a devDependency and `package.json`'s `"build:css"` script compiles every `.scss` entry point (`variables`, `style`, and each page's `-page.scss`) to its committed `.css`/`.css.map` pair. SCSS is the source of truth; every style change in this project is followed by `npm run build:css` before committing the regenerated CSS.
 
 Goal:
 
@@ -518,6 +524,8 @@ Suggested git commit message:
 
 ## Phase 5 - Add Minimal Smoke Tests
 
+Status: Complete. `npm test` runs a Playwright suite (see `TESTING.md`) covering page load, mobile menu, theme toggle, back-to-top, all renderers, portfolio carousel behavior, and the project-detail overlay. 33 tests currently pass.
+
 Goal:
 
 - Add a small verification layer that catches broken page load, missing render targets, and critical UI failures.
@@ -575,6 +583,8 @@ Suggested git commit message:
 - `Add static site smoke tests`
 
 ## Phase 6 - Data Model Preparation For Future Project Improvements
+
+Status: Complete (see commit "Document and clean content data model"). The portfolio data schema (including the `images`/`videos` array fields consumed by the carousel and project-detail overlay) is documented in `PROJECT_DOCUMENTATION.md`/`COMPONENTS.md`. The commented-out portfolio entries in `src/data/dataPortfolioItems.js` are intentionally kept as archive content per the site owner's explicit confirmation, not stale data to clean up.
 
 Goal:
 
@@ -639,6 +649,8 @@ Suggested git commit message:
 ## Phase 7 - Prepare Project-Detail Overlay Architecture
 
 Design doc: `PROJECT_DETAIL_OVERLAY_DESIGN.md` — implemented; see `src/pages/Project/projectDetail.js`.
+
+Status: Complete. The overlay is a native `<dialog>` opened only via the portfolio carousel's "More info" button, with full focus management, Escape/backdrop/close-button dismissal, an autoplaying image carousel with dot indicators, and a YouTube video carousel (oEmbed-fetched titles, click-to-embed playback). Covered by `tests/project-detail.spec.js`.
 
 Goal:
 
@@ -707,6 +719,8 @@ Suggested git commit message:
 ## Phase 8 - Future Optional Static Content Source Workflow
 
 Design doc: `CONTENT_SOURCE_WORKFLOW_DESIGN.md`.
+
+Status: Option A implemented. `src/data/*.js` (portfolio, timeline, work experience) and the internal `skillCategories` array in `src/pages/AboutMe/addMySkills.js` have been replaced by `src/data/dataPortfolioItems.json`, `dataTimeline.json`, `dataWorkexperience.json`, and `dataSkills.json`, loaded at runtime via `fetch()` through the shared `src/utils/loadJsonData.js` helper. `src/data/dataPortfolioItems.js` is kept as an inert archive-only file (the commented-out retired projects). Option B (Excel-to-JSON) was tried and then reverted at the site owner's request — editing content via a spreadsheet form wasn't a good fit for what they needed to set; the `.json` files are the sole editing surface again. Options B/C/D (Excel, Sheets, GitHub Actions) remain future/optional per the design doc's sequencing.
 
 Goal:
 
@@ -1077,22 +1091,19 @@ GitHub-hosted assets:
 
 ## Final Recommendation
 
+Status update: Phases 0-7 are now complete (see the Status line under each phase above). The project-detail overlay is implemented and tested, the Sass/test/local-server workflows are in place, and package metadata is clean.
+
 What should be done next:
 
-- Finish documentation consistency updates.
-- Then implement Phase 2: resolve the stale project-detail architecture without adding the new overlay.
-- In the same early stabilization window, fix the broken recommendation-letter PDF href in `index.html` after user confirmation or as a small verified bug fix.
-- Add a local static server workflow before larger browser-facing work.
+- Decide, when ready, which Phase 8 option to actually implement (the design doc `CONTENT_SOURCE_WORKFLOW_DESIGN.md` only documents the options; nothing has been migrated off the current `src/data/*.js` files yet).
+- Decide, when ready, which Phase 9 option to actually implement (`IMAGE_HOSTING_WORKFLOW_DESIGN.md` likewise only documents options; images remain repo-hosted under `src/assets/portfolioImages`).
 
 What should wait:
 
-- Project-detail overlay implementation.
 - JSON migration.
 - Excel-to-JSON workflow.
 - Google Sheets integration.
 - Google Drive or cloud image integration.
-- Smoke test tooling until a local server command exists.
-- Sass automation until package metadata and local workflow are cleaned.
 
 What should not be done:
 

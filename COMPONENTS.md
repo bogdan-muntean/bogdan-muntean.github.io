@@ -68,7 +68,7 @@ Key elements:
 
 Data source:
 
-- Internal `skillCategories` array in `src/pages/AboutMe/addMySkills.js`.
+- `src/data/dataSkills.json`, fetched at runtime by `src/pages/AboutMe/addMySkills.js` (Phase 8; formerly an internal array in that same module).
 
 ### Work Experience Section
 
@@ -85,7 +85,7 @@ Key elements:
 
 Data source:
 
-- `src/data/dataWorkexperience.js`
+- `src/data/dataWorkexperience.json`, fetched at runtime via `src/utils/loadJsonData.js` (Phase 8).
 
 Renderer chain:
 
@@ -111,7 +111,7 @@ Key elements:
 
 Data source:
 
-- `src/data/dataTimeline.js`
+- `src/data/dataTimeline.json`, fetched at runtime via `src/utils/loadJsonData.js` (Phase 8).
 
 Renderer chain:
 
@@ -141,7 +141,7 @@ Key elements:
 
 Data source:
 
-- `src/data/dataPortfolioItems.js` — `imageLink` feeds the carousel stage (one image per project); `images` feeds the project-detail overlay's gallery (see below).
+- `src/data/dataPortfolioItems.json`, fetched at runtime via `src/utils/loadJsonData.js` (Phase 8) — `imageLink` feeds the carousel stage (one image per project); `images` feeds the project-detail overlay's gallery (see below).
 
 Behavior, all wired by `src/pages/Portfolio/portfolioCarousel.js`:
 
@@ -172,7 +172,7 @@ Key elements, in the order they're stacked inside the dialog:
 - `.portfolio-links` (reused inside the dialog, not redefined, so link styling matches the card exactly)
 - `.project-detail-video-carousel` — video carousel, same stage/arrow/dots pattern as the image carousel, but `.project-detail-video-frame` renders one video "slide" at a time: a `.project-detail-video-thumb-btn` (YouTube thumbnail + `.project-detail-video-play-icon`) that gets replaced by a `.project-detail-video-iframe` on click, plus a `.project-detail-video-title` link overlaid top-left (points at the real YouTube URL, its text filled in once the oEmbed fetch resolves). The whole section is `hidden` when the project has no `videos` (every active entry today).
 
-Data source: `src/data/dataPortfolioItems.js`, read fresh at click time by array index (`data-project-id` on `.portfolio-more-info`, kept current by `portfolioCarousel.js`).
+Data source: `src/data/dataPortfolioItems.json`, fetched once at module load via `src/utils/loadJsonData.js` (Phase 8) into a module-scoped array, then read fresh at click time by array index (`data-project-id` on `.portfolio-more-info`, kept current by `portfolioCarousel.js`).
 
 Behavior: opens via `dialog.showModal()` on clicking `.portfolio-more-info[data-project-id]` (the carousel's title tabs no longer open it directly), focuses `.project-detail-close`. Closes via the close button, Escape, or a backdrop click (`event.target === dialog`); a single `close` event listener returns focus to the trigger button that opened it, for all three close paths (also resets/stops the image carousel's autoplay timers). The description section is omitted entirely (not rendered empty) when blank. The Source/Live links are also omitted entirely when `repoLink`/`liveLink` is blank. `.project-detail` renders as a full-viewport overlay (`position: fixed; inset: 0`, `width`/`height: 100vw`/`100vh`), not a centered card.
 

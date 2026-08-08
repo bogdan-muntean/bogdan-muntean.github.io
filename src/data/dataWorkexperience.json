@@ -1,0 +1,23 @@
+[
+    {
+        "title": "PHP Software Developer",
+        "span": "Authentic Spirit Romania",
+        "timeData": "01/2026 - Current",
+        "text": "\n        As a PHP Software Developer at Authentic Spirit Romania, I gained hands-on experience in software development using PHP and the Drupal framework:\n        -developed and maintained backend functionalities using PHP and Drupal;\n        -automated data processing workflows from Excel files;\n        -performed database operations and optimizations;\n        -refactored and improved front-end pages for better performance and usability;\n        -utilized modern development tools such as Cursor, Antigravity, and ChatGPT to improve productivity and streamline workflows.\n\n        This role helped me strengthen my backend development skills and improve my efficiency using modern AI-assisted tools.\n        ",
+        "icon": "<i class=\"fa fa-building\" aria-hidden=\"true\"></i>"
+    },
+    {
+        "title": "Junior Software Developer",
+        "span": "Digital Distribution Group",
+        "timeData": "12/2023 - 08/2025",
+        "text": "\n        As a Junior Software Developer at Digital Distribution Group, I worked on a variety of development tasks that enhanced both my technical skills and problem-solving abilities:\n        -developed and maintained responsive, user-friendly web pages using HTML5, CSS3, SCSS, JavaScript, TypeScript, React, Bootstrap, Tailwind, and Twig;\n        -integrated both external and internal APIs into the company’s main project to enhance system capabilities;\n        -designed and implemented new features to improve platform functionality and user experience;\n        -created automation commands to optimize database and framework update processes, improving efficiency and reducing downtime;\n        -worked on live production servers, ensuring stability, security, and smooth deployment;\n        -managed and optimized relational (PostgreSQL) and non-relational (MongoDB) databases;\n        -utilized PHP (Symfony), Doctrine, and Symfony Profiler for backend development and performance tuning;\n        -employed tools and technologies including Jenkins, Redis, Node.js, Git, GitLab, TortoiseGit, Cloudflare, Postman, VS Code, ChatGPT, GitHub Copilot, Asana, Slack, Figma, and Adobe Photoshop for development, version control, CI/CD, collaboration, and design.\n\n        From this experience, I learned to work effectively in a production environment, collaborate with multidisciplinary teams, and apply best practices in both front-end and back-end development.\n        ",
+        "icon": "<i class=\"fa fa-building\" aria-hidden=\"true\"></i>"
+    },
+    {
+        "title": "RPA Developer Internship",
+        "span": "Automatify",
+        "timeData": "07/2023 - 09/2023",
+        "text": "\n        As an Intern RPA Specialist at Automatify, I learned more about the following: \n        -process optimization and automation methods that help significantly in operational efficiency and productivity;\n        -designing and developing methods for RPA bots to automate repetitive and rule-based tasks;\n        -implemented exception handling mechanisms to ensure smooth bot operation and minimize manual intervention;\n        -implemented automation of data extraction, analysis, and reporting, leading to significant time and cost savings.\n\n        From the internship, I learned a lot of new information during the intern academy as well as the practice on the project.\n        I created a project that, through transactional processes, extracts the information from the invoices received in outlook, then logs in to sharepoint and enters the data necessary taken from invoices. \n        I also applied the company's reframework on the same project.\n        ",
+        "icon": "<i class=\"fa fa-building\" aria-hidden=\"true\"></i>"
+    }
+]

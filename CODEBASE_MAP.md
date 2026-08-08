@@ -32,9 +32,11 @@
 |   |   |-- variables.css.map
 |   |   `-- variables.scss
 |   |-- data
-|   |   |-- dataPortfolioItems.js
-|   |   |-- dataTimeline.js
-|   |   `-- dataWorkexperience.js
+|   |   |-- dataPortfolioItems.js (archive only)
+|   |   |-- dataPortfolioItems.json
+|   |   |-- dataSkills.json
+|   |   |-- dataTimeline.json
+|   |   `-- dataWorkexperience.json
 |   |-- pages
 |   |   |-- AboutMe
 |   |   |-- Contact
@@ -44,6 +46,7 @@
 |   |-- utils
 |   |   |-- autoplayCarousel.js
 |   |   |-- checkIcon.js
+|   |   |-- loadJsonData.js
 |   |   `-- toggleLightMode.js
 |   `-- main.js
 |-- index.html
@@ -72,7 +75,7 @@
 - `src/pages/AboutMe/index.js`: About/work/timeline/skills dynamic entry.
 - `src/pages/Portfolio/index.js`: Portfolio dynamic entry.
 - `src/pages/Project/index.js`: Legacy project-detail entry; not loaded (unloaded since Phase 2), kept only as historical reference. Its required legacy DOM is absent from the current markup.
-- `src/pages/Project/projectDetail.js`: The actual project-detail overlay entry (Phase 7 implementation) — populates a native `<dialog>` from `dataPortfolioItems` at click time.
+- `src/pages/Project/projectDetail.js`: The actual project-detail overlay entry (Phase 7 implementation) — fetches `dataPortfolioItems.json` (Phase 8) and populates a native `<dialog>` from it at click time.
 
 ## UI Files
 
@@ -110,15 +113,20 @@
 
 ## Data Files
 
-- `src/data/dataPortfolioItems.js`: Portfolio cards and project-detail content fields, including `images` (array of screenshots the project-detail overlay renders as a gallery) and `imageLink` (the single image the carousel stage shows for that project).
-- `src/data/dataTimeline.js`: Timeline entries.
-- `src/data/dataWorkexperience.js`: Work experience entries.
+Since Phase 8 (Option A), fetched at runtime as `.json` rather than imported as JS:
+
+- `src/data/dataPortfolioItems.json`: Portfolio cards and project-detail content fields, including `images` (array of screenshots the project-detail overlay renders as a gallery) and `imageLink` (the single image the carousel stage shows for that project).
+- `src/data/dataPortfolioItems.js`: inert archive only (retired projects, commented out); no longer exports data, not imported by anything.
+- `src/data/dataTimeline.json`: Timeline entries.
+- `src/data/dataWorkexperience.json`: Work experience entries.
+- `src/data/dataSkills.json`: Categorized skills, formerly inline in `addMySkills.js`.
 
 ## Utility Files
 
 - `src/utils/toggleLightMode.js`: Theme toggle behavior.
 - `src/utils/checkIcon.js`: Portfolio icon link attribute helper (used by the project-detail overlay).
 - `src/utils/autoplayCarousel.js`: Shared autoplay/pause/resume timer controller (`createAutoplayController()`), used by both the main Portfolio carousel and the project-detail overlay's image carousel.
+- `src/utils/loadJsonData.js`: `async function loadJsonData(url)` — fetches and parses a `src/data/*.json` file, throwing on a non-OK response (Phase 8).
 
 ## Config Files
 

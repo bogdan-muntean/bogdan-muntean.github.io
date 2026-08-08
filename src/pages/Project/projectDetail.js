@@ -4,9 +4,18 @@
 // dataPortfolioItems at click time, keyed by the data-project-id kept in
 // sync on the carousel's "More info" button (src/pages/Portfolio/portfolioCarousel.js)
 // as the active project changes.
-import { dataPortfolioItems } from "../../data/dataPortfolioItems.js";
+import { loadJsonData } from "../../utils/loadJsonData.js";
 import { checkIcon } from "../../utils/checkIcon.js";
 import { createAutoplayController } from "../../utils/autoplayCarousel.js";
+
+let dataPortfolioItems = [];
+try {
+    dataPortfolioItems = await loadJsonData(
+        new URL("../../data/dataPortfolioItems.json", import.meta.url)
+    );
+} catch (error) {
+    console.error(error);
+}
 
 const dialog = document.querySelector("#project-detail");
 const portfolioCarousel = document.querySelector(".portfolio-carousel");

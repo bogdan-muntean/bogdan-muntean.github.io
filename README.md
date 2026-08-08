@@ -10,10 +10,10 @@ This repository provides a public portfolio/resume website that can be hosted as
 
 - Personal introduction and professional summary.
 - Download links for `src/assets/docs/CV_Bogdan_Muntean.pdf` and `src/assets/docs/Recommendation_Letters_Bogdan_Muntean.pdf`.
-- Categorized skills rendered from `src/pages/AboutMe/addMySkills.js`.
-- Work experience rendered from `src/data/dataWorkexperience.js`.
-- Timeline/education entries rendered from `src/data/dataTimeline.js`.
-- Portfolio cards rendered from `src/data/dataPortfolioItems.js`.
+- Categorized skills rendered from `src/data/dataSkills.json`.
+- Work experience rendered from `src/data/dataWorkexperience.json`.
+- Timeline/education entries rendered from `src/data/dataTimeline.json`.
+- Portfolio cards rendered from `src/data/dataPortfolioItems.json`.
 - Contact details and social links in `index.html`.
 
 ## Main Features
@@ -41,13 +41,13 @@ No frontend framework, backend server, bundler, or test framework is declared in
 
 ## Install Dependencies
 
-There are no declared runtime `dependencies` — the app runs from static files loaded directly by the browser. As of Phase 4, `package.json` declares one `devDependency`, `sass` (Dart Sass), used only to compile SCSS to the committed CSS; it plays no part in what the browser loads.
+There are no declared runtime `dependencies` — the app runs from static files loaded directly by the browser. `package.json` declares two `devDependencies`, neither of which is shipped to the browser: `sass` (Dart Sass, Phase 4, compiles SCSS to the committed CSS) and `@playwright/test` (Phase 5, the smoke-test suite).
 
 ```sh
 npm install
 ```
 
-`package-lock.json` now reflects the `sass` dependency tree.
+`package-lock.json` reflects both devDependencies' trees.
 
 ## Run Locally
 
@@ -131,7 +131,7 @@ No other npm scripts are defined.
     |   |-- readmeImages
     |   |-- style.scss / style.css
     |   `-- variables.scss / variables.css
-    |-- data
+    |-- data (JSON data files, plus dataPortfolioItems.js archive-only)
     |-- pages
     |   |-- AboutMe
     |   |-- Contact
@@ -154,7 +154,7 @@ Additional documentation files in this repository:
 - `PHASES_INFO.md`: architectural stabilization roadmap before new features.
 - `TESTING.md`: smoke test suite setup and coverage (Phase 5).
 - `PROJECT_DETAIL_OVERLAY_DESIGN.md`: project-detail overlay design (Phase 7) — implemented.
-- `CONTENT_SOURCE_WORKFLOW_DESIGN.md`: future content-source workflow evaluation (Phase 8) — plan only.
+- `CONTENT_SOURCE_WORKFLOW_DESIGN.md`: content-source workflow evaluation (Phase 8) — Option A implemented (edit `src/data/*.json` directly); Option B (Excel-to-JSON) was tried and reverted.
 - `IMAGE_HOSTING_WORKFLOW_DESIGN.md`: future image-hosting workflow evaluation (Phase 9) — plan only.
 
 ## Known Limitations Visible From Code

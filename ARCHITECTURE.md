@@ -32,7 +32,7 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 
 - `src/main.js`: General UI behavior.
 - `src/assets`: Static assets plus global SCSS/CSS.
-- `src/data`: JavaScript data arrays for dynamic content.
+- `src/data`: JSON data files for dynamic content (Phase 8), plus one inert archive-only `.js` file.
 - `src/pages`: Page/section-specific JavaScript and styling.
 - `src/utils`: Shared JavaScript helper functions.
 
@@ -48,9 +48,13 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 
 ### `src/data`
 
-- `dataPortfolioItems.js`: Portfolio project data.
-- `dataTimeline.js`: Timeline/education data.
-- `dataWorkexperience.js`: Work experience data.
+Since Phase 8 (Option A), content lives in `.json` files fetched at runtime rather than imported JS modules:
+
+- `dataPortfolioItems.json`: Portfolio project data.
+- `dataPortfolioItems.js`: inert archive only (retired projects, commented out); not imported by anything.
+- `dataTimeline.json`: Timeline/education data.
+- `dataWorkexperience.json`: Work experience data.
+- `dataSkills.json`: Categorized skills data (formerly inline in `addMySkills.js`).
 
 ### `src/pages`
 
@@ -64,6 +68,7 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
 
 - `toggleLightMode.js`: Theme toggling.
 - `checkIcon.js`: Enables/disables portfolio icon links (used by the project-detail overlay only).
+- `loadJsonData.js`: `async function loadJsonData(url)` — `fetch()`s and parses a JSON data file, throwing on a non-OK response (Phase 8).
 
 ## Main Execution Flow
 
@@ -73,14 +78,14 @@ There is no backend layer, API layer, database layer, server-rendering layer, bu
    - `src/utils/toggleLightMode.js`
 4. `src/main.js` attaches UI event listeners for mobile navigation, back-to-top behavior, and theme toggling.
 5. `index.html` loads `src/pages/AboutMe/index.js` as a module.
-6. `src/pages/AboutMe/index.js` imports data and renderer modules, then renders:
+6. `src/pages/AboutMe/index.js` fetches `dataWorkexperience.json`/`dataTimeline.json` via `loadJsonData()`, then renders:
    - work experience into `.experience-container`
    - timeline items into `.timeline-container`
-   - skills into `#skills-list` via `addMySkills.js`
+   - skills into `#skills-list` via `addMySkills.js` (which itself fetches `dataSkills.json`)
 7. `index.html` loads `src/pages/Portfolio/index.js` as a module.
-8. `src/pages/Portfolio/index.js` calls `initPortfolioCarousel(dataPortfolioItems)` (`portfolioCarousel.js`), which populates the static carousel shell in `index.html`: one `<img>` per project in `.portfolio-carousel-images` (from `imageLink`) and one `.portfolio-title-box` tab per project in `.portfolio-list` (title text only). It auto-advances through projects every 4s, wires the prev/next arrows and title tabs to jump directly to a project, and keeps `.portfolio-more-info`'s `data-project-id` in sync with whichever project is active. Clicking an arrow, a title tab, or "More info" stops autoplay and schedules it to resume after 20s of no further interaction.
+8. `src/pages/Portfolio/index.js` fetches `dataPortfolioItems.json` via `loadJsonData()`, then calls `initPortfolioCarousel(dataPortfolioItems)` (`portfolioCarousel.js`), which populates the static carousel shell in `index.html`: one `<img>` per project in `.portfolio-carousel-images` (from `imageLink`) and one `.portfolio-title-box` tab per project in `.portfolio-list` (title text only). It auto-advances through projects every 4s, wires the prev/next arrows and title tabs to jump directly to a project, and keeps `.portfolio-more-info`'s `data-project-id` in sync with whichever project is active. Clicking an arrow, a title tab, or "More info" stops autoplay and schedules it to resume after 20s of no further interaction.
 9. `index.html` no longer loads `src/pages/Project/index.js` (its script tag was removed in Phase 2). The file remains in the repo as historical reference only; it targeted legacy `.active`/`#project`/`#portfolio` DOM that the current markup does not contain.
-10. `index.html` loads `src/pages/Project/projectDetail.js` as a module (Phase 7 overlay implementation). It attaches a delegated click listener on `.portfolio-carousel`; clicking `.portfolio-more-info[data-project-id]` looks up the matching `dataPortfolioItems` entry and opens the shared `<dialog id="project-detail">` via `showModal()`, rendering every entry in that project's `images` array (falling back to `imageLink`) as a stacked gallery.
+10. `index.html` loads `src/pages/Project/projectDetail.js` as a module (Phase 7 overlay implementation). It fetches `dataPortfolioItems.json` via `loadJsonData()` at module load, then attaches a delegated click listener on `.portfolio-carousel`; clicking `.portfolio-more-info[data-project-id]` looks up the matching `dataPortfolioItems` entry and opens the shared `<dialog id="project-detail">` via `showModal()`, rendering every entry in that project's `images` array (falling back to `imageLink`) as a stacked gallery.
 
 ## File Dependencies
 
@@ -89,21 +94,22 @@ index.html
   |-- src/main.js
   |   `-- src/utils/toggleLightMode.js
   |-- src/pages/AboutMe/index.js
-  |   |-- src/data/dataWorkexperience.js
-  |   |-- src/data/dataTimeline.js
+  |   |-- src/utils/loadJsonData.js --(fetch)--> src/data/dataWorkexperience.json
+  |   |-- src/utils/loadJsonData.js --(fetch)--> src/data/dataTimeline.json
   |   |-- src/pages/AboutMe/addWorkexperienceItems.js
   |   |   `-- src/pages/AboutMe/WorkexperienceItem.js
   |   |-- src/pages/AboutMe/addTimelineItems.js
   |   |   `-- src/pages/AboutMe/TimelineItem.js
   |   `-- src/pages/AboutMe/addMySkills.js
+  |       `-- src/utils/loadJsonData.js --(fetch)--> src/data/dataSkills.json
   |-- src/pages/Portfolio/index.js
-  |   |-- src/data/dataPortfolioItems.js
+  |   |-- src/utils/loadJsonData.js --(fetch)--> src/data/dataPortfolioItems.json
   |   `-- src/pages/Portfolio/portfolioCarousel.js
   `-- src/pages/Project/projectDetail.js
-      |-- src/data/dataPortfolioItems.js
+      |-- src/utils/loadJsonData.js --(fetch)--> src/data/dataPortfolioItems.json
       `-- src/utils/checkIcon.js
 
-(`src/pages/Project/index.js` is present in the repo but no longer loaded by `index.html`; historical reference only.)
+(`src/pages/Project/index.js` is present in the repo but no longer loaded by `index.html`; historical reference only. It still statically imports `src/data/dataPortfolioItems.js`, which is now archive-only and exports nothing — harmless since the file never runs.)
 ```
 
 CSS dependencies:
@@ -159,9 +165,9 @@ Runtime state is stored in:
   - `.light-mode` on `<html>` and `<body>`.
 - Native `<dialog>` open/closed state: `#project-detail`'s `.open` property, managed by `showModal()`/`close()` in `projectDetail.js`; a module-local variable there tracks the trigger button to restore focus to on close.
 - Portfolio carousel state (module-local in `portfolioCarousel.js`): the active project index, the autoplay `setInterval` id, and the resume `setTimeout` id.
-- JavaScript module-local arrays:
+- JavaScript module-local arrays, populated by a `fetch()` of the matching `.json` file in `src/data` (Phase 8) rather than hardcoded:
   - `skillCategories` inside `src/pages/AboutMe/addMySkills.js`.
-  - exported data arrays in `src/data`.
+  - `dataPortfolioItems`/`dataTimeline`/`dataWorkexperience` inside their respective entry-point modules.
 
 No state is persisted to localStorage, sessionStorage, cookies, or a backend.
 
@@ -237,7 +243,7 @@ Skills are different:
 
 ```text
 src/pages/AboutMe/addMySkills.js
-  -> internal skillCategories array
+  -> fetch src/data/dataSkills.json (loadJsonData)
   -> DOM append into #skills-list
 ```
 

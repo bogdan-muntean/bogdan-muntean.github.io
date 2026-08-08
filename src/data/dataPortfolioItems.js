@@ -1,51 +1,9 @@
-// Create the database for Portfolio items.
-
-export let dataPortfolioItems = [
-    {
-        title: "Fintrack - Budget Tracker App",
-        description: ``,
-        imageLink: "src/assets/portfolioImages/fintrack.PNG",
-        images: [
-            "src/assets/portfolioImages/fintrack.PNG",
-            "src/assets/portfolioImages/buddy-weather-app.PNG",
-            "src/assets/portfolioImages/energy-monitoring-system.png",
-        ],
-        liveLink: "",
-        repoLink: "https://github.com/bogdan-muntean/fintrack",
-        videos: [],
-    },
-    {
-        title: "Energy Monitoring System",
-        description: ``,
-        imageLink: "src/assets/portfolioImages/energy-monitoring-system.png",
-        images: ["src/assets/portfolioImages/energy-monitoring-system.png"],
-        liveLink: "",
-        repoLink:
-            "https://github.com/bogdan-muntean/Energy-Monitoring-System-Microservices-Architecture",
-        videos: [],
-    },
-    {
-        title: "Buddy Weather App",
-        description: ``,
-        imageLink: "src/assets/portfolioImages/buddy-weather-app.PNG",
-        images: ["src/assets/portfolioImages/buddy-weather-app.PNG"],
-        liveLink: "",
-        repoLink: "https://github.com/bogdan-muntean/buddy-weather",
-        videos: [],
-    },
-    {
-        title: "YourSpecialist",
-        description: `<p>Medical Locator site project. I used React, Vite, React Router, HTML, SCSS, JS, local data base. </p>
-<p>I plan for this project to add the SQL database from which I will filter the information and from which I will retrieve information about the availability of each doctor in the database. And after that I will do the modularization of the components from scratch to be able to organize, set and reuse them. 
-<br>Plus I will correct the mistake in SCSS in which I ranked the code, being a good habit.</p>`,
-        imageLink: "src/assets/portfolioImages/your-specialist-img.PNG",
-        images: ["src/assets/portfolioImages/your-specialist-img.PNG"],
-        liveLink: "",
-        repoLink:
-            "https://github.com/bogdan-muntean/YourSpecialist-React-Vite/tree/main/project%2Bvite",
-        videos: [],
-    },
-];
+// This file is an inert archive only. The active portfolio data now
+// lives in src/data/dataPortfolioItems.json (Phase 8, Option A - see
+// CONTENT_SOURCE_WORKFLOW_DESIGN.md), loaded at runtime via fetch().
+// Nothing imports this file. The commented-out entries below are
+// retired projects kept as reference at the site owner's request
+// (JSON can't hold comments, so they can't move into the .json file).
 
 // {
 //         title: "Task Tracker",
