@@ -56,32 +56,8 @@
                 "icon": "<img src=\"src/assets/icons/symfony.svg\" alt=\"Symfony icon\" class=\"custom-icon\" />"
             },
             {
-                "label": "Java",
-                "icon": "<img src=\"src/assets/icons/java.svg\" alt=\"Java icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "Spring Boot Framework",
-                "icon": "<img src=\"src/assets/icons/spring-boot.svg\" alt=\"Spring Boot icon\" class=\"custom-icon\" />"
-            },
-            {
                 "label": "Node.js",
                 "icon": "<img src=\"src/assets/icons/nodejs.svg\" alt=\"Node.js icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "Python",
-                "icon": "<img src=\"src/assets/icons/python.svg\" alt=\"Node.js icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "C",
-                "icon": "<img src=\"src/assets/icons/c.svg\" alt=\"C icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "C++",
-                "icon": "<img src=\"src/assets/icons/cpp.svg\" alt=\"C++ icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "C#",
-                "icon": "<img src=\"src/assets/icons/csharp.svg\" alt=\"C# icon\" class=\"custom-icon\" />"
             },
             {
                 "label": "Restful APIs",
@@ -156,18 +132,6 @@
             {
                 "label": "VS Code",
                 "icon": "<img src=\"src/assets/icons/vscode.svg\" alt=\"VS Code icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "IntelliJ IDEA",
-                "icon": "<img src=\"src/assets/icons/intellij-idea.svg\" alt=\"IntelliJ IDEA icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "Visual Studio",
-                "icon": "<img src=\"src/assets/icons/visual-studio.svg\" alt=\"Visual Studio icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "Virtualization (VirtualBox)",
-                "icon": "<img src=\"src/assets/icons/virtualbox.svg\" alt=\"Virtual Box icon\" class=\"custom-icon\" />"
             }
         ]
     },
@@ -176,10 +140,6 @@
         "skills": [
             {
                 "label": "PHPUnit",
-                "icon": "<i class=\"fa-solid fa-display\"></i>"
-            },
-            {
-                "label": "JUnit",
                 "icon": "<i class=\"fa-solid fa-display\"></i>"
             },
             {
@@ -198,10 +158,6 @@
             {
                 "label": "Automation Anywhere",
                 "icon": "<img src=\"src/assets/icons/automation-anywhere.png\" alt=\"Automation Anywhere icon\" class=\"custom-icon\" />"
-            },
-            {
-                "label": "PowerApps",
-                "icon": "<img src=\"src/assets/icons/powerapps.svg\" alt=\"PowerApps icon\" class=\"custom-icon\" />"
             }
         ]
     },
@@ -227,6 +183,14 @@
             {
                 "label": "Antigravity",
                 "icon": "<img src=\"src/assets/icons/antigravity-ai-img.png\" alt=\"Antigravity AI icon\" class=\"custom-icon\" />"
+            },
+            {
+                "label": "Claude",
+                "icon": "<img src=\"src/assets/icons/claude.svg\" alt=\"Claude icon\" class=\"custom-icon\" />"
+            },
+            {
+                "label": "Codex",
+                "icon": "<img src=\"src/assets/icons/codex.svg\" alt=\"Codex icon\" class=\"custom-icon\" />"
             }
         ]
     },

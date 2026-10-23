@@ -32,6 +32,27 @@
     padding: 0 10px;
 }
 
+// Reuses the .btn-download-item look from home-section.scss on a <button>.
+.skills-exposed-toggle-holder {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.skills-exposed-toggle {
+    align-self: center;
+    background: none;
+    font: inherit;
+}
+
+.skills-exposed {
+    margin-top: 90px;
+
+    &[hidden] {
+        display: none;
+    }
+}
+
 .skill-category {
     h3 {
         text-align: center;
