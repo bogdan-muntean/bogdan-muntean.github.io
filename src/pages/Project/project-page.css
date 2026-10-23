@@ -129,7 +129,7 @@
 .project-detail-close {
   position: absolute;
   top: 12px;
-  right: 12px;
+  right: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,6 +181,18 @@
 .project-detail-description {
   line-height: var(--line-height-default);
   margin-bottom: 16px;
+}
+.project-detail-description p {
+  text-indent: 2em;
+}
+.project-detail-description h4 {
+  margin-top: 12px;
+}
+.project-detail-description ul {
+  padding-left: 2em;
+}
+.project-detail-description li {
+  list-style: disc;
 }
 .project-detail-description[hidden] {
   display: none;

@@ -56,6 +56,19 @@ if (dialog && portfolioCarousel) {
     const descriptionEl = dialog.querySelector(".project-detail-description");
     const linksEl = dialog.querySelector(".portfolio-links");
     const closeBtn = dialog.querySelector(".project-detail-close");
+    const backToTopBtn = dialog.querySelector(".project-detail-back-to-top");
+
+    // The dialog is its own scroll container (overflow-y: auto) rendered in
+    // the top layer, so the page's #back-to-top can't be used here: this
+    // button tracks and scrolls the dialog, not the window.
+    if (backToTopBtn) {
+        dialog.addEventListener("scroll", () => {
+            backToTopBtn.classList.toggle("show", dialog.scrollTop > 200);
+        });
+        backToTopBtn.addEventListener("click", () => {
+            dialog.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
 
     // Image carousel (reuses .portfolio-carousel-stage/.portfolio-carousel-arrow/
     // .portfolio-carousel-images styling from portfolio-page.scss). Autoplays
@@ -252,6 +265,10 @@ if (dialog && portfolioCarousel) {
         renderProject(item);
         lastTrigger = trigger;
         dialog.showModal();
+        dialog.scrollTop = 0;
+        if (backToTopBtn) {
+            backToTopBtn.classList.remove("show");
+        }
 
         if (closeBtn) {
             closeBtn.focus();
